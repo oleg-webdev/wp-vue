@@ -6,9 +6,19 @@ global $wp_query;
 $user_params = $wp_query->query_vars[am_profile_slug()];
 ?>
 <div class="fulpage-wrap clearfix">
-	<pre>
-		{{currentUserModel}}
-	</pre>
+
+	<!-- Entry point is USER PROFILE -->
+	<div v-if="authInfo.network_purpose == 'user_profile'">
+
+	</div>
+
+	<!-- @TODO: Entry point is USERS LISTING -->
+	<div v-if="authInfo.network_purpose == 'users_listing'"></div>
+
+	<!-- @TODO: Entry point is USERS ACTIVITY -->
+	<div v-if="authInfo.network_purpose == 'users_activity'"></div>
+
+
 	<router-link to="/user/foo" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
 		Foo
 	</router-link >
@@ -23,6 +33,5 @@ $user_params = $wp_query->query_vars[am_profile_slug()];
 	</div>
 
 </div>
-
 <?php
 get_footer();

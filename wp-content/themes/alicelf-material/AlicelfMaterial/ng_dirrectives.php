@@ -22,7 +22,7 @@ function aa_func_20163526113508()
 		var AMdefaults = {
 			baseurl        : "<?php echo $site_url ?>",
 			themeurl       : "<?php echo get_template_directory_uri() ?>",
-			themepath      : "<?php echo get_template_directory() ?>",
+			themepath      : <?php echo json_encode(get_template_directory()) ?>,
 			ajaxurl        : "<?php echo admin_url( 'admin-ajax.php' ) ?>",
 			networkEndpoint: "<?php echo get_am_network_endpoint() ?>",
 			themeSettings  : <?php echo json_encode( $values ) ?>,

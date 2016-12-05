@@ -1,8 +1,4 @@
 <?php
-/**
- * ==================== User Profile endpoint ======================
- * 24.08.2016
- */
 if ( ! function_exists( 'am_profile_slug' ) ) {
 	function am_profile_slug()
 	{

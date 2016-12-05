@@ -113,7 +113,7 @@ Vue.component('minicart', {
 				});
 		},
 
-		removeFromCart: function(item, index) {
+		removeFromCart: function(item, index, event) {
 			var removeData = dataToPost('ajx20163730073701', item);
 			this.$http.post(AMdefaults.ajaxurl, removeData).then(function(response) {});
 			Cart.commit('removeFromCart', item);
@@ -183,6 +183,7 @@ new Vue({
 	data: {
 		currency    : amWoo.woo_currency,
 		appSettings : AMdefaults,
+		authInfo: AMdefaults.themeSettings.auth_info,
 		confirmProps: {
 			show  : false,
 			answer: false
@@ -202,6 +203,8 @@ new Vue({
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+
+		console.log(this.appSettings);
 	}
 
 });

@@ -53,7 +53,7 @@ Vue.component('minicart', {
 				});
 		},
 
-		removeFromCart: function(item, index) {
+		removeFromCart: function(item, index, event) {
 			var removeData = dataToPost('ajx20163730073701', item);
 			this.$http.post(AMdefaults.ajaxurl, removeData).then(function(response) {});
 			Cart.commit('removeFromCart', item);

@@ -102,7 +102,7 @@ function aa_func_20164929064928()
 							<p class="product-title"><span v-html="currency"></span>{{item.price}} x {{item.qty}}</p>
 						</div>
 					</div>
-					<button @click="removeFromCart(item, index)"
+					<button @click="removeFromCart(item, index, $event)"
 					        class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab">
 						<i class="material-icons">clear</i>
 					</button>

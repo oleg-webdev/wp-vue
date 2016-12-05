@@ -7,6 +7,7 @@ new Vue({
 	data: {
 		currency    : amWoo.woo_currency,
 		appSettings : AMdefaults,
+		authInfo: AMdefaults.themeSettings.auth_info,
 		confirmProps: {
 			show  : false,
 			answer: false
@@ -26,6 +27,8 @@ new Vue({
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+
+		console.log(this.appSettings);
 	}
 
 });
