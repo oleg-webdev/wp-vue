@@ -1,0 +1,179 @@
+@include loadFont("style-parts/fonts/alicelf-font/");
+
+a {
+	color : $cloudy;
+}
+
+.mdl-layout__content {
+	/*Tablet*/
+	@media (max-width : 951px) {
+		padding-top : 20px;
+	}
+}
+
+#text-logo {
+	color : $cloudy;
+	@include transition();
+	&:hover {
+		color : $brandColor;
+	}
+	i {
+		font-size    : 40px;
+		line-height  : 30px;
+		float        : left;
+		margin-right : 10px;
+	}
+	span {
+		float      : left;
+		margin-top : 10px;
+	}
+}
+
+#am-show-adminbar {
+	position  : absolute;
+	right     : 0;
+	top       : 2px;
+	z-index   : 9;
+	cursor    : pointer;
+	font-size : 18px;
+	&.show {
+		top : 32px;
+	}
+	&:hover {
+		animation : spin 4s linear infinite;
+		color     : $brandColor;
+	}
+	/*Mobile*/
+	@media (max-width : 782px) {
+		top   : 5px;
+		right : 25px;
+		&.show {
+			top : 50px;
+		}
+	}
+}
+
+body {
+	overflow-x : hidden;
+	&.non-sticky-header {
+		#am-show-adminbar {
+			right : 18px;
+		}
+	}
+}
+
+#wpadminbar {
+	top : -50px;
+	&.show {
+		top : 0;
+	}
+}
+
+.mdl-layout__drawer-button {
+	/*Desktop*/
+	@media (min-width : 952px) {
+		display : none;
+	}
+}
+
+.mdl-layout__header {
+	background-color: #fff;
+	/*Desktop*/
+	@media (min-width : 952px) {
+		display : flex;
+	}
+}
+
+
+.mdl-layout__header-row {
+	height        : auto;
+	padding       : 0 80px;
+	.menu-default-alicelf-menu-container {
+		a {
+			font  : normal 100 16px $baseFont;
+			text-transform : uppercase;
+		}
+	}
+	.mdl-navigation__link {
+		color : $textColor;
+		a {
+			text-decoration : none;
+		}
+		&:hover {
+			background-color : transparent;
+		}
+	}
+	.current-menu-item {
+		background-color : transparent;
+		a {
+			color : $brandColor;
+		}
+	}
+}
+.mdl-layout__drawer {
+	.mdl-navigation {
+		.mdl-navigation__link {
+			padding : 0;
+			&:hover{
+				background : none;
+			}
+			a {
+				text-decoration : none;
+			}
+			&.current-menu-item {
+				a {
+					color : $dangerColor;
+				}
+			}
+		}
+	}
+	ul {
+		list-style: none;
+	}
+}
+
+/**
+ * ==================== Menu Trigger ======================
+ * 20.08.2016
+ */
+.mdl-layout__drawer {
+	padding-top : 40px;
+	position    : fixed;
+	.mdl-layout-title {
+		padding-left  : 15px;
+		padding-right : 15px;
+	}
+	#text-logo {
+
+		span {
+			margin-top  : 10px;
+			line-height : 20px;
+		}
+	}
+}
+
+.am-logo {
+	display : block;
+	img {
+		@extend .img-responsive;
+	}
+}
+
+.menu-primary-navigation-container {
+	li {
+		list-style : none;
+		&.current-menu-item {
+			background-color : transparentize($brandColor, .2);
+			a {
+				color : #fff;
+			}
+		}
+		&:hover {
+			background-color : transparentize($brandColor, .3);
+			a {
+				color : #fff;
+			}
+		}
+
+	}
+}

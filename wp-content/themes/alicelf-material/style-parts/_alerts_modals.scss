@@ -1,0 +1,330 @@
+@mixin transformPref($action) {
+	-o-transform      : $action;
+	-ms-transform     : $action;
+	-moz-transform    : $action;
+	-webkit-transform : $action;
+	transform         : $action;
+}
+
+.blockClass {
+	display : block !important;
+	height  : 100% !important;
+}
+
+@mixin scaleModal($scale: 0.5) {
+	@include transformPref(scale($scale));
+}
+
+@mixin flipXModal($modificator:45) {
+	@include transformPref(rotateX($modificator+deg))
+}
+
+@mixin flipYModal( $modificator:45) {
+	@include transformPref(rotateY($modificator+deg))
+}
+
+@mixin modalMix($container, $wide, $perspective:null, $origin:null) {
+	#{$container} {
+		@if ($perspective) {
+			perspective : $perspective+px;
+		}
+		@if ($origin) {
+			perspective-origin : $origin;
+		}
+		/*To tablet and desktop*/
+		@media (min-width : $wide+px) {
+			.aa-modal-container {
+				max-width   : $wide+px;
+				margin-left : -$wide/2+px;
+				left        : 50%;
+			}
+		}
+		/*Mobile*/
+		@media (max-width : $wide+px) {
+			.aa-modal-container {
+				display     : block;
+				width       : 100%;
+				max-width   : 100%;
+				left        : auto;
+				margin-left : auto;
+			}
+		}
+	}
+}
+
+body.aa-modal-overlay {
+	overflow-y : hidden;
+	.mdl-layout__content {
+		z-index  : 4;
+		overflow : visible;
+	}
+}
+
+/**
+ * ==================================================
+ * ==================== Modals ======================
+ * ==================================================
+ */
+.modal-backdrop[itemscope="aa-modal"] {
+	@include gradient(#1e1e1e, rgba(27, 32, 63, 0.49));
+	position        : fixed;
+	display         : none;
+	width           : 100%;
+	height          : 100%;
+	z-index         : 99;
+	opacity         : 0;
+	top             : 0;
+	left            : 0;
+	-moz-box-sizing : border-box;
+	box-sizing      : border-box;
+	* {
+		-moz-box-sizing : border-box;
+		box-sizing      : border-box;
+	}
+	@include transition();
+	.aa-modal-container {
+		border           : 1px solid transparent;
+		position         : absolute;
+		max-height       : 90%;
+		top              : 160px;
+		left             : 50%;
+		width            : 100%;
+		max-width        : 1000px;
+		margin-left      : -500px;
+		overflow-y       : auto;
+		z-index          : 5;
+		padding          : 15px;
+		border-radius    : 3px;
+		background-color : #fff;
+		@include transition();
+
+		/**
+		 * =========================================================================
+		 * ==================== Default Modal animation state ======================
+		 * =========================================================================
+		 */
+		&[data-animation="scale"] {
+			@include scaleModal();
+		}
+		&[data-animation="flip-x"] {
+			@include flipXModal();
+		}
+		&[data-animation="flip-y"] {
+			@include flipYModal();
+		}
+
+	}
+	/*Mobile*/
+	@media (max-width : 1005px) {
+		.aa-modal-container {
+			display     : block;
+			width       : 100%;
+			left        : auto;
+			margin-left : auto;
+		}
+	}
+	&.show {
+		opacity : 1;
+		.aa-modal-container {
+
+			/**
+			 * =================================================================
+			 * ==================== Show modal Animations ======================
+			 * =================================================================
+			 */
+			&[data-animation="scale"] {
+				@include scaleModal(1);
+			}
+			&[data-animation="flip-x"] {
+				@include flipXModal(0);
+			}
+			&[data-animation="flip-y"] {
+				@include flipYModal(0);
+			}
+
+		}
+	}
+	.destroy-button {
+		position : absolute;
+		top      : 10px;
+		right    : 10px;
+		color    : $dangerColor;
+	}
+}
+
+/**
+ * ==================================================
+ * ==================== Alerts ======================
+ * ==================================================
+ */
+.alert-backdrop {
+	background-color : rgba(255, 255, 255, 0.67);
+	position         : fixed;
+	display          : block;
+	width            : 100%;
+	height           : 100%;
+	z-index          : 200;
+	opacity          : 0;
+	@include transition();
+	.alert {
+		position          : absolute;
+		top               : 100px;
+		left              : 50%;
+		width             : 100%;
+		max-width         : 500px;
+		margin-left       : -250px;
+		z-index           : 5;
+		text-align        : center;
+		@include transition();
+
+		// @TODO: diff animaitons
+		-ms-transform     : scale(.5);
+		-webkit-transform : scale(.5);
+		transform         : scale(.5);
+	}
+
+	/*Mobile*/
+	@media (max-width : 767px) {
+		.alert {
+			display     : block;
+			width       : 100%;
+			left        : auto;
+			margin-left : auto;
+		}
+	}
+	&.show {
+		opacity : 1;
+		.alert {
+
+			// @TODO: diff animations
+			-ms-transform     : scale(1);
+			-webkit-transform : scale(1);
+			transform         : scale(1);
+		}
+	}
+}
+
+/**
+ * ==================== Notifications ======================
+ * 27.09.2016
+ */
+@mixin am-alert() {
+	display                   : block;
+	margin-bottom             : 5px;
+	padding                   : 10px 15px;
+	border-top-left-radius    : 2px;
+	border-bottom-left-radius : 2px;
+	min-width                 : 170px;
+	box-shadow                : 0 5px 10px rgba(0, 0, 0, 0.26);
+}
+
+.am-alert {
+	display       : block;
+	margin-bottom : 5px;
+	padding       : 7px 12px;
+	border-radius : 2px;
+	box-shadow    : 0 3px 10px rgba(0, 0, 0, 0.26);
+}
+
+#header-notifications {
+	position   : relative;
+	top        : 100px;
+	height     : 1px;
+	margin-top : -1px;
+	ul {
+		position : absolute;
+		top      : 0;
+		right    : 0;
+		z-index  : 2;
+		li {
+			@include am-alert();
+		}
+	}
+}
+
+body {
+	&.admin-bar {
+		#header-notifications {
+			top : 130px;
+		}
+	}
+}
+
+/**
+ * ==================== Modal settings ======================
+ * 28.09.2016
+ */
+// selector | width | perspective | origin
+@include modalMix('#global-confirm-dialog', 500, 700, top);
+@include modalMix('#forgot-pass-modal', 500, 700, top);
+@include modalMix('#destroy-comment-confirmation', 500, 700, top);
+#forgot-pass-modal {
+	.loader-line-modal {
+		margin-top : -5px;
+		min-height : 4px;
+	}
+}
+
+#global-modal-dialog {
+	perspective : 1000px;
+}
+
+.alert-popup {
+	border-radius : 1px;
+	overflow      : visible;
+	.mdl-grid {
+		padding : 0;
+	}
+	.icon-wrapper {
+		position      : absolute;
+		left          : 50%;
+		margin-left   : -22px;
+		top           : -19px;
+		background    : #fff;
+		border-radius : 50%;
+		padding       : 10px;
+
+	}
+	p {
+		margin-bottom : 10px;
+	}
+	&.danger-alert {
+		.icon-wrapper {
+			i {
+				color : $dangerColor;
+			}
+		}
+	}
+	&.warning-alert {
+		.icon-wrapper {
+			i {
+				color : $warningColor;
+			}
+		}
+	}
+	&.info-alert {
+		.icon-wrapper {
+			i {
+				color : $infoColor;
+			}
+		}
+	}
+	&.success-alert {
+		.icon-wrapper {
+			i {
+				color : $successColor;
+			}
+		}
+	}
+	footer {
+		width   : 100%;
+		margin  : 0 0 5px;
+		padding : 0;
+	}
+}
+
+#global-confirm-dialog {
+	.aa-modal-container {
+		@extend .alert-popup;
+	}
+}

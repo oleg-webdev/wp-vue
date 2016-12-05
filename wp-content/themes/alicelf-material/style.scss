@@ -1,0 +1,21 @@
+/*!
+ Theme Name: Alicelf Material
+ Theme URI: http://www.upwork.com/fl/olegtsibulnik
+ Author: Alicelf WebArtisan
+ Author Uri: http://www.upwork.com/fl/olegtsibulnik
+ Description: Adaptive, development theme with complex solutions. Good start to any project type.
+ Version: 3.6.1
+ Tags: material, material-theme, material design, white, customizable, theme-editor, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats
+ */
+
+@import "style-parts/vars";
+@import "style-parts/mixin";
+@import "style-parts/defaults";
+@import "style-parts/fonts/alicelf-font/alicelf-font";
+@import "style-parts/loaders";
+@import "style-parts/alerts_modals";
+
+@import "style-parts/frontend/header";
+@import "style-parts/frontend/main";
+@import "style-parts/frontend/plugins";
+@import "style-parts/frontend/footer";

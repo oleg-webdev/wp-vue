@@ -1,0 +1,38 @@
+{
+  "name": "alicelf/alicelf-material",
+  "authors": [
+    {
+      "name": "nayami",
+      "email": "cibulnicoleg@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files" : [
+      "AlicelfMaterial/redux/ReduxCore/framework.php",
+      "AlicelfMaterial/redux/config.php",
+      "AlicelfMaterial/ng_dirrectives.php",
+      "AlicelfMaterial/ajax.php",
+      "AlicelfMaterial/ajax.user.php",
+      "AlicelfMaterial/ajax.woo.php",
+      "AlicelfMaterial/user/init.php",
+
+      "AlicelfMaterial/sidebars.php",
+      "AlicelfMaterial/form_actions.php",
+      "AlicelfMaterial/media_links.php",
+      "AlicelfMaterial/action_filters.php",
+      "AlicelfMaterial/shortcodes.php",
+      "AlicelfMaterial/woocommerce.php",
+      "AlicelfMaterial/menus.php",
+      "AlicelfMaterial/plugins_deps/init.php",
+      "AlicelfMaterial/theme_functions.php",
+      "AlicelfMaterial/dynamic_styles.php",
+
+      "AlicelfMaterial/AMenu.php"
+
+    ],
+    "psr-4": {
+      "AlicelfMaterial\\": "AlicelfMaterial"
+    }
+  },
+  "require": {}
+}

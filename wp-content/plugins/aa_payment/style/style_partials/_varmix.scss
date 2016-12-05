@@ -1,0 +1,126 @@
+$mainColor : #21759b;
+
+$infoColor : #67a6df;
+$successColor : #5ca545;
+$warningColor : #edcf87;
+$dangerColor : #df4343;
+
+$opacity : transparentize($mainColor, 0.5);
+$lighten : lighten($mainColor, 50%);
+
+$opacity : transparentize($mainColor, .5);
+$lighten : lighten($mainColor, 50%);
+
+@mixin gradient($color1 : $lighten, $color2 : $mainColor) {
+	background-color  : $color2;
+	background        : -webkit-gradient(linear, left 0%, left 100%, from($color1), to($color2));
+	background        : -webkit-linear-gradient(top, $color1, 0%, $color2, 100%);
+	background        : -moz-linear-gradient(top, $color1 0%, $color2 100%);
+	background        : -ms-linear-gradient(top, $color1 0%, $color2 100%);
+	background        : linear-gradient(to bottom, $color1 0%, $color2 100%);
+	background-repeat : repeat-x;
+	filter            : progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($color1)}', startColorstr='#{ie-hex-str($color2)}', GradientType=0);
+
+}
+
+@mixin transition($prop : all, $time : .3s) {
+	-webkit-transition : $prop, $time;
+	-moz-transition    : $prop, $time;
+	-ms-transition     : $prop, $time;
+	-o-transition      : $prop, $time;
+	transition         : $prop, $time;
+}
+
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: " "; // 1
+		display: table; // 2
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+/**
+ * ==================== Content Markup ======================
+ * 10.07.2016
+ */
+%space-x-section {
+	float : none;
+	clear: both;
+	display: block;
+	width : 100%;
+	@include clearfix();
+}
+
+@mixin space-x {
+	@for $i from 1 through 10 {
+		.space-x-#{$i}0 {
+			@extend %space-x-section;
+			height : ($i*10)+px;
+		}
+	}
+}
+@mixin padding-top-x {
+	@for $i from 1 through 10 {
+		.padding-top-#{$i}0 {
+			/*Desktop*/
+			@media (min-width : 952px) {
+				padding-top : ($i*10)+px;
+			}
+		}
+	}
+}
+@mixin padding-bottom-x {
+	@for $i from 1 through 10 {
+		.padding-bottom-#{$i}0 {
+			/*Desktop*/
+			@media (min-width : 952px) {
+				padding-bottom : ($i*10)+px;
+			}
+		}
+	}
+}
+@mixin padding-left-x {
+	@for $i from 1 through 10 {
+		.padding-left-#{$i}0 {
+			/*Desktop*/
+			@media (min-width : 952px) {
+				padding-left : ($i*10)+px;
+			}
+		}
+	}
+}
+@mixin padding-right-x {
+	@for $i from 1 through 10 {
+		.padding-right-#{$i}0 {
+			/*Desktop*/
+			@media (min-width : 952px) {
+				padding-right : ($i*10)+px;
+			}
+		}
+	}
+}
+
+@include space-x();
+@include padding-top-x();
+@include padding-bottom-x();
+@include padding-left-x();
+@include padding-right-x();
+
+@mixin fAwesome(){
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.img-center {
+	img {
+		margin-left : auto;
+		margin-right : auto;
+	}
+}

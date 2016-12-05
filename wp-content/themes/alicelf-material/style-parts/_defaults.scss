@@ -1,0 +1,59 @@
+.am-success-btn {
+	background-color : $brandColor !important;
+	color            : #fff;
+}
+
+#menu-primary-navigation {
+	height : 100%;
+	li {
+		display : flex;
+		height  : 100%;
+		a {
+			line-height : 90px;
+		}
+	}
+}
+
+.text-center {
+	text-align : center;
+}
+
+.menu-primary-navigation-container {
+	align-self : stretch;
+}
+
+.relative-container {
+	position : relative;
+}
+
+#am-appwrap {
+	@extend .relative-container;
+}
+
+.am-link {
+	cursor : pointer;
+	color : $successColor;
+	&:hover {
+		text-decoration : underline;
+		color : darken($successColor, 20%);
+	}
+}
+
+.img-responsive {
+	display   : block;
+	max-width : 100%;
+	height    : auto;
+}
+
+/**
+ * ==================== Animations ======================
+ * 24.11.2016
+ */
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+#app {
+	padding : 15px 0;
+}

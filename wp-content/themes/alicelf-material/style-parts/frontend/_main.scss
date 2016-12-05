@@ -1,0 +1,50 @@
+.am-comments-wrapper {
+	.mdl-textfield {
+		width : 100%;
+	}
+}
+
+.comment-respond {
+	width : 100%;
+}
+
+.mdl-textfield__input {
+	padding : 10px 0;
+}
+
+/**
+ * ==================== Transitions ======================
+ */
+.transition-default {
+	transition : all .3s;
+}
+
+/**
+ * ==================== WooMinicart ======================
+ */
+.fademinicart-enter-active, .fademinicart-leave-active {
+	transform : translateY(0px);
+	opacity   : 1;
+}
+
+.fademinicart-enter, .fademinicart-leave-active {
+	transform : translateY(30px);
+	opacity   : 0;
+}
+
+/**
+ * ==================== Panel ======================
+ */
+[class*="panelslide"] {
+	transition : all 0.5s;
+}
+
+.panelslide-enter-active, .panelslide-leave-active {
+	transform : translateX(0px);
+	opacity   : 1;
+}
+
+.panelslide-enter, .panelslide-leave-active {
+	transform : translateX(40px);
+	opacity   : 0;
+}
