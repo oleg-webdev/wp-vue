@@ -5,7 +5,6 @@ Vue.component('minicart', {
 	// Fields
 	data: function() {
 		return {
-			cartItems : [],
 			cartOpened: false,
 			currency  : null
 		}

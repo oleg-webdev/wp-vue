@@ -30,10 +30,9 @@ function aa_func_20163119123146()
 	wp_enqueue_script( 'vue-script', $bowersrc . "/vue/dist/vue{$min}.js", [], false, true );
 	wp_enqueue_script( 'vue-resource', $bowersrc . "/vue-resource/dist/vue-resource{$min}.js", [], false, true );
 	wp_enqueue_script( 'vue-model', $bowersrc . "/vuex/dist/vuex{$min}.js", [], false, true );
+	wp_enqueue_script( 'vue-router', $bowersrc . "/vue-router/dist/vue-router{$min}.js", [], false, true );
 
 	if ( is_amuserpage() ) {
-		wp_enqueue_script( 'vue-router', $bowersrc . "/vue-router/dist/vue-router{$min}.js", [], false, true );
-
 		wp_enqueue_style( 'cropperstyle', $bowersrc . "cropper/dist/cropper.min.css" );
 		wp_enqueue_script( 'cropperscript', $bowersrc . "cropper/dist/cropper.min.js", [ 'jquery' ], false, true );
 	}

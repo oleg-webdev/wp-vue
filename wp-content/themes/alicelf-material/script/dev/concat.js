@@ -40,31 +40,22 @@ var Cart = new Vuex.Store({
 
 	},
 
-	actions: {
+	actions: {}
 
-		ff: function() {
+});
+var User = new Vuex.Store({
 
+	state: {
+		userdata: null
+	},
+
+	mutations: {
+
+		setUserdata: function(state, data) {
+			state.userdata = data;
 		}
 
 	}
-
-});
-Vue.component('usercomponent', {
-
-	template:'<em></em>',
-
-	props: ['userdata'],
-
-	data: function() {
-		return {}
-	},
-
-	created: function() {
-
-		console.log(this.userdata);
-
-	}
-
 
 });
 Vue.component('minicart', {
@@ -74,7 +65,6 @@ Vue.component('minicart', {
 	// Fields
 	data: function() {
 		return {
-			cartItems : [],
 			cartOpened: false,
 			currency  : null
 		}
@@ -169,16 +159,16 @@ var Bar = {
 };
 
 var routes = [
-	{path      : '/', component: Network},
-	{path      : '/foo', component: Foo},
-	{path      : '/bar', component: Bar},
+	{path      : '/user/', component: Network},
+	{path      : '/user/foo', component: Foo},
+	{path      : '/user/bar', component: Bar},
 	{path      : '*', component: Notfound}
 ];
 
 var router = null;
 if ((typeof VueRouter) !== "undefined") {
 	router = new VueRouter({
-		// mode: 'history',
+		mode: 'history',
 		routes: routes
 	});
 }
@@ -192,13 +182,23 @@ new Vue({
 
 	data: {
 		currency    : amWoo.woo_currency,
+		appSettings : AMdefaults,
 		confirmProps: {
 			show  : false,
 			answer: false
 		}
 	},
 
+	computed: {
+		// use dynamic in frontend
+		currentUserModel: function() {
+			return User.state.userdata;
+		}
+
+	},
+
 	created: function() {
+		User.commit('setUserdata', currentUser);
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});

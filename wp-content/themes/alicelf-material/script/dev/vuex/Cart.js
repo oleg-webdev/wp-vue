@@ -16,12 +16,6 @@ var Cart = new Vuex.Store({
 
 	},
 
-	actions: {
-
-		ff: function() {
-
-		}
-
-	}
+	actions: {}
 
 });

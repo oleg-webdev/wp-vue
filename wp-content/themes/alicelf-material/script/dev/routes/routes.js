@@ -18,16 +18,16 @@ var Bar = {
 };
 
 var routes = [
-	{path      : '/', component: Network},
-	{path      : '/foo', component: Foo},
-	{path      : '/bar', component: Bar},
+	{path      : '/user/', component: Network},
+	{path      : '/user/foo', component: Foo},
+	{path      : '/user/bar', component: Bar},
 	{path      : '*', component: Notfound}
 ];
 
 var router = null;
 if ((typeof VueRouter) !== "undefined") {
 	router = new VueRouter({
-		// mode: 'history',
+		mode: 'history',
 		routes: routes
 	});
 }
