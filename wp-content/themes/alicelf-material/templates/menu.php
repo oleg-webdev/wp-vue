@@ -1,8 +1,21 @@
 <?php
-global $_am;
+global $_am; //mdl-layout__drawer
 $header_class = $_am['sticky-header'] ? "mdl-layout__header"
 	: "mdl-layout__header mdl-layout__header--scroll";
+
+add_action('AM_content', 'aa_func_20162908082952');
+function aa_func_20162908082952()
+{
+	?>
+	<button type="button"
+	        id="mobile-menu-trigger"
+	        class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect hidden-on-desktop">
+		<i class="material-icons">dehaze</i>
+	</button>
+	<?php
+}
 ?>
+
 <header class="<?php echo $header_class ?>">
 	<div class="mdl-layout__header-row">
 		<span class="mdl-layout-title"><?php echo material_logo() ?></span>

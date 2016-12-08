@@ -54,16 +54,21 @@ if ( ! function_exists( 'is_amuserpage' ) ) {
 	function is_amuserpage()
 	{
 		global $wp_query;
-		$isuser = $wp_query->query_vars[ am_profile_slug() ];
+		foreach ( $wp_query->query_vars as $k => $v ) {
+			if ( $k === am_profile_slug() ) {
+				return true;
+			}
+		}
 
-		return isset( $isuser );
+		return false;
 	}
 }
 add_filter( 'AM_body_classes', 'aa_func_20161722091746', 10, 1 );
 function aa_func_20161722091746( $body_classes )
 {
-	if ( is_amuserpage() )
+	if ( is_amuserpage() ) {
 		$body_classes .= " am-user-page";
+	}
 
 	$body_classes.=" ".am_browser();
 

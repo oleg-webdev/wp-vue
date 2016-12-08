@@ -4,11 +4,28 @@ a {
 	color : $cloudy;
 }
 
+.am-menu-backdrop {
+	position : absolute;
+	width : 100%;
+	height : 100%;
+	z-index: 4;
+	background-color: rgba(0, 0, 0, 0);
+	@include transition();
+	&.black-ops {
+		background-color: rgba(0, 0, 0, 0.56);
+	}
+}
+
 .mdl-layout__content {
 	/*Tablet*/
 	@media (max-width : 951px) {
-		padding-top : 20px;
+		padding-top : 10px;
 	}
+}
+
+#mobile-menu-trigger {
+	margin-left  : 10px;
+	margin-right : 0;
 }
 
 #text-logo {
@@ -31,7 +48,7 @@ a {
 
 #am-show-adminbar {
 	position  : absolute;
-	right     : 0;
+	right     : 2px;
 	top       : 2px;
 	z-index   : 9;
 	cursor    : pointer;
@@ -43,10 +60,9 @@ a {
 		animation : spin 4s linear infinite;
 		color     : $brandColor;
 	}
+
 	/*Mobile*/
 	@media (max-width : 782px) {
-		top   : 5px;
-		right : 25px;
 		&.show {
 			top : 50px;
 		}
@@ -55,11 +71,16 @@ a {
 
 body {
 	overflow-x : hidden;
-	&.non-sticky-header {
-		#am-show-adminbar {
-			right : 18px;
+	&.am-sticky-header {
+		/*Desktop*/
+		@media (min-width : 952px) {
+			.mdl-layout__content {
+				padding-top : 64px;
+			}
+
 		}
 	}
+
 }
 
 #wpadminbar {
@@ -69,28 +90,24 @@ body {
 	}
 }
 
-.mdl-layout__drawer-button {
-	/*Desktop*/
-	@media (min-width : 952px) {
-		display : none;
-	}
-}
-
 .mdl-layout__header {
-	background-color: #fff;
+	background-color : #fff;
+	&:not(.mdl-layout__header--scroll) {
+		position : fixed;
+		top : 0;
+	}
 	/*Desktop*/
 	@media (min-width : 952px) {
 		display : flex;
 	}
 }
 
-
 .mdl-layout__header-row {
-	height        : auto;
-	padding       : 0 80px;
+	height  : auto;
+	padding : 0 80px;
 	.menu-default-alicelf-menu-container {
 		a {
-			font  : normal 100 16px $baseFont;
+			font           : normal 100 16px $baseFont;
 			text-transform : uppercase;
 		}
 	}
@@ -110,11 +127,17 @@ body {
 		}
 	}
 }
+
 .mdl-layout__drawer {
+	padding-top : 40px;
+	position    : fixed;
+	&.open-menu {
+		transform: translateX(0px);
+	}
 	.mdl-navigation {
 		.mdl-navigation__link {
 			padding : 0;
-			&:hover{
+			&:hover {
 				background : none;
 			}
 			a {
@@ -128,7 +151,17 @@ body {
 		}
 	}
 	ul {
-		list-style: none;
+		list-style : none;
+	}
+	.mdl-layout-title {
+		padding-left  : 15px;
+		padding-right : 15px;
+	}
+	#text-logo {
+		span {
+			margin-top  : 10px;
+			line-height : 20px;
+		}
 	}
 }
 
@@ -136,21 +169,6 @@ body {
  * ==================== Menu Trigger ======================
  * 20.08.2016
  */
-.mdl-layout__drawer {
-	padding-top : 40px;
-	position    : fixed;
-	.mdl-layout-title {
-		padding-left  : 15px;
-		padding-right : 15px;
-	}
-	#text-logo {
-
-		span {
-			margin-top  : 10px;
-			line-height : 20px;
-		}
-	}
-}
 
 .am-logo {
 	display : block;

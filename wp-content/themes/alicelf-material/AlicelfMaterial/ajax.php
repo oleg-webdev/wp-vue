@@ -1,7 +1,7 @@
 <?php
 // wp rest api v2
-if ( ! function_exists( 'AMapiurl' ) ) {
-	function AMapiurl()
+if ( ! function_exists( 'wpApiUrl' ) ) {
+	function wpApiUrl()
 	{
 		return get_site_url() . '/wp-json/wp/v2/';
 	}

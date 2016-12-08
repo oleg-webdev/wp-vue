@@ -27,8 +27,10 @@ new Vue({
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
-
-		console.log(this.appSettings);
+		// this.$http.get(AMdefaults.wpApiUrl+"posts")
+		// 	.then(function(response) {
+		// 		console.log(response.data);
+		// 	});
 	}
 
 });
