@@ -65,33 +65,48 @@ if (adminBartrigger) {
 	}, 200);
 }
 
+
+/**
+ * ==================== Mobile menu ======================
+ * 09.12.2016
+ */
+var startWathingBackdrop = function() {
+	var drawerIterval = setInterval(function() {
+
+		var backdrop = document.querySelector('.am-menu-backdrop'),
+				menu     = document.querySelector('.mdl-layout__drawer');
+
+		if (backdrop !== null) {
+			backdrop.addEventListener('click', function() {
+				if (menu.classList.contains('open-menu')) {
+					menu.classList.remove('open-menu');
+					backdrop.classList.remove('black-ops');
+					setTimeout(function() {
+						document.body.removeChild(backdrop);
+					}, 300)
+				}
+			});
+
+			clearInterval(drawerIterval);
+		}
+
+	}, 50)
+};
+
 document.getElementById('mobile-menu-trigger')
-	.addEventListener('click', function(e) {
-		var layoutDrawer = document.querySelector('.mdl-layout__drawer'),
-				elem         = document.createElement('div');
+	.addEventListener('click', function() {
+		var menu = document.querySelector('.mdl-layout__drawer'),
+				elem = document.createElement('div');
 
 		elem.classList.add('am-menu-backdrop');
-		if (layoutDrawer.classList.contains('open-menu')) {
-			layoutDrawer.classList.remove('open-menu')
-			document.body.removeChild(elem)
-		} else {
-			layoutDrawer.classList.add('open-menu')
-			document.body.insertBefore(elem, document.body.childNodes[0])
-			setTimeout(function() {
-				elem.classList.add('black-ops')
-			}, 50)
-		}
-	});
 
-setInterval(function() {
-	var drawerBg     = document.querySelector('.am-menu-backdrop'),
-			layoutDrawer = document.querySelector('.mdl-layout__drawer');
-	if (drawerBg !== null) {
-		drawerBg.addEventListener('click', function(e) {
-			if (layoutDrawer.classList.contains('open-menu')) {
-				layoutDrawer.classList.remove('open-menu')
-				document.body.removeChild(drawerBg)
-			}
-		});
-	}
-}, 500)
+		if (!menu.classList.contains('open-menu')) {
+			menu.classList.add('open-menu');
+			document.body.insertBefore(elem, document.body.childNodes[0]);
+			startWathingBackdrop();
+			setTimeout(function() {
+				elem.classList.add('black-ops');
+			}, 50);
+		}
+
+	});
