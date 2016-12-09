@@ -183,7 +183,7 @@ new Vue({
 	data: {
 		currency    : amWoo.woo_currency,
 		appSettings : AMdefaults,
-		authInfo: AMdefaults.themeSettings.auth_info,
+		authInfo    : AMdefaults.themeSettings.auth_info,
 		confirmProps: {
 			show  : false,
 			answer: false
@@ -199,7 +199,7 @@ new Vue({
 	},
 
 	created: function() {
-		User.commit('setUserdata', currentUser);
+		User.commit('setUserdata', AMdefaults.currentUser);
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});

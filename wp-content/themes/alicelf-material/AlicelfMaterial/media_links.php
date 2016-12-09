@@ -8,11 +8,11 @@ function aa_func_20163119123146()
 {
 	$template_path = get_stylesheet_directory_uri();
 	$bowersrc      = $template_path . "/bower_components/";
-	$node_modules      = $template_path . "/node_modules/";
-	$dev = true;
-	$min = $dev ? null: ".min";
+	$node_modules  = $template_path . "/node_modules/";
+	$dev           = true;
+	$min           = $dev ? null : ".min";
 
-	wp_enqueue_style( 'animate-css', $bowersrc. "animate.css/animate.min.css" );
+	wp_enqueue_style( 'animate-css', $bowersrc . "animate.css/animate.min.css" );
 	// Styles
 	wp_enqueue_style( 'google-material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons" );
 	wp_enqueue_style( 'google-material-style', $template_path . "/mdl/mdl.css" );
@@ -37,7 +37,6 @@ function aa_func_20163119123146()
 		wp_enqueue_script( 'cropperscript', $bowersrc . "cropper/dist/cropper.min.js", [ 'jquery' ], false, true );
 	}
 
-
 	// Application JS
 	wp_enqueue_script( 'AMscript', $template_path . "/script/prod/app-uglify.js", [
 		'jquery',
@@ -46,6 +45,32 @@ function aa_func_20163119123146()
 //		'vue-router',
 		'vue-model',
 	], false, true );
+
+	/**
+	 * ==================== Ajax Values ======================
+	 * 09.12.2016
+	 */
+	global $_am;
+	$values = [
+		'auth_info' => [
+			'network_purpose'       => $_am[ 'network-purpose' ],
+			'registration_info'     => $_am[ 'network-registration' ],
+			'registration_strategy' => $_am[ 'network-confirmation-flow' ]
+		]
+	];
+	$data   = array(
+		'baseurl'         => get_site_url(),
+		'themeurl'        => get_template_directory_uri(),
+		'themepath'       => get_template_directory(),
+		'ajaxurl'         => admin_url( 'admin-ajax.php' ),
+		'wpApiUrl'        => wpApiUrl(),
+		'networkEndpoint' => get_am_network_endpoint(),
+		'themeSettings'   => $values,
+		'uploadDir'       => wp_upload_dir()[ 'basedir' ],
+		'wooOptions'      => __woo_options(),
+		'currentUser'     => am_user( get_current_user_id() )
+	);
+	wp_localize_script( 'AMscript', 'AMdefaults', $data );
 
 }
 
