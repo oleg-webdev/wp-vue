@@ -23,5 +23,7 @@ return array(
     '3b6ff1405d3cb32935eda3e027b11b1b' => $baseDir . '/AlicelfMaterial/plugins_deps/init.php',
     '0ef6c611715cb33ad0129badaabc1915' => $baseDir . '/AlicelfMaterial/theme_functions.php',
     'fa3695581d5d9ae45f46cbc34e6329b5' => $baseDir . '/AlicelfMaterial/dynamic_styles.php',
-    '9b9b5b1ffa9e298546c8b6cf7015f0f3' => $baseDir . '/AlicelfMaterial/AMenu.php',
+    '458ce333682ab82e0cd01b2de5e048a1' => $baseDir . '/menu/AMenu.php',
+    'fd6babbeadcdfa645ff290b23a362a23' => $baseDir . '/menu/AMenuAdminScreen.php',
+    'efb1748ff53bdff6980adb4356e669f4' => $baseDir . '/menu/custom_menu_actions.php',
 );

@@ -24,7 +24,9 @@ class ComposerStaticInitb6f04ed7e1f797b95ad60e857e3cc76d
         '3b6ff1405d3cb32935eda3e027b11b1b' => __DIR__ . '/../..' . '/AlicelfMaterial/plugins_deps/init.php',
         '0ef6c611715cb33ad0129badaabc1915' => __DIR__ . '/../..' . '/AlicelfMaterial/theme_functions.php',
         'fa3695581d5d9ae45f46cbc34e6329b5' => __DIR__ . '/../..' . '/AlicelfMaterial/dynamic_styles.php',
-        '9b9b5b1ffa9e298546c8b6cf7015f0f3' => __DIR__ . '/../..' . '/AlicelfMaterial/AMenu.php',
+        '458ce333682ab82e0cd01b2de5e048a1' => __DIR__ . '/../..' . '/menu/AMenu.php',
+        'fd6babbeadcdfa645ff290b23a362a23' => __DIR__ . '/../..' . '/menu/AMenuAdminScreen.php',
+        'efb1748ff53bdff6980adb4356e669f4' => __DIR__ . '/../..' . '/menu/custom_menu_actions.php',
     );
 
     public static $prefixLengthsPsr4 = array (

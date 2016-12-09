@@ -26,7 +26,7 @@ function aa_func_20163119123146()
 	// Libs and Plugins
 	wp_enqueue_script( 'google-material-script', $template_path . "/mdl/material.min.js", [], false, true );
 
-	// @TODO: create production and development env
+	// @TODO: enable or disable
 	wp_enqueue_script( 'vue-script', $bowersrc . "/vue/dist/vue{$min}.js", [], false, true );
 	wp_enqueue_script( 'vue-resource', $bowersrc . "/vue-resource/dist/vue-resource{$min}.js", [], false, true );
 	wp_enqueue_script( 'vue-model', $bowersrc . "/vuex/dist/vuex{$min}.js", [], false, true );

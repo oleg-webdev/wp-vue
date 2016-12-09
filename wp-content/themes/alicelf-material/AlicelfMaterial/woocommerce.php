@@ -64,8 +64,8 @@ function aa_func_20160912040959( $item_output, $item, $depth, $args )
 }
 
 // Remove Unnecesarry LI elem
-add_filter( 'AMenu_start_elem', 'aa_func_20162112052129', 10, 1 );
-add_filter( 'AMenu_end_elem', 'aa_func_20162112052129', 10, 1 );
+add_filter( 'AMenu_start_elem', 'aa_func_20162112052129', 20, 1 );
+add_filter( 'AMenu_end_elem', 'aa_func_20162112052129', 20, 1 );
 function aa_func_20162112052129( $item )
 {
 	$woo_options = __woo_options();

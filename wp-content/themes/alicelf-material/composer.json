@@ -27,7 +27,9 @@
       "AlicelfMaterial/theme_functions.php",
       "AlicelfMaterial/dynamic_styles.php",
 
-      "AlicelfMaterial/AMenu.php"
+      "menu/AMenu.php",
+	    "menu/AMenuAdminScreen.php",
+	    "menu/custom_menu_actions.php"
 
     ],
     "psr-4": {
