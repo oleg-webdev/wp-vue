@@ -35,7 +35,7 @@ class AMenu extends Walker_Nav_Menu {
 
 		// new addition for active class on the a tag
 		// Add attributes for active link in menu
-		$item_output = '<a jjnx="jjnx" ' . $attributes . '>';
+		$item_output = '<a ' . $attributes . '>';
 		$item_output .= apply_filters( 'the_title', $item->title, $item->ID );
 		if ( $item->hasChildren && $depth == 0 ) {
 			$item_output .= '<span class="caret"></span></a>';

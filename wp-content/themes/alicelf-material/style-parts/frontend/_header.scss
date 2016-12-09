@@ -5,14 +5,14 @@ a {
 }
 
 .am-menu-backdrop {
-	position : absolute;
-	width : 100%;
-	height : 100%;
-	z-index: 4;
-	background-color: rgba(0, 0, 0, 0);
+	position         : absolute;
+	width            : 100%;
+	height           : 100%;
+	z-index          : 4;
+	background-color : rgba(0, 0, 0, 0);
 	@include transition();
 	&.black-ops {
-		background-color: rgba(0, 0, 0, 0.56);
+		background-color : rgba(0, 0, 0, 0.56);
 	}
 }
 
@@ -94,7 +94,7 @@ body {
 	background-color : #fff;
 	&:not(.mdl-layout__header--scroll) {
 		position : fixed;
-		top : 0;
+		top      : 0;
 	}
 	/*Desktop*/
 	@media (min-width : 952px) {
@@ -112,12 +112,51 @@ body {
 		}
 	}
 	.mdl-navigation__link {
-		color : $textColor;
+		opacity : 1;
+		color   : $textColor;
 		a {
 			text-decoration : none;
 		}
 		&:hover {
 			background-color : transparent;
+		}
+		&.menu-item-has-children {
+			position : relative;
+			&:after {
+				content      : "";
+				position     : absolute;
+				right        : 10px;
+				bottom       : 20px;
+				border-top   : 4px solid #000;
+				border-left  : 4px solid transparent;
+				border-right : 4px solid transparent;
+			}
+			> .sub-menu {
+				padding          : 0;
+				position         : absolute;
+				left             : 0;
+				top              : 50px;
+				min-width        : 200px;
+				background-color : #fff;
+				box-shadow       : 0 1px 3px #ccc;
+				display          : none;
+				li {
+					padding     : 0;
+					line-height : 40px;
+				}
+				a {
+					text-transform : none;
+					display        : block;
+					width          : 100%;
+					line-height    : 40px;
+					padding        : 5px 10px;
+				}
+			}
+			&:hover {
+				> .sub-menu {
+					display : block;
+				}
+			}
 		}
 	}
 	.current-menu-item {
@@ -132,7 +171,7 @@ body {
 	padding-top : 40px;
 	position    : fixed;
 	&.open-menu {
-		transform: translateX(0px);
+		transform : translateX(0px);
 	}
 	.mdl-navigation {
 		.mdl-navigation__link {
