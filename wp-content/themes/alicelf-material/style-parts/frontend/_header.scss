@@ -80,8 +80,11 @@ body {
 
 		}
 	}
-
+	&.lock-overflow {
+		overflow-y : hidden;
+	}
 }
+
 
 #wpadminbar {
 	top : -50px;

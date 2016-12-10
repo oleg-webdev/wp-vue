@@ -76,7 +76,6 @@ function aa_func_20163119123146()
 
 /**
  * ==================== Admin Scripts ======================
- * 22.09.2016
  */
 add_action( 'admin_enqueue_scripts', 'aa_func_20163220053219' );
 function aa_func_20163220053219()

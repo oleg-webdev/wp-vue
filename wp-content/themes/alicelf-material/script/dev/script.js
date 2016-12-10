@@ -1,52 +1,31 @@
+/**
+ * ==================== MDL Upgrade DOM when changes ======================
+ * 10.12.2016
+ */
 var MutationObserver = window.MutationObserver
 	|| window.WebKitMutationObserver
 	|| window.MozMutationObserver;
 
-var ElemToObserve = document.querySelector('.mdl-layout__drawer');
-
-
-if (ElemToObserve !== null) {
-
-	var observer = new MutationObserver(function(mutations) {
-		mutations.forEach(function(mutation) {
-			var ContainerToObserve = document.querySelector('.mdl-layout__container');
-			if ((mutation.target.className).indexOf('is-visible') > -1) {
-				ContainerToObserve.classList.add('height-full');
-			} else {
-				ContainerToObserve.classList.remove('height-full');
-			}
-		});
-	});
-
-	var config = {
-		attributes   : true,
-		childList    : true,
-		characterData: true
-	};
-
-	var mdlUpgradeDom = false;
-	setInterval(function() {
-		if (mdlUpgradeDom) {
+var domState = false;
+function checkMdlUpdate() {
+	domState = true;
+	var runDomUpgrade = setInterval(function() {
+		if (domState) {
+			console.log("sdfs");
 			componentHandler.upgradeDom();
-			mdlUpgradeDom = false;
+			domState = false;
+			clearInterval(runDomUpgrade);
 		}
-	}, 200);
-
-	var observer = new MutationObserver(function() {
-		mdlUpgradeDom = true;
-	});
-	observer.observe(document.body, {
-		childList: true,
-		subtree  : true
-	});
-	/* support <= IE 10
-	 angular.element(document).bind('DOMNodeInserted', function(e) {
-	 mdlUpgradeDom = true;
-	 });
-	 */
-	observer.observe(ElemToObserve, config);
+	}, 100);
 }
 
+var observer = new MutationObserver(checkMdlUpdate);
+observer.observe(document.body, {childList: true,subtree : true});
+
+/**
+ * ==================== Admin Bar ======================
+ * 10.12.2016
+ */
 var adminBartrigger = document.getElementById('am-show-adminbar');
 if (adminBartrigger) {
 	var waitForAdmiBar = setInterval(function() {
@@ -62,7 +41,7 @@ if (adminBartrigger) {
 			});
 			clearInterval(waitForAdmiBar);
 		}
-	}, 200);
+	}, 500);
 }
 
 
@@ -80,6 +59,7 @@ var startWathingBackdrop = function() {
 			backdrop.addEventListener('click', function() {
 				if (menu.classList.contains('open-menu')) {
 					menu.classList.remove('open-menu');
+					document.body.classList.remove('lock-overflow');
 					backdrop.classList.remove('black-ops');
 					setTimeout(function() {
 						document.body.removeChild(backdrop);
@@ -102,6 +82,7 @@ document.getElementById('mobile-menu-trigger')
 
 		if (!menu.classList.contains('open-menu')) {
 			menu.classList.add('open-menu');
+			document.body.classList.add('lock-overflow');
 			document.body.insertBefore(elem, document.body.childNodes[0]);
 			startWathingBackdrop();
 			setTimeout(function() {

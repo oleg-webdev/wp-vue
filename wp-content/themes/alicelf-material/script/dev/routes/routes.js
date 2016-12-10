@@ -1,6 +1,8 @@
 var Foo = {
 	template: '<div>\
-		sfsdfsfs\
+		<router-link to="#" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">\
+		ZZZZZZZZZZZZZZZ\
+	</router-link >\
 		<strong></strong>\
 	</div>'
 };
