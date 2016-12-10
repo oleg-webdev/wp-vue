@@ -11,7 +11,6 @@ function checkMdlUpdate() {
 	domState = true;
 	var runDomUpgrade = setInterval(function() {
 		if (domState) {
-			console.log("sdfs");
 			componentHandler.upgradeDom();
 			domState = false;
 			clearInterval(runDomUpgrade);

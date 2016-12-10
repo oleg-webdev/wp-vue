@@ -5,17 +5,15 @@
 </div><!--.page-content END-->
 
 <footer id="am-footer">
-<!--	<footer-component></footer-component>-->
 
-	<div class="ghostly-wrap">
+	<div class="am-wrap">
 		<div class="mdl-grid">
-			<div class="mdl-cell"></div>
-			<div class="mdl-cell">
+			<div class="mdl-cell mdl-cell--12-col">
 				<p class="mdl-typography--text-center"><?php echo $_am['opt-company-copyright'] ?></p>
 			</div>
-			<div class="mdl-cell"></div>
 		</div>
 	</div>
+
 </footer>
 
 		</main>
