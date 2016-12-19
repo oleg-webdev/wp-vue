@@ -9948,7 +9948,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
-},{"../../vuex/Cart":14,"vue":6,"vue-hot-reload-api":3}],8:[function(require,module,exports){
+},{"../../vuex/Cart":15,"vue":6,"vue-hot-reload-api":3}],8:[function(require,module,exports){
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 window.VueResource = require('vue-resource')
 var CurrentUser = require('./vuex/User')
@@ -9988,10 +9988,18 @@ new Vue({
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+	},
+
+	methods: {
+
+		clickHandler: function (event) {
+			console.log(event.target.tagName);
+		}
+
 	}
 
 });
-},{"./components/WooCart/index.vue":7,"./routes":12,"./script":13,"./vuex/User":15,"vue-resource":4}],9:[function(require,module,exports){
+},{"./components/WooCart/index.vue":7,"./routes":13,"./script":14,"./vuex/User":16,"vue-resource":4}],9:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -10026,9 +10034,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}],10:[function(require,module,exports){
@@ -10092,6 +10100,46 @@ exports.default = {
 	methods: {},
 
 	mounted: function mounted() {
+		console.log('Network ready.');
+	}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _vm._m(0)}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{staticClass:"Network-scope"},[_h('h1',["Network"]),"\n\tLorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur cum expedita, magnam magni quia saepe sed suscipit. Ab animi aperiam, commodi debitis, inventore nam nihil non praesentium quaerat, saepe similique!\n"])}]
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-2", __vue__options__)
+  }
+})()}
+},{"vue":6,"vue-hot-reload-api":3}],12:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	data: function data() {
+		return {};
+	},
+
+
+	calculated: {},
+
+	created: function created() {},
+
+
+	methods: {},
+
+	mounted: function mounted() {
 		console.log('Notfound-scope ready.');
 	}
 };
@@ -10106,25 +10154,25 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
-},{"vue":6,"vue-hot-reload-api":3}],12:[function(require,module,exports){
+},{"vue":6,"vue-hot-reload-api":3}],13:[function(require,module,exports){
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
 module.exports = new VueRouter({
 	mode: 'history',
 	routes :[
-		{path      : '/user/', component: require('./components/Foo.vue')},
+		{path      : '/user/', component: require('./components/Network.vue')},
 		{path      : '/user/foo', component: require('./components/Foo.vue')},
 		{path      : '/user/bar', component: require('./components/Bar.vue')},
 		{path      : '*',  component: require('./components/Notfound.vue')}
 	]
 })
-},{"./components/Bar.vue":9,"./components/Foo.vue":10,"./components/Notfound.vue":11,"vue-router":5}],13:[function(require,module,exports){
+},{"./components/Bar.vue":9,"./components/Foo.vue":10,"./components/Network.vue":11,"./components/Notfound.vue":12,"vue-router":5}],14:[function(require,module,exports){
 var domready = require('domready')
 var defaultAMscript = {
 	run: function(){
@@ -10254,7 +10302,7 @@ var defaultAMscript = {
 }
 defaultAMscript.run()
 module.exports = defaultAMscript
-},{"domready":1}],14:[function(require,module,exports){
+},{"domready":1}],15:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -10276,7 +10324,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {

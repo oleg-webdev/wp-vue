@@ -37,6 +37,14 @@ new Vue({
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+	},
+
+	methods: {
+
+		clickHandler: function (event) {
+			console.log(event.target.tagName);
+		}
+
 	}
 
 });

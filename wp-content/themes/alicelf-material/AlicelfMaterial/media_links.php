@@ -16,6 +16,7 @@ function aa_func_20163119123146()
 	// Styles
 	wp_enqueue_style( 'google-material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons" );
 	wp_enqueue_style( 'google-material-style', $template_path . "/mdl/mdl.css" );
+	wp_enqueue_style( 'bootstrap3-style', $bowersrc . "/bootstrap/dist/css/bootstrap.min.css" );
 	wp_enqueue_style( 'template-base-styles', get_bloginfo( 'stylesheet_url' ) );
 
 	// Theme jQuery 2.1
@@ -25,6 +26,7 @@ function aa_func_20163119123146()
 
 	// Libs and Plugins
 	wp_enqueue_script( 'google-material-script', $template_path . "/mdl/material.min.js", [], false, true );
+//	wp_enqueue_script( 'bootstrap3', $bowersrc . "", [], false, true );
 
 	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$min}.js", [], false, true );
 	wp_enqueue_script( 'vue-model', $bowersrc . "vuex/dist/vuex{$min}.js", [], false, true );

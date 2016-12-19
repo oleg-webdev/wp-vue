@@ -38,9 +38,9 @@ class AMenu extends Walker_Nav_Menu {
 		$item_output = '<a ' . $attributes . '>';
 		$item_output .= apply_filters( 'the_title', $item->title, $item->ID );
 		if ( $item->hasChildren && $depth == 0 ) {
-			$item_output .= '<span class="caret"></span></a>';
+			$item_output .= '<span class="caret-offset"></span></a>';
 		} elseif ( $item->hasChildren && $depth >= 1 ) {
-			$item_output .= '<span class="caret right-caret"></span></a>';
+			$item_output .= '<span class="caret-offset right-caret"></span></a>';
 		} else {
 			$item_output .= '</a>';
 		}

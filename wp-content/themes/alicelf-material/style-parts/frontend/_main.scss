@@ -13,6 +13,26 @@
 }
 
 /**
+ * ==================== Network ======================
+ * 19.12.2016
+ */
+.network-content {
+	min-height : 200px;
+	> .view {
+		position : absolute;
+	}
+}
+
+.dashboardnav {
+	> a {
+		overflow        : hidden;
+		position        : relative;
+		cursor          : pointer;
+		text-decoration : none;
+	}
+}
+
+/**
  * ==================== Transitions ======================
  */
 .transition-default {
