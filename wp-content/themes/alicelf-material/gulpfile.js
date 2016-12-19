@@ -1,8 +1,9 @@
-var gulp          = require('gulp'),
-		aa_concat     = require('gulp-concat'),
-		aa_rename     = require('gulp-rename'),
-		aa_uglify     = require('gulp-uglify'),
-		aa_sourcemaps = require('gulp-sourcemaps');
+var gulp           = require('gulp'),
+		gulpConcat     = require('gulp-concat'),
+		gulpRename     = require('gulp-rename'),
+		gulpUglify     = require('gulp-uglify'),
+		gulpSourcemaps = require('gulp-sourcemaps'),
+		gulpSass       = require('gulp-sass');
 
 var devRoot   = "script/dev/",
 		bowerRoot = "bower_components/",
@@ -22,20 +23,54 @@ var processFiles = [
 	// bootjs + 'tooltip.js',
 	// bootjs + 'transition.js',
 ];
-gulp.task('aa-concat', function() {
+// @TODO: Should be tested
+gulp.task('aa-concat', () => {
 	return gulp.src(processFiles)
-		.pipe(aa_sourcemaps.init())
-		.pipe(aa_concat('plugins-concat.js'))
+		.pipe(gulpSourcemaps.init())
+		.pipe(gulpConcat('plugins-concat.js'))
 		.pipe(gulp.dest(devRoot))
-		.pipe(aa_rename('plugins-uglify.js'))
-		.pipe(aa_uglify())
-		.pipe(aa_sourcemaps.write('./'))
+		.pipe(gulpRename('plugins-uglify.js'))
+		.pipe(gulpUglify())
+		.pipe(gulpSourcemaps.write('./'))
 		.pipe(gulp.dest(prodRoot));
 });
 
-gulp.task('watch', function() {
-	gulp.watch(processFiles, ['aa-concat']);
+gulp.task('sass-frontend', () => {
+	gulp.src(['style.scss',
+						'style-parts/*.scss',
+						'style-parts/frontend/*.scss'])
+		.pipe(gulpSourcemaps.init())
+		.pipe(gulpSass({outputStyle: 'compressed'})
+			.on('error', gulpSass.logError))
+		.pipe(gulpSourcemaps.write())
+		.pipe(gulp.dest('./'));
 });
 
-gulp.task('default', ['aa-concat'], function() {
+gulp.task('sass-backend', () => {
+	gulp.src(['style-parts/*.scss',
+						'style-parts/backend/*.scss'])
+		.pipe(gulpSourcemaps.init())
+		.pipe(gulpSass({outputStyle: 'compressed'})
+			.on('error', gulpSass.logError))
+		.pipe(gulpSourcemaps.write())
+		.pipe(gulp.dest('./style-parts/backend/'));
+});
+
+gulp.task('watch', () => {
+
+	// gulp.watch(processFiles, ['aa-concat']);
+
+	// Frontend Styles
+	gulp.watch(['style.scss',
+							'style-parts/*.scss',
+							'style-parts/frontend/*.scss'], ['sass-frontend'])
+
+	// Backend Styles
+	gulp.watch(['style-parts/*.scss',
+							'style-parts/backend/*.scss'], ['sass-backend'])
+
+});
+
+gulp.task('default', ['aa-concat'], () => {
+	console.log('Default task');
 });

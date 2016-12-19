@@ -8,8 +8,8 @@
 			<i class="material-icons mdl-badge mdl-badge--overlap" :data-badge="totalCart">shopping_cart</i>
 		</button>
 
-		<!--				enter-active-class="animated bounceIn"-->
-		<!--				leave-active-class="animated bounceOut"-->
+		<!--enter-active-class="animated bounceIn"-->
+		<!--leave-active-class="animated bounceOut"-->
 		<transition name="fademinicart">
 
 			<div class="mdl-list transition-default" v-show="cartOpened">

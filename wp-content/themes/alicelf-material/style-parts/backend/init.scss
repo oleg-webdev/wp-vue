@@ -3,7 +3,8 @@
 @import "../loaders";
 @import "../fonts/alicelf-font/alicelf-font";
 
+
 @import "admin-sidebar";
-@import "main";
+@import "main.scss";
 
 @include loadFont();
