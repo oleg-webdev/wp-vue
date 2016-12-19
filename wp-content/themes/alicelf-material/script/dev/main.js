@@ -6,6 +6,7 @@ window.eventHub = new Vue()
 var router = require('./routes')
 require('./script')
 
+
 var amWoo = AMdefaults.wooOptions;
 
 new Vue({

@@ -9957,6 +9957,7 @@ window.eventHub = new Vue()
 var router = require('./routes')
 require('./script')
 
+
 var amWoo = AMdefaults.wooOptions;
 
 new Vue({
@@ -10028,15 +10029,15 @@ if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{staticClass:"Bar-scope"},[_h('h1',["Bar Component"]),"\n\tLorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda, blanditiis debitis dolor ducimus facere magnam, magni maxime molestiae mollitia non provident quasi repellendus sint tempora unde veritatis. Minus, mollitia!\n"])}]
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{staticClass:"Bar-scope"},[_h('h1',["Bar Component"]),"\n\tLorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda, blanditiis debitis dolor ducimus facere magnam, magni maxime molestiae mollitia non provident quasi repellendus sint tempora unde veritatis. Minus, mollitia!\n\t",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"txt-id"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"txt-id"}},["Some placeholder"])])," ",_h('button',{staticClass:"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect",attrs:{"type":"submit"}},["Submit"])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.rerender("data-v-2", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}],10:[function(require,module,exports){
@@ -10114,9 +10115,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}],12:[function(require,module,exports){
@@ -10154,9 +10155,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}],13:[function(require,module,exports){
@@ -10209,20 +10210,9 @@ var defaultAMscript = {
 		var MutationObserver = window.MutationObserver
 			|| window.WebKitMutationObserver
 			|| window.MozMutationObserver;
-
-		var domState = false;
-		function checkMdlUpdate() {
-			domState = true;
-			var runDomUpgrade = setInterval(function() {
-				if (domState) {
-					componentHandler.upgradeDom();
-					domState = false;
-					clearInterval(runDomUpgrade);
-				}
-			}, 100);
-		}
-
-		var observer = new MutationObserver(checkMdlUpdate);
+		var observer = new MutationObserver(function() {
+			componentHandler.upgradeDom();
+		});
 		observer.observe(document.body, {childList: true,subtree : true});
 
 		/**

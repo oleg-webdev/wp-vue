@@ -34,20 +34,9 @@ var defaultAMscript = {
 		var MutationObserver = window.MutationObserver
 			|| window.WebKitMutationObserver
 			|| window.MozMutationObserver;
-
-		var domState = false;
-		function checkMdlUpdate() {
-			domState = true;
-			var runDomUpgrade = setInterval(function() {
-				if (domState) {
-					componentHandler.upgradeDom();
-					domState = false;
-					clearInterval(runDomUpgrade);
-				}
-			}, 100);
-		}
-
-		var observer = new MutationObserver(checkMdlUpdate);
+		var observer = new MutationObserver(function() {
+			componentHandler.upgradeDom();
+		});
 		observer.observe(document.body, {childList: true,subtree : true});
 
 		/**

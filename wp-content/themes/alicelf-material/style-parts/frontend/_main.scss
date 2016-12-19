@@ -8,9 +8,19 @@
 	width : 100%;
 }
 
+.mdl-textfield {
+	width : 100%;
+	label {
+		margin-bottom : 0;
+		font-weight   : 300;
+	}
+}
+
 .mdl-textfield__input {
 	padding : 10px 0;
+
 }
+
 
 /**
  * ==================== Network ======================
@@ -31,6 +41,7 @@
 		text-decoration : none;
 	}
 }
+
 
 /**
  * ==================== Transitions ======================

@@ -39,35 +39,33 @@ gulp.task('sass-frontend', () => {
 	gulp.src(['style.scss',
 						'style-parts/*.scss',
 						'style-parts/frontend/*.scss'])
-		.pipe(gulpSourcemaps.init())
+		.pipe(gulpSourcemaps.init()) // remove for production
 		.pipe(gulpSass({outputStyle: 'compressed'})
 			.on('error', gulpSass.logError))
-		.pipe(gulpSourcemaps.write())
+		.pipe(gulpSourcemaps.write()) // remove for production
 		.pipe(gulp.dest('./'));
 });
 
 gulp.task('sass-backend', () => {
 	gulp.src(['style-parts/*.scss',
 						'style-parts/backend/*.scss'])
-		.pipe(gulpSourcemaps.init())
+		.pipe(gulpSourcemaps.init()) // remove for production
 		.pipe(gulpSass({outputStyle: 'compressed'})
 			.on('error', gulpSass.logError))
-		.pipe(gulpSourcemaps.write())
+		.pipe(gulpSourcemaps.write()) // remove for production
 		.pipe(gulp.dest('./style-parts/backend/'));
 });
 
 gulp.task('watch', () => {
 
+	// Scripts
 	// gulp.watch(processFiles, ['aa-concat']);
 
 	// Frontend Styles
-	gulp.watch(['style.scss',
-							'style-parts/*.scss',
-							'style-parts/frontend/*.scss'], ['sass-frontend'])
+	gulp.watch(['style.scss','style-parts/*.scss','style-parts/frontend/*.scss'], ['sass-frontend'])
 
 	// Backend Styles
-	gulp.watch(['style-parts/*.scss',
-							'style-parts/backend/*.scss'], ['sass-backend'])
+	// gulp.watch(['style-parts/*.scss','style-parts/backend/*.scss'], ['sass-backend'])
 
 });
 
