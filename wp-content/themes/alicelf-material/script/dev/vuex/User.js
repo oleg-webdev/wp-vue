@@ -1,4 +1,4 @@
-var User = new Vuex.Store({
+module.exports = new Vuex.Store({
 
 	state: {
 		userdata: null
@@ -10,6 +10,11 @@ var User = new Vuex.Store({
 			state.userdata = data;
 		}
 
+	},
+
+	created: function() {
+		console.log(this.state.userdata);
 	}
+
 
 });

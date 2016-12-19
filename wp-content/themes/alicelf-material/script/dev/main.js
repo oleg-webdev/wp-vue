@@ -1,8 +1,17 @@
+Vue.component('minicart', require('./components/WooCart/index.vue'))
+window.VueResource = require('vue-resource')
+var CurrentUser = require('./vuex/User')
+
+window.eventHub = new Vue()
+var router = require('./routes')
+require('./script')
+
+var amWoo = AMdefaults.wooOptions;
+
 new Vue({
+	'router':router,
 
 	el: "#am-appwrap",
-
-	router: router,
 
 	data: {
 		currency    : amWoo.woo_currency,
@@ -14,23 +23,20 @@ new Vue({
 		}
 	},
 
+
 	computed: {
 		// use dynamic in frontend
 		currentUserModel: function() {
-			return User.state.userdata;
+			return CurrentUser.state.userdata;
 		}
 
 	},
 
 	created: function() {
-		User.commit('setUserdata', AMdefaults.currentUser);
+		CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
-		// this.$http.get(AMdefaults.wpApiUrl+"posts")
-		// 	.then(function(response) {
-		// 		console.log(response.data);
-		// 	});
 	}
 
 });

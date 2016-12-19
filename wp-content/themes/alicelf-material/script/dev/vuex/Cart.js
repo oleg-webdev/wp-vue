@@ -1,4 +1,4 @@
-var Cart = new Vuex.Store({
+module.exports = new Vuex.Store({
 
 	state: {
 		products: []

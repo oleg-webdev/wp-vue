@@ -77,44 +77,6 @@ function aa_func_20162112052129( $item )
 	return $item;
 }
 
-add_action( 'AM_afterbody_start', 'aa_func_20164929064928' );
-function aa_func_20164929064928()
-{
-	?>
-	<template id="minicart-template" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-		<div class="minicart-template-holder">
-
-			<button class="mdl-button mdl-js-button mdl-button--icon" @click="toggleCart">
-				<i class="material-icons mdl-badge mdl-badge--overlap" :data-badge="totalCart">shopping_cart</i>
-			</button>
-
-			<!--				enter-active-class="animated bounceIn"-->
-			<!--				leave-active-class="animated bounceOut"-->
-			<transition name="fademinicart">
-
-			<div class="mdl-list transition-default" v-show="cartOpened">
-
-				<div v-for="(item, index) in cartItemsData" class="mdl-list__item">
-					<div class="mdl-list__item-primary-content">
-						<figure><a :href="item.permalink"><img :src="item.images[0]" :alt="item.product.post_title"></a></figure>
-						<div class="cart-item-description">
-							<p class="product-title">{{item.product.post_title}}</p>
-							<p class="product-title"><span v-html="currency"></span>{{item.price}} x {{item.qty}}</p>
-						</div>
-					</div>
-					<button @click="removeFromCart(item, index, $event)"
-					        class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--mini-fab">
-						<i class="material-icons">clear</i>
-					</button>
-				</div>
-
-			</div>
-			</transition>
-
-		</div>
-	</template>
-	<?php
-}
 
 // quick fix
 add_filter('woocommerce_dropdown_variation_attribute_options_html', 'aa_func_20161001101051', 10, 1);

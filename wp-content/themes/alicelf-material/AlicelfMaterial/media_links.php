@@ -9,8 +9,8 @@ function aa_func_20163119123146()
 	$template_path = get_stylesheet_directory_uri();
 	$bowersrc      = $template_path . "/bower_components/";
 	$node_modules  = $template_path . "/node_modules/";
-	$dev           = true;
-	$min           = $dev ? null : ".min";
+	$production    = false;
+	$min           = $production ? ".min" : null;
 
 	wp_enqueue_style( 'animate-css', $bowersrc . "animate.css/animate.min.css" );
 	// Styles
@@ -26,11 +26,8 @@ function aa_func_20163119123146()
 	// Libs and Plugins
 	wp_enqueue_script( 'google-material-script', $template_path . "/mdl/material.min.js", [], false, true );
 
-	// @TODO: enable or disable
-	wp_enqueue_script( 'vue-script', $bowersrc . "/vue/dist/vue{$min}.js", [], false, true );
-	wp_enqueue_script( 'vue-resource', $bowersrc . "/vue-resource/dist/vue-resource{$min}.js", [], false, true );
-	wp_enqueue_script( 'vue-model', $bowersrc . "/vuex/dist/vuex{$min}.js", [], false, true );
-	wp_enqueue_script( 'vue-router', $bowersrc . "/vue-router/dist/vue-router{$min}.js", [], false, true );
+	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$min}.js", [], false, true );
+	wp_enqueue_script( 'vue-model', $bowersrc . "vuex/dist/vuex{$min}.js", [], false, true );
 
 	if ( is_amuserpage() ) {
 		wp_enqueue_style( 'cropperstyle', $bowersrc . "cropper/dist/cropper.min.css" );
@@ -38,12 +35,12 @@ function aa_func_20163119123146()
 	}
 
 	// Application JS
-	wp_enqueue_script( 'AMscript', $template_path . "/script/prod/app-uglify.js", [
+	wp_enqueue_script( 'AMscript', $template_path . "/script/prod/build{$min}.js", [
 		'jquery',
 		'vue-script',
-		'vue-resource',
+//		'vue-resource',
 //		'vue-router',
-		'vue-model',
+//		'vue-model',
 	], false, true );
 
 	/**
