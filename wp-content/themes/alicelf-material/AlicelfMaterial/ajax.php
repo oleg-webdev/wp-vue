@@ -1,4 +1,21 @@
 <?php
+
+if ( ! function_exists( 'purify_postdata' ) ) {
+	function purify_postdata( $data )
+	{
+		$newdata = [];
+		foreach ( $data as $k => $v ) {
+			if ( gettype( $v ) === 'string' ) {
+				$newdata[ $k ] = str_replace( '\"', '"', $v );
+			} else {
+				$newdata[ $k ] = $v;
+			}
+		}
+
+		return $newdata;
+	}
+}
+
 // wp rest api v2
 if ( ! function_exists( 'wpApiUrl' ) ) {
 	function wpApiUrl()
@@ -65,8 +82,6 @@ function ajx20162830022821()
 	echo json_encode( $response );
 	die;
 }
-
-
 
 /**
  * Convert tables to utf8 encoding

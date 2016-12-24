@@ -16,12 +16,30 @@ var defaultAMscript = {
 			return false;
 		};
 
+		window.itemIsPureObject = function(item) {
+			if ( item !== null && typeof item === 'object' ) {
+				if(!(item instanceof Array))
+					return item instanceof Object;
+
+				return false;
+			}
+			return false;
+		};
+
 		window.dataToPost = function(action, data) {
 			var formData = new FormData();
 			formData.append('action', action);
+
 			for (var part in data) {
 				var dataItem = data[part];
-				formData.append(part, dataItem);
+
+				if(itemIsPureObject(dataItem)) {
+					var details = JSON.stringify(dataItem);
+					formData.append(part, details);
+				} else {
+					formData.append(part, dataItem);
+				}
+
 			}
 
 			return formData;

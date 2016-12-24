@@ -34,6 +34,7 @@ function ajx20161412071430()
 	die;
 }
 
+
 add_action( 'wp_ajax_nopriv_ajx20163730073701', 'ajx20163730073701' );
 add_action( 'wp_ajax_ajx20163730073701', 'ajx20163730073701' );
 function ajx20163730073701()
@@ -49,8 +50,8 @@ function ajx20163730073701()
 		'data'   => null
 	];
 
-//	$cart               = $woocommerce->cart->get_cart();
-	$response[ 'data' ] = $_POST;
+	//	$cart = $woocommerce->cart->get_cart();
+	$response[ 'data' ] = purify_postdata($_POST);
 	$cart_item_key = $response['data']['cart_item_key'];
 
 	if ( $cart_item_key ) {

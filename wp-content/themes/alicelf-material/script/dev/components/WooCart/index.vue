@@ -67,7 +67,7 @@
 				document.getElementById('am-appwrap')
 					.addEventListener('click', function(e) {
 						var parentEl = $(e.target).parents('.minicart-template-holder').length;
-						if(!parentEl) {
+						if (!parentEl) {
 							vm.cartOpened = false;
 						}
 					});
@@ -90,8 +90,10 @@
 
 			removeFromCart: function(item, index, event) {
 				var removeData = dataToPost('ajx20163730073701', item);
-				this.$http.post(AMdefaults.ajaxurl, removeData).then(function(response) {});
 				Cart.commit('removeFromCart', item);
+				this.$http.post(AMdefaults.ajaxurl, removeData).then(function(response) {
+//					console.log(JSON.parse(response.data));
+				});
 			},
 
 			toggleCart: function() {

@@ -9923,8 +9923,8 @@ exports.default = {
 
 		removeFromCart: function removeFromCart(item, index, event) {
 			var removeData = dataToPost('ajx20163730073701', item);
-			this.$http.post(AMdefaults.ajaxurl, removeData).then(function (response) {});
 			_Cart2.default.commit('removeFromCart', item);
+			this.$http.post(AMdefaults.ajaxurl, removeData).then(function (response) {});
 		},
 
 		toggleCart: function toggleCart() {
@@ -10035,9 +10035,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}],10:[function(require,module,exports){
@@ -10075,9 +10075,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}],11:[function(require,module,exports){
@@ -10115,9 +10115,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}],12:[function(require,module,exports){
@@ -10192,12 +10192,30 @@ var defaultAMscript = {
 			return false;
 		};
 
+		window.itemIsPureObject = function(item) {
+			if ( item !== null && typeof item === 'object' ) {
+				if(!(item instanceof Array))
+					return item instanceof Object;
+
+				return false;
+			}
+			return false;
+		};
+
 		window.dataToPost = function(action, data) {
 			var formData = new FormData();
 			formData.append('action', action);
+
 			for (var part in data) {
 				var dataItem = data[part];
-				formData.append(part, dataItem);
+
+				if(itemIsPureObject(dataItem)) {
+					var details = JSON.stringify(dataItem);
+					formData.append(part, details);
+				} else {
+					formData.append(part, dataItem);
+				}
+
 			}
 
 			return formData;
