@@ -12,15 +12,9 @@ function aa_func_20163119123146()
 	$production    = false;
 	$min           = $production ? ".min" : null;
 
-	// Vue Material
-	wp_enqueue_style( 'vue-material-css', $template_path . "/vue-material/dist/vue-material.css" );
-	wp_enqueue_script( 'vue-material-js', $template_path . "/vue-material/dist/vue-material.js",[
-		'vue-script',
-		'vue-model'
-	], false, true );
-
-	wp_enqueue_style( 'animate-css', $bowersrc . "animate.css/animate.min.css" );
 	// Styles
+	wp_enqueue_style( 'vue-material-css', $template_path . "/vue-material/dist/vue-material.css" );
+	wp_enqueue_style( 'animate-css', $bowersrc . "animate.css/animate.min.css" );
 	wp_enqueue_style( 'google-material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons" );
 	wp_enqueue_style( 'google-material-style', $template_path . "/mdl/mdl.css" );
 	wp_enqueue_style( 'bootstrap3-style', $bowersrc . "/bootstrap/dist/css/bootstrap.min.css" );
@@ -31,12 +25,8 @@ function aa_func_20163119123146()
 	wp_register_script( 'jquery', $template_path . '/script/prod/jQuery2.1.js', [], '2.1', true );
 	wp_enqueue_script( 'jquery' );
 
-	// Libs and Plugins
 	wp_enqueue_script( 'google-material-script', $template_path . "/mdl/material.min.js", [], false, true );
-//	wp_enqueue_script( 'bootstrap3', $bowersrc . "", [], false, true );
-
 	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$min}.js", [], false, true );
-	wp_enqueue_script( 'vue-model', $bowersrc . "vuex/dist/vuex{$min}.js", [], false, true );
 
 	if ( is_amuserpage() ) {
 		wp_enqueue_style( 'cropperstyle', $bowersrc . "cropper/dist/cropper.min.css" );
@@ -46,10 +36,7 @@ function aa_func_20163119123146()
 	// Application JS
 	wp_enqueue_script( 'AMscript', $template_path . "/script/prod/build{$min}.js", [
 		'jquery',
-		'vue-script',
-//		'vue-resource',
-//		'vue-router',
-//		'vue-model',
+		'vue-script'
 	], false, true );
 
 	/**

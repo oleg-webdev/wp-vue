@@ -1,4 +1,9 @@
+window.eventHub = new Vue()
+window.Vuex = require('vuex')
+window.VueResource = require('vue-resource')
+window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
+
 Vue.material.registerTheme({
 	default: {
 		primary: {
@@ -10,10 +15,8 @@ Vue.material.registerTheme({
 })
 
 Vue.component('minicart', require('./components/WooCart/index.vue'))
-window.VueResource = require('vue-resource')
 var CurrentUser = require('./vuex/User')
 
-window.eventHub = new Vue()
 var router = require('./routes')
 require('./script')
 
@@ -25,7 +28,6 @@ new Vue({
 	el: "#am-appwrap",
 
 	data: {
-
 		currency    : amWoo.woo_currency,
 		appSettings : AMdefaults,
 		authInfo    : AMdefaults.themeSettings.auth_info,
