@@ -1,3 +1,14 @@
+Vue.use(VueMaterial)
+Vue.material.registerTheme({
+	default: {
+		primary: {
+			color: 'blue-grey',
+			hue: 600
+		},
+		accent: 'black'
+	}
+})
+
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 window.VueResource = require('vue-resource')
 var CurrentUser = require('./vuex/User')
@@ -5,7 +16,6 @@ var CurrentUser = require('./vuex/User')
 window.eventHub = new Vue()
 var router = require('./routes')
 require('./script')
-
 
 var amWoo = AMdefaults.wooOptions;
 
@@ -15,6 +25,7 @@ new Vue({
 	el: "#am-appwrap",
 
 	data: {
+
 		currency    : amWoo.woo_currency,
 		appSettings : AMdefaults,
 		authInfo    : AMdefaults.themeSettings.auth_info,
@@ -22,6 +33,7 @@ new Vue({
 			show  : false,
 			answer: false
 		}
+
 	},
 
 
@@ -34,10 +46,13 @@ new Vue({
 	},
 
 	created: function() {
+		var vm = this;
+
 		CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+
 	},
 
 	methods: {

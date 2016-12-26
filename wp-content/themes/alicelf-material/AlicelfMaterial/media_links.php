@@ -12,6 +12,13 @@ function aa_func_20163119123146()
 	$production    = false;
 	$min           = $production ? ".min" : null;
 
+	// Vue Material
+	wp_enqueue_style( 'vue-material-css', $template_path . "/vue-material/dist/vue-material.css" );
+	wp_enqueue_script( 'vue-material-js', $template_path . "/vue-material/dist/vue-material.js",[
+		'vue-script',
+		'vue-model'
+	], false, true );
+
 	wp_enqueue_style( 'animate-css', $bowersrc . "animate.css/animate.min.css" );
 	// Styles
 	wp_enqueue_style( 'google-material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons" );

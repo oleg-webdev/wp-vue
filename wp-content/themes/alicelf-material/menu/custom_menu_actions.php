@@ -1,4 +1,23 @@
 <?php
+
+// ============= Render_mobile_menu =============
+if ( ! function_exists( 'render_mobile_menu' ) ) {
+	function render_mobile_menu()
+	{
+		$mob_menu     = wp_nav_menu( [
+			'menu_id'        => 'mobile-nav-menu',
+			'theme_location' => 'primary',
+			'echo'           => false,
+			'container'      => false
+		] );
+		$regular_tags = [ '<div', '</div>', '<li', '</li>' ];
+		$vue_tags     = [ '<md-list', '</md-list>', '<md-list-item @click="$refs.sidebar.toggle()"', '</md-list-item>' ];
+		$mob_menu     = $newphrase = str_replace( $regular_tags, $vue_tags, $mob_menu );
+
+		return $mob_menu;
+	}
+}
+
 // Recognize menu location by id
 if ( ! function_exists( 'get_menu_loc_by_id' ) ) {
 	function get_menu_loc_by_id( $nav_menu_selected_id )
@@ -18,7 +37,6 @@ function aa_func_20165429115424()
 	if ( $screen->id === 'nav-menus' )
 		wp_enqueue_media();
 }
-
 
 // Change default admin menu screen
 add_filter( 'wp_edit_nav_menu_walker', 'custom_nav_edit_walker', 10, 1 );
@@ -58,14 +76,15 @@ function aa_func_20161009061036( $item )
 	if ( ! in_array( 'vuecart-class', $item->classes ) && ! is_admin() ) {
 
 	}
+
 	return $item;
 }
 
 /**
  * ==================== Backend ======================
  */
-add_action('admin__menu_item_before', 'aa_func_20160809080813', 10 ,1);
-function aa_func_20160809080813($item)
+add_action( 'admin__menu_item_before', 'aa_func_20160809080813', 10, 1 );
+function aa_func_20160809080813( $item )
 {
 
 }

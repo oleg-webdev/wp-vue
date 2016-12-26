@@ -9949,6 +9949,17 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../../vuex/Cart":15,"vue":6,"vue-hot-reload-api":3}],8:[function(require,module,exports){
+Vue.use(VueMaterial)
+Vue.material.registerTheme({
+	default: {
+		primary: {
+			color: 'blue-grey',
+			hue: 600
+		},
+		accent: 'black'
+	}
+})
+
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 window.VueResource = require('vue-resource')
 var CurrentUser = require('./vuex/User')
@@ -9956,7 +9967,6 @@ var CurrentUser = require('./vuex/User')
 window.eventHub = new Vue()
 var router = require('./routes')
 require('./script')
-
 
 var amWoo = AMdefaults.wooOptions;
 
@@ -9966,6 +9976,7 @@ new Vue({
 	el: "#am-appwrap",
 
 	data: {
+
 		currency    : amWoo.woo_currency,
 		appSettings : AMdefaults,
 		authInfo    : AMdefaults.themeSettings.auth_info,
@@ -9973,6 +9984,7 @@ new Vue({
 			show  : false,
 			answer: false
 		}
+
 	},
 
 
@@ -9985,10 +9997,13 @@ new Vue({
 	},
 
 	created: function() {
+		var vm = this;
+
 		CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+
 	},
 
 	methods: {
@@ -10257,54 +10272,21 @@ var defaultAMscript = {
 
 
 		/**
-		 * ==================== Mobile menu ======================
-		 * 09.12.2016
+		 * ==================== Regular Domready script ======================
+		 * 26.12.2016
 		 */
-		var startWathingBackdrop = function() {
-			var drawerIterval = setInterval(function() {
-
-				var backdrop = document.querySelector('.am-menu-backdrop'),
-						menu     = document.querySelector('.mdl-layout__drawer');
-
-				if (backdrop !== null) {
-					backdrop.addEventListener('click', function() {
-						if (menu.classList.contains('open-menu')) {
-							menu.classList.remove('open-menu');
-							document.body.classList.remove('lock-overflow');
-							backdrop.classList.remove('black-ops');
-							setTimeout(function() {
-								document.body.removeChild(backdrop);
-							}, 300)
-						}
-					});
-
-					clearInterval(drawerIterval);
-				}
-
-			}, 50)
-		};
-
 		domready(function(){
-			document.getElementById('mobile-menu-trigger')
-				.addEventListener('click', function() {
 
-					var menu = document.querySelector('.mdl-layout__drawer'),
-							elem = document.createElement('div');
+		});
 
-					elem.classList.add('am-menu-backdrop');
 
-					if (!menu.classList.contains('open-menu')) {
-						menu.classList.add('open-menu');
-						document.body.classList.add('lock-overflow');
-						document.body.insertBefore(elem, document.body.childNodes[0]);
-						startWathingBackdrop();
-						setTimeout(function() {
-							elem.classList.add('black-ops');
-						}, 50);
-					}
+		/**
+		 * ==================== jQuery ======================
+		 * 26.12.2016
+		 */
+		jQuery(document).ready(function ($){
 
-				});
-		})
+		});
 
 	}
 }
