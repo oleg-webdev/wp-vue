@@ -14,7 +14,7 @@
 			}
 		},
 
-		calculated: {
+		computed: {
 
 		},
 

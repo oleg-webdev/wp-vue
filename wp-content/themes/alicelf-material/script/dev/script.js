@@ -67,9 +67,11 @@ var defaultAMscript = {
 				var adminbar = document.getElementById('wpadminbar');
 				if (adminbar) {
 					adminBartrigger.addEventListener('click', function(e) {
+
 						adminbar.classList.contains('show') ?
 							adminbar.classList.remove('show'):
 							adminbar.classList.add('show');
+
 						adminBartrigger.classList.contains('show') ?
 							adminBartrigger.classList.remove('show'):
 							adminBartrigger.classList.add('show');

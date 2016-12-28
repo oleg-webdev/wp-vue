@@ -1,10 +1,21 @@
+html,
+body {
+	height: 100%;
+	min-height : 100%;
+}
+#am-appwrap {
+	width   : 100%;
+	height  : 100%;
+	display : flex;
+}
+
 .am-success-btn {
 	background-color : $brandColor !important;
 	color            : #fff;
 }
 
 template {
-	display: none !important;
+	display : none !important;
 }
 
 #menu-primary-navigation {
@@ -30,16 +41,13 @@ template {
 	position : relative;
 }
 
-#am-appwrap {
-	@extend .relative-container;
-}
 
 .am-link {
 	cursor : pointer;
-	color : $successColor;
+	color  : $successColor;
 	&:hover {
 		text-decoration : underline;
-		color : darken($successColor, 20%);
+		color           : darken($successColor, 20%);
 	}
 }
 
@@ -53,10 +61,24 @@ template {
  * ==================== Animations ======================
  * 24.11.2016
  */
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@-moz-keyframes spin {
+	100% {
+		-moz-transform : rotate(360deg);
+	}
+}
 
+@-webkit-keyframes spin {
+	100% {
+		-webkit-transform : rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	100% {
+		-webkit-transform : rotate(360deg);
+		transform         : rotate(360deg);
+	}
+}
 
 #app {
 	padding : 15px 0;

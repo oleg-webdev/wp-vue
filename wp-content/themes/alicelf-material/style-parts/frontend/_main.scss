@@ -26,22 +26,25 @@
  * ==================== Network ======================
  * 19.12.2016
  */
-.network-content {
-	min-height : 200px;
-	> .view {
-		position : absolute;
+#dashboardnav {
+	a {
+		&:focus{
+			text-decoration : none;
+		}
+		&.router-link-active {
+			background-color: $mainColor;
+			color : #fff;
+			i {
+				color : #fff;
+			}
+		}
 	}
+
 }
 
-.dashboardnav {
-	> a {
-		overflow        : hidden;
-		position        : relative;
-		cursor          : pointer;
-		text-decoration : none;
-	}
-}
+#network-content {
 
+}
 
 /**
  * ==================== Transitions ======================

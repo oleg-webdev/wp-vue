@@ -2,7 +2,7 @@
 </style>
 <template>
 	<div class="Foo-scope">
-		<h1>Foo Component</h1>
+		<h1>Settings Component</h1>
 	</div>
 </template>
 
@@ -14,7 +14,7 @@
 			}
 		},
 
-		calculated: {
+		computed: {
 
 		},
 

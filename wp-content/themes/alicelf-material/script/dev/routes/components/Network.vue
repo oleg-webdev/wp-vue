@@ -4,19 +4,25 @@
 <template>
 	<div class="Network-scope">
 		<h1>Network</h1>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur cum expedita, magnam magni quia saepe sed suscipit. Ab animi aperiam, commodi debitis, inventore nam nihil non praesentium quaerat, saepe similique!
+		<pre>{{currentUserModel}}</pre>
 	</div>
 </template>
 
 <script>
+	import usr from '../../vuex/User'
 	export default {
+
 		data() {
 			return {
 
 			}
 		},
 
-		calculated: {
+		computed: {
+
+			currentUserModel: function() {
+				return usr.state.userdata;
+			}
 
 		},
 

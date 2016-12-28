@@ -15,6 +15,7 @@ Vue.material.registerTheme({
 })
 
 Vue.component('minicart', require('./components/WooCart/index.vue'))
+Vue.component('userprofile', require('./components/Profile/index.vue'))
 var CurrentUser = require('./vuex/User')
 
 var router = require('./routes')
@@ -38,7 +39,6 @@ new Vue({
 
 	},
 
-
 	computed: {
 		// use dynamic in frontend
 		currentUserModel: function() {
@@ -49,7 +49,6 @@ new Vue({
 
 	created: function() {
 		var vm = this;
-
 		CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
