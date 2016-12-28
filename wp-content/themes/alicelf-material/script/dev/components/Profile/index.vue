@@ -2,9 +2,9 @@
 
 </style>
 <template>
-	<div id="Profile-scope">
+	<div id="Profile-scope" class="flex-container">
 
-		<md-list id="dashboardnav" class="md-dense">
+		<md-list id="dashboardnav" class="md-dense flex-col-20">
 
 			<md-list-item class="md-primary">
 				<router-link class="button" to="/user" exact>
@@ -37,11 +37,12 @@
 		</md-list>
 
 
-		<div id="network-content">
+		<div id="network-content" class="flex-col-80" ref="networkcontent">
 			<transition name="panelslide">
 				<router-view class="view"></router-view>
 			</transition>
 		</div>
+
 	</div>
 </template>
 
@@ -58,15 +59,20 @@
 		},
 
 		created(){
+			var vm = this;
+			eventHub.$on('profileViewHeight', function(data) {
+				var container = vm.$refs.networkcontent;
+				container.style.minHeight = data+'px'
+			})
+		},
 
+		mounted() {
+			console.log('Profile ready.')
 		},
 
 		methods: {
 
 		},
 
-		mounted() {
-			console.log('Profile ready.')
-		}
 	}
 </script>

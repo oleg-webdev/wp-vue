@@ -1,7 +1,7 @@
 <style lang="scss">
 </style>
 <template>
-	<div class="Notfound-scope">
+	<div id="Notfound-scope" ref="notfoundscope">
 		<h1 class="text-center mdl-color-text--blue-grey-700">.404 Nothing Found</h1>
 	</div>
 </template>
@@ -22,12 +22,14 @@
 
 		},
 
-		methods: {
+		mounted() {
+			var vm = this;
 
+			eventHub.$emit('profileViewHeight', vm.$refs.notfoundscope.clientHeight)
 		},
 
-		mounted() {
-			console.log('Notfound-scope ready.')
+		methods: {
+
 		}
 	}
 </script>

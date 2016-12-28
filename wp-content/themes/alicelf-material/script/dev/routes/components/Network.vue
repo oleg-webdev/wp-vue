@@ -2,7 +2,7 @@
 
 </style>
 <template>
-	<div class="Network-scope">
+	<div id="Network-scope" ref="networkscope">
 		<h1>Network</h1>
 		<pre>{{currentUserModel}}</pre>
 	</div>
@@ -30,12 +30,13 @@
 
 		},
 
-		methods: {
-
+		mounted() {
+			var vm = this;
+			eventHub.$emit('profileViewHeight', vm.$refs.networkscope.clientHeight)
 		},
 
-		mounted() {
-			console.log('Network ready.')
+		methods: {
+
 		}
 	}
 </script>

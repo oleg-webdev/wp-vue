@@ -104,10 +104,10 @@ $lighten : lighten($mainColor, 50%);
 }
 
 @include space-x();
-@include padding-top-x();
-@include padding-bottom-x();
-@include padding-left-x();
-@include padding-right-x();
+//@include padding-top-x();
+//@include padding-bottom-x();
+//@include padding-left-x();
+//@include padding-right-x();
 
 @mixin fAwesome(){
 	display: inline-block;
@@ -119,6 +119,10 @@ $lighten : lighten($mainColor, 50%);
 }
 
 .img-center {
+	&img {
+		margin-left : auto;
+		margin-right : auto;
+	}
 	img {
 		margin-left : auto;
 		margin-right : auto;

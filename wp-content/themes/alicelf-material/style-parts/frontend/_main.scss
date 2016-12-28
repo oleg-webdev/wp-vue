@@ -1,3 +1,24 @@
+.fullcssheight {
+	height     : 100%;
+	min-height : 100%;
+}
+
+html, body {
+	@extend .fullcssheight;
+}
+
+main {
+	height    : 100%;
+	display   : flex;
+	flex-flow : row wrap;
+	> * {
+		flex-basis : 100%;
+	}
+	#am-footer {
+		align-self : flex-end;
+	}
+}
+
 .am-comments-wrapper {
 	.mdl-textfield {
 		width : 100%;
@@ -21,19 +42,18 @@
 
 }
 
-
 /**
  * ==================== Network ======================
  * 19.12.2016
  */
 #dashboardnav {
 	a {
-		&:focus{
+		&:focus {
 			text-decoration : none;
 		}
 		&.router-link-active {
-			background-color: $mainColor;
-			color : #fff;
+			background-color : $mainColor;
+			color            : #fff;
 			i {
 				color : #fff;
 			}
@@ -43,7 +63,13 @@
 }
 
 #network-content {
-
+	position : relative;
+	> div {
+		position     : absolute;
+		width        : 100%;
+		padding-left : 20px;
+		padding-right : 20px;
+	}
 }
 
 /**

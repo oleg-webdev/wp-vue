@@ -1,7 +1,7 @@
 <style lang="scss">
 </style>
 <template>
-	<div class="Bar-scope">
+	<div class="Media-scope" ref="mediascope">
 		<h1>Media Component</h1>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda, blanditiis debitis dolor ducimus facere magnam, magni maxime molestiae mollitia non provident quasi repellendus sint tempora unde veritatis. Minus, mollitia!
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -29,12 +29,14 @@
 
 		},
 
-		methods: {
-
+		mounted() {
+			var vm = this;
+			eventHub.$emit('profileViewHeight', vm.$refs.mediascope.clientHeight)
 		},
 
-		mounted() {
-			console.log('Bar ready.')
+		methods: {
+
 		}
+
 	}
 </script>

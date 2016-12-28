@@ -13,6 +13,6 @@
 <?php do_action( 'AM_afterbody_start' ) ?>
 <div id="am-appwrap" class="mdl-layout">
 	<?php include locate_template( 'templates/menu.php' ) ?>
-	<main class="mdl-layout__content">
+	<main>
 		<div class="page-content">
 		<?php do_action( 'AM_content' ) ?>

@@ -1,3 +1,79 @@
+/**
+ * ==================== Flex Grid ======================
+ * 28.12.2016
+ */
+
+.flex-container {
+	display : flex;
+	&.flex-row {
+		flex-flow : row wrap;
+	}
+}
+
+// flex-col          1/3
+// flex-col-desktop  1/3
+// flex-col-tablet   1/3
+// flex-col-phone    1/3
+
+@mixin flex-col {
+	.flex-col {
+		flex-basis : 33.3333333333%;
+	}
+	$baseFlexWidth : 5;
+	@for $i from 5 through 24 {
+		.flex-col-#{$baseFlexWidth} {
+			flex-basis : percentage($baseFlexWidth)/100;
+		}
+		$baseFlexWidth : $baseFlexWidth + 5;
+	}
+
+	/*Desktop*/
+	$baseFlexWidth : 5;
+	@media (min-width : 952px) {
+		.flex-col-desktop {
+			flex-basis : 33.3333333333%;
+		}
+		@for $i from 5 through 24 {
+			.flex-col-desktop-#{$baseFlexWidth} {
+				flex-basis : percentage($baseFlexWidth)/100;
+			}
+			$baseFlexWidth : $baseFlexWidth + 5;
+		}
+	}
+
+	/*Tablet*/
+	$baseFlexWidth : 5;
+	@media (max-width : 951px) {
+		.flex-col-tablet {
+			flex-basis : 33.3333333333%;
+		}
+		@for $i from 5 through 24 {
+			.flex-col-tablet-#{$baseFlexWidth} {
+				flex-basis : percentage($baseFlexWidth)/100;
+			}
+			$baseFlexWidth : $baseFlexWidth + 5;
+		}
+
+	}
+
+	/*Mobile*/
+	$baseFlexWidth : 5;
+	@media (max-width : 767px) {
+		.flex-col-phone {
+			flex-basis : 33.3333333333%;
+		}
+		@for $i from 5 through 24 {
+			.flex-col-phone-#{$baseFlexWidth} {
+				flex-basis : percentage($baseFlexWidth)/100;
+			}
+			$baseFlexWidth : $baseFlexWidth + 5;
+		}
+	}
+
+}
+
+@include flex-col;
+
 @mixin gradient($color1 : $infoColor, $color2 : $mainColor) {
 	background-color  : $color2;
 	background        : -webkit-gradient(linear, left 0%, left 100%, from($color1), to($color2));
@@ -114,6 +190,17 @@
 				padding-right : ($i*10)+px;
 			}
 		}
+	}
+}
+
+.img-center {
+	&img {
+		margin-left : auto;
+		margin-right : auto;
+	}
+	img {
+		margin-left : auto;
+		margin-right : auto;
 	}
 }
 
