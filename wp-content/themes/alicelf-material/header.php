@@ -11,7 +11,7 @@
 </head>
 <body <?php body_class( am_body_classes() ) ?>>
 <?php do_action( 'AM_afterbody_start' ) ?>
-<div id="am-appwrap" class="mdl-layout">
+<div id="am-appwrap">
 	<?php include locate_template( 'templates/menu.php' ) ?>
 	<main>
 		<div class="page-content">

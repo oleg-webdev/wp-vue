@@ -24,7 +24,7 @@ if ( ! function_exists( 'material_logo' ) ) {
 			$output .= "</a>";
 		} else {
 			$output .= "<a id='text-logo' href='".get_site_url()."'>";
-			$output .= "<i class='alice-alicelf-material-logo'></i><span>".get_bloginfo( 'name' )."</span>";
+			$output .= "<i class='alice-alicelf-brand'></i><span>".get_bloginfo( 'name' )."</span>";
 			$output .= "</a>";
 		}
 

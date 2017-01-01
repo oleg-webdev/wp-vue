@@ -1,6 +1,8 @@
 <?php
 
 // ============= Preformatted =============
+use AlicelfMaterial\Helpers\AmAttachment;
+
 if ( ! function_exists( 'remove_br_from_shortcodes' ) ) {
 	function remove_br_from_shortcodes( $atts = [], $content = null )
 	{
@@ -18,11 +20,18 @@ if ( ! function_exists( 'aa_img' ) ) {
 	function aa_img( $args )
 	{
 		ob_start();
-		$sha = shortcode_atts( [
+		$_atts      = shortcode_atts( [
 			'id'    => $args[ 'id' ],
 			'class' => ! empty( $args[ 'class' ] ) ? $args[ 'class' ] : "img-responsive",
 		], $args );
-		echo "<img src='" . wp_get_attachment_url( $sha[ 'id' ] ) . "' class='{$sha['class']}'>";
+		$image_info = AmAttachment::get_attachment( $_atts[ 'id' ] );
+
+		if ( $image_info ) {
+			$_url   = $image_info[ 'src' ];
+			$_title = $image_info[ 'title' ];
+			$_alt   = $image_info[ 'alt' ];
+			echo "<img src='{$_url}' class='{$_atts['class']}' alt='{$_alt}' title='{$_title}'>";
+		}
 
 		return ob_get_clean();
 	}

@@ -18,7 +18,6 @@
 
 		</main>
 	</div><!--#am-appwrap END-->
-
 <?php wp_footer(); ?>
 </body>
 </html>
