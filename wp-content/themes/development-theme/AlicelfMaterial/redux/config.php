@@ -28,8 +28,8 @@ $args = array(
 	// Show the sections below the admin menu item or not
 	'menu_title'      => 'Theme Options',
 	'page_title'      => 'Theme Customization',
-	'admin_bar_icon'  => 'icon-alicelf-brand',
-	'menu_icon'       => '',
+	'admin_bar_icon'  => 'dashicons-layout',
+	'menu_icon'       => 'dashicons-layout',
 	'page_priority'   => 61,
 	'global_variable' => '_am',
 	'dev_mode'        => false,

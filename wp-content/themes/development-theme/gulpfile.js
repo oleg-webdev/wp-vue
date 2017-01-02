@@ -3,7 +3,8 @@ var gulp           = require('gulp'),
 		gulpRename     = require('gulp-rename'),
 		gulpUglify     = require('gulp-uglify'),
 		gulpSourcemaps = require('gulp-sourcemaps'),
-		gulpSass       = require('gulp-sass');
+		gulpSass       = require('gulp-sass'),
+		urlAdjuster    = require('gulp-css-url-adjuster');
 
 var devRoot   = "script/dev/",
 		bowerRoot = "bower_components/",
@@ -36,19 +37,26 @@ gulp.task('aa-concat', () => {
 });
 
 gulp.task('sass-frontend', () => {
-	gulp.src(['style.scss',
-						'style-parts/*.scss',
-						'style-parts/frontend/*.scss'])
+	gulp.src([
+		'style.scss',
+		'style-parts/*.scss',
+		'style-parts/frontend/*.scss'
+	])
 		.pipe(gulpSourcemaps.init()) // remove for production
 		.pipe(gulpSass({outputStyle: 'compressed'})
 			.on('error', gulpSass.logError))
+		.pipe(urlAdjuster({
+			replace: ['../../img', 'img']
+		}))
 		.pipe(gulpSourcemaps.write()) // remove for production
 		.pipe(gulp.dest('./'));
 });
 
 gulp.task('sass-backend', () => {
-	gulp.src(['style-parts/*.scss',
-						'style-parts/backend/*.scss'])
+	gulp.src([
+		'style-parts/*.scss',
+		'style-parts/backend/*.scss'
+	])
 		.pipe(gulpSourcemaps.init()) // remove for production
 		.pipe(gulpSass({outputStyle: 'compressed'})
 			.on('error', gulpSass.logError))
@@ -62,7 +70,11 @@ gulp.task('watch', () => {
 	// gulp.watch(processFiles, ['aa-concat']);
 
 	// Frontend Styles
-	gulp.watch(['style.scss','style-parts/*.scss','style-parts/frontend/*.scss'], ['sass-frontend'])
+	gulp.watch([
+		'style.scss',
+		'style-parts/*.scss',
+		'style-parts/frontend/*.scss'],
+		['sass-frontend'])
 
 	// Backend Styles
 	// gulp.watch(['style-parts/*.scss','style-parts/backend/*.scss'], ['sass-backend'])
