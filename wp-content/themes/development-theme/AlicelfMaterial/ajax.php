@@ -111,7 +111,7 @@ add_action('wp_ajax_ajx20174803014813', 'ajx20174803014813');
 function ajx20174803014813()
 {
 	$response = [
-		'data'   => $_POST,
+		'data'   => purify_postdata($_REQUEST),
 		'status' => 'fail'
 	];
 

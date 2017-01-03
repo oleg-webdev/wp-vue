@@ -36,13 +36,13 @@ new Vue({
 
 		alertok: {
 			type   : 'success',
-			content: ' ',
+			content: 'Success',
 			text   : 'Ok'
 		},
 
 		alertfail: {
 			type   : 'fail',
-			content: ' ',
+			content: 'Fail',
 			text   : 'Ok'
 		}
 
@@ -76,16 +76,19 @@ new Vue({
 			this.$refs[ref].close();
 		},
 		onClose() {
-			this.alertok = {
-				type   : 'success',
-				content: ' ',
-				text   : 'Ok'
-			};
-			this.alertfail = {
-				type   : 'fail',
-				content: ' ',
-				text   : 'Ok'
-			}
+			var vm = this;
+			setTimeout(()=>{
+				vm.alertok = {
+					type   : 'success',
+					content: 'Success',
+					text   : 'Ok'
+				};
+				vm.alertfail = {
+					type   : 'fail',
+					content: 'Fail',
+					text   : 'Ok'
+				}
+			}, 800)
 		}
 
 	}

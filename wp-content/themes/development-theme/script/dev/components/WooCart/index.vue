@@ -89,7 +89,7 @@
 			},
 
 			removeFromCart: function(item, index, event) {
-				var removeData = dataToPost('ajx20163730073701', item);
+				const removeData = dataToPost('ajx20163730073701', item);
 				Cart.commit('removeFromCart', item);
 				this.$http.post(AMdefaults.ajaxurl, removeData).then(function(response) {
 //					console.log(JSON.parse(response.data));

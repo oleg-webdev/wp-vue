@@ -17,6 +17,7 @@
 </footer>
 
 		</main>
+<?php do_action('before_AM_wrap_ends') ?>
 	</div><!--#am-appwrap END-->
 <?php wp_footer(); ?>
 </body>

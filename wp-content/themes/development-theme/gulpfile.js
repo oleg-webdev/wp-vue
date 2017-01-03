@@ -43,11 +43,12 @@ gulp.task('sass-frontend', () => {
 		'style-parts/frontend/*.scss'
 	])
 		.pipe(gulpSourcemaps.init()) // remove for production
-		.pipe(gulpSass({outputStyle: 'compressed'})
-			.on('error', gulpSass.logError))
+		.pipe(gulpSass())
 		.pipe(urlAdjuster({
 			replace: ['../../img', 'img']
 		}))
+		.pipe(gulpSass({outputStyle: 'compressed'})
+			.on('error', gulpSass.logError))
 		.pipe(gulpSourcemaps.write()) // remove for production
 		.pipe(gulp.dest('./'));
 });

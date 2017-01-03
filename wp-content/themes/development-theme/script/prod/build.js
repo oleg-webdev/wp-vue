@@ -10676,9 +10676,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],10:[function(require,module,exports){
@@ -10762,9 +10762,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
 },{"../../vuex/Cart":19,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
@@ -10794,11 +10794,13 @@ module.exports = Vue.directive('amajax', {
 	// Custom Methods
 	onSubmit(e) {
 		e.preventDefault();
-		let vm     = this.def.vm,
+		let vm = this.def.vm,
 				method = this.def.getRequestType(),
-				action = this.def.getAction();
+				action = this.def.getAction(),
+				// @TODO: pass common data from form atts
+				sendingData = dataToPost(action, {inc:'jnx', second:'sec'});
 
-		vm.$http[method](`${AMdefaults.ajaxurl}?action=${action}`)
+		vm.$http[method](AMdefaults.ajaxurl, sendingData)
 			.then(this.def.onSuccess.bind(this.def),
 				this.def.onError.bind(this.def))
 
@@ -10806,7 +10808,7 @@ module.exports = Vue.directive('amajax', {
 
 	// @TODO: make other checking
 	onSuccess(response) {
-		// console.log(response.data);
+		console.log(JSON.parse(response.data));
 		this.vm.openDialog('alertOkDialog',{
 			alert : 'alertok',
 			data : {
@@ -10880,13 +10882,13 @@ new Vue({
 
 		alertok: {
 			type   : 'success',
-			content: ' ',
+			content: 'Success',
 			text   : 'Ok'
 		},
 
 		alertfail: {
 			type   : 'fail',
-			content: ' ',
+			content: 'Fail',
 			text   : 'Ok'
 		}
 
@@ -10920,16 +10922,19 @@ new Vue({
 			this.$refs[ref].close();
 		},
 		onClose() {
-			this.alertok = {
-				type   : 'success',
-				content: ' ',
-				text   : 'Ok'
-			};
-			this.alertfail = {
-				type   : 'fail',
-				content: ' ',
-				text   : 'Ok'
-			}
+			var vm = this;
+			setTimeout(()=>{
+				vm.alertok = {
+					type   : 'success',
+					content: 'Success',
+					text   : 'Ok'
+				};
+				vm.alertfail = {
+					type   : 'fail',
+					content: 'Fail',
+					text   : 'Ok'
+				}
+			}, 800)
 		}
 
 	}
@@ -10971,9 +10976,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],14:[function(require,module,exports){
@@ -11024,9 +11029,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"../../vuex/User":20,"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11105,9 +11110,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
