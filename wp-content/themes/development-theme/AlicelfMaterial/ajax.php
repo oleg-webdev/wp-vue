@@ -105,3 +105,16 @@ function aa_func_20150827030852()
 		die;
 	}
 }
+
+add_action('wp_ajax_nopriv_ajx20174803014813', 'ajx20174803014813');
+add_action('wp_ajax_ajx20174803014813', 'ajx20174803014813');
+function ajx20174803014813()
+{
+	$response = [
+		'data'   => $_POST,
+		'status' => 'fail'
+	];
+
+	echo json_encode( $response );
+	die;
+}

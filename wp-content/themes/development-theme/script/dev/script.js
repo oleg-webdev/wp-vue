@@ -64,6 +64,8 @@ var defaultAMscript = {
 		 */
 		domready(function(){
 
+
+
 		});
 
 

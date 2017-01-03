@@ -10767,20 +10767,95 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
-},{"../../vuex/Cart":18,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
+},{"../../vuex/Cart":19,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
+module.exports = Vue.directive('amajax', {
+
+	el     : null,
+	binding: null,
+	vnode  : null,
+	vm     : null,
+
+	bind(el, binding, vnode) {
+		let thisProps = binding.def;
+		thisProps.el = el;
+		thisProps.binding = binding;
+		thisProps.vnode = vnode;
+		thisProps.vm = vnode.context;
+
+		el.addEventListener('submit', thisProps.onSubmit.bind(binding));
+
+	},
+
+	update(value) {
+		console.log("updated");
+	},
+
+
+	// Custom Methods
+	onSubmit(e) {
+		e.preventDefault();
+		let vm     = this.def.vm,
+				method = this.def.getRequestType(),
+				action = this.def.getAction();
+
+		vm.$http[method](`${AMdefaults.ajaxurl}?action=${action}`)
+			.then(this.def.onSuccess.bind(this.def),
+				this.def.onError.bind(this.def))
+
+	},
+
+	// @TODO: make other checking
+	onSuccess(response) {
+		// console.log(response.data);
+		this.vm.openDialog('alertOkDialog',{
+			alert : 'alertok',
+			data : {
+				type: 'success',
+				content: 'Success',
+				text: 'Ok'
+			}
+		})
+	},
+
+	onError(response) {
+		// console.log(response.data);
+		this.vm.openDialog('alertFailDialog',{
+			alert : 'alertfail',
+			data : {
+				type: 'fail',
+				content: 'Fail. Wrong request!',
+				text: 'Ok'
+			}
+		})
+	},
+
+	getRequestType(){
+		let method = this.el.querySelector('input[name="__method"]');
+		return (method ? method.value: this.el.method).toLowerCase();
+	},
+
+	getAction() {
+		let action = this.el.querySelector('input[name="__action"]');
+		return action.value.toLowerCase();
+	}
+
+
+});
+},{}],12:[function(require,module,exports){
 window.eventHub = new Vue()
 window.Vuex = require('vuex')
 window.VueResource = require('vue-resource')
 window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
+require('./dirrectives/ajaxForms')
 
 Vue.material.registerTheme({
 	default: {
 		primary: {
 			color: 'blue-grey',
-			hue: 600
+			hue  : 600
 		},
-		accent: 'blue'
+		accent : 'blue'
 	}
 })
 
@@ -10794,17 +10869,25 @@ require('./script')
 var amWoo = AMdefaults.wooOptions;
 
 new Vue({
-	'router':router,
+	'router': router,
 
 	el: "#am-appwrap",
 
 	data: {
-		currency    : amWoo.woo_currency,
-		appSettings : AMdefaults,
-		authInfo    : AMdefaults.themeSettings.auth_info,
-		confirmProps: {
-			show  : false,
-			answer: false
+		currency   : amWoo.woo_currency,
+		appSettings: AMdefaults,
+		authInfo   : AMdefaults.themeSettings.auth_info,
+
+		alertok: {
+			type   : 'success',
+			content: ' ',
+			text   : 'Ok'
+		},
+
+		alertfail: {
+			type   : 'fail',
+			content: ' ',
+			text   : 'Ok'
 		}
 
 	},
@@ -10828,14 +10911,31 @@ new Vue({
 
 	methods: {
 
-		clickHandler: function (event) {
-			console.log(event.target.tagName);
+		openDialog(ref, params) {
+			this[params.alert] = params.data
+			this.$refs[ref].open();
+		},
+
+		closeDialog(ref) {
+			this.$refs[ref].close();
+		},
+		onClose() {
+			this.alertok = {
+				type   : 'success',
+				content: ' ',
+				text   : 'Ok'
+			};
+			this.alertfail = {
+				type   : 'fail',
+				content: ' ',
+				text   : 'Ok'
+			}
 		}
 
 	}
 
 });
-},{"./components/Profile/index.vue":9,"./components/WooCart/index.vue":10,"./routes":16,"./script":17,"./vuex/User":19,"vue-material":4,"vue-resource":5,"vuex":8}],12:[function(require,module,exports){
+},{"./components/Profile/index.vue":9,"./components/WooCart/index.vue":10,"./dirrectives/ajaxForms":11,"./routes":17,"./script":18,"./vuex/User":20,"vue-material":4,"vue-resource":5,"vuex":8}],13:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -10871,12 +10971,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],13:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],14:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -10924,12 +11024,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
-},{"../../vuex/User":19,"vue":7,"vue-hot-reload-api":3}],14:[function(require,module,exports){
+},{"../../vuex/User":20,"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -10965,12 +11065,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11005,12 +11105,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
@@ -11023,7 +11123,7 @@ module.exports = new VueRouter({
 		{path      : '*',  component: require('./components/Notfound.vue')}
 	]
 })
-},{"./components/Media.vue":12,"./components/Network.vue":13,"./components/Notfound.vue":14,"./components/Settings.vue":15,"vue-router":6}],17:[function(require,module,exports){
+},{"./components/Media.vue":13,"./components/Network.vue":14,"./components/Notfound.vue":15,"./components/Settings.vue":16,"vue-router":6}],18:[function(require,module,exports){
 var domready = require('domready')
 var defaultAMscript = {
 	run: function(){
@@ -11090,6 +11190,8 @@ var defaultAMscript = {
 		 */
 		domready(function(){
 
+
+
 		});
 
 
@@ -11105,7 +11207,7 @@ var defaultAMscript = {
 }
 defaultAMscript.run()
 module.exports = defaultAMscript
-},{"domready":1}],18:[function(require,module,exports){
+},{"domready":1}],19:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11127,7 +11229,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11148,4 +11250,4 @@ module.exports = new Vuex.Store({
 
 
 });
-},{}]},{},[11]);
+},{}]},{},[12]);

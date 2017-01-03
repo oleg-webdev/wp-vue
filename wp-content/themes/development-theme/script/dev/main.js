@@ -3,14 +3,15 @@ window.Vuex = require('vuex')
 window.VueResource = require('vue-resource')
 window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
+require('./dirrectives/ajaxForms')
 
 Vue.material.registerTheme({
 	default: {
 		primary: {
 			color: 'blue-grey',
-			hue: 600
+			hue  : 600
 		},
-		accent: 'blue'
+		accent : 'blue'
 	}
 })
 
@@ -24,17 +25,25 @@ require('./script')
 var amWoo = AMdefaults.wooOptions;
 
 new Vue({
-	'router':router,
+	'router': router,
 
 	el: "#am-appwrap",
 
 	data: {
-		currency    : amWoo.woo_currency,
-		appSettings : AMdefaults,
-		authInfo    : AMdefaults.themeSettings.auth_info,
-		confirmProps: {
-			show  : false,
-			answer: false
+		currency   : amWoo.woo_currency,
+		appSettings: AMdefaults,
+		authInfo   : AMdefaults.themeSettings.auth_info,
+
+		alertok: {
+			type   : 'success',
+			content: ' ',
+			text   : 'Ok'
+		},
+
+		alertfail: {
+			type   : 'fail',
+			content: ' ',
+			text   : 'Ok'
 		}
 
 	},
@@ -58,8 +67,25 @@ new Vue({
 
 	methods: {
 
-		clickHandler: function (event) {
-			console.log(event.target.tagName);
+		openDialog(ref, params) {
+			this[params.alert] = params.data
+			this.$refs[ref].open();
+		},
+
+		closeDialog(ref) {
+			this.$refs[ref].close();
+		},
+		onClose() {
+			this.alertok = {
+				type   : 'success',
+				content: ' ',
+				text   : 'Ok'
+			};
+			this.alertfail = {
+				type   : 'fail',
+				content: ' ',
+				text   : 'Ok'
+			}
 		}
 
 	}
