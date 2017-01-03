@@ -10,7 +10,7 @@ Vue.material.registerTheme({
 			color: 'blue-grey',
 			hue: 600
 		},
-		accent: 'black'
+		accent: 'blue'
 	}
 })
 

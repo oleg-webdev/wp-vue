@@ -1,13 +1,4 @@
 <?php
-add_action( 'AM_afterbody_start', 'aa_func_20165123065104', 20 );
-function aa_func_20165123065104()
-{
-	if ( is_super_admin( get_current_user_id() ) ) {
-		?>
-		<i title="Show Admin Bar" id="am-show-adminbar" class="material-icons">settings</i>
-		<?php
-	}
-}
 
 add_action( 'admin_head', 'aa_func_20163316093324' );
 function aa_func_20163316093324()

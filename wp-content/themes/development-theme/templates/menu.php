@@ -37,7 +37,7 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 	</div>
 </header>
 
-<div class="app-viewport" id="file-list">
+<aside class="app-viewport" id="mobile-navigation-aside">
 	<div class="hidden-on-desktop">
 		<md-sidenav class="md-left md-fixed" ref="sidebar">
 			<md-toolbar class="md-account-header">
@@ -83,4 +83,4 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 
 	</div>
 
-</div>
+</aside>

@@ -57,30 +57,6 @@ var defaultAMscript = {
 		});
 		observer.observe(document.body, {childList: true,subtree : true});
 
-		/**
-		 * ==================== Admin Bar ======================
-		 * 10.12.2016
-		 */
-		var adminBartrigger = document.getElementById('am-show-adminbar');
-		if (adminBartrigger) {
-			var waitForAdmiBar = setInterval(function() {
-				var adminbar = document.getElementById('wpadminbar');
-				if (adminbar) {
-					adminBartrigger.addEventListener('click', function(e) {
-
-						adminbar.classList.contains('show') ?
-							adminbar.classList.remove('show'):
-							adminbar.classList.add('show');
-
-						adminBartrigger.classList.contains('show') ?
-							adminBartrigger.classList.remove('show'):
-							adminBartrigger.classList.add('show');
-					});
-					clearInterval(waitForAdmiBar);
-				}
-			}, 500);
-		}
-
 
 		/**
 		 * ==================== Regular Domready script ======================

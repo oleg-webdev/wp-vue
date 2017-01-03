@@ -10654,7 +10654,6 @@ exports.default = {
 		var vm = this;
 		eventHub.$on('profileViewHeight', function (data) {
 			var container = vm.$refs.networkcontent;
-			console.log(container);
 			container.style.minHeight = data + 'px';
 		});
 	},
@@ -10677,9 +10676,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],10:[function(require,module,exports){
@@ -10763,9 +10762,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
 },{"../../vuex/Cart":18,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
@@ -10781,7 +10780,7 @@ Vue.material.registerTheme({
 			color: 'blue-grey',
 			hue: 600
 		},
-		accent: 'black'
+		accent: 'blue'
 	}
 })
 
@@ -10872,9 +10871,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],13:[function(require,module,exports){
@@ -10966,9 +10965,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11008,7 +11007,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11083,30 +11082,6 @@ var defaultAMscript = {
 			componentHandler.upgradeDom();
 		});
 		observer.observe(document.body, {childList: true,subtree : true});
-
-		/**
-		 * ==================== Admin Bar ======================
-		 * 10.12.2016
-		 */
-		var adminBartrigger = document.getElementById('am-show-adminbar');
-		if (adminBartrigger) {
-			var waitForAdmiBar = setInterval(function() {
-				var adminbar = document.getElementById('wpadminbar');
-				if (adminbar) {
-					adminBartrigger.addEventListener('click', function(e) {
-
-						adminbar.classList.contains('show') ?
-							adminbar.classList.remove('show'):
-							adminbar.classList.add('show');
-
-						adminBartrigger.classList.contains('show') ?
-							adminBartrigger.classList.remove('show'):
-							adminBartrigger.classList.add('show');
-					});
-					clearInterval(waitForAdmiBar);
-				}
-			}, 500);
-		}
 
 
 		/**

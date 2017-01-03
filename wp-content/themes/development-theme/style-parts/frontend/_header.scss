@@ -1,5 +1,36 @@
 @include loadFont("style-parts/fonts/alicelf-font/");
 
+body {
+	overflow-x : hidden;
+	&.am-sticky-header {
+		/*Desktop*/
+		@media (min-width : 952px) {
+			.mdl-layout__content {
+				padding-top : 64px;
+			}
+
+		}
+	}
+	&.lock-overflow {
+		overflow-y : hidden;
+	}
+	&.admin-bar {
+		padding-top : 32px;
+		/*Tablet*/
+		@media (max-width : 951px) {
+			#mobile-navigation-aside .md-sidenav-content {
+				padding-top : 32px;
+			}
+		}
+		@media (max-width : 782px) {
+			padding-top : 46px;
+			#mobile-navigation-aside .md-sidenav-content {
+				padding-top : 46px;
+			}
+		}
+	}
+}
+
 a {
 	color : $cloudy;
 }
@@ -113,52 +144,6 @@ a {
 	span {
 		float      : left;
 		margin-top : 10px;
-	}
-}
-
-#am-show-adminbar {
-	position  : fixed;
-	right     : 2px;
-	top       : 2px;
-	z-index   : 9;
-	cursor    : pointer;
-	font-size : 18px;
-	&.show {
-		top : 32px;
-	}
-	&:hover {
-		animation : spin 4s linear infinite;
-		color     : $brandColor;
-	}
-
-	/*Mobile*/
-	@media (max-width : 782px) {
-		&.show {
-			top : 50px;
-		}
-	}
-}
-
-body {
-	overflow-x : hidden;
-	&.am-sticky-header {
-		/*Desktop*/
-		@media (min-width : 952px) {
-			.mdl-layout__content {
-				padding-top : 64px;
-			}
-
-		}
-	}
-	&.lock-overflow {
-		overflow-y : hidden;
-	}
-}
-
-#wpadminbar {
-	top : -50px;
-	&.show {
-		top : 0;
 	}
 }
 
