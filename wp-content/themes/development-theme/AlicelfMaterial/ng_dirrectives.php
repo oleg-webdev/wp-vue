@@ -15,18 +15,18 @@ function aa_func_20172003032058()
 		:md-ok-text="alertfail.text" @close="onClose"
 		ref="alertFailDialog">
 	</md-dialog-alert>
-	<div class="am-wrap">
-		<form method="post" role="form" v-amajax>
-			<input type="hidden" name="__method" value="post"/>
-			<input type="hidden" name="__action" value="ajx20174803014813"/>
-
-			<div class="form-group">
-				<input type="text" class="form-control" name="" placeholder="Input...">
-			</div>
-
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-	</div>
+<!--	<div class="am-wrap">-->
+<!--		<form method="post" role="form" v-amajax>-->
+<!--			<input type="hidden" name="__method" value="post"/>-->
+<!--			<input type="hidden" name="__action" value="ajx20174803014813"/>-->
+<!---->
+<!--			<div class="form-group">-->
+<!--				<input type="text" class="form-control" name="" placeholder="Input...">-->
+<!--			</div>-->
+<!---->
+<!--			<button type="submit" class="btn btn-primary">Submit</button>-->
+<!--		</form>-->
+<!--	</div>-->
 	<?php
 }
 add_action( 'admin_head', 'aa_func_20163316093324' );

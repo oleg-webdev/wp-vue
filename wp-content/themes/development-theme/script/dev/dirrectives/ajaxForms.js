@@ -38,7 +38,7 @@ module.exports = Vue.directive('amajax', {
 
 	// @TODO: make other checking
 	onSuccess(response) {
-		console.log(JSON.parse(response.data));
+		// console.log(JSON.parse(response.data));
 		this.vm.openDialog('alertOkDialog',{
 			alert : 'alertok',
 			data : {
