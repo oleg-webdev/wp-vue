@@ -1,6 +1,3 @@
-<style lang="scss">
-
-</style>
 <template id="minicart-template">
 	<div class="minicart-template-holder">
 

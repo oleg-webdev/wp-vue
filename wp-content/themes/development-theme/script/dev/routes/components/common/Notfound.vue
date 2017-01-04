@@ -1,5 +1,3 @@
-<style lang="scss">
-</style>
 <template>
 	<div id="Notfound-scope" ref="notfoundscope">
 		<h1 class="text-center mdl-color-text--blue-grey-700">.404 Nothing Found</h1>

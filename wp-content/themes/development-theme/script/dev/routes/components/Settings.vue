@@ -1,5 +1,3 @@
-<style lang="scss">
-</style>
 <template>
 	<div id="Settings-scope" ref="settingsscope">
 		<h1>Settings Component</h1>

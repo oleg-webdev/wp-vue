@@ -1,5 +1,3 @@
-<style lang="scss">
-</style>
 <template>
 	<div ref="restrictedscope" id="Restricted-scope">
 

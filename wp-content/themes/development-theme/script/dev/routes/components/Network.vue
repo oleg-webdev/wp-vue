@@ -1,6 +1,3 @@
-<style lang="scss">
-
-</style>
 <template>
 	<div id="Network-scope" ref="networkscope">
 		<h1>Network</h1>

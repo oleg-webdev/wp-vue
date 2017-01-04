@@ -1,137 +1,3 @@
-<style lang="scss">
-	#login-register-wrapper {
-		position : relative;
-		overflow : visible;
-	}
-
-	#forms-handler {
-		position      : relative;
-		overflow      : hidden;
-		z-index       : 1;
-		border-radius : 3px;
-
-		&.increase-z {
-			 z-index : 4;
-		}
-	}
-
-	#am-loginform-wrapper {
-		width        : 100%;
-		max-width    : 670px;
-		margin-left  : auto;
-		margin-right : auto;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-		* {
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-		}
-	}
-
-	#am-register-form {
-		-webkit-transition : all .2s;
-		-moz-transition    : all .2s;
-		transition         : all .2s;
-		position           : absolute;
-		background-color   : #1E88E5;
-		left               : 50%;
-		top                : 50%;
-		padding            : 0;
-		width              : 0;
-		height             : 0;
-		overflow           : hidden;
-		display            : flex;
-		justify-content    : center;
-		align-items        : center;
-		border-radius      : 50%;
-
-		&.open-form-opened {
-			 width : 1000px;
-			 height : 1000px;
-			 margin-left : -500px;
-			 margin-top : -500px;
-			 -webkit-transition : all .8s;
-			 -moz-transition    : all .8s;
-			 transition         : all .8s;
-		}
-	}
-
-	#register-trigger {
-		position           : absolute;
-		right              : -30px;
-		top                : 10px;
-		z-index            : 3;
-		-webkit-transition : all .3s;
-		-moz-transition    : all .3s;
-		transition         : all .3s;
-
-		&.icon-centered {
-			right        : 50%;
-			top          : 50%;
-			margin-top   : -20px;
-			margin-right : -20px;
-		}
-
-	}
-
-	#register-inner-wrap {
-		position : relative;
-		width : 100%;
-		max-width : 650px;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-
-		* {
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-		}
-
-		.md-card-header {
-			padding-left : 0;
-			padding-right : 0;
-		}
-
-		.md-card-actions {
-			padding-right : 0;
-		}
-
-		.md-card-header {
-			color : #fff;
-		}
-
-		.mdl-textfield--floating-label {
-			color :#fff;
-
-			.mdl-textfield__label {
-				color : rgba(255, 255, 255, 0.81);
-				&:after {
-					background-color: rgba(255, 255, 255, 0.81);
-				}
-			}
-
-			&.is-invalid {
-				.mdl-textfield__label {
-					color : red;
-					&:after {
-						background-color: red;
-					}
-				}
-			}
-		}
-
-	}
-
-	#close-register {
-		position : absolute;
-		right : 0;
-		top : 0;
-		/*Desktop*/
-		@media (min-width : 952px) {
-			right: -20px;
-		}
-	}
-
-</style>
 <template>
 	<div ref="authscope" id="Auth-scope">
 		<div class="container">
@@ -146,7 +12,9 @@
 						<md-icon>border_color</md-icon>
 					</md-button>
 
-					<div id="forms-handler" v-bind:class="{'increase-z':currentForm == 'registration'}">
+					<md-card-content id="forms-handler"
+													 v-bind:class="{'increase-z':currentForm == 'registration'}">
+						<!--Login-->
 						<div id="am-loginform-wrapper">
 							<md-card-header>
 								<div class="md-title">Login</div>
@@ -169,9 +37,9 @@
 										<md-button class="md-raised md-accent" type="submit">Login</md-button>
 									</md-card-actions>
 								</form>
+							</md-card-content>
 						</div>
-
-						</md-card-content>
+						<!--END Login Partial-->
 
 						<!--Register-->
 						<md-card-content id="am-register-form"
@@ -205,10 +73,10 @@
 									</md-card-actions>
 								</form>
 							</div>
-
-
 						</md-card-content>
-					</div>
+						<!--END Register partial-->
+
+					</md-card-content>
 
 				</md-card>
 
@@ -240,7 +108,7 @@
 		},
 
 
-		// Constructor
+		// Constructor comment jjjj
 		created(){
 
 		},

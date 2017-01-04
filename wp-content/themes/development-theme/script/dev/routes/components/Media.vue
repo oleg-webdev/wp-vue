@@ -1,5 +1,3 @@
-<style lang="scss">
-</style>
 <template>
 	<div class="Media-scope" ref="mediascope">
 		<h1>Media Component</h1>

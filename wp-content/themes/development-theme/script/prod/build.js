@@ -9874,31 +9874,6 @@ module.exports = Vue$2;
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":2}],8:[function(require,module,exports){
-var inserted = exports.cache = {}
-
-function noop () {}
-
-exports.insert = function (css) {
-  if (inserted[css]) return noop
-  inserted[css] = true
-
-  var elem = document.createElement('style')
-  elem.setAttribute('type', 'text/css')
-
-  if ('textContent' in elem) {
-    elem.textContent = css
-  } else {
-    elem.styleSheet.cssText = css
-  }
-
-  document.getElementsByTagName('head')[0].appendChild(elem)
-  return function () {
-    document.getElementsByTagName('head')[0].removeChild(elem)
-    inserted[css] = false
-  }
-}
-
-},{}],9:[function(require,module,exports){
 /**
  * vuex v2.1.1
  * (c) 2016 Evan You
@@ -10660,7 +10635,7 @@ var index = {
 return index;
 
 })));
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -10714,12 +10689,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1", __vue__options__)
+    hotAPI.rerender("data-v-2", __vue__options__)
   }
 })()}
-},{"../../vuex/User":23,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
+},{"../../vuex/User":22,"vue":7,"vue-hot-reload-api":3}],10:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -10800,12 +10775,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.rerender("data-v-1", __vue__options__)
   }
 })()}
-},{"../../vuex/Cart":22,"vue":7,"vue-hot-reload-api":3}],12:[function(require,module,exports){
+},{"../../vuex/Cart":21,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
 module.exports = Vue.directive('amajax', {
 
 	el     : null,
@@ -10881,7 +10856,7 @@ module.exports = Vue.directive('amajax', {
 
 
 });
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 window.eventHub = new Vue()
 window.Vuex = require('vuex')
 window.VueResource = require('vue-resource')
@@ -10995,7 +10970,7 @@ new Vue({
 	}
 
 });
-},{"./components/Profile/index.vue":10,"./components/WooCart/index.vue":11,"./dirrectives/ajaxForms":12,"./routes":20,"./script":21,"./vuex/User":23,"vue-material":4,"vue-resource":5,"vuex":9}],14:[function(require,module,exports){
+},{"./components/Profile/index.vue":9,"./components/WooCart/index.vue":10,"./dirrectives/ajaxForms":11,"./routes":19,"./script":20,"./vuex/User":22,"vue-material":4,"vue-resource":5,"vuex":8}],13:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11031,12 +11006,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.rerender("data-v-5", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],14:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11086,10 +11061,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.rerender("data-v-3", __vue__options__)
   }
 })()}
-},{"../../vuex/User":23,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
+},{"../../vuex/User":22,"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11126,11 +11101,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.rerender("data-v-4", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 2, stdin */\n#login-register-wrapper {\n  position: relative;\n  overflow: visible; }\n\n/* line 7, stdin */\n#forms-handler {\n  position: relative;\n  overflow: hidden;\n  z-index: 1;\n  border-radius: 3px; }\n  /* line 13, stdin */\n  #forms-handler.increase-z {\n    z-index: 4; }\n\n/* line 18, stdin */\n#am-loginform-wrapper {\n  width: 100%;\n  max-width: 670px;\n  margin-left: auto;\n  margin-right: auto;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n  /* line 25, stdin */\n  #am-loginform-wrapper * {\n    -moz-box-sizing: border-box;\n    box-sizing: border-box; }\n\n/* line 31, stdin */\n#am-register-form {\n  -webkit-transition: all .2s;\n  -moz-transition: all .2s;\n  transition: all .2s;\n  position: absolute;\n  background-color: #1E88E5;\n  left: 50%;\n  top: 50%;\n  padding: 0;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%; }\n  /* line 48, stdin */\n  #am-register-form.open-form-opened {\n    width: 1000px;\n    height: 1000px;\n    margin-left: -500px;\n    margin-top: -500px;\n    -webkit-transition: all .8s;\n    -moz-transition: all .8s;\n    transition: all .8s; }\n\n/* line 59, stdin */\n#register-trigger {\n  position: absolute;\n  right: -30px;\n  top: 10px;\n  z-index: 3;\n  -webkit-transition: all .3s;\n  -moz-transition: all .3s;\n  transition: all .3s; }\n  /* line 68, stdin */\n  #register-trigger.icon-centered {\n    right: 50%;\n    top: 50%;\n    margin-top: -20px;\n    margin-right: -20px; }\n\n/* line 77, stdin */\n#register-inner-wrap {\n  position: relative;\n  width: 100%;\n  max-width: 650px;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n  /* line 84, stdin */\n  #register-inner-wrap * {\n    -moz-box-sizing: border-box;\n    box-sizing: border-box; }\n  /* line 89, stdin */\n  #register-inner-wrap .md-card-header {\n    padding-left: 0;\n    padding-right: 0; }\n  /* line 94, stdin */\n  #register-inner-wrap .md-card-actions {\n    padding-right: 0; }\n  /* line 98, stdin */\n  #register-inner-wrap .md-card-header {\n    color: #fff; }\n  /* line 102, stdin */\n  #register-inner-wrap .mdl-textfield--floating-label {\n    color: #fff; }\n    /* line 105, stdin */\n    #register-inner-wrap .mdl-textfield--floating-label .mdl-textfield__label {\n      color: rgba(255, 255, 255, 0.81); }\n      /* line 107, stdin */\n      #register-inner-wrap .mdl-textfield--floating-label .mdl-textfield__label:after {\n        background-color: rgba(255, 255, 255, 0.81); }\n    /* line 113, stdin */\n    #register-inner-wrap .mdl-textfield--floating-label.is-invalid .mdl-textfield__label {\n      color: red; }\n      /* line 115, stdin */\n      #register-inner-wrap .mdl-textfield--floating-label.is-invalid .mdl-textfield__label:after {\n        background-color: red; }\n\n/* line 124, stdin */\n#close-register {\n  position: absolute;\n  right: 0;\n  top: 0;\n  /*Desktop*/ }\n  @media (min-width: 952px) {\n    /* line 124, stdin */\n    #close-register {\n      right: -20px; } }")
+},{"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11165,20 +11139,19 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2",attrs:{"id":"login-register-form"}},[_h('br')," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm == 'registration'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])])," ",_h('div',{class:{'increase-z':_vm.currentForm == 'registration'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," "," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{attrs:{"id":"register-inner-wrap"}},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab",attrs:{"id":"close-register","title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":""}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])])," ",_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised",attrs:{"type":"submit"}},["Register"])])])])])])])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2",attrs:{"id":"login-register-form"}},[_h('br')," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm == 'registration'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm == 'registration'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," "," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{attrs:{"id":"register-inner-wrap"}},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab",attrs:{"id":"close-register","title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":""}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])])," ",_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised",attrs:{"type":"submit"}},["Register"])])])])])," "])])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-5", __vue__options__)
+    hotAPI.rerender("data-v-6", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],18:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11213,12 +11186,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8", __vue__options__)
+    hotAPI.rerender("data-v-7", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],19:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11254,12 +11227,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.rerender("data-v-8", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],20:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],19:[function(require,module,exports){
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
@@ -11300,7 +11273,7 @@ module.exports = new VueRouter({
 		},
 	]
 })
-},{"./components/Media.vue":14,"./components/Network.vue":15,"./components/Settings.vue":16,"./components/authComponent.vue":17,"./components/common/BadRequest.vue":18,"./components/common/Notfound.vue":19,"vue-router":6}],21:[function(require,module,exports){
+},{"./components/Media.vue":13,"./components/Network.vue":14,"./components/Settings.vue":15,"./components/authComponent.vue":16,"./components/common/BadRequest.vue":17,"./components/common/Notfound.vue":18,"vue-router":6}],20:[function(require,module,exports){
 var domready = require('domready')
 var defaultAMscript = {
 	run: function(){
@@ -11384,7 +11357,7 @@ var defaultAMscript = {
 }
 defaultAMscript.run()
 module.exports = defaultAMscript
-},{"domready":1}],22:[function(require,module,exports){
+},{"domready":1}],21:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11406,7 +11379,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-},{}],23:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11431,4 +11404,4 @@ module.exports = new Vuex.Store({
 
 
 });
-},{}]},{},[13]);
+},{}]},{},[12]);
