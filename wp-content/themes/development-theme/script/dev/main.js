@@ -17,12 +17,31 @@ Vue.material.registerTheme({
 
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 Vue.component('userprofile', require('./components/Profile/index.vue'))
-var CurrentUser = require('./vuex/User')
 
-var router = require('./routes')
+let CurrentUser = require('./vuex/User')
+CurrentUser.commit('setUserdata', AMdefaults.currentUser);
+
+let router = require('./routes')
+
+router.beforeEach((to, from, next) => {
+
+	let isLoggedIn = CurrentUser.state.userdata
+
+	if('requiresAuth' in to.meta) {
+		if(to.meta.requiresAuth && !isLoggedIn) {
+			next({ name: 'authscreen' })
+		}
+		if(to.meta.requiresAuth === false && isLoggedIn) {
+			next({ name: 'badrequest' })
+		}
+	}
+	next()
+})
+
+
 require('./script')
 
-var amWoo = AMdefaults.wooOptions;
+let amWoo = AMdefaults.wooOptions;
 
 new Vue({
 	'router': router,
@@ -57,8 +76,6 @@ new Vue({
 	},
 
 	created: function() {
-		var vm = this;
-		CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
@@ -76,7 +93,7 @@ new Vue({
 			this.$refs[ref].close();
 		},
 		onClose() {
-			var vm = this;
+			let vm = this;
 			setTimeout(()=>{
 				vm.alertok = {
 					type   : 'success',

@@ -4,7 +4,7 @@
 <template>
 	<div id="Profile-scope" class="flex-container">
 
-		<md-list id="dashboardnav" class="md-dense flex-col-20">
+		<md-list id="dashboardnav" class="md-dense flex-col-20" v-bind:class="{'hidden':!currentUserModel}">
 
 			<md-list-item class="md-primary">
 				<router-link class="button" to="/user" exact>
@@ -28,16 +28,18 @@
 			</md-list-item>
 
 			<md-list-item>
-				<router-link class="button" to="/user/jibberjabber">
+				<router-link class="button" to="/user/auth">
 					<md-icon>warning</md-icon>
-					<span>Notfound</span>
+					<span>Auth</span>
 				</router-link>
 			</md-list-item>
 
 		</md-list>
 
 
-		<div id="network-content" class="flex-col-80" ref="networkcontent">
+		<div class="flex-col-80" v-bind:class="{'flex-col-100': !currentUserModel}"
+				 id="network-content" ref="networkcontent"
+		>
 			<transition name="panelslide">
 				<router-view class="view"></router-view>
 			</transition>
@@ -47,6 +49,7 @@
 </template>
 
 <script>
+	import user from '../../vuex/User'
 	export default {
 		data() {
 			return {
@@ -55,6 +58,10 @@
 		},
 
 		computed: {
+
+			currentUserModel: function() {
+				return user.state.userdata;
+			}
 
 		},
 

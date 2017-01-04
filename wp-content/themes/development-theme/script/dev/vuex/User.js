@@ -6,9 +6,13 @@ module.exports = new Vuex.Store({
 
 	mutations: {
 
-		setUserdata: function(state, data) {
-			state.userdata = data;
+		setUserdata(state, data) {
+			state.userdata = data
 		}
+
+	},
+
+	actions: {
 
 	},
 

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	import usr from '../../vuex/User'
+	import user from '../../vuex/User'
 	export default {
 
 		data() {
@@ -21,7 +21,7 @@
 		computed: {
 
 			currentUserModel: function() {
-				return usr.state.userdata;
+				return user.state.userdata;
 			}
 
 		},
