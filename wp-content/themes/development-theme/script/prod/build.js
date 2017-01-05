@@ -10691,7 +10691,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
 },{"../../vuex/User":22,"vue":7,"vue-hot-reload-api":3}],10:[function(require,module,exports){
@@ -10777,7 +10777,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
 },{"../../vuex/Cart":21,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
@@ -11006,9 +11006,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],14:[function(require,module,exports){
@@ -11059,9 +11059,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"../../vuex/User":22,"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11101,7 +11101,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11139,16 +11139,16 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2",attrs:{"id":"login-register-form"}},[_h('br')," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm == 'registration'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm == 'registration'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," "," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{attrs:{"id":"register-inner-wrap"}},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab",attrs:{"id":"close-register","title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":""}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])])," ",_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised",attrs:{"type":"submit"}},["Register"])])])])])," "])])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2",attrs:{"id":"login-register-form"}},[_h('br')," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm == 'registration'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm == 'registration'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," "," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{attrs:{"id":"register-inner-wrap"}},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"id":"close-register","title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":""}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])])," ",_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},["Register"])])])])])," "])])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-8", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6", __vue__options__)
+    hotAPI.rerender("data-v-8", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
@@ -11186,9 +11186,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){
@@ -11227,9 +11227,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-8", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],19:[function(require,module,exports){

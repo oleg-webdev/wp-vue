@@ -111,8 +111,15 @@ main {
 
 /**
  * ==================== Auth ======================
- * @TODO: make responsive register form
  */
+#network-content {
+	> #Auth-scope {
+		/*Mobile*/
+		@media (max-width : 767px) {
+			padding : 0;
+		}
+	}
+}
 #login-register-wrapper {
 	position : relative;
 	overflow : visible;
@@ -146,41 +153,72 @@ main {
 }
 
 #am-register-form {
-	-webkit-transition : all .2s;
-	-moz-transition    : all .2s;
-	transition         : all .2s;
-	position           : absolute;
-	background-color   : $brandColor;
-	left               : 50%;
-	top                : 50%;
-	padding            : 0;
-	width              : 0;
-	height             : 0;
-	overflow           : hidden;
-	display            : flex;
-	justify-content    : center;
-	align-items        : center;
-	border-radius      : 50%;
+	@include transition(.2s);
+	position        : absolute;
+	left            : 50%;
+	top             : 50%;
+	padding         : 0;
+	width           : 0;
+	height          : 0;
+	display         : flex;
+	justify-content : center;
+	align-items     : center;
+	border-radius   : 50%;
+	> * {
+		display : none;
+	}
+
+	&:before {
+		@include transition(.3s);
+		content          : "";
+		position         : absolute;
+		left             : 50%;
+		background-color : $brandColor;
+		top              : 50%;
+		padding          : 0;
+		width            : 0;
+		height           : 0;
+		display          : block;
+		overflow         : hidden;
+		border-radius    : 50%;
+	}
 
 	&.open-form-opened {
-		width              : 1000px;
-		height             : 1000px;
-		margin-left        : -500px;
-		margin-top         : -500px;
-		-webkit-transition : all .8s;
-		-moz-transition    : all .8s;
-		transition         : all .8s;
+		overflow      : visible;
+		width         : 100%;
+		height        : 100%;
+		margin-left   : -50%;
+		top           : 0;
+		border-radius : 3px;
+		z-index       : 5;
+		@include transition(.8s);
+		> * {
+			display : block;
+		}
+
+		&:before {
+			@include transition(.8s);
+			width       : 1000px;
+			height      : 1000px;
+			margin-left : -500px;
+			margin-top  : -500px;
+		}
+		
+		/*Tablet*/
+		@media (max-width : 1024px) {
+			padding-left : 30px;
+			padding-right : 30px;
+		}
+		
 	}
 }
 
 #register-trigger {
-	position           : absolute;
-	right              : -30px;
-	top                : 10px;
-	z-index            : 3;
-	-webkit-transition : all .3s;
-	-moz-transition    : all .3s;
-	transition         : all .3s;
+	position : absolute;
+	right    : -30px;
+	top      : 10px;
+	z-index  : 3;
+	@include transition(.2s);
 
 	&.icon-centered {
 		right        : 50%;

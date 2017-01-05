@@ -47,7 +47,9 @@
 						>
 							<div id="register-inner-wrap">
 								<md-card-header>
-									<md-button id="close-register" @click="toggleRegistration" title="Close" class="md-fab">
+									<md-button id="close-register" class="md-fab animated"
+														 v-bind:class="{'fadeInRightBig':currentForm == 'registration'}"
+														 @click="toggleRegistration" title="Close">
 										<md-icon>close</md-icon>
 									</md-button>
 									<div class="md-title">Registration</div>
@@ -69,7 +71,9 @@
 										</div>
 									</div>
 									<md-card-actions>
-										<md-button class="md-raised" type="submit">Register</md-button>
+										<md-button class="md-raised md-accent animated"
+															 v-bind:class="{'fadeInUpBig':currentForm == 'registration'}"
+															 type="submit">Register</md-button>
 									</md-card-actions>
 								</form>
 							</div>
