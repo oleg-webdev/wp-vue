@@ -112,7 +112,6 @@
 		},
 
 
-		// Constructor comment jjjj
 		created(){
 
 		},

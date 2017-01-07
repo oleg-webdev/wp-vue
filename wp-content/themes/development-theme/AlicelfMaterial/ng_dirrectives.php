@@ -5,16 +5,17 @@ function aa_func_20172003032058()
 	?>
 	<md-dialog-alert class="alert-success-dialog"
 		:md-type="alertok.type"
-		:md-content="alertok.content"
+		:md-content-html="alertok.contentHtml"
 		:md-ok-text="alertok.text" @close="onClose"
 		ref="alertOkDialog">
 	</md-dialog-alert>
 	<md-dialog-alert class="alert-fail-dialog"
 	  :md-type="alertfail.type"
-		:md-content="alertfail.content"
+		:md-content-html="alertfail.contentHtml"
 		:md-ok-text="alertfail.text" @close="onClose"
 		ref="alertFailDialog">
 	</md-dialog-alert>
+
 <!--	<div class="am-wrap">-->
 <!--		<form method="post" role="form" v-amajax>-->
 <!--			<input type="hidden" name="__method" value="post"/>-->

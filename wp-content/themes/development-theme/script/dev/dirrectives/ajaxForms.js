@@ -43,7 +43,7 @@ module.exports = Vue.directive('amajax', {
 			alert : 'alertok',
 			data : {
 				type: 'success',
-				content: 'Success',
+				contentHtml: 'Success',
 				text: 'Ok'
 			}
 		})
@@ -55,7 +55,7 @@ module.exports = Vue.directive('amajax', {
 			alert : 'alertfail',
 			data : {
 				type: 'fail',
-				content: 'Fail. Wrong request!',
+				contentHtml: 'Fail. Wrong request!',
 				text: 'Ok'
 			}
 		})

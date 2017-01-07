@@ -94,7 +94,22 @@
 			},
 
 			toggleCart: function() {
-				this.cartOpened = !this.cartOpened;
+				if (this.totalCart > 0) {
+					this.cartOpened = !this.cartOpened;
+				} else {
+					this.$parent.openDialog('alertOkDialog', {
+						alert: 'alertok',
+						data : {
+							type       : 'success',
+							contentHtml:
+								`<p class="text-center">
+									<strong>Your cart is empty.</strong>
+								</p>`,
+							text       : 'Ok'
+						}
+					})
+				}
+
 			}
 		}
 	}

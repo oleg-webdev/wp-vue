@@ -10689,9 +10689,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
 },{"../../vuex/User":22,"vue":7,"vue-hot-reload-api":3}],10:[function(require,module,exports){
@@ -10760,7 +10760,18 @@ exports.default = {
 		},
 
 		toggleCart: function toggleCart() {
-			this.cartOpened = !this.cartOpened;
+			if (this.totalCart > 0) {
+				this.cartOpened = !this.cartOpened;
+			} else {
+				this.$parent.openDialog('alertOkDialog', {
+					alert: 'alertok',
+					data: {
+						type: 'success',
+						contentHtml: '<p class="text-center">\n\t\t\t\t\t\t\t\t\t<strong>Your cart is empty.</strong>\n\t\t\t\t\t\t\t\t</p>',
+						text: 'Ok'
+					}
+				});
+			}
 		}
 	}
 };
@@ -10775,9 +10786,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
 },{"../../vuex/Cart":21,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
@@ -10826,7 +10837,7 @@ module.exports = Vue.directive('amajax', {
 			alert : 'alertok',
 			data : {
 				type: 'success',
-				content: 'Success',
+				contentHtml: 'Success',
 				text: 'Ok'
 			}
 		})
@@ -10838,7 +10849,7 @@ module.exports = Vue.directive('amajax', {
 			alert : 'alertfail',
 			data : {
 				type: 'fail',
-				content: 'Fail. Wrong request!',
+				contentHtml: 'Fail. Wrong request!',
 				text: 'Ok'
 			}
 		})
@@ -10886,12 +10897,12 @@ router.beforeEach((to, from, next) => {
 
 	let isLoggedIn = CurrentUser.state.userdata
 
-	if('requiresAuth' in to.meta) {
-		if(to.meta.requiresAuth && !isLoggedIn) {
-			next({ name: 'authscreen' })
+	if ('requiresAuth' in to.meta) {
+		if (to.meta.requiresAuth && !isLoggedIn) {
+			next({name: 'authscreen'})
 		}
-		if(to.meta.requiresAuth === false && isLoggedIn) {
-			next({ name: 'badrequest' })
+		if (to.meta.requiresAuth === false && isLoggedIn) {
+			next({name: 'badrequest'})
 		}
 	}
 	next()
@@ -10913,15 +10924,15 @@ new Vue({
 		authInfo   : AMdefaults.themeSettings.auth_info,
 
 		alertok: {
-			type   : 'success',
-			content: 'Success',
-			text   : 'Ok'
+			type       : 'success',
+			contentHtml: 'Success',
+			text       : 'Ok'
 		},
 
 		alertfail: {
-			type   : 'fail',
-			content: 'Fail',
-			text   : 'Ok'
+			type       : 'fail',
+			contentHtml: 'Fail',
+			text       : 'Ok'
 		}
 
 	},
@@ -10953,16 +10964,16 @@ new Vue({
 		},
 		onClose() {
 			let vm = this;
-			setTimeout(()=>{
+			setTimeout(()=> {
 				vm.alertok = {
-					type   : 'success',
-					content: 'Success',
-					text   : 'Ok'
+					type       : 'success',
+					contentHtml: 'Success',
+					text       : 'Ok'
 				};
 				vm.alertfail = {
-					type   : 'fail',
-					content: 'Fail',
-					text   : 'Ok'
+					type       : 'fail',
+					contentHtml: 'Fail',
+					text       : 'Ok'
 				}
 			}, 800)
 		}
@@ -11006,9 +11017,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],14:[function(require,module,exports){
@@ -11059,9 +11070,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"../../vuex/User":22,"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11099,9 +11110,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11146,9 +11157,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-8", __vue__options__)
+    hotAPI.rerender("data-v-6", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
@@ -11186,9 +11197,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-8", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){

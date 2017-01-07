@@ -27,12 +27,12 @@ router.beforeEach((to, from, next) => {
 
 	let isLoggedIn = CurrentUser.state.userdata
 
-	if('requiresAuth' in to.meta) {
-		if(to.meta.requiresAuth && !isLoggedIn) {
-			next({ name: 'authscreen' })
+	if ('requiresAuth' in to.meta) {
+		if (to.meta.requiresAuth && !isLoggedIn) {
+			next({name: 'authscreen'})
 		}
-		if(to.meta.requiresAuth === false && isLoggedIn) {
-			next({ name: 'badrequest' })
+		if (to.meta.requiresAuth === false && isLoggedIn) {
+			next({name: 'badrequest'})
 		}
 	}
 	next()
@@ -54,15 +54,15 @@ new Vue({
 		authInfo   : AMdefaults.themeSettings.auth_info,
 
 		alertok: {
-			type   : 'success',
-			content: 'Success',
-			text   : 'Ok'
+			type       : 'success',
+			contentHtml: 'Success',
+			text       : 'Ok'
 		},
 
 		alertfail: {
-			type   : 'fail',
-			content: 'Fail',
-			text   : 'Ok'
+			type       : 'fail',
+			contentHtml: 'Fail',
+			text       : 'Ok'
 		}
 
 	},
@@ -94,16 +94,16 @@ new Vue({
 		},
 		onClose() {
 			let vm = this;
-			setTimeout(()=>{
+			setTimeout(()=> {
 				vm.alertok = {
-					type   : 'success',
-					content: 'Success',
-					text   : 'Ok'
+					type       : 'success',
+					contentHtml: 'Success',
+					text       : 'Ok'
 				};
 				vm.alertfail = {
-					type   : 'fail',
-					content: 'Fail',
-					text   : 'Ok'
+					type       : 'fail',
+					contentHtml: 'Fail',
+					text       : 'Ok'
 				}
 			}, 800)
 		}
