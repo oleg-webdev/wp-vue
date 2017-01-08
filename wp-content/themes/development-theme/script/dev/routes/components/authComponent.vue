@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
 	<div ref="authscope" id="Auth-scope">
 		<div class="container">
 			<div id="login-register-form"
@@ -8,6 +8,7 @@
 				<md-card id="login-register-wrapper">
 
 					<md-button @click="toggleRegistration" title="Registration" class="md-fab"
+										 v-if="registrationInfo == 'yes'"
 										 v-bind:class="{'icon-centered':currentForm == 'registration'}"
 										 id="register-trigger">
 						<md-icon>border_color</md-icon>
@@ -24,6 +25,7 @@
 							<!--Login-->
 							<md-card-content id="am-loginform">
 								<form @submit.prevent="loginUser" action="" method="post" role="form">
+
 									<div
 										v-bind:class="[{'is-invalid':errors.login}, {'is-focused':errors.login}]"
 										class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -31,6 +33,7 @@
 										<label class="mdl-textfield__label" for="am-username">Username</label>
 										<span class="mdl-textfield__error">{{errors.login.message}}</span>
 									</div>
+
 									<div
 										v-bind:class="[{'is-invalid':errors.pass}, {'is-focused':errors.pass}]"
 										class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -48,7 +51,7 @@
 						<!--END Login Partial-->
 
 						<!--Register-->
-						<md-card-content id="am-register-form"
+						<md-card-content id="am-register-form" v-if="registrationInfo == 'yes'"
 														 v-bind:class="{'open-form-opened':currentForm == 'registration'}"
 						>
 							<div id="register-inner-wrap">
@@ -61,20 +64,31 @@
 									<div class="md-title">Registration</div>
 									<div class="md-subhead">Subheading title</div>
 								</md-card-header>
-								<form action="">
+								<form @submit.prevent="registerUser" action="" method="post" role="form">
+
 									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-										<input class="mdl-textfield__input" type="email" id="reg-email">
+										<input v-model="registerUserModel.login"
+													 class="mdl-textfield__input" type="email" id="reg-email">
 										<label class="mdl-textfield__label" for="reg-email">Email</label>
+										<span class="mdl-textfield__error">{{errors.regLogin.message}}</span>
 									</div>
+
 									<div class="flex-container">
+
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50">
-											<input class="mdl-textfield__input" type="password" id="reg-password">
+											<input v-model="registerUserModel.pass"
+														 class="mdl-textfield__input" type="password" id="reg-password">
 											<label class="mdl-textfield__label" for="reg-password">Password</label>
+											<span class="mdl-textfield__error">{{errors.regPass.message}}</span>
 										</div>
+
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50">
-											<input class="mdl-textfield__input" type="password" id="reg-password-confirm">
+											<input v-model="registerUserModel.confirm"
+														 class="mdl-textfield__input" type="password" id="reg-password-confirm">
 											<label class="mdl-textfield__label" for="reg-password-confirm">Password Confirm</label>
+											<span class="mdl-textfield__error">{{errors.confirm.message}}</span>
 										</div>
+
 									</div>
 									<md-card-actions>
 										<md-button class="md-raised md-accent animated"
@@ -102,21 +116,33 @@
 
 		data() {
 			return {
-				formClass: 'rubberBand',
-				currentForm   : 'login',
+				registrationInfo: AMdefaults.themeSettings.auth_info.registration_info,
+				formClass       : 'rubberBand',
+				currentForm     : 'login',
+
 				loginUserModel: {
 					login: '',
 					pass : ''
 				},
 
-				errors: {login:'',pass:''}
+				registerUserModel: {
+					login  : '',
+					pass   : '',
+					confirm: ''
+				},
+
+				errors: {
+					login   : '',
+					pass    : '',
+					regLogin: '',
+					regPass : '',
+					confirm : ''
+				}
 
 			}
 		},
 
-		computed: {
-
-		},
+		computed: {},
 
 		methods: {
 
@@ -124,9 +150,15 @@
 				this.currentForm = this.currentForm === 'registration' ? 'login': 'registration';
 			},
 
+			trunkErrors() {
+				for (var obj in this.errors) {
+					this.errors[obj] = ''
+				}
+			},
+
 			loginUser() {
 				this.formClass = '';
-				this.errors = {login:'',pass:''}
+				this.trunkErrors()
 				const loginData = dataToPost('ajx20174507084516', this.loginUserModel);
 				this.$http.post(AMdefaults.ajaxurl, loginData).then(function(response) {
 					let data = JSON.parse(response.data);
@@ -136,10 +168,16 @@
 					} else {
 						this.errors[data.status.field] = data.status
 						this.formClass = 'shake'
-
-						console.log(data.status, this.errors);
 					}
+
 				});
+			},
+
+			// @TODO: Do register
+			registerUser() {
+
+				console.log(this.registerUserModel)
+
 			}
 
 		},

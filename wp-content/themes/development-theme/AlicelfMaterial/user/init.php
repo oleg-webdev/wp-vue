@@ -101,7 +101,7 @@ if ( ! function_exists( 'send_me_confirmation_registration_link' ) ) {
  * ==================== Disable admin area for non admins ======================
  * 03.10.2016
  */
-//add_action( 'wp_loaded', 'aa_func_20165803055837' );
+add_action( 'wp_loaded', 'aa_func_20165803055837' );
 function aa_func_20165803055837()
 {
 	global $_am;
@@ -113,9 +113,7 @@ function aa_func_20165803055837()
 		];
 		if ( ( is_admin() || in_array( $gl, $list ) ) && ! $is_ajax ) {
 			if ( ! is_super_admin( get_current_user_id() ) ) {
-				// wp_redirect( get_am_network_endpoint() );
-				// @TODO: Update Value
-				wp_redirect( get_site_url() );
+				 wp_redirect( get_am_network_endpoint() );
 				die;
 			}
 		}
