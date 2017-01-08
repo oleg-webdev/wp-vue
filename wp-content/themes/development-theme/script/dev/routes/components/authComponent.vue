@@ -2,7 +2,8 @@
 	<div ref="authscope" id="Auth-scope">
 		<div class="container">
 			<div id="login-register-form"
-					 class="col-md-8 col-md-offset-2 animated rubberBand">
+					 v-bind:class="[formClass]"
+					 class="col-md-8 col-md-offset-2 animated">
 				<br>
 				<md-card id="login-register-wrapper">
 
@@ -23,14 +24,19 @@
 							<!--Login-->
 							<md-card-content id="am-loginform">
 								<form @submit.prevent="loginUser" action="" method="post" role="form">
-
-									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									<div
+										v-bind:class="[{'is-invalid':errors.login}, {'is-focused':errors.login}]"
+										class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 										<input v-model="loginUserModel.login" class="mdl-textfield__input" type="text" id="am-username">
 										<label class="mdl-textfield__label" for="am-username">Username</label>
+										<span class="mdl-textfield__error">{{errors.login.message}}</span>
 									</div>
-									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									<div
+										v-bind:class="[{'is-invalid':errors.pass}, {'is-focused':errors.pass}]"
+										class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 										<input v-model="loginUserModel.pass" class="mdl-textfield__input" type="password" id="am-password">
 										<label class="mdl-textfield__label" for="am-password">Password</label>
+										<span class="mdl-textfield__error">{{errors.pass.message}}</span>
 									</div>
 
 									<md-card-actions>
@@ -96,14 +102,15 @@
 
 		data() {
 			return {
-
+				formClass: 'rubberBand',
 				currentForm   : 'login',
 				loginUserModel: {
 					login: '',
 					pass : ''
 				},
 
-				errors: []
+				errors: {login:'',pass:''}
+
 			}
 		},
 
@@ -118,17 +125,19 @@
 			},
 
 			loginUser() {
-				this.errors = []
+				this.formClass = '';
+				this.errors = {login:'',pass:''}
 				const loginData = dataToPost('ajx20174507084516', this.loginUserModel);
 				this.$http.post(AMdefaults.ajaxurl, loginData).then(function(response) {
 					let data = JSON.parse(response.data);
-
-					if (data.status === 'success') {
+					if (data.status.type === 'success') {
 						CurrentUser.commit('setUserdata', data.user)
-						console.log(CurrentUser.state.userdata);
 						this.$router.push({name: 'userentrypoint'})
 					} else {
-						this.errors.push(data.status)
+						this.errors[data.status.field] = data.status
+						this.formClass = 'shake'
+
+						console.log(data.status, this.errors);
 					}
 				});
 			}
@@ -144,7 +153,6 @@
 			var vm = this;
 			eventHub.$emit('profileViewHeight', vm.$refs.authscope.clientHeight)
 		},
-
 
 	}
 </script>
