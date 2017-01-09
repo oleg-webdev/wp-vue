@@ -183,6 +183,12 @@ main {
 		overflow         : hidden;
 		border-radius    : 50%;
 	}
+	&#am-resetpass-form {
+		&:before {
+			background-color: #ff5722;
+
+		}
+	}
 
 	&.open-form-opened {
 		overflow      : visible;
