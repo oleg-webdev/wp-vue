@@ -42,3 +42,66 @@ function ajx20174507084516()
 	echo json_encode( $response );
 	die;
 }
+
+/**
+ * ==================== Registration ======================
+ * 09.01.2017
+ */
+add_action( 'wp_ajax_nopriv_ajx20172609122644', 'ajx20172609122644' );
+add_action( 'wp_ajax_ajx20172609122644', 'ajx20172609122644' );
+function ajx20172609122644()
+{
+	global $_am;
+	$registration_is_enabled = $_am[ 'network-registration' ] === 'yes';
+	$email_confirmation_flow = $_am[ 'network-confirmation-flow' ];
+	$response                = [
+		'data'   => $_POST,
+		'status' => 'fail'
+	];
+
+	if ( $registration_is_enabled ) {
+
+		if ( $email_confirmation_flow === 'confirm_before' ) {
+
+			// @TODO: send registration link
+			// reset/confirm
+			// send_me_confirmation_registration_link( $email, 'confirm' )
+
+		} else {
+
+			// @TODO: registration
+
+			if ( $email_confirmation_flow === 'confirm_after' ) {
+
+				// @TODO: send confirmation link
+				// @TODO: create confirmation flash message
+
+			}
+		}
+
+	}
+
+	echo json_encode( $response );
+	die;
+}
+
+/**
+ * ==================== Reset Password ======================
+ * 09.01.2017
+ */
+add_action( 'wp_ajax_nopriv_ajx20173909123946', 'ajx20173909123946' );
+add_action( 'wp_ajax_ajx20173909123946', 'ajx20173909123946' );
+function ajx20173909123946()
+{
+	$response = [
+		'data'   => $_POST,
+		'status' => 'fail'
+	];
+
+	// @TODO: send reset password link
+	// reset/confirm
+	// send_me_confirmation_registration_link( $email, 'reset' )
+
+	echo json_encode( $response );
+	die;
+}

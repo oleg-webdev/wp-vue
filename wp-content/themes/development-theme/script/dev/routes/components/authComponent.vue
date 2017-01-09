@@ -8,21 +8,33 @@
 				<md-card id="login-register-wrapper">
 
 					<md-button @click="toggleRegistration" title="Registration" class="md-fab"
-										 v-if="registrationInfo == 'yes'"
-										 v-bind:class="{'icon-centered':currentForm == 'registration'}"
+										 v-if="registrationInfo.registration_info == 'yes'"
+										 v-bind:class="{'icon-centered':currentForm != 'login'}"
 										 id="register-trigger">
 						<md-icon>border_color</md-icon>
+						<md-tooltip md-direction="top">Registration</md-tooltip>
 					</md-button>
 
+					<md-button @click="toggleResetPassword" title="Reset Password" class="md-fab"
+										 v-bind:class="{'icon-centered':currentForm != 'login'}"
+										 id="reset-trigger">
+						<md-icon>send</md-icon>
+						<md-tooltip md-direction="top">Reset Password</md-tooltip>
+					</md-button>
+
+
 					<md-card-content id="forms-handler"
-													 v-bind:class="{'increase-z':currentForm == 'registration'}">
-						<!--Login-->
+													 v-bind:class="{'increase-z':currentForm != 'login'}">
+
+						<!--
+							Login Form
+						-->
 						<div id="am-loginform-wrapper">
 							<md-card-header>
 								<div class="md-title">Login</div>
 								<div class="md-subhead">Enter Your login and password</div>
 							</md-card-header>
-							<!--Login-->
+
 							<md-card-content id="am-loginform">
 								<form @submit.prevent="loginUser" action="" method="post" role="form">
 
@@ -48,19 +60,63 @@
 								</form>
 							</md-card-content>
 						</div>
-						<!--END Login Partial-->
+						<!--Login Form END-->
 
-						<!--Register-->
-						<md-card-content id="am-register-form" v-if="registrationInfo == 'yes'"
+
+						<!--
+							Reset Password Form
+						-->
+						<md-card-content id="am-resetpass-form"
+														 v-bind:class="{'open-form-opened':currentForm == 'resetpassword'}"
+						>
+							<div class="register-inner-wrap">
+								<md-card-header>
+									<md-button class="md-fab animated close-frm-btn"
+														 v-bind:class="{'fadeInRightBig':currentForm == 'resetpassword'}"
+														 @click="toggleResetPassword" title="Close">
+										<md-icon>close</md-icon>
+									</md-button>
+
+									<div class="md-title">Reset Password</div>
+									<div class="md-subhead">Subheading title</div>
+								</md-card-header>
+								<form @submit.prevent="resetPasswordForm" action="" method="post" role="form">
+
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input v-model="resetUserModel.email"
+													 class="mdl-textfield__input" type="email" id="reset-email">
+										<label class="mdl-textfield__label" for="reset-email">Email</label>
+										<span class="mdl-textfield__error">{{errors.resetEmail.message}}</span>
+									</div>
+
+									<md-card-actions>
+										<md-button class="md-raised md-accent animated"
+															 v-bind:class="{'fadeInUpBig':currentForm == 'resetpassword'}"
+															 type="submit">Send Reset pass
+										</md-button>
+									</md-card-actions>
+
+								</form>
+							</div>
+						</md-card-content>
+						<!--Reset Password END-->
+
+
+						<!--
+							Register Form
+						-->
+						<md-card-content id="am-register-form" v-if="registrationInfo.registration_info == 'yes'"
 														 v-bind:class="{'open-form-opened':currentForm == 'registration'}"
 						>
-							<div id="register-inner-wrap">
+							<div class="register-inner-wrap">
 								<md-card-header>
-									<md-button id="close-register" class="md-fab animated"
+
+									<md-button class="md-fab animated close-frm-btn"
 														 v-bind:class="{'fadeInRightBig':currentForm == 'registration'}"
 														 @click="toggleRegistration" title="Close">
 										<md-icon>close</md-icon>
 									</md-button>
+
 									<div class="md-title">Registration</div>
 									<div class="md-subhead">Subheading title</div>
 								</md-card-header>
@@ -73,7 +129,9 @@
 										<span class="mdl-textfield__error">{{errors.regLogin.message}}</span>
 									</div>
 
-									<div class="flex-container">
+									<div
+										v-if="registrationInfo.registration_strategy != 'confirm_before'"
+										class="flex-container">
 
 										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50">
 											<input v-model="registerUserModel.pass"
@@ -90,6 +148,7 @@
 										</div>
 
 									</div>
+
 									<md-card-actions>
 										<md-button class="md-raised md-accent animated"
 															 v-bind:class="{'fadeInUpBig':currentForm == 'registration'}"
@@ -99,7 +158,7 @@
 								</form>
 							</div>
 						</md-card-content>
-						<!--END Register partial-->
+						<!--Register Form End-->
 
 					</md-card-content>
 
@@ -116,13 +175,17 @@
 
 		data() {
 			return {
-				registrationInfo: AMdefaults.themeSettings.auth_info.registration_info,
+				registrationInfo: AMdefaults.themeSettings.auth_info,
 				formClass       : 'rubberBand',
 				currentForm     : 'login',
 
 				loginUserModel: {
 					login: '',
 					pass : ''
+				},
+
+				resetUserModel: {
+					email: '',
 				},
 
 				registerUserModel: {
@@ -132,11 +195,12 @@
 				},
 
 				errors: {
-					login   : '',
-					pass    : '',
-					regLogin: '',
-					regPass : '',
-					confirm : ''
+					login     : '',
+					pass      : '',
+					regLogin  : '',
+					regPass   : '',
+					confirm   : '',
+					resetEmail: ''
 				}
 
 			}
@@ -148,6 +212,10 @@
 
 			toggleRegistration(){
 				this.currentForm = this.currentForm === 'registration' ? 'login': 'registration';
+			},
+
+			toggleResetPassword(){
+				this.currentForm = this.currentForm === 'resetpassword' ? 'login': 'resetpassword';
 			},
 
 			trunkErrors() {
@@ -171,6 +239,11 @@
 					}
 
 				});
+			},
+
+			// @TODO: Reset password
+			resetPasswordForm(){
+				console.log(this.resetUserModel)
 			},
 
 			// @TODO: Do register

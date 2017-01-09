@@ -11017,9 +11017,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],14:[function(require,module,exports){
@@ -11070,9 +11070,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"../../vuex/User":22,"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11110,9 +11110,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11132,13 +11132,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 	data: function data() {
 		return {
-			registrationInfo: AMdefaults.themeSettings.auth_info.registration_info,
+			registrationInfo: AMdefaults.themeSettings.auth_info,
 			formClass: 'rubberBand',
 			currentForm: 'login',
 
 			loginUserModel: {
 				login: '',
 				pass: ''
+			},
+
+			resetUserModel: {
+				email: ''
 			},
 
 			registerUserModel: {
@@ -11152,7 +11156,8 @@ exports.default = {
 				pass: '',
 				regLogin: '',
 				regPass: '',
-				confirm: ''
+				confirm: '',
+				resetEmail: ''
 			}
 
 		};
@@ -11164,6 +11169,9 @@ exports.default = {
 	methods: {
 		toggleRegistration: function toggleRegistration() {
 			this.currentForm = this.currentForm === 'registration' ? 'login' : 'registration';
+		},
+		toggleResetPassword: function toggleResetPassword() {
+			this.currentForm = this.currentForm === 'resetpassword' ? 'login' : 'resetpassword';
 		},
 		trunkErrors: function trunkErrors() {
 			for (var obj in this.errors) {
@@ -11185,6 +11193,9 @@ exports.default = {
 				}
 			});
 		},
+		resetPasswordForm: function resetPasswordForm() {
+			console.log(this.resetUserModel);
+		},
 		registerUser: function registerUser() {
 
 			console.log(this.registerUserModel);
@@ -11201,7 +11212,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2 animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_h('br')," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo == 'yes')?_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm == 'registration'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])]):_vm._e()," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm == 'registration'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," "," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":_vm._s(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.login.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":_vm._s(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.pass.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",(_vm.registrationInfo == 'yes')?_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{attrs:{"id":"register-inner-wrap"}},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"id":"close-register","title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":_vm._s(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regLogin.message)])])," ",_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":_vm._s(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regPass.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":_vm._s(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.confirm.message)])])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},["Register\n\t\t\t\t\t\t\t\t\t"])])])])]):_vm._e()," "])])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2 animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_h('br')," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo.registration_info == 'yes')?_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Registration"])]):_vm._e()," ",_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Reset Password","id":"reset-trigger"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["send"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Reset Password"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm != 'login'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":_vm._s(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.login.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":_vm._s(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.pass.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'resetpassword'},attrs:{"id":"am-resetpass-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'resetpassword'},attrs:{"title":"Close"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Reset Password"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.resetPasswordForm($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.resetUserModel.email),expression:"resetUserModel.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reset-email"},domProps:{"value":_vm._s(_vm.resetUserModel.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.resetUserModel.email=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reset-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.resetEmail.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'resetpassword'},attrs:{"type":"submit"}},["Send Reset pass\n\t\t\t\t\t\t\t\t\t"])])])])])," "," "," ",(_vm.registrationInfo.registration_info == 'yes')?_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":_vm._s(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regLogin.message)])])," ",(_vm.registrationInfo.registration_strategy != 'confirm_before')?_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":_vm._s(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regPass.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":_vm._s(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.confirm.message)])])]):_vm._e()," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},["Register\n\t\t\t\t\t\t\t\t\t"])])])])]):_vm._e()," "])])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -11248,9 +11259,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){
@@ -11289,9 +11300,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-8", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],19:[function(require,module,exports){

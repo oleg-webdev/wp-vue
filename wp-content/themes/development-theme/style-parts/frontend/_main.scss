@@ -152,6 +152,7 @@ main {
 	}
 }
 
+#am-resetpass-form,
 #am-register-form {
 	@include transition(.2s);
 	position        : absolute;
@@ -213,6 +214,7 @@ main {
 	}
 }
 
+#reset-trigger,
 #register-trigger {
 	position : absolute;
 	right    : -30px;
@@ -226,10 +228,19 @@ main {
 		margin-top   : -20px;
 		margin-right : -20px;
 	}
-
 }
 
-#register-inner-wrap {
+#reset-trigger {
+	left : -30px;
+	right : auto;
+
+	&.icon-centered {
+		left        : 50%;
+		right : auto;
+	}
+}
+
+.register-inner-wrap {
 	position        : relative;
 	width           : 100%;
 	max-width       : 650px;
@@ -276,7 +287,7 @@ main {
 
 }
 
-#close-register {
+.close-frm-btn {
 	position : absolute;
 	right    : 0;
 	top      : 0;
