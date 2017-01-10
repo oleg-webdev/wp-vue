@@ -10817,126 +10817,122 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../../vuex/Cart":23,"vue":7,"vue-hot-reload-api":3}],12:[function(require,module,exports){
+'use strict';
+
 module.exports = Vue.directive('amajax', {
 
-	el     : null,
+	el: null,
 	binding: null,
-	vnode  : null,
-	vm     : null,
+	vnode: null,
+	vm: null,
 
-	bind(el, binding, vnode) {
-		let thisProps = binding.def;
+	bind: function bind(el, binding, vnode) {
+		var thisProps = binding.def;
 		thisProps.el = el;
 		thisProps.binding = binding;
 		thisProps.vnode = vnode;
 		thisProps.vm = vnode.context;
 
 		el.addEventListener('submit', thisProps.onSubmit.bind(binding));
-
 	},
-
-	update(value) {
+	update: function update(value) {
 		console.log("updated");
 	},
 
 
 	// Custom Methods
-	onSubmit(e) {
+	onSubmit: function onSubmit(e) {
 		e.preventDefault();
-		let vm = this.def.vm,
-				method = this.def.getRequestType(),
-				action = this.def.getAction(),
-				// @TODO: pass common data from form atts
-				sendingData = dataToPost(action, {inc:'jnx', second:'sec'});
+		var vm = this.def.vm,
+		    method = this.def.getRequestType(),
+		    action = this.def.getAction(),
 
-		vm.$http[method](AMdefaults.ajaxurl, sendingData)
-			.then(this.def.onSuccess.bind(this.def),
-				this.def.onError.bind(this.def))
+		// @TODO: pass common data from form atts
+		sendingData = dataToPost(action, { inc: 'jnx', second: 'sec' });
 
+		vm.$http[method](AMdefaults.ajaxurl, sendingData).then(this.def.onSuccess.bind(this.def), this.def.onError.bind(this.def));
 	},
 
+
 	// @TODO: make other checking
-	onSuccess(response) {
+	onSuccess: function onSuccess(response) {
 		// console.log(JSON.parse(response.data));
-		this.vm.openDialog('alertOkDialog',{
-			alert : 'alertok',
-			data : {
+		this.vm.openDialog('alertOkDialog', {
+			alert: 'alertok',
+			data: {
 				type: 'success',
 				contentHtml: 'Success',
 				text: 'Ok'
 			}
-		})
+		});
 	},
-
-	onError(response) {
+	onError: function onError(response) {
 		// console.log(response.data);
-		this.vm.openDialog('alertFailDialog',{
-			alert : 'alertfail',
-			data : {
+		this.vm.openDialog('alertFailDialog', {
+			alert: 'alertfail',
+			data: {
 				type: 'fail',
 				contentHtml: 'Fail. Wrong request!',
 				text: 'Ok'
 			}
-		})
+		});
 	},
-
-	getRequestType(){
-		let method = this.el.querySelector('input[name="__method"]');
-		return (method ? method.value: this.el.method).toLowerCase();
+	getRequestType: function getRequestType() {
+		var method = this.el.querySelector('input[name="__method"]');
+		return (method ? method.value : this.el.method).toLowerCase();
 	},
-
-	getAction() {
-		let action = this.el.querySelector('input[name="__action"]');
+	getAction: function getAction() {
+		var action = this.el.querySelector('input[name="__action"]');
 		return action.value.toLowerCase();
 	}
-
-
 });
+
 },{}],13:[function(require,module,exports){
-window.eventHub = new Vue()
-window.Vuex = require('vuex')
-window.VueResource = require('vue-resource')
-window.VueMaterial = require('vue-material')
-Vue.use(VueMaterial)
-require('./dirrectives/ajaxForms')
+'use strict';
+
+window.eventHub = new Vue();
+window.Vuex = require('vuex');
+window.VueResource = require('vue-resource');
+window.VueMaterial = require('vue-material');
+Vue.use(VueMaterial);
+require('./dirrectives/ajaxForms');
 
 Vue.material.registerTheme({
 	default: {
 		primary: {
 			color: 'blue-grey',
-			hue  : 600
+			hue: 600
 		},
-		accent : 'blue'
+		accent: 'blue'
 	}
-})
+});
 
-Vue.component('minicart', require('./components/WooCart/index.vue'))
-Vue.component('userprofile', require('./components/Profile/index.vue'))
+Vue.component('minicart', require('./components/WooCart/index.vue'));
+Vue.component('userprofile', require('./components/Profile/index.vue'));
 
-let CurrentUser = require('./vuex/User')
+var CurrentUser = require('./vuex/User');
 CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 
-let router = require('./routes')
+var router = require('./routes');
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(function (to, from, next) {
 
-	let isLoggedIn = CurrentUser.state.userdata
+	var isLoggedIn = CurrentUser.state.userdata;
 
 	if ('requiresAuth' in to.meta) {
 		if (to.meta.requiresAuth && !isLoggedIn) {
-			next({name: 'authscreen'})
+			next({ name: 'authscreen' });
 		}
 		if (to.meta.requiresAuth === false && isLoggedIn) {
-			next({name: 'badrequest'})
+			next({ name: 'badrequest' });
 		}
 	}
-	next()
-})
+	next();
+});
 
+require('./script');
 
-require('./script')
-
-let amWoo = AMdefaults.wooOptions;
+var amWoo = AMdefaults.wooOptions;
 
 new Vue({
 	'router': router,
@@ -10944,68 +10940,65 @@ new Vue({
 	el: "#am-appwrap",
 
 	data: {
-		currency   : amWoo.woo_currency,
+		currency: amWoo.woo_currency,
 		appSettings: AMdefaults,
-		authInfo   : AMdefaults.themeSettings.auth_info,
+		authInfo: AMdefaults.themeSettings.auth_info,
 
 		alertok: {
-			type       : 'success',
+			type: 'success',
 			contentHtml: 'Success',
-			text       : 'Ok'
+			text: 'Ok'
 		},
 
 		alertfail: {
-			type       : 'fail',
+			type: 'fail',
 			contentHtml: 'Fail',
-			text       : 'Ok'
+			text: 'Ok'
 		}
 
 	},
 
 	computed: {
 		// use dynamic in frontend
-		currentUserModel: function() {
+		currentUserModel: function currentUserModel() {
 			return CurrentUser.state.userdata;
 		}
 
 	},
 
-	created: function() {
-		document.addEventListener("DOMContentLoaded", function(e) {
+	created: function created() {
+		document.addEventListener("DOMContentLoaded", function (e) {
 			eventHub.$emit('domloaded', e);
 		});
-
 	},
 
 	methods: {
-
-		openDialog(ref, params) {
-			this[params.alert] = params.data
+		openDialog: function openDialog(ref, params) {
+			this[params.alert] = params.data;
 			this.$refs[ref].open();
 		},
-
-		closeDialog(ref) {
+		closeDialog: function closeDialog(ref) {
 			this.$refs[ref].close();
 		},
-		onClose() {
-			let vm = this;
-			setTimeout(()=> {
+		onClose: function onClose() {
+			var vm = this;
+			setTimeout(function () {
 				vm.alertok = {
-					type       : 'success',
+					type: 'success',
 					contentHtml: 'Success',
-					text       : 'Ok'
+					text: 'Ok'
 				};
 				vm.alertfail = {
-					type       : 'fail',
+					type: 'fail',
 					contentHtml: 'Fail',
-					text       : 'Ok'
-				}
-			}, 800)
+					text: 'Ok'
+				};
+			}, 800);
 		}
-
 	}
 
 });
+
 },{"./components/Profile/index.vue":10,"./components/WooCart/index.vue":11,"./dirrectives/ajaxForms":12,"./routes":21,"./script":22,"./vuex/User":24,"vue-material":4,"vue-resource":5,"vuex":9}],14:[function(require,module,exports){
 ;(function(){
 'use strict';
@@ -11042,9 +11035,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11095,9 +11088,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11135,9 +11128,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
@@ -11175,9 +11168,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){
@@ -11416,62 +11409,56 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],21:[function(require,module,exports){
-var VueRouter = require('vue-router')
-Vue.use(VueRouter)
+'use strict';
+
+var VueRouter = require('vue-router');
+Vue.use(VueRouter);
 
 module.exports = new VueRouter({
-	mode  : 'history',
-	routes: [
-		{
-			name     : 'userentrypoint',
-			path     : '/user/',
-			component: require('./components/Network.vue'),
-			meta     : {requiresAuth: true}
-		},
-		{
-			path     : '/user/settings',
-			component: require('./components/Settings.vue'),
-			meta     : {requiresAuth: true}
-		},
-		{
-			path     : '/user/media',
-			component: require('./components/Media.vue'),
-			meta     : {requiresAuth: true}
-		},
+	mode: 'history',
+	routes: [{
+		name: 'userentrypoint',
+		path: '/user/',
+		component: require('./components/Network.vue'),
+		meta: { requiresAuth: true }
+	}, {
+		path: '/user/settings',
+		component: require('./components/Settings.vue'),
+		meta: { requiresAuth: true }
+	}, {
+		path: '/user/media',
+		component: require('./components/Media.vue'),
+		meta: { requiresAuth: true }
+	}, { // Restore pass screen
+		path: '/user/screen/restorepass',
+		component: require('./components/RestorePass.vue')
+	}, {
+		name: 'authscreen',
+		path: '/user/auth',
+		component: require('./components/authComponent.vue'),
+		meta: { requiresAuth: false }
+	}, {
+		name: 'badrequest',
+		path: '/user/badrequest',
+		component: require('./components/common/BadRequest.vue')
+	}, {
+		path: '*',
+		component: require('./components/common/Notfound.vue')
+	}]
+});
 
-		{
-			path     : '/user/screen/restorepass',
-			component: require('./components/RestorePass.vue'),
-		},
-
-
-
-
-		{
-			name     : 'authscreen',
-			path     : '/user/auth',
-			component: require('./components/authComponent.vue'),
-			meta     : {requiresAuth: false}
-		},
-		{
-			name     : 'badrequest',
-			path     : '/user/badrequest',
-			component: require('./components/common/BadRequest.vue')
-		},
-		{
-			path     : '*',
-			component: require('./components/common/Notfound.vue')
-		},
-	]
-})
 },{"./components/Media.vue":14,"./components/Network.vue":15,"./components/RestorePass.vue":16,"./components/Settings.vue":17,"./components/authComponent.vue":18,"./components/common/BadRequest.vue":19,"./components/common/Notfound.vue":20,"vue-router":6}],22:[function(require,module,exports){
-var domready = require('domready')
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var domready = require('domready');
 var defaultAMscript = {
-	run: function(){
+	run: function run() {
 		/**
-		 * ==================== Common Functions ======================
-		 * 19.12.2016
-		 */
+   * ==================== Common Functions ======================
+   * 19.12.2016
+   */
 		window.isDescendant = function (parent, child) {
 			var node = child.parentNode;
 			while (node != null) {
@@ -11483,72 +11470,62 @@ var defaultAMscript = {
 			return false;
 		};
 
-		window.itemIsPureObject = function(item) {
-			if ( item !== null && typeof item === 'object' ) {
-				if(!(item instanceof Array))
-					return item instanceof Object;
+		window.itemIsPureObject = function (item) {
+			if (item !== null && (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object') {
+				if (!(item instanceof Array)) return item instanceof Object;
 
 				return false;
 			}
 			return false;
 		};
 
-		window.dataToPost = function(action, data) {
+		window.dataToPost = function (action, data) {
 			var formData = new FormData();
 			formData.append('action', action);
 
 			for (var part in data) {
 				var dataItem = data[part];
 
-				if(itemIsPureObject(dataItem)) {
+				if (itemIsPureObject(dataItem)) {
 					var details = JSON.stringify(dataItem);
 					formData.append(part, details);
 				} else {
 					formData.append(part, dataItem);
 				}
-
 			}
 
 			return formData;
 		};
 
 		/**
-		 * ==================== MDL Upgrade DOM when changes ======================
-		 * 10.12.2016
-		 */
-		var MutationObserver = window.MutationObserver
-			|| window.WebKitMutationObserver
-			|| window.MozMutationObserver;
-		var observer = new MutationObserver(function() {
+   * ==================== MDL Upgrade DOM when changes ======================
+   * 10.12.2016
+   */
+		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+		var observer = new MutationObserver(function () {
 			componentHandler.upgradeDom();
 		});
-		observer.observe(document.body, {childList: true,subtree : true});
-
-
-		/**
-		 * ==================== Regular Domready script ======================
-		 * 26.12.2016
-		 */
-		domready(function(){
-
-
-
-		});
-
+		observer.observe(document.body, { childList: true, subtree: true });
 
 		/**
-		 * ==================== jQuery ======================
-		 * 26.12.2016
-		 */
-		jQuery(document).ready(function ($){
+   * ==================== Regular Domready script ======================
+   * 26.12.2016
+   */
+		domready(function () {});
 
-		});
-
+		/**
+   * ==================== jQuery ======================
+   * 26.12.2016
+   */
+		jQuery(document).ready(function ($) {});
 	}
-}
-defaultAMscript.run()
-module.exports = defaultAMscript
+};
+defaultAMscript.run();
+module.exports = defaultAMscript;
+
 },{"domready":1}],23:[function(require,module,exports){
+"use strict";
+
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11557,11 +11534,11 @@ module.exports = new Vuex.Store({
 
 	mutations: {
 
-		setProducts: function(state, data) {
+		setProducts: function setProducts(state, data) {
 			state.products = data;
 		},
 
-		removeFromCart: function(state, data) {
+		removeFromCart: function removeFromCart(state, data) {
 			state.products.splice(state.products.indexOf(data), 1);
 		}
 
@@ -11570,7 +11547,10 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
+
 },{}],24:[function(require,module,exports){
+"use strict";
+
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11578,21 +11558,17 @@ module.exports = new Vuex.Store({
 	},
 
 	mutations: {
-
-		setUserdata(state, data) {
-			state.userdata = data
+		setUserdata: function setUserdata(state, data) {
+			state.userdata = data;
 		}
-
 	},
 
-	actions: {
+	actions: {},
 
-	},
-
-	created: function() {
+	created: function created() {
 		console.log(this.state.userdata);
 	}
 
-
 });
+
 },{}]},{},[13]);
