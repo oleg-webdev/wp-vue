@@ -126,3 +126,46 @@ function aa_func_20165803055837()
 		}
 	}
 }
+
+/**
+ * ==================== Handle reset password link ======================
+ * 10.01.2017
+ */
+add_action( 'wp_loaded', 'aa_func_20171110011147' );
+function aa_func_20171110011147()
+{
+	if ( isset( $_GET[ 'pass_token' ] ) ) {
+
+		global $wpdb;
+		$token = $_GET[ 'pass_token' ];
+		$pref  = $wpdb->prefix;
+		$table = $pref . "user_reset_passwords";
+		$reset = $wpdb->get_row( "SELECT hash, email, action FROM {$table} WHERE hash = '{$token}'" );
+
+		if ( ! $reset ) { // such record not exists
+
+			$_SESSION[ 'aa_alert_messages' ][ "record_not_exists" ] = [
+				'type'    => "warning",
+				'message' => "Such record is not exists"
+			];
+
+			wp_redirect( get_site_url() );
+			die;
+		}
+
+		$user = get_user_by( 'email', $reset->email );
+		if ( ! $user ) { // such user is not exists
+
+			$_SESSION[ 'aa_alert_messages' ][ "user_not_exists" ] = [
+				'type'    => "danger",
+				'message' => "Such user is not exists"
+			];
+
+			wp_redirect( get_site_url() );
+			die;
+		}
+
+//		$wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE email = %s", $reset->email ) );
+
+	}
+}

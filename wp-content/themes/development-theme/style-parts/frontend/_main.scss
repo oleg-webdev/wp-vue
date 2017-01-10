@@ -174,7 +174,7 @@ main {
 		content          : "";
 		position         : absolute;
 		left             : 50%;
-		background-color : $brandColor;
+		background-color : lighten($brandColor, 13%);
 		top              : 50%;
 		padding          : 0;
 		width            : 0;
@@ -185,7 +185,7 @@ main {
 	}
 	&#am-resetpass-form {
 		&:before {
-			background-color: #ff5722;
+			background-color: lighten($themeColor, 10%);
 		}
 	}
 

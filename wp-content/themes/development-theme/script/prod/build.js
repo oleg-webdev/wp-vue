@@ -10714,12 +10714,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
-},{"../../vuex/User":23,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
+},{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -10811,12 +10811,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
-},{"../../vuex/Cart":22,"vue":7,"vue-hot-reload-api":3}],12:[function(require,module,exports){
+},{"../../vuex/Cart":23,"vue":7,"vue-hot-reload-api":3}],12:[function(require,module,exports){
 module.exports = Vue.directive('amajax', {
 
 	el     : null,
@@ -11006,7 +11006,7 @@ new Vue({
 	}
 
 });
-},{"./components/Profile/index.vue":10,"./components/WooCart/index.vue":11,"./dirrectives/ajaxForms":12,"./routes":20,"./script":21,"./vuex/User":23,"vue-material":4,"vue-resource":5,"vuex":9}],14:[function(require,module,exports){
+},{"./components/Profile/index.vue":10,"./components/WooCart/index.vue":11,"./dirrectives/ajaxForms":12,"./routes":21,"./script":22,"./vuex/User":24,"vue-material":4,"vue-resource":5,"vuex":9}],14:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11042,9 +11042,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11095,12 +11095,52 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
-},{"../../vuex/User":23,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
+},{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	data: function data() {
+		return {};
+	},
+
+
+	computed: {},
+
+	created: function created() {},
+	mounted: function mounted() {
+		var vm = this;
+		eventHub.$emit('profileViewHeight', vm.$refs.restorepassscope.clientHeight);
+	},
+
+
+	methods: {}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"restorepassscope",attrs:{"id":"Restore-pass-scope"}},[_h('h3',["Restore pass scope"])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-4", __vue__options__)
+  }
+})()}
+},{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11135,12 +11175,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 2, stdin */\n.spinner-container {\n  height: 55px; }\n  /* line 4, stdin */\n  .spinner-container .md-spinner {\n    float: right; }")
 ;(function(){
 'use strict';
@@ -11281,7 +11321,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2 animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_h('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_h('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()])," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo.registration_info == 'yes')?_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Registration"])]):_vm._e()," ",_h('md-button',{staticClass:"md-fab md-warn",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Reset Password","id":"reset-trigger"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["send"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Reset Password"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm != 'login'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":_vm._s(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.login.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":_vm._s(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.pass.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'resetpassword'},attrs:{"id":"am-resetpass-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn md-warn",class:{'fadeInRightBig':_vm.currentForm == 'resetpassword'},attrs:{"title":"Close"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Reset Password"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.resetPasswordForm($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.resetUserModel.email),expression:"resetUserModel.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reset-email"},domProps:{"value":_vm._s(_vm.resetUserModel.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.resetUserModel.email=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reset-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.resetEmail.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-warn animated",class:{'fadeInUpBig':_vm.currentForm == 'resetpassword'},attrs:{"type":"submit"}},["Send Reset pass\n\t\t\t\t\t\t\t\t\t"])])])])])," "," "," ",(_vm.registrationInfo.registration_info == 'yes')?_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":_vm._s(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regLogin.message)])])," ",(_vm.registrationInfo.registration_strategy != 'confirm_before')?_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":_vm._s(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regPass.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":_vm._s(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.confirm.message)])])]):_vm._e()," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},["Register\n\t\t\t\t\t\t\t\t\t"])])])])]):_vm._e()," "])])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2 animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_h('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_h('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()])," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo.registration_info == 'yes')?_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Registration"])]):_vm._e()," ",_h('md-button',{staticClass:"md-fab md-primary",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Reset Password","id":"reset-trigger"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["send"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Reset Password"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm != 'login'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":_vm._s(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.login.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":_vm._s(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.pass.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'resetpassword'},attrs:{"id":"am-resetpass-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn md-primary",class:{'fadeInRightBig':_vm.currentForm == 'resetpassword'},attrs:{"title":"Close"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Reset Password"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.resetPasswordForm($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.resetUserModel.email),expression:"resetUserModel.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reset-email"},domProps:{"value":_vm._s(_vm.resetUserModel.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.resetUserModel.email=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reset-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.resetEmail.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-primary animated",class:{'fadeInUpBig':_vm.currentForm == 'resetpassword'},attrs:{"type":"submit"}},["Send Reset pass\n\t\t\t\t\t\t\t\t\t"])])])])])," "," "," ",(_vm.registrationInfo.registration_info == 'yes')?_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":_vm._s(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regLogin.message)])])," ",(_vm.registrationInfo.registration_strategy != 'confirm_before')?_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":_vm._s(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regPass.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":_vm._s(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.confirm.message)])])]):_vm._e()," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},["Register\n\t\t\t\t\t\t\t\t\t"])])])])]):_vm._e()," "])])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -11291,10 +11331,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
-},{"../../vuex/User":23,"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],18:[function(require,module,exports){
+},{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],19:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11329,12 +11369,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-8", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],19:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],20:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11370,12 +11410,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-9", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],20:[function(require,module,exports){
+},{"vue":7,"vue-hot-reload-api":3}],21:[function(require,module,exports){
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
@@ -11400,6 +11440,14 @@ module.exports = new VueRouter({
 		},
 
 		{
+			path     : '/user/screen/restorepass',
+			component: require('./components/RestorePass.vue'),
+		},
+
+
+
+
+		{
 			name     : 'authscreen',
 			path     : '/user/auth',
 			component: require('./components/authComponent.vue'),
@@ -11416,7 +11464,7 @@ module.exports = new VueRouter({
 		},
 	]
 })
-},{"./components/Media.vue":14,"./components/Network.vue":15,"./components/Settings.vue":16,"./components/authComponent.vue":17,"./components/common/BadRequest.vue":18,"./components/common/Notfound.vue":19,"vue-router":6}],21:[function(require,module,exports){
+},{"./components/Media.vue":14,"./components/Network.vue":15,"./components/RestorePass.vue":16,"./components/Settings.vue":17,"./components/authComponent.vue":18,"./components/common/BadRequest.vue":19,"./components/common/Notfound.vue":20,"vue-router":6}],22:[function(require,module,exports){
 var domready = require('domready')
 var defaultAMscript = {
 	run: function(){
@@ -11500,7 +11548,7 @@ var defaultAMscript = {
 }
 defaultAMscript.run()
 module.exports = defaultAMscript
-},{"domready":1}],22:[function(require,module,exports){
+},{"domready":1}],23:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11522,7 +11570,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {

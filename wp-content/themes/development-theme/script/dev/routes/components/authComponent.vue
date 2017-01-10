@@ -26,7 +26,7 @@
 						<md-tooltip md-direction="top">Registration</md-tooltip>
 					</md-button>
 
-					<md-button @click="toggleResetPassword" title="Reset Password" class="md-fab md-warn"
+					<md-button @click="toggleResetPassword" title="Reset Password" class="md-fab md-primary"
 										 v-bind:class="{'icon-centered':currentForm != 'login'}"
 										 id="reset-trigger">
 						<md-icon>send</md-icon>
@@ -82,7 +82,7 @@
 						>
 							<div class="register-inner-wrap">
 								<md-card-header>
-									<md-button class="md-fab animated close-frm-btn md-warn"
+									<md-button class="md-fab animated close-frm-btn md-primary"
 														 v-bind:class="{'fadeInRightBig':currentForm == 'resetpassword'}"
 														 @click="toggleResetPassword" title="Close">
 										<md-icon>close</md-icon>
@@ -101,7 +101,7 @@
 									</div>
 
 									<md-card-actions>
-										<md-button class="md-raised md-warn animated"
+										<md-button class="md-raised md-primary animated"
 															 v-bind:class="{'fadeInUpBig':currentForm == 'resetpassword'}"
 															 type="submit">Send Reset pass
 										</md-button>

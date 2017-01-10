@@ -21,6 +21,13 @@ module.exports = new VueRouter({
 			meta     : {requiresAuth: true}
 		},
 
+
+		{ // Restore pass screen
+			path     : '/user/screen/restorepass',
+			component: require('./components/RestorePass.vue'),
+		},
+
+
 		{
 			name     : 'authscreen',
 			path     : '/user/auth',
