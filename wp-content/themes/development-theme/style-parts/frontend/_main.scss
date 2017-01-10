@@ -186,7 +186,6 @@ main {
 	&#am-resetpass-form {
 		&:before {
 			background-color: #ff5722;
-
 		}
 	}
 
@@ -210,13 +209,13 @@ main {
 			margin-left : -500px;
 			margin-top  : -500px;
 		}
-		
+
 		/*Tablet*/
 		@media (max-width : 1024px) {
 			padding-left : 30px;
 			padding-right : 30px;
 		}
-		
+
 	}
 }
 

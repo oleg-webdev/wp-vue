@@ -93,14 +93,29 @@ add_action( 'wp_ajax_nopriv_ajx20173909123946', 'ajx20173909123946' );
 add_action( 'wp_ajax_ajx20173909123946', 'ajx20173909123946' );
 function ajx20173909123946()
 {
+	global $wpdb;
+	$pref     = $wpdb->prefix;
+	$table    = $pref . "user_reset_passwords";
+	$email    = $_POST[ 'email' ];
+	$user     = get_user_by( 'email', $email );
 	$response = [
 		'data'   => $_POST,
 		'status' => 'fail'
 	];
 
-	// @TODO: send reset password link
-	// reset/confirm
-	// send_me_confirmation_registration_link( $email, 'reset' )
+	if ( $user ) {
+		$token_info = send_me_confirmation_registration_link( $email, 'reset' );
+		$wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE email = %s", $email ) );
+		$wpdb->insert( $table, [
+			'hash'   => $token_info[ 'token' ],
+			'email'  => $email,
+			'action' => 'reset',
+			'time'   => current_time( 'mysql', 1 ),
+		] );
+		$response[ 'status' ] = 'success';
+	} else {
+		$response[ 'status' ] = 'notfound';
+	}
 
 	echo json_encode( $response );
 	die;

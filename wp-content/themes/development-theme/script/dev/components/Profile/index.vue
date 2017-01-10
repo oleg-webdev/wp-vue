@@ -1,7 +1,7 @@
 <template>
 	<div id="Profile-scope" class="flex-container">
 
-		<md-list id="dashboardnav" class="md-dense flex-col-20" v-bind:class="{'hidden':!currentUserModel}">
+		<md-list id="dashboardnav" class="md-dense flex-col-20" v-if="currentUserModel">
 
 			<md-list-item class="md-primary">
 				<router-link class="button" to="/user" exact>

@@ -1,10 +1,21 @@
+<style lang="scss" rel="stylesheet/scss">
+	.spinner-container {
+		height : 55px;
+		.md-spinner {
+			float : right;
+		}
+	}
+</style>
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
 	<div ref="authscope" id="Auth-scope">
 		<div class="container">
 			<div id="login-register-form"
 					 v-bind:class="[formClass]"
 					 class="col-md-8 col-md-offset-2 animated">
-				<br>
+				<div class="spinner-container">
+					<md-spinner :md-size="30" v-if="spinnerActive" md-indeterminate class="md-accent"></md-spinner>
+				</div>
+
 				<md-card id="login-register-wrapper">
 
 					<md-button @click="toggleRegistration" title="Registration" class="md-fab"
@@ -175,6 +186,7 @@
 
 		data() {
 			return {
+				spinnerActive: false,
 				registrationInfo: AMdefaults.themeSettings.auth_info,
 				formClass       : 'rubberBand',
 				currentForm     : 'login',
@@ -225,8 +237,10 @@
 			},
 
 			loginUser() {
-				this.formClass = '';
+				this.spinnerActive = true
+				this.formClass = ''
 				this.trunkErrors()
+
 				const loginData = dataToPost('ajx20174507084516', this.loginUserModel);
 				this.$http.post(AMdefaults.ajaxurl, loginData).then(function(response) {
 					let data = JSON.parse(response.data);
@@ -238,12 +252,51 @@
 						this.formClass = 'shake'
 					}
 
+					this.spinnerActive = false
 				});
 			},
 
 			// @TODO: Reset password
 			resetPasswordForm(){
-				console.log(this.resetUserModel)
+				this.spinnerActive = true
+				this.formClass = ''
+				this.trunkErrors()
+
+				const loginData = dataToPost('ajx20173909123946', this.resetUserModel);
+				this.$http.post(AMdefaults.ajaxurl, loginData).then(function(response) {
+					let data = JSON.parse(response.data);
+
+					if(data.status === 'notfound') {
+						console.log(this);
+						this.$root.openDialog('alertFailDialog',{
+							alert : 'alertfail',
+							data : {
+								type: 'fail',
+								contentHtml: 'This user is not exists',
+								text: 'Ok'
+							}
+						})
+						this.resetUserModel = {
+							email: '',
+						}
+					}
+					if(data.status === 'success') {
+						this.$root.openDialog('alertOkDialog',{
+							alert : 'alertok',
+							data : {
+								type: 'success',
+								contentHtml: 'Check your email',
+								text: 'Ok'
+							}
+						})
+						this.resetUserModel = {
+							email: '',
+						}
+					}
+					console.log(data);
+
+					this.spinnerActive = false
+				});
 			},
 
 			// @TODO: Do register

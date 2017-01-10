@@ -3,29 +3,29 @@ if ( ! function_exists( 'am_profile_slug' ) ) {
 	function am_profile_slug()
 	{
 		global $_am;
-		return $_am['users-page-slug'];
+
+		return $_am[ 'users-page-slug' ];
 	}
 }
 
-
-add_action('wp_loaded', 'aa_func_20162801112818');
+add_action( 'wp_loaded', 'aa_func_20162801112818' );
 function aa_func_20162801112818()
 {
 	add_rewrite_endpoint( am_profile_slug(), EP_ALL | EP_PAGES );
 }
 
-add_action('template_redirect', 'aa_func_20162701112749');
+add_action( 'template_redirect', 'aa_func_20162701112749' );
 function aa_func_20162701112749()
 {
 	global $wp_query;
-	if ( ! isset( $wp_query->query_vars[am_profile_slug()] ) )
+	if ( ! isset( $wp_query->query_vars[ am_profile_slug() ] ) )
 		return;
 
-	include locate_template('AlicelfMaterial/user/views/profile.php');
+	include locate_template( 'AlicelfMaterial/user/views/profile.php' );
 	exit;
 }
-// Users .htaccess and permalinks END
 
+// Users .htaccess and permalinks END
 
 if ( ! function_exists( 'am_user' ) ) {
 	function am_user( $user_id )
@@ -82,16 +82,23 @@ if ( ! function_exists( 'send_me_confirmation_registration_link' ) ) {
 		if ( ! $email )
 			return false;
 		$mail_type  = $type === 'reset' ? 'Reset Password' : 'Confirmation Link';
-		$link       = get_am_network_endpoint() . "/screen/restorepass";
+		$link       = $type === 'reset' ?
+			get_am_network_endpoint() . "/screen/restorepass" : get_am_network_endpoint();
 		$token      = sha1( uniqid() . $email );
-		$email_link = $link . "?token=" . $token . "&email=" . $email;
+		$email_link = $link . "?pass_token=" . $token;
 		$mail_body  = "Your activation link: <br>";
 		$mail_body .= "<a href='{$email_link}'>{$mail_type}</a>";
 		$from              = get_option( 'admin_email' );
 		$headers           = "From: {$from}\r\n";
 		$send_mail_process = wp_mail( $email, $mail_type, $mail_body, $headers );
-		if ( $send_mail_process )
-			return $token;
+
+		if ( $send_mail_process ) {
+			return [
+				'token' => $token,
+				'email' => $email,
+				'link'  => $email_link
+			];
+		}
 
 		return null;
 	}
@@ -113,7 +120,7 @@ function aa_func_20165803055837()
 		];
 		if ( ( is_admin() || in_array( $gl, $list ) ) && ! $is_ajax ) {
 			if ( ! is_super_admin( get_current_user_id() ) ) {
-				 wp_redirect( get_am_network_endpoint() );
+				wp_redirect( get_am_network_endpoint() );
 				die;
 			}
 		}
