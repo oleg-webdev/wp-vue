@@ -97,7 +97,7 @@
 				if (this.totalCart > 0) {
 					this.cartOpened = !this.cartOpened;
 				} else {
-					this.$parent.openDialog('alertOkDialog', {
+					this.$root.openDialog('alertOkDialog', {
 						alert: 'alertok',
 						data : {
 							type       : 'success',

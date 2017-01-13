@@ -10788,7 +10788,7 @@ exports.default = {
 			if (this.totalCart > 0) {
 				this.cartOpened = !this.cartOpened;
 			} else {
-				this.$parent.openDialog('alertOkDialog', {
+				this.$root.openDialog('alertOkDialog', {
 					alert: 'alertok',
 					data: {
 						type: 'success',
@@ -10817,122 +10817,126 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../../vuex/Cart":23,"vue":7,"vue-hot-reload-api":3}],12:[function(require,module,exports){
-'use strict';
-
 module.exports = Vue.directive('amajax', {
 
-	el: null,
+	el     : null,
 	binding: null,
-	vnode: null,
-	vm: null,
+	vnode  : null,
+	vm     : null,
 
-	bind: function bind(el, binding, vnode) {
-		var thisProps = binding.def;
+	bind(el, binding, vnode) {
+		let thisProps = binding.def;
 		thisProps.el = el;
 		thisProps.binding = binding;
 		thisProps.vnode = vnode;
 		thisProps.vm = vnode.context;
 
 		el.addEventListener('submit', thisProps.onSubmit.bind(binding));
+
 	},
-	update: function update(value) {
+
+	update(value) {
 		console.log("updated");
 	},
 
 
 	// Custom Methods
-	onSubmit: function onSubmit(e) {
+	onSubmit(e) {
 		e.preventDefault();
-		var vm = this.def.vm,
-		    method = this.def.getRequestType(),
-		    action = this.def.getAction(),
+		let vm = this.def.vm,
+				method = this.def.getRequestType(),
+				action = this.def.getAction(),
+				// @TODO: pass common data from form atts
+				sendingData = dataToPost(action, {inc:'jnx', second:'sec'});
 
-		// @TODO: pass common data from form atts
-		sendingData = dataToPost(action, { inc: 'jnx', second: 'sec' });
+		vm.$http[method](AMdefaults.ajaxurl, sendingData)
+			.then(this.def.onSuccess.bind(this.def),
+				this.def.onError.bind(this.def))
 
-		vm.$http[method](AMdefaults.ajaxurl, sendingData).then(this.def.onSuccess.bind(this.def), this.def.onError.bind(this.def));
 	},
 
-
 	// @TODO: make other checking
-	onSuccess: function onSuccess(response) {
+	onSuccess(response) {
 		// console.log(JSON.parse(response.data));
-		this.vm.openDialog('alertOkDialog', {
-			alert: 'alertok',
-			data: {
+		this.vm.openDialog('alertOkDialog',{
+			alert : 'alertok',
+			data : {
 				type: 'success',
 				contentHtml: 'Success',
 				text: 'Ok'
 			}
-		});
+		})
 	},
-	onError: function onError(response) {
+
+	onError(response) {
 		// console.log(response.data);
-		this.vm.openDialog('alertFailDialog', {
-			alert: 'alertfail',
-			data: {
+		this.vm.openDialog('alertFailDialog',{
+			alert : 'alertfail',
+			data : {
 				type: 'fail',
 				contentHtml: 'Fail. Wrong request!',
 				text: 'Ok'
 			}
-		});
+		})
 	},
-	getRequestType: function getRequestType() {
-		var method = this.el.querySelector('input[name="__method"]');
-		return (method ? method.value : this.el.method).toLowerCase();
+
+	getRequestType(){
+		let method = this.el.querySelector('input[name="__method"]');
+		return (method ? method.value: this.el.method).toLowerCase();
 	},
-	getAction: function getAction() {
-		var action = this.el.querySelector('input[name="__action"]');
+
+	getAction() {
+		let action = this.el.querySelector('input[name="__action"]');
 		return action.value.toLowerCase();
 	}
+
+
 });
-
 },{}],13:[function(require,module,exports){
-'use strict';
-
-window.eventHub = new Vue();
-window.Vuex = require('vuex');
-window.VueResource = require('vue-resource');
-window.VueMaterial = require('vue-material');
-Vue.use(VueMaterial);
-require('./dirrectives/ajaxForms');
+window.eventHub = new Vue()
+window.Vuex = require('vuex')
+window.VueResource = require('vue-resource')
+window.VueMaterial = require('vue-material')
+Vue.use(VueMaterial)
+require('./dirrectives/ajaxForms')
 
 Vue.material.registerTheme({
 	default: {
 		primary: {
 			color: 'blue-grey',
-			hue: 600
+			hue  : 600
 		},
-		accent: 'blue'
+		accent : 'blue'
 	}
-});
+})
 
-Vue.component('minicart', require('./components/WooCart/index.vue'));
-Vue.component('userprofile', require('./components/Profile/index.vue'));
+Vue.component('minicart', require('./components/WooCart/index.vue'))
+Vue.component('userprofile', require('./components/Profile/index.vue'))
 
-var CurrentUser = require('./vuex/User');
+let CurrentUser = require('./vuex/User')
 CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 
-var router = require('./routes');
+let router = require('./routes')
 
-router.beforeEach(function (to, from, next) {
+router.beforeEach((to, from, next) => {
 
-	var isLoggedIn = CurrentUser.state.userdata;
+	let isLoggedIn = CurrentUser.state.userdata
 
 	if ('requiresAuth' in to.meta) {
 		if (to.meta.requiresAuth && !isLoggedIn) {
-			next({ name: 'authscreen' });
+			next({name: 'authscreen'})
 		}
 		if (to.meta.requiresAuth === false && isLoggedIn) {
-			next({ name: 'badrequest' });
+			next({name: 'badrequest'})
 		}
 	}
-	next();
-});
+	next()
+})
 
-require('./script');
 
-var amWoo = AMdefaults.wooOptions;
+require('./script')
+
+let amWoo = AMdefaults.wooOptions;
 
 new Vue({
 	'router': router,
@@ -10940,65 +10944,68 @@ new Vue({
 	el: "#am-appwrap",
 
 	data: {
-		currency: amWoo.woo_currency,
+		currency   : amWoo.woo_currency,
 		appSettings: AMdefaults,
-		authInfo: AMdefaults.themeSettings.auth_info,
+		authInfo   : AMdefaults.themeSettings.auth_info,
 
 		alertok: {
-			type: 'success',
+			type       : 'success',
 			contentHtml: 'Success',
-			text: 'Ok'
+			text       : 'Ok'
 		},
 
 		alertfail: {
-			type: 'fail',
+			type       : 'fail',
 			contentHtml: 'Fail',
-			text: 'Ok'
+			text       : 'Ok'
 		}
 
 	},
 
 	computed: {
 		// use dynamic in frontend
-		currentUserModel: function currentUserModel() {
+		currentUserModel: function() {
 			return CurrentUser.state.userdata;
 		}
 
 	},
 
-	created: function created() {
-		document.addEventListener("DOMContentLoaded", function (e) {
+	created: function() {
+		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+
 	},
 
 	methods: {
-		openDialog: function openDialog(ref, params) {
-			this[params.alert] = params.data;
+
+		openDialog(ref, params) {
+			this[params.alert] = params.data
 			this.$refs[ref].open();
 		},
-		closeDialog: function closeDialog(ref) {
+
+		closeDialog(ref) {
 			this.$refs[ref].close();
 		},
-		onClose: function onClose() {
-			var vm = this;
-			setTimeout(function () {
+		onClose() {
+			let vm = this;
+			setTimeout(()=> {
 				vm.alertok = {
-					type: 'success',
+					type       : 'success',
 					contentHtml: 'Success',
-					text: 'Ok'
+					text       : 'Ok'
 				};
 				vm.alertfail = {
-					type: 'fail',
+					type       : 'fail',
 					contentHtml: 'Fail',
-					text: 'Ok'
-				};
-			}, 800);
+					text       : 'Ok'
+				}
+			}, 800)
 		}
+
 	}
 
 });
-
 },{"./components/Profile/index.vue":10,"./components/WooCart/index.vue":11,"./dirrectives/ajaxForms":12,"./routes":21,"./script":22,"./vuex/User":24,"vue-material":4,"vue-resource":5,"vuex":9}],14:[function(require,module,exports){
 ;(function(){
 'use strict';
@@ -11035,9 +11042,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-9", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11088,9 +11095,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11128,9 +11135,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
@@ -11168,9 +11175,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){
@@ -11314,7 +11321,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-8 col-md-offset-2 animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_h('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_h('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()])," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo.registration_info == 'yes')?_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Registration"])]):_vm._e()," ",_h('md-button',{staticClass:"md-fab md-primary",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Reset Password","id":"reset-trigger"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["send"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Reset Password"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm != 'login'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":_vm._s(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.login.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":_vm._s(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.pass.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'resetpassword'},attrs:{"id":"am-resetpass-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn md-primary",class:{'fadeInRightBig':_vm.currentForm == 'resetpassword'},attrs:{"title":"Close"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Reset Password"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.resetPasswordForm($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.resetUserModel.email),expression:"resetUserModel.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reset-email"},domProps:{"value":_vm._s(_vm.resetUserModel.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.resetUserModel.email=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reset-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.resetEmail.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-primary animated",class:{'fadeInUpBig':_vm.currentForm == 'resetpassword'},attrs:{"type":"submit"}},["Send Reset pass\n\t\t\t\t\t\t\t\t\t"])])])])])," "," "," ",(_vm.registrationInfo.registration_info == 'yes')?_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":_vm._s(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regLogin.message)])])," ",(_vm.registrationInfo.registration_strategy != 'confirm_before')?_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":_vm._s(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regPass.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":_vm._s(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.confirm.message)])])]):_vm._e()," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},["Register\n\t\t\t\t\t\t\t\t\t"])])])])]):_vm._e()," "])])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_h('div',{staticClass:"container"},[_h('div',{staticClass:"col-md-10 col-md-offset-1 animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_h('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_h('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()])," ",_h('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo.registration_info == 'yes')?_h('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Registration","id":"register-trigger"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["border_color"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Registration"])]):_vm._e()," ",_h('md-button',{staticClass:"md-fab md-primary",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Reset Password","id":"reset-trigger"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["send"])," ",_h('md-tooltip',{attrs:{"md-direction":"top"}},["Reset Password"])])," ",_h('md-card-content',{class:{'increase-z':_vm.currentForm != 'login'},attrs:{"id":"forms-handler"}},[_h('div',{attrs:{"id":"am-loginform-wrapper"}},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Login"])," ",_h('div',{staticClass:"md-subhead"},["Enter Your login and password"])])," ",_h('md-card-content',{attrs:{"id":"am-loginform"}},[_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":_vm._s(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},["Username"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.login.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":_vm._s(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.pass.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Login"])])])])])," "," "," ",_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'resetpassword'},attrs:{"id":"am-resetpass-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn md-primary",class:{'fadeInRightBig':_vm.currentForm == 'resetpassword'},attrs:{"title":"Close"},on:{"click":_vm.toggleResetPassword}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Reset Password"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.resetPasswordForm($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.resetUserModel.email),expression:"resetUserModel.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reset-email"},domProps:{"value":_vm._s(_vm.resetUserModel.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.resetUserModel.email=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reset-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.resetEmail.message)])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-primary animated",class:{'fadeInUpBig':_vm.currentForm == 'resetpassword'},attrs:{"type":"submit"}},["Send Reset pass\n\t\t\t\t\t\t\t\t\t"])])])])])," "," "," ",(_vm.registrationInfo.registration_info == 'yes')?_h('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_h('div',{staticClass:"register-inner-wrap"},[_h('md-card-header',[_h('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"title":"Close"},on:{"click":_vm.toggleRegistration}},[_h('md-icon',["close"])])," ",_h('div',{staticClass:"md-title"},["Registration"])," ",_h('div',{staticClass:"md-subhead"},["Subheading title"])])," ",_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":_vm._s(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},["Email"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regLogin.message)])])," ",(_vm.registrationInfo.registration_strategy != 'confirm_before')?_h('div',{staticClass:"flex-container"},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":_vm._s(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},["Password"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.regPass.message)])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":_vm._s(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},["Password Confirm"])," ",_h('span',{staticClass:"mdl-textfield__error"},[_vm._s(_vm.errors.confirm.message)])])]):_vm._e()," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},["Register\n\t\t\t\t\t\t\t\t\t"])])])])]):_vm._e()," "])])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -11322,9 +11329,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.rerender("data-v-6", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],19:[function(require,module,exports){
@@ -11403,62 +11410,67 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-9", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],21:[function(require,module,exports){
-'use strict';
-
-var VueRouter = require('vue-router');
-Vue.use(VueRouter);
+var VueRouter = require('vue-router')
+Vue.use(VueRouter)
 
 module.exports = new VueRouter({
-	mode: 'history',
-	routes: [{
-		name: 'userentrypoint',
-		path: '/user/',
-		component: require('./components/Network.vue'),
-		meta: { requiresAuth: true }
-	}, {
-		path: '/user/settings',
-		component: require('./components/Settings.vue'),
-		meta: { requiresAuth: true }
-	}, {
-		path: '/user/media',
-		component: require('./components/Media.vue'),
-		meta: { requiresAuth: true }
-	}, { // Restore pass screen
-		path: '/user/screen/restorepass',
-		component: require('./components/RestorePass.vue')
-	}, {
-		name: 'authscreen',
-		path: '/user/auth',
-		component: require('./components/authComponent.vue'),
-		meta: { requiresAuth: false }
-	}, {
-		name: 'badrequest',
-		path: '/user/badrequest',
-		component: require('./components/common/BadRequest.vue')
-	}, {
-		path: '*',
-		component: require('./components/common/Notfound.vue')
-	}]
-});
+	mode  : 'history',
+	routes: [
+		{
+			name     : 'userentrypoint',
+			path     : '/user/',
+			component: require('./components/Network.vue'),
+			meta     : {requiresAuth: true}
+		},
+		{
+			path     : '/user/settings',
+			component: require('./components/Settings.vue'),
+			meta     : {requiresAuth: true}
+		},
+		{
+			path     : '/user/media',
+			component: require('./components/Media.vue'),
+			meta     : {requiresAuth: true}
+		},
 
+
+		{ // Restore pass screen
+			path     : '/user/screen/restorepass',
+			component: require('./components/RestorePass.vue'),
+		},
+
+
+		{
+			name     : 'authscreen',
+			path     : '/user/auth',
+			component: require('./components/authComponent.vue'),
+			meta     : {requiresAuth: false}
+		},
+		{
+			name     : 'badrequest',
+			path     : '/user/badrequest',
+			component: require('./components/common/BadRequest.vue')
+		},
+		{
+			path     : '*',
+			component: require('./components/common/Notfound.vue')
+		},
+	]
+})
 },{"./components/Media.vue":14,"./components/Network.vue":15,"./components/RestorePass.vue":16,"./components/Settings.vue":17,"./components/authComponent.vue":18,"./components/common/BadRequest.vue":19,"./components/common/Notfound.vue":20,"vue-router":6}],22:[function(require,module,exports){
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var domready = require('domready');
+var domready = require('domready')
 var defaultAMscript = {
-	run: function run() {
+	run: function(){
 		/**
-   * ==================== Common Functions ======================
-   * 19.12.2016
-   */
+		 * ==================== Common Functions ======================
+		 * 19.12.2016
+		 */
 		window.isDescendant = function (parent, child) {
 			var node = child.parentNode;
 			while (node != null) {
@@ -11470,62 +11482,72 @@ var defaultAMscript = {
 			return false;
 		};
 
-		window.itemIsPureObject = function (item) {
-			if (item !== null && (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object') {
-				if (!(item instanceof Array)) return item instanceof Object;
+		window.itemIsPureObject = function(item) {
+			if ( item !== null && typeof item === 'object' ) {
+				if(!(item instanceof Array))
+					return item instanceof Object;
 
 				return false;
 			}
 			return false;
 		};
 
-		window.dataToPost = function (action, data) {
+		window.dataToPost = function(action, data) {
 			var formData = new FormData();
 			formData.append('action', action);
 
 			for (var part in data) {
 				var dataItem = data[part];
 
-				if (itemIsPureObject(dataItem)) {
+				if(itemIsPureObject(dataItem)) {
 					var details = JSON.stringify(dataItem);
 					formData.append(part, details);
 				} else {
 					formData.append(part, dataItem);
 				}
+
 			}
 
 			return formData;
 		};
 
 		/**
-   * ==================== MDL Upgrade DOM when changes ======================
-   * 10.12.2016
-   */
-		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-		var observer = new MutationObserver(function () {
+		 * ==================== MDL Upgrade DOM when changes ======================
+		 * 10.12.2016
+		 */
+		var MutationObserver = window.MutationObserver
+			|| window.WebKitMutationObserver
+			|| window.MozMutationObserver;
+		var observer = new MutationObserver(function() {
 			componentHandler.upgradeDom();
 		});
-		observer.observe(document.body, { childList: true, subtree: true });
+		observer.observe(document.body, {childList: true,subtree : true});
+
 
 		/**
-   * ==================== Regular Domready script ======================
-   * 26.12.2016
-   */
-		domready(function () {});
+		 * ==================== Regular Domready script ======================
+		 * 26.12.2016
+		 */
+		domready(function(){
+
+
+
+		});
+
 
 		/**
-   * ==================== jQuery ======================
-   * 26.12.2016
-   */
-		jQuery(document).ready(function ($) {});
+		 * ==================== jQuery ======================
+		 * 26.12.2016
+		 */
+		jQuery(document).ready(function ($){
+
+		});
+
 	}
-};
-defaultAMscript.run();
-module.exports = defaultAMscript;
-
+}
+defaultAMscript.run()
+module.exports = defaultAMscript
 },{"domready":1}],23:[function(require,module,exports){
-"use strict";
-
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11534,11 +11556,11 @@ module.exports = new Vuex.Store({
 
 	mutations: {
 
-		setProducts: function setProducts(state, data) {
+		setProducts: function(state, data) {
 			state.products = data;
 		},
 
-		removeFromCart: function removeFromCart(state, data) {
+		removeFromCart: function(state, data) {
 			state.products.splice(state.products.indexOf(data), 1);
 		}
 
@@ -11547,10 +11569,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-
 },{}],24:[function(require,module,exports){
-"use strict";
-
 module.exports = new Vuex.Store({
 
 	state: {
@@ -11558,17 +11577,21 @@ module.exports = new Vuex.Store({
 	},
 
 	mutations: {
-		setUserdata: function setUserdata(state, data) {
-			state.userdata = data;
+
+		setUserdata(state, data) {
+			state.userdata = data
 		}
+
 	},
 
-	actions: {},
+	actions: {
 
-	created: function created() {
+	},
+
+	created: function() {
 		console.log(this.state.userdata);
 	}
 
-});
 
+});
 },{}]},{},[13]);

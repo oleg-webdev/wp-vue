@@ -11,7 +11,7 @@
 		<div class="container">
 			<div id="login-register-form"
 					 v-bind:class="[formClass]"
-					 class="col-md-8 col-md-offset-2 animated">
+					 class="col-md-10 col-md-offset-1 animated">
 				<div class="spinner-container">
 					<md-spinner :md-size="30" v-if="spinnerActive" md-indeterminate class="md-accent"></md-spinner>
 				</div>
