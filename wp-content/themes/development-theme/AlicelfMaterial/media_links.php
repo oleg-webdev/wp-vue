@@ -12,10 +12,12 @@ function aa_func_20163119123146()
 	$node_modules  = $template_path . "/node_modules/";
 	$production    = WP_DEBUG === false ? ".min" : null;
 
-	// Slick slider bower install --save slick-carousel
-//	wp_enqueue_style( 'slick-style', $template_path . '/bower_components/slick-carousel/slick/slick.css' );
-//	wp_enqueue_script( 'slick-script',
-//		$template_path . '/bower_components/slick-carousel/slick/slick.min.js', ['jquery'], false, true );
+	// Slick slider | bower install slick-carousel --save
+	// wp_enqueue_style( 'slick-style', $bowersrc . '/slick-carousel/slick/slick.css' );
+	// wp_enqueue_script( 'slick-script', $bowersrc . '/slick-carousel/slick/slick.min.js', [ 'jquery' ], false, true );
+
+	// Font Awesome | bower install components-font-awesome --save
+	// wp_enqueue_style( 'font-awesome-styles', $bowersrc . '/components-font-awesome/css/font-awesome.min.css' );
 
 	// Styles
 	wp_enqueue_style( 'vue-material-css', $template_path . "/vue-material/dist/vue-material.css" );
