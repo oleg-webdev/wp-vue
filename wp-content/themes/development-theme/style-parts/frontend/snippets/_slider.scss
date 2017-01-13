@@ -1,0 +1,173 @@
+/**
+ * ==================== Theme Slider ======================
+ * 13.01.2017
+ */
+
+.mainbg {
+	margin-left  : auto;
+	margin-right : auto;
+	display      : block;
+	/*Tablet*/
+	@media (max-width : 951px) {
+		height : 250px;
+		width : auto;
+	}
+}
+
+.head-banner {
+	position : relative;
+}
+
+.animated-inner-content {
+	@extend .am-wrap;
+
+	position        : absolute;
+	display         : flex;
+	align-items     : center;
+	flex-flow       : row wrap;
+	height          : 100%;
+	width           : 100%;
+	justify-content : center;
+
+	hgroup {
+		display    : block;
+		text-align : center;
+		color      : #fff;
+		h1 {
+			font           : normal 60px $baseFont;
+			text-transform : uppercase;
+			letter-spacing : 5px;
+		}
+		h2 {
+			font : normal 24px $baseFont;
+		}
+		a {
+			font             : normal 18px $baseFont;
+			padding          : 15px 30px;
+			text-decoration  : none;
+			background-color : $dangerColor;
+			border-radius    : 5px;
+			text-transform   : uppercase;
+			/*Desktop*/
+			@media (min-width : 952px) {
+				margin-top : 50px;
+			}
+		}
+	}
+
+	/*Tablet*/
+	@media (max-width : 951px) {
+
+	}
+
+	/*Tablet*/
+	@media (max-width : 951px) {
+		hgroup {
+			top  : 35px;
+			left : 30px;
+			h1 {
+				font-size   : 30px;
+				line-height : 40px;
+			}
+			a {
+				margin-top : 10px;
+				padding    : 15px;
+			}
+		}
+	}
+	/*Mobile*/
+	@media (max-width : 767px) {
+		hgroup {
+			h1 {
+				font-size      : 20px;
+				line-height    : 30px;
+				margin         : 0;
+			}
+			h2 {
+				margin    : 0;
+				font-size : 18px;
+			}
+			a {
+				margin-top : 5px;
+				padding    : 2px 20px;
+				font-size  : 15px;
+			}
+		}
+	}
+}
+
+.slick-slide {
+	&:focus {
+		box-shadow : none;
+		outline    : none;
+	}
+}
+
+.slidernavs {
+	position    : absolute;
+	top         : 50%;
+	z-index     : 2;
+	display     : block;
+	cursor      : pointer;
+	width       : 54px;
+	height      : 67px;
+	margin-top  : -33px;
+	text-align  : center;
+	line-height : 50px;
+	color       : #fff;
+	font-size   : 37px;
+	opacity     : 0;
+
+	&.shown-arrows {
+		opacity : 1;
+		color : #000;
+	}
+
+	&:hover {
+		color : $mainColor;
+	}
+
+	&.prevarrow {
+		left       : 10%;
+	}
+	&.nextarrow {
+		right      : 10%;
+	}
+	/*Tablet*/
+	@media (max-width : 951px) {
+		display : none !important;
+	}
+}
+
+.slick-dots {
+	position        : absolute;
+	display         : flex;
+	bottom          : 20px;
+	justify-content : center;
+	padding         : 0;
+	width           : 100%;
+	li {
+		width            : 20px;
+		height           : 20px;
+		border-radius    : 50%;
+		background-color : #fff;
+		border           : 1px solid darken(#fff, 20%);
+		margin-left      : 5px;
+		margin-right     : 5px;
+		cursor           : pointer;
+		list-style       : none;
+		&.slick-active {
+			height           : 19px;
+			width            : 19px;
+			border           : 2px solid darken(#fff, 20%);
+			background-color : $dangerColor;
+		}
+		button {
+			display : none;
+		}
+	}
+	/*Mobile*/
+	@media (max-width : 767px) {
+		bottom : -20px;
+	}
+}

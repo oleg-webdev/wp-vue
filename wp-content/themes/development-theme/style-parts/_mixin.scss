@@ -1,3 +1,28 @@
+.site-main-page-content {
+	max-width : 100%;
+}
+
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content : " "; // 1
+		display : table; // 2
+	}
+	&:after {
+		clear : both;
+	}
+}
+
+.am-wrap {
+	@include clearfix;
+	display      : block;
+	max-width    : 1170px;
+	float        : none;
+	margin-left  : auto;
+	margin-right : auto;
+	clear        : both;
+}
+
 /**
  * ==================== Flex Grid ======================
  * 28.12.2016
@@ -72,8 +97,8 @@
 		}
 	}
 }
-@include flex-col;
 
+@include flex-col;
 
 @mixin gradient($color1 : $infoColor, $color2 : $mainColor) {
 	background-color  : $color2;
@@ -92,30 +117,18 @@
  */
 
 @mixin gradientH($color1: $infoColor, $color2: $mainColor) {
-	background: $color1; /* Old browsers */
-	background: -moz-linear-gradient(left,  $color1 0%, $color2 100%);
-	background: -webkit-linear-gradient(left,  $color1 0%,$color2 100%);
-	background: linear-gradient(to right,  $color1 0%,$color2 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color1}', endColorstr='#{$color2}',GradientType=1 );
+	background : $color1; /* Old browsers */
+	background : -moz-linear-gradient(left, $color1 0%, $color2 100%);
+	background : -webkit-linear-gradient(left, $color1 0%, $color2 100%);
+	background : linear-gradient(to right, $color1 0%, $color2 100%);
+	filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color1}', endColorstr='#{$color2}', GradientType=1);
 }
-
 
 @mixin transition($time : 0.3s, $prop : all) {
 	-webkit-transition : $prop, $time;
 	-moz-transition    : $prop, $time;
 	-o-transition      : $prop, $time;
 	transition         : $prop, $time;
-}
-
-@mixin clearfix() {
-	&:before,
-	&:after {
-		content : " "; // 1
-		display : table; // 2
-	}
-	&:after {
-		clear : both;
-	}
 }
 
 @mixin placeholder-color($color : $mainColor) {
@@ -138,11 +151,11 @@
  * 10.07.2016
  */
 %space-x-section {
-	float : none;
-	clear: both;
-	display: block;
-	width : 100%;
-	@include clearfix();
+	float   : none;
+	clear   : both;
+	display : block;
+	width   : 100%;
+	@include clearfix;
 }
 
 @mixin space-x {
@@ -153,6 +166,7 @@
 		}
 	}
 }
+
 @mixin padding-top-x {
 	@for $i from 1 through 10 {
 		.padding-top-#{$i}0 {
@@ -163,6 +177,7 @@
 		}
 	}
 }
+
 @mixin padding-bottom-x {
 	@for $i from 1 through 10 {
 		.padding-bottom-#{$i}0 {
@@ -173,6 +188,7 @@
 		}
 	}
 }
+
 @mixin padding-left-x {
 	@for $i from 1 through 10 {
 		.padding-left-#{$i}0 {
@@ -183,6 +199,7 @@
 		}
 	}
 }
+
 @mixin padding-right-x {
 	@for $i from 1 through 10 {
 		.padding-right-#{$i}0 {
@@ -196,11 +213,11 @@
 
 .img-center {
 	&img {
-		margin-left : auto;
+		margin-left  : auto;
 		margin-right : auto;
 	}
 	img {
-		margin-left : auto;
+		margin-left  : auto;
 		margin-right : auto;
 	}
 }

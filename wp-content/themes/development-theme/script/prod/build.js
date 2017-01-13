@@ -11006,6 +11006,9 @@ new Vue({
 	}
 
 });
+
+// let amThemeSlider = require('./themeslider')
+// amThemeSlider.run()
 },{"./components/Profile/index.vue":10,"./components/WooCart/index.vue":11,"./dirrectives/ajaxForms":12,"./routes":21,"./script":22,"./vuex/User":24,"vue-material":4,"vue-resource":5,"vuex":9}],14:[function(require,module,exports){
 ;(function(){
 'use strict';
@@ -11042,9 +11045,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-9", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11095,9 +11098,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11135,9 +11138,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
@@ -11331,7 +11334,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],19:[function(require,module,exports){
@@ -11410,9 +11413,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-9", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],21:[function(require,module,exports){

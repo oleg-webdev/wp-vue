@@ -14,5 +14,5 @@
 <div id="am-appwrap">
 	<?php include locate_template( 'templates/menu.php' ) ?>
 	<main>
-		<div class="page-content">
-		<?php do_action( 'AM_content' ) ?>
+		<div class="site-main-page-content">
+<?php do_action( 'AM_content' ) ?>

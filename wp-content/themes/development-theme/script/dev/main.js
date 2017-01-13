@@ -111,3 +111,6 @@ new Vue({
 	}
 
 });
+
+// let amThemeSlider = require('./themeslider')
+// amThemeSlider.run()

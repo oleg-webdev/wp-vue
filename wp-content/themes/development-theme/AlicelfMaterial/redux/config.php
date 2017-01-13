@@ -160,14 +160,14 @@ $section = [
 		[
 			'id'          => 'opt-typography-p',
 			'type'        => 'typography',
-			'title'       => __('Regular Text', 'alicelf-material'),
+			'title'       => __( 'Regular Text', 'alicelf-material' ),
 			'google'      => true,
 			'font-backup' => true,
-			'output'      => ['body'],
-			'units'       =>'px',
-			'subtitle'    => __('Typography option', 'alicelf-material'),
-			'preview' => [
-				'text'=>'Lorem Ipsum 123456789'
+			'output'      => [ 'body' ],
+			'units'       => 'px',
+			'subtitle'    => __( 'Typography option', 'alicelf-material' ),
+			'preview'     => [
+				'text' => 'Lorem Ipsum 123456789'
 			],
 			'default'     => [
 				'color'       => '#333',
@@ -182,42 +182,39 @@ $section = [
 ];
 Redux::setSection( $opt_name, $section );
 
-$section = array(
+$section = [
 	'title'  => 'Carousel',
 	'id'     => 'carousel-section',
 	'desc'   => '',
 	'icon'   => 'el el-picture',
-	'fields' => array(
-		array(
+	'fields' => [
+		[
 			'id'       => 'opt-carouseltransition',
 			'type'     => 'select',
 			'title'    => __( 'Transition property', 'alicelf-material' ),
 			'subtitle' => __( 'Select carousel behavior', 'alicelf-material' ),
 			'desc'     => __( 'This is the description field, again good for additional info.', 'alicelf-material' ),
-			//Must provide key => value pairs for select options
-			'options'  => array(
+			'options'  => [
 				'1' => 'Slide',
 				'2' => 'Fade',
-				'3' => 'Slick Thumbs'
-			),
+			],
 			'default'  => '1'
-		),
-		array(
+		],
+		[
 			'id'          => 'opt-slides',
 			'type'        => 'slides',
 			'title'       => __( 'Slides Options', 'alicelf-material' ),
 			'subtitle'    => __( 'Unlimited slides with drag and drop sortings.', 'alicelf-material' ),
-			'desc'        => __( 'Usage: [theme_carousel] or echo do_shortcode(\'[theme_carousel]\')', 'alicelf-material' ),
-			'placeholder' => array(
+			'desc'        => __( 'Usage: [get_theme_slider] or echo do_shortcode(\'[get_theme_slider]\')', 'alicelf-material' ),
+			'placeholder' => [
 				'title'       => __( 'This is a title', 'alicelf-material' ),
-				'description' => __( 'Description Here', 'alicelf-material' ),
-				'url'         => __( 'Give us a link!', 'alicelf-material' ),
+				'description' => __( 'Description', 'alicelf-material' ),
+				'url'         => __( 'Link', 'alicelf-material' ),
 				'quick_notes' => __( 'Quick Notes', 'alicelf-material' ),
-			),
-		),
-
-	)
-);
+			],
+		],
+	]
+];
 Redux::setSection( $opt_name, $section );
 
 /**

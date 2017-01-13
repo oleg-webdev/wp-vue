@@ -12,17 +12,17 @@
 			<h3 class="entry-title"><?php the_title(); ?></h3>
 
 			<div class="entry-content">
-				<div class="mdl-grid">
+				<div class="flex-container">
 					<?php
 					if ( $show_sidebar && $sidebar_position === 'left' )
 						aa_sidebar_fn($sidebar_name);
 					?>
-					<div class="the-page-content mdl-cell mdl-cell--<?php echo $show_sidebar ? "8-col" : "12-col"; ?>">
+					<div class="flex-col-<?php echo $show_sidebar ? 80 : 100; ?> flex-col-phone-100">
 						<?php the_content(); the_tags( "", " / " ); ?>
 					</div>
 					<?php
 					if ( $show_sidebar && $sidebar_position === 'right' )
-						aa_sidebar_fn($sidebar_name);
+						aa_sidebar_fn($sidebar_name, 40);
 					?>
 				</div>
 				<nav>

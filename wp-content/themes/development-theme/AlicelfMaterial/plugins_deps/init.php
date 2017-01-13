@@ -27,9 +27,9 @@ function alicelf_theme_register_dependences()
 {
 
 	$plugins_uri = get_template_directory_uri() . '/AlicelfMaterial/plugins_deps/plugins/';
-	$plugins     = array(
-		// ACF PRo
-		array(
+	$plugins     = [
+
+		[
 			'name'               => 'Advanced Custom Fields PRO',
 			'slug'               => 'advanced-custom-fields-pro',
 			'source'             => $plugins_uri . 'advanced-custom-fields-pro.zip',
@@ -38,53 +38,31 @@ function alicelf_theme_register_dependences()
 			'force_activation'   => false,
 			'force_deactivation' => false,
 			'external_url'       => '',
-		),
-		array(
-			'name'               => 'Custom Captcha',
-			'slug'               => 'custom_captcha',
-			'source'             => 'https://github.com/Nayami/theme_plugins/raw/master/custom_captcha.zip',
-			'required'           => false,
-			'version'            => '0.1',
-			'force_activation'   => false,
-			'force_deactivation' => false,
-			'external_url'       => 'https://github.com/Nayami/theme_plugins/tree/master/custom_captcha',
-		),
+		],
 
-		array(
-			'name'         => 'Generate Meta',
-			'slug'         => 'generate-meta',
-			'source'       => 'https://github.com/Nayami/theme_plugins/raw/master/generate-meta.zip',
-			'required'     => false,
-			'external_url' => 'https://github.com/Nayami/theme_plugins/tree/master/generate-meta',
-		),
-		array(
+		[
 			'name'         => 'Generate Custom Posts',
 			'slug'         => 'generate-custom-posts',
 			'source'       => 'https://github.com/Nayami/theme_plugins/raw/master/generate-custom-posts.zip',
 			'required'     => false,
 			'external_url' => 'https://github.com/Nayami/theme_plugins/tree/master/generate-custom-posts',
-		),
-		// This is an example of how to include a plugin from the WordPress Plugin Repository.
-		array(
+		],
+
+		[
 			'name'     => 'WP-PageNavi',
 			'slug'     => 'wp-pagenavi',
 			'required' => false,
-		),
-		array(
-			'name'     => 'Instagram Feed',
-			'slug'     => 'instagram-feed',
-			'required' => false,
-		),
-		array(
+		],
+
+		[
 			'name'     => 'WP REST API 2.0+ (WP API)',
 			'slug'     => 'rest-api',
 			'required' => true,
-		),
+		],
 
-	);
+	];
 
-
-	$config = array(
+	$config = [
 		'default_path' => '',                      // Default absolute path to pre-packaged plugins.
 		'menu'         => 'theme-requirements-install-plugins', // Menu slug.
 		'has_notices'  => true,                    // Show admin notices or not.
@@ -92,7 +70,7 @@ function alicelf_theme_register_dependences()
 		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
 		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
 		'message'      => '',                      // Message to output right before the plugins table.
-		'strings'      => array(
+		'strings'      => [
 			'page_title'                      => __( 'Install Required Plugins', 'tgmpa' ),
 			'menu_title'                      => __( 'Install Plugins', 'tgmpa' ),
 			'installing'                      => __( 'Installing Plugin: %s', 'tgmpa' ), // %s = plugin name.
@@ -117,8 +95,8 @@ function alicelf_theme_register_dependences()
 			'plugin_activated'                => __( 'Plugin activated successfully.', 'tgmpa' ),
 			'complete'                        => __( 'All plugins installed and activated successfully. %s', 'tgmpa' ), // %s = dashboard link.
 			'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
-		)
-	);
+		]
+	];
 
 	tgmpa( $plugins, $config );
 

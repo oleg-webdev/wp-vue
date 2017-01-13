@@ -26,10 +26,10 @@ register_sidebar( [
  * @param $column
  */
 if ( ! function_exists( 'aa_sidebar_fn' ) ) {
-	function aa_sidebar_fn( $sidebar = 'default-widgetize-sidebar', $column = 3 )
+	function aa_sidebar_fn( $sidebar = 'default-widgetize-sidebar', $column = 40 )
 	{
 		if ( is_active_sidebar( $sidebar ) ) { ?>
-			<aside class="mdl-cell mdl-cell--<?php echo $column ?>-col <?php echo $sidebar ?>-sidebar">
+			<aside class="flex-col-<?php echo $column ?> flex-col-phone-100 <?php echo $sidebar ?>-sidebar">
 				<?php dynamic_sidebar( $sidebar ); ?>
 			</aside>
 		<?php }

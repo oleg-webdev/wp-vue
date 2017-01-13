@@ -12,6 +12,11 @@ function aa_func_20163119123146()
 	$node_modules  = $template_path . "/node_modules/";
 	$production    = WP_DEBUG === false ? ".min" : null;
 
+	// Slick slider bower install --save slick-carousel
+//	wp_enqueue_style( 'slick-style', $template_path . '/bower_components/slick-carousel/slick/slick.css' );
+//	wp_enqueue_script( 'slick-script',
+//		$template_path . '/bower_components/slick-carousel/slick/slick.min.js', ['jquery'], false, true );
+
 	// Styles
 	wp_enqueue_style( 'vue-material-css', $template_path . "/vue-material/dist/vue-material.css" );
 	wp_enqueue_style( 'animate-css', $bowersrc . "animate.css/animate.min.css" );
@@ -20,9 +25,9 @@ function aa_func_20163119123146()
 	wp_enqueue_style( 'bootstrap3-style', $bowersrc . "/bootstrap/dist/css/bootstrap.min.css" );
 	wp_enqueue_style( 'template-base-styles', get_bloginfo( 'stylesheet_url' ) );
 
-	// Theme jQuery 2.1
+	// Theme jQuery 3+
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', $template_path . '/script/prod/jQuery2.1.js', [], '2.1', true );
+	wp_register_script( 'jquery', $bowersrc . '/jquery/dist/jquery.min.js', [], false, true );
 	wp_enqueue_script( 'jquery' );
 
 	wp_enqueue_script( 'google-material-script', $template_path . "/mdl/material.min.js", [], false, true );
