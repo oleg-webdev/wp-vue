@@ -4,6 +4,18 @@ module.exports = {
 
 		jQuery(document).ready(function ($){
 
+			// @TODO: move it global
+			var _BODY            = document.body,
+					_HTML            = document.documentElement,
+					_DOCUMENT_HEIGHT = Math.max(_BODY.scrollHeight, _BODY.offsetHeight,
+						_HTML.clientHeight, _HTML.scrollHeight, _HTML.offsetHeight),
+					_TOP_OFFSET      = document.documentElement.scrollTop || document.body.scrollTop,
+					_LEFT_OFFSET     = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+			/**
+			 * ==================== FRONTEND MODALS ======================
+			 * 21.04.2016
+			 */
 			$('[data-modal-trigger]').on('click', function(e) {
 
 				e.preventDefault();
@@ -86,7 +98,7 @@ module.exports = {
 				}, 300);
 			});
 
-			$('[itemscope="aa-modal"]').on('click', function(e) {
+			$('[data-itemprop="aa-modal"]').on('click', function(e) {
 				var that = $(this);
 				if ($(e.target).hasClass('modal-backdrop')) {
 					detachModalEvent("#"+that.attr('id'));
@@ -102,13 +114,6 @@ module.exports = {
 				// console.log(type);
 			});
 
-//raizeModalEvent("#login-modal");
-//setTimeout(function(){
-//	detachModalEvent("#login-modal");
-//}, 3000);
-//$(window).on('aaModalOpened', function(e, type, relatedModal){
-//	console.log(e, type, relatedModal);
-//});
 
 		});
 	}

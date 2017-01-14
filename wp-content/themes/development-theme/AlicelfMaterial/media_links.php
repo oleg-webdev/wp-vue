@@ -19,6 +19,10 @@ function aa_func_20163119123146()
 	// Font Awesome | bower install components-font-awesome --save
 	// wp_enqueue_style( 'font-awesome-styles', $bowersrc . '/components-font-awesome/css/font-awesome.min.css' );
 
+	// Lightbox | bower install lightbox2 --save
+	// wp_enqueue_style( 'lightbox-css', $bowersrc . 'lightbox2/dist/css/lightbox.min.css' );
+	// wp_enqueue_script( 'lightbox-js', $bowersrc . 'lightbox2/dist/js/lightbox.min.js', [ 'jquery' ], false, true );
+
 	// Styles
 	wp_enqueue_style( 'vue-material-css', $template_path . "/vue-material/dist/vue-material.css" );
 	wp_enqueue_style( 'animate-css', $bowersrc . "animate.css/animate.min.css" );
