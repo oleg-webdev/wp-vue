@@ -112,5 +112,12 @@ new Vue({
 
 });
 
-// let amThemeSlider = require('./themeslider')
+
+/**
+ * ==================== Modules ======================
+ * 14.01.2017
+ */
+// let amThemeSlider = require('./modules/themeslider')
 // amThemeSlider.run()
+// let amThemeModal = require('./modules/modal')
+// amThemeModal.run()

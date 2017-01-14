@@ -1,8 +1,8 @@
 module.exports = {
-	run(){
+
+	run() {
 
 		jQuery(document).ready(function($) {
-
 
 			let homepageSlider = $('.slick-banner'),
 					amSliderFade = homepageSlider.data('amqueried-transition') === 'slider-fade';
