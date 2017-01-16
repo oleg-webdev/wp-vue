@@ -89,7 +89,11 @@ function aa_func_20163119123146()
 			'registration_strategy' => $_am[ 'network-confirmation-flow' ]
 		]
 	];
-	$data   = array(
+
+
+	$routerPrefix = '';
+	//	$routerPrefix = 'projects/someproject/';
+	$data = [
 		'baseurl'         => get_site_url(),
 		'themeurl'        => get_template_directory_uri(),
 		'themepath'       => get_template_directory(),
@@ -99,8 +103,10 @@ function aa_func_20163119123146()
 		'themeSettings'   => $values,
 		'uploadDir'       => wp_upload_dir()[ 'basedir' ],
 		'wooOptions'      => __woo_options(),
-		'currentUser'     => am_user( get_current_user_id() )
-	);
+		'currentUser'     => am_user( get_current_user_id() ),
+		'routerPrefix'    => $routerPrefix,
+		'networkSlug'     => am_profile_slug()
+	];
 	wp_localize_script( 'AMscript', 'AMdefaults', $data );
 
 }

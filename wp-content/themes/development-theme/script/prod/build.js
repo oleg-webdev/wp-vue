@@ -10676,7 +10676,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = {
 	data: function data() {
-		return {};
+		return {
+			netwoRkUrlendpoint: AMdefaults.routerPrefix + AMdefaults.networkSlug
+		};
 	},
 
 
@@ -10707,16 +10709,16 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{staticClass:"flex-container",attrs:{"id":"Profile-scope"}},[(_vm.currentUserModel)?_h('md-list',{staticClass:"md-dense flex-col-20",attrs:{"id":"dashboardnav"}},[_h('md-list-item',{staticClass:"md-primary"},[_h('router-link',{staticClass:"button",attrs:{"to":"/user","exact":""}},[_h('md-icon',["home"])," ",_h('span',["Home Link"])])])," ",_h('md-list-item',[_h('router-link',{staticClass:"button",attrs:{"to":"/user/settings"}},[_h('md-icon',["settings"])," ",_h('span',["Settings"])])])," ",_h('md-list-item',[_h('router-link',{staticClass:"button",attrs:{"to":"/user/media"}},[_h('md-icon',["photo_library"])," ",_h('span',["Media"])])])," ",_h('md-list-item',[_h('router-link',{staticClass:"button",attrs:{"to":"/user/auth"}},[_h('md-icon',["warning"])," ",_h('span',["Auth"])])])]):_vm._e()," ",_h('div',{ref:"networkcontent",staticClass:"flex-col-80",class:{'flex-col-100': !_vm.currentUserModel},attrs:{"id":"network-content"}},[_h('transition',{attrs:{"name":"panelslide"}},[_h('router-view',{staticClass:"view"})])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{staticClass:"flex-container",attrs:{"id":"Profile-scope"}},[(_vm.currentUserModel)?_h('md-list',{staticClass:"md-dense flex-col-20",attrs:{"id":"dashboardnav"}},[_h('md-list-item',{staticClass:"md-primary"},[_h('router-link',{staticClass:"button",attrs:{"to":{path: '/'+_vm.netwoRkUrlendpoint },"exact":""}},[_h('md-icon',["home"])," ",_h('span',["Home Link"])])])," ",_h('md-list-item',[_h('router-link',{staticClass:"button",attrs:{"to":{path:'/'+_vm.netwoRkUrlendpoint+'/settings'}}},[_h('md-icon',["settings"])," ",_h('span',["Settings"])])])," ",_h('md-list-item',[_h('router-link',{staticClass:"button",attrs:{"to":{path:'/'+_vm.netwoRkUrlendpoint+'/media'}}},[_h('md-icon',["photo_library"])," ",_h('span',["Media"])])])," ",_h('md-list-item',[_h('router-link',{staticClass:"button",attrs:{"to":{path:'/'+_vm.netwoRkUrlendpoint+'/auth'}}},[_h('md-icon',["warning"])," ",_h('span',["Auth"])])])]):_vm._e()," ",_h('div',{ref:"networkcontent",staticClass:"flex-col-80",class:{'flex-col-100': !_vm.currentUserModel},attrs:{"id":"network-content"}},[_h('transition',{attrs:{"name":"panelslide"}},[_h('router-view',{staticClass:"view"})])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
@@ -10811,9 +10813,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
 },{"../../vuex/Cart":23,"vue":7,"vue-hot-reload-api":3}],12:[function(require,module,exports){
@@ -11052,9 +11054,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11105,9 +11107,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
@@ -11225,9 +11227,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],17:[function(require,module,exports){
@@ -11265,9 +11267,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],18:[function(require,module,exports){
@@ -11419,9 +11421,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],19:[function(require,module,exports){
@@ -11459,9 +11461,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9", __vue__options__)
+    hotAPI.createRecord("data-v-8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-9", __vue__options__)
+    hotAPI.reload("data-v-8", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],20:[function(require,module,exports){
@@ -11500,53 +11502,57 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8", __vue__options__)
+    hotAPI.createRecord("data-v-9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8", __vue__options__)
+    hotAPI.reload("data-v-9", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],21:[function(require,module,exports){
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
+
+const netwoRkUrlendpoint = AMdefaults.routerPrefix + AMdefaults.networkSlug
+
 module.exports = new VueRouter({
 	mode  : 'history',
 	routes: [
 		{
 			name     : 'userentrypoint',
-			path     : '/user/',
+			path     : `/${netwoRkUrlendpoint}/`,
 			component: require('./components/Network.vue'),
 			meta     : {requiresAuth: true}
 		},
 		{
-			path     : '/user/settings',
+			path     : `/${netwoRkUrlendpoint}/settings`,
 			component: require('./components/Settings.vue'),
 			meta     : {requiresAuth: true}
 		},
 		{
-			path     : '/user/media',
+			path     : `/${netwoRkUrlendpoint}/media`,
 			component: require('./components/Media.vue'),
 			meta     : {requiresAuth: true}
 		},
 
 
 		{ // Restore pass screen
-			path     : '/user/screen/restorepass',
+			path     : `/${netwoRkUrlendpoint}/screen/restorepass`,
 			component: require('./components/RestorePass.vue'),
 		},
 
 
 		{
 			name     : 'authscreen',
-			path     : '/user/auth',
+			path     : `/${netwoRkUrlendpoint}/auth`,
 			component: require('./components/authComponent.vue'),
 			meta     : {requiresAuth: false}
 		},
 		{
 			name     : 'badrequest',
-			path     : '/user/badrequest',
+			path     : `/${netwoRkUrlendpoint}/badrequest`,
 			component: require('./components/common/BadRequest.vue')
 		},
+
 		{
 			path     : '*',
 			component: require('./components/common/Notfound.vue')

@@ -1,44 +1,48 @@
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
+
+const netwoRkUrlendpoint = AMdefaults.routerPrefix + AMdefaults.networkSlug
+
 module.exports = new VueRouter({
 	mode  : 'history',
 	routes: [
 		{
 			name     : 'userentrypoint',
-			path     : '/user/',
+			path     : `/${netwoRkUrlendpoint}/`,
 			component: require('./components/Network.vue'),
 			meta     : {requiresAuth: true}
 		},
 		{
-			path     : '/user/settings',
+			path     : `/${netwoRkUrlendpoint}/settings`,
 			component: require('./components/Settings.vue'),
 			meta     : {requiresAuth: true}
 		},
 		{
-			path     : '/user/media',
+			path     : `/${netwoRkUrlendpoint}/media`,
 			component: require('./components/Media.vue'),
 			meta     : {requiresAuth: true}
 		},
 
 
 		{ // Restore pass screen
-			path     : '/user/screen/restorepass',
+			path     : `/${netwoRkUrlendpoint}/screen/restorepass`,
 			component: require('./components/RestorePass.vue'),
 		},
 
 
 		{
 			name     : 'authscreen',
-			path     : '/user/auth',
+			path     : `/${netwoRkUrlendpoint}/auth`,
 			component: require('./components/authComponent.vue'),
 			meta     : {requiresAuth: false}
 		},
 		{
 			name     : 'badrequest',
-			path     : '/user/badrequest',
+			path     : `/${netwoRkUrlendpoint}/badrequest`,
 			component: require('./components/common/BadRequest.vue')
 		},
+
 		{
 			path     : '*',
 			component: require('./components/common/Notfound.vue')
