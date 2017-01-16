@@ -10714,9 +10714,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-1", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],11:[function(require,module,exports){
@@ -10811,9 +10811,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-2", __vue__options__)
   }
 })()}
 },{"../../vuex/Cart":23,"vue":7,"vue-hot-reload-api":3}],12:[function(require,module,exports){
@@ -11052,9 +11052,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9", __vue__options__)
+    hotAPI.createRecord("data-v-7", __vue__options__)
   } else {
-    hotAPI.reload("data-v-9", __vue__options__)
+    hotAPI.reload("data-v-7", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],15:[function(require,module,exports){
@@ -11105,21 +11105,37 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
 },{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3}],16:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, stdin */\n#Restore-pass-scope .am-wrap {\n  max-width: 900px; }\n\n/* line 6, stdin */\n#Restore-pass-scope .md-card {\n  padding: 20px; }")
 ;(function(){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _User = require('../../vuex/User');
+
+var _User2 = _interopRequireDefault(_User);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {
 	data: function data() {
-		return {};
+		return {
+			spinnerActive: false,
+			pass: null,
+			confirm: null,
+			errors: {
+				pass: '',
+				confirm: ''
+			}
+		};
 	},
 
 
@@ -11132,25 +11148,89 @@ exports.default = {
 	},
 
 
-	methods: {}
+	methods: {
+		trunkErrors: function trunkErrors() {
+			for (var obj in this.errors) {
+				this.errors[obj] = '';
+			}
+		},
+		changePassword: function changePassword() {
+			this.spinnerActive = true;
+			this.trunkErrors();
+
+			if (this.pass.length < 8) {
+				this.$root.openDialog('alertFailDialog', {
+					alert: 'alertfail',
+					data: {
+						type: 'fail',
+						contentHtml: 'Password should be more than 8 symbols',
+						text: 'Got It'
+					}
+				});
+			} else {
+				if (this.pass != this.confirm) {
+					this.$root.openDialog('alertFailDialog', {
+						alert: 'alertfail',
+						data: {
+							type: 'fail',
+							contentHtml: 'Password and Confirm should match',
+							text: 'Understood'
+						}
+					});
+				} else {
+
+					var token = this.$route.query.pass_token;
+					if (token) {
+						var loginData = dataToPost('ajx20175216035231', {
+							pass: this.pass,
+							confirm: this.confirm,
+							token: token
+						});
+
+						this.$http.post(AMdefaults.ajaxurl, loginData).then(function (response) {
+							var data = JSON.parse(response.data);
+
+							if (data.status === 'invalid_token') {
+								this.$root.openDialog('alertFailDialog', {
+									alert: 'alertfail',
+									data: {
+										type: 'fail',
+										contentHtml: 'No record for this user',
+										text: 'Ok'
+									}
+								});
+							} else {
+								if (data.status === 'success') {
+									_User2.default.commit('setUserdata', data.user);
+									this.$router.push({ name: 'userentrypoint' });
+								}
+							}
+						});
+					}
+				}
+			}
+			this.spinnerActive = false;
+		}
+	}
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"restorepassscope",attrs:{"id":"Restore-pass-scope"}},[_h('h3',["Restore pass scope"])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"restorepassscope",attrs:{"id":"Restore-pass-scope"}},[_h('div',{staticClass:"am-wrap"},[_h('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_h('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()])])," ",_h('md-card',{staticClass:"am-wrap am-wrap-sm"},[_h('md-card-header',[_h('div',{staticClass:"md-title"},["Enter new password"])," ",_h('div',{staticClass:"md-subhead"},["Make sure your password is strengh enough"])])," ",_h('md-card-content',[_h('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.changePassword($event)}}},[_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.pass),expression:"pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-pass"},domProps:{"value":_vm._s(_vm.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.pass=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-pass"}},["Password"])])," ",_h('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_h('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.confirm),expression:"confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-confirm"},domProps:{"value":_vm._s(_vm.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.confirm=$event.target.value}}})," ",_h('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-confirm"}},["Password"])])," ",_h('md-card-actions',[_h('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},["Reset"])])])])])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
-},{"vue":7,"vue-hot-reload-api":3}],17:[function(require,module,exports){
+},{"../../vuex/User":24,"vue":7,"vue-hot-reload-api":3,"vueify/lib/insert-css":8}],17:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -11379,9 +11459,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-9", __vue__options__)
   }
 })()}
 },{"vue":7,"vue-hot-reload-api":3}],20:[function(require,module,exports){

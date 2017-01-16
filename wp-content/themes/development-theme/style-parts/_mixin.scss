@@ -159,10 +159,10 @@
 }
 
 @mixin space-x {
-	@for $i from 1 through 20 {
-		.space-x-#{$i} {
+	@for $i from 1 through 10 {
+		.space-x-#{$i}0 {
 			@extend %space-x-section;
-			height : ($i*5)+px;
+			height : ($i*10)+px;
 		}
 	}
 }

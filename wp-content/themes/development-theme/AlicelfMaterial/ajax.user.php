@@ -120,3 +120,44 @@ function ajx20173909123946()
 	echo json_encode( $response );
 	die;
 }
+
+/**
+ * ==================== Handle change password request ======================
+ */
+add_action( 'wp_ajax_nopriv_ajx20175216035231', 'ajx20175216035231' );
+add_action( 'wp_ajax_ajx20175216035231', 'ajx20175216035231' );
+function ajx20175216035231()
+{
+	global $wpdb;
+	$pref     = $wpdb->prefix;
+	$table    = $pref . "user_reset_passwords";
+	$response = [
+		'data'   => $_POST,
+		'status' => 'fail'
+	];
+
+	if ( strlen( $_POST[ 'pass' ] ) >= 8 && $_POST[ 'pass' ] === $_POST[ 'confirm' ] ) {
+
+		$token_info = $wpdb->get_row( "SELECT hash, email, action FROM {$table} WHERE hash = '{$_POST['token']}'" );
+
+		if ( $token_info ) {
+			$user = get_user_by( 'email', $token_info->email );
+			if ( $user ) {
+				$response[ 'user' ] = am_user( $user->ID );
+				wp_set_password( sanitize_text_field( $_POST[ 'pass' ] ), $user->ID );
+				update_user_meta($user->ID, 'am_email_confirmed', true);
+				$response[ 'status' ] = 'success';
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE email = %s", $user->user_email ) );
+				wp_set_auth_cookie( $user->ID );
+			}
+
+		} else {
+			$response[ 'status' ] = 'invalid_token';
+		}
+
+		echo json_encode( $response );
+
+	}
+
+	die;
+}

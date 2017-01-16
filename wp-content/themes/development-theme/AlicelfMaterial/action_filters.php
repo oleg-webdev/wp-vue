@@ -249,3 +249,33 @@ function aa_func_20165727075708($fields)
 }
 
 remove_action('comment_form', 'wp_comment_form_unfiltered_html_nonce');
+
+
+
+/**
+ * ==================== Featured Image for page ======================
+ * 14.01.2017
+ */
+//add_action( 'aa_page_loop_start', 'aa_func_20174614064631', 10, 1 );
+function aa_func_20174614064631( $id )
+{
+	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+	$_height = $image[2];
+	$style = "height: {$_height}px;";
+	$subtitle = get_field('page_subtitle', $id);
+
+	?>
+	<div class="row regular-page-banner">
+		<header class='image-overlap' style='<?php echo $style ?>'>
+			<?php if($image) echo "<img id='toppage-image' src='{$image[0]}'>";  ?>
+			<div class="inner-elems">
+				<div class="ghostly-wrap flex-container">
+					<div class="flex-col-100 title-column">
+						<?php echo $subtitle ?>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	<?php
+}
