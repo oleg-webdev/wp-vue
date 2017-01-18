@@ -55,7 +55,7 @@ function aa_func_20163119123146()
 	wp_enqueue_style( 'animate-css', $bowersrc . 'animate.css/animate.min.css' );
 	wp_enqueue_style( 'google-material-icons', '//fonts.googleapis.com/icon?family=Material+Icons' );
 	wp_enqueue_style( 'google-material-style', $template_path . '/mdl/mdl.css' );
-	wp_enqueue_style( 'bootstrap3-style', $bowersrc . 'bootstrap/dist/css/bootstrap.min.css' );
+//	wp_enqueue_style( 'bootstrap3-style', $bowersrc . 'bootstrap/dist/css/bootstrap.min.css' );
 	wp_enqueue_style( 'template-base-styles', get_bloginfo( 'stylesheet_url' ) );
 
 	// Theme jQuery 3+
@@ -67,8 +67,8 @@ function aa_func_20163119123146()
 	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$production}.js", [], false, true );
 
 	if ( is_amuserpage() ) {
-		wp_enqueue_style( 'cropperstyle', $bowersrc . 'cropper/dist/cropper.min.css' );
-		wp_enqueue_script( 'cropperscript', $bowersrc . 'cropper/dist/cropper.min.js', [ 'jquery' ], false, true );
+//		wp_enqueue_style( 'cropperstyle', $bowersrc . 'cropper/dist/cropper.min.css' );
+//		wp_enqueue_script( 'cropperscript', $bowersrc . 'cropper/dist/cropper.min.js', [ 'jquery' ], false, true );
 	}
 
 	// Application JS
@@ -89,7 +89,6 @@ function aa_func_20163119123146()
 			'registration_strategy' => $_am[ 'network-confirmation-flow' ]
 		]
 	];
-
 
 	$routerPrefix = '';
 	//	$routerPrefix = 'projects/someproject/';
@@ -118,10 +117,10 @@ add_action( 'admin_enqueue_scripts', 'aa_func_20163220053219' );
 function aa_func_20163220053219()
 {
 	$template_path = get_stylesheet_directory_uri();
-	$cdnjs         = "https://cdnjs.cloudflare.com/ajax/libs/";
+	$cdnjs         = "//cdnjs.cloudflare.com/ajax/libs/";
 	// Font Awesome
 	wp_enqueue_style( 'font-awesome', $cdnjs . 'font-awesome/4.6.3/css/font-awesome.min.css' );
-	wp_enqueue_style( 'mdl-icons', "https://fonts.googleapis.com/icon?family=Material+Icons" );
+	wp_enqueue_style( 'mdl-icons', "//fonts.googleapis.com/icon?family=Material+Icons" );
 
 	wp_enqueue_style( 'aa-backend-style', $template_path . "/style-parts/backend/init.css" );
 
