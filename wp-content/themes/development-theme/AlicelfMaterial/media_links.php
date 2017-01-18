@@ -50,11 +50,14 @@ function aa_func_20163119123146()
 //			['jquery'], false, true );
 //	}
 
-	// Styles
-	wp_enqueue_style( 'vue-material-css', $template_path . '/vue-material/dist/vue-material.css' );
-	wp_enqueue_style( 'animate-css', $bowersrc . 'animate.css/animate.min.css' );
+	// MDL
 	wp_enqueue_style( 'google-material-icons', '//fonts.googleapis.com/icon?family=Material+Icons' );
-	wp_enqueue_style( 'google-material-style', $template_path . '/mdl/mdl.css' );
+	wp_enqueue_style( 'google-vue-style', $template_path . '/mdl/mdl.css' );
+	wp_enqueue_script( 'google-material-script', $template_path . '/mdl/material.min.js', [], false, true );
+
+	// Styles
+	wp_enqueue_style( 'animate-css', $bowersrc . 'animate.css/animate.min.css' );
+
 //	wp_enqueue_style( 'bootstrap3-style', $bowersrc . 'bootstrap/dist/css/bootstrap.min.css' );
 	wp_enqueue_style( 'template-base-styles', get_bloginfo( 'stylesheet_url' ) );
 
@@ -63,7 +66,6 @@ function aa_func_20163119123146()
 	wp_register_script( 'jquery', $bowersrc . 'jquery/dist/jquery.min.js', [], false, true );
 	wp_enqueue_script( 'jquery' );
 
-	wp_enqueue_script( 'google-material-script', $template_path . '/mdl/material.min.js', [], false, true );
 	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$production}.js", [], false, true );
 
 	if ( is_amuserpage() ) {

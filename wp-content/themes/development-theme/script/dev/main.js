@@ -5,15 +5,21 @@ window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
 require('./dirrectives/ajaxForms')
 
+
+
 Vue.material.registerTheme({
 	default: {
 		primary: {
 			color: 'blue-grey',
 			hue  : 600
 		},
-		accent : 'blue'
+		accent : {
+			color : 'blue',
+			hue : 900
+		}
 	}
 })
+
 
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 Vue.component('userprofile', require('./components/Profile/index.vue'))
