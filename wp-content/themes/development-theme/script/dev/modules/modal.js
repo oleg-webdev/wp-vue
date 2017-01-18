@@ -2,9 +2,8 @@ module.exports = {
 
 	run() {
 
-		jQuery(document).ready(function ($){
+		jQuery(document).ready(function($) {
 
-			// @TODO: move it global
 			var _BODY            = document.body,
 					_HTML            = document.documentElement,
 					_DOCUMENT_HEIGHT = Math.max(_BODY.scrollHeight, _BODY.offsetHeight,
@@ -39,7 +38,7 @@ module.exports = {
 			 */
 			var raizeModalEvent = function(modal) {
 				var relatedTrigger = $('[data-related-modal="' + modal + '"]') || null,
-						type           = relatedTrigger.length > 0 ? relatedTrigger.attr('data-modal-trigger') : null;
+						type           = relatedTrigger.length > 0 ? relatedTrigger.attr('data-modal-trigger'): null;
 
 				$(modal).css({'display': 'block'});
 				setTimeout(function() {
@@ -56,7 +55,7 @@ module.exports = {
 			var detachModalEvent = function(modal) {
 				var modalOverlay   = $(modal),
 						relatedTrigger = $('[data-related-modal="' + modal + '"]') || null,
-						type           = relatedTrigger.length > 0 ? relatedTrigger.attr('data-modal-trigger') : null;
+						type           = relatedTrigger.length > 0 ? relatedTrigger.attr('data-modal-trigger'): null;
 
 				modalOverlay.removeClass('show');
 				setTimeout(function() {
@@ -68,54 +67,52 @@ module.exports = {
 
 			/**
 			 * ==================== Close modal button ======================
-			 * closeParentModal("#login-modal")
 			 */
-			var closeParentModal = function(modal) {
-				var closeTrigger = $('[data-destroy-modal="' + modal + '"]'),
-						modalOverlay = $(closeTrigger.attr('data-destroy-modal'));
-
-				closeTrigger.on('click', function(e) {
-					e.preventDefault();
-					modalOverlay.removeClass('show');
-					setTimeout(function() {
-						modalOverlay.css('display', 'none');
-						$(window).trigger('aaModalClosed');
-					}, 300);
-				});
-
-			};
-
 			var closeTrigger = $('[data-destroy-modal]');
 			closeTrigger.on('click', function(e) {
 				e.preventDefault();
-				var that         = $(this),
-						modalOverlay = $(that.attr('data-destroy-modal'));
+				var that           = $(this),
+						modalOverlay   = $(that.attr('data-destroy-modal')),
+						relatedTrigger = $('[data-related-modal="' + that.attr('data-destroy-modal') + '"]') || null,
+						type           = relatedTrigger.length > 0 ? relatedTrigger.attr('data-modal-trigger'): null;
 
 				modalOverlay.removeClass('show');
 				setTimeout(function() {
 					modalOverlay.css('display', 'none');
-					$(window).trigger('aaModalClosed');
+					$(window).trigger('aaModalClosed', [type, relatedTrigger]);
 				}, 300);
 			});
 
 			$('[data-itemprop="aa-modal"]').on('click', function(e) {
 				var that = $(this);
 				if ($(e.target).hasClass('modal-backdrop')) {
-					detachModalEvent("#"+that.attr('id'));
+					detachModalEvent("#" + that.attr('id'));
 				}
 			});
 
-			$(window).on('aaModalOpened', function(e) {
+
+			/**
+			 * ==================== Doing open modal hooks ======================
+			 */
+			$(window).on('aaModalOpened', function(e, type, relatedTrigger) {
 				$(_BODY).addClass('aa-modal-overlay');
+				// console.log(e, type, relatedTrigger)
+
 			});
 
+			/**
+			 * ==================== Doing close modal hooks ======================
+			 */
 			$(window).on('aaModalClosed', function(e, type, relatedTrigger) {
 				$(_BODY).removeClass('aa-modal-overlay');
-				// console.log(type);
+				// console.log(e, type, relatedTrigger)
+
+
 			});
 
 
 		});
+
 	}
 
 }
