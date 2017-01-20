@@ -1,12 +1,10 @@
 window.eventHub = new Vue()
 window.Vuex = require('vuex')
 window.VueResource = require('vue-resource')
+
+// Vue MATERIAL
 window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
-require('./dirrectives/ajaxForms')
-
-
-
 Vue.material.registerTheme({
 	default: {
 		primary: {
@@ -14,11 +12,15 @@ Vue.material.registerTheme({
 			hue  : 600
 		},
 		accent : {
-			color : 'blue',
-			hue : 900
+			color: 'blue',
+			hue  : 900
 		}
 	}
 })
+
+
+// require('./dirrectives/ajaxForms')
+
 
 
 Vue.component('minicart', require('./components/WooCart/index.vue'))
@@ -69,9 +71,10 @@ new Vue({
 			type       : 'fail',
 			contentHtml: 'Fail',
 			text       : 'Ok'
-		}
+		},
 
 	},
+
 
 	computed: {
 		// use dynamic in frontend
@@ -81,10 +84,15 @@ new Vue({
 
 	},
 
+
 	created: function() {
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
+
+	},
+
+	mounted() {
 
 	},
 
