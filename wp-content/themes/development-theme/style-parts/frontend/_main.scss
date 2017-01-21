@@ -309,34 +309,3 @@ main {
 	margin-left  : auto;
 	margin-right : auto;
 }
-
-.am-flash-notice {
-
-	&.info {
-		.md-snackbar-container {
-			background-color : $infoColor;
-			color            : darken($infoColor, 25%);
-		}
-	}
-
-	&.success {
-		.md-snackbar-container {
-			background-color : $successColor;
-			color            : darken($successColor, 25%);
-		}
-	}
-
-	&.warning {
-		.md-snackbar-container {
-			background-color : $warningColor;
-			color            : darken($warningColor, 25%);
-		}
-	}
-
-	&.danger {
-		.md-snackbar-container {
-			background-color : lighten($dangerColor, 20%);
-			color            : darken($dangerColor, 20%);
-		}
-	}
-}

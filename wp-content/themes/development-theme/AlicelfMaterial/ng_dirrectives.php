@@ -28,16 +28,8 @@ function aa_func_20172003032058()
 <!--			<button type="submit" class="btn btn-primary">Submit</button>-->
 <!--		</form>-->
 <!--	</div>-->
-
-<!--@TODO: create flashes component-->
-<!--	<md-snackbar-->
-<!--		class="am-flash-notice"-->
-<!--		v-bind:class="flashPrefs.flashType"-->
-<!--		:md-position="flashPrefs.vertical + ' ' + flashPrefs.horizontal"-->
-<!--		:md-duration="flashPrefs.duration" ref="snackbar" >-->
-<!--		<span>{{flashPrefs.message}}</span>-->
-<!--		<md-button class="md-accent" md-theme="light-blue" @click="$refs.snackbar.close()">Close</md-button>-->
-<!--	</md-snackbar>-->
+<!--@TODO: pass system notices-->
+	<flashmessages incomingflashes="[1, 2]"></flashmessages>
 
 	<?php
 }

@@ -22,9 +22,9 @@ Vue.material.registerTheme({
 // require('./dirrectives/ajaxForms')
 
 
-
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 Vue.component('userprofile', require('./components/Profile/index.vue'))
+Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
 
 let CurrentUser = require('./vuex/User')
 CurrentUser.commit('setUserdata', AMdefaults.currentUser);
@@ -84,15 +84,14 @@ new Vue({
 
 	},
 
-
 	created: function() {
 		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
-
 	},
 
 	mounted() {
+
 
 	},
 

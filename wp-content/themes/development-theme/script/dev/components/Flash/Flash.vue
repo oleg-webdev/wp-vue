@@ -1,0 +1,88 @@
+<style lang="scss" rel="stylesheet/scss" src="./flash.scss"></style>
+
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+	<div ref="Flashscope" class="Flash--scope">
+
+		<transition-group
+			enter-active-class="animated flipInX"
+			leave-active-class="animated flipOutX"
+			tag="div">
+			<div v-for="flash in flashes"
+					 v-bind:key="flash"
+					 v-bind:class="[flash.flashclass, {dissmisable:flash.dismissable}]"
+					 class="am-flash-notice"
+			>
+				<div class="flash-wrapper">
+					{{flash.message}}
+					<div v-if="flash.dismissable" class="flash-icon-container" @click="removeNotice(flash)">
+						<md-button class="md-icon-button md-raised">
+							<md-icon>clear</md-icon>
+						</md-button>
+					</div>
+				</div>
+			</div>
+		</transition-group>
+
+
+		<md-button @click="addflash">Add a flash</md-button>
+	</div>
+</template>
+
+<script>
+	import user from '../../vuex/User'
+	export default {
+
+		props: ['incomingflashes'],
+
+		data() {
+			return {
+				flashes: []
+			}
+		},
+
+		computed: {},
+
+		// Constructor
+		created(){
+			let systemFlashes = JSON.parse(this.incomingflashes)
+			// add ${systemFlashes} to flashes
+			eventHub.$on('flashadded', (flash)=> {
+				this.flashes.unshift(flash)
+			})
+
+			eventHub.$on('flashremoved', (flash)=> {
+				console.log(flash);
+			})
+		},
+
+		// Rendered
+		mounted() {
+			var vm        = this,
+					container = vm.$refs.Flashscope;
+			console.log('Ref: Flashscope ready.')
+		},
+
+		methods: {
+
+			removeNotice(flash){
+				if (flash.scope == 'system') {
+					// ajax call then
+				}
+
+				return this.flashes.splice(this.flashes.indexOf(flash), 1)
+
+			},
+
+			addflash() {
+				let dt = new Date()
+				eventHub.$emit('flashadded', {
+					flashclass : 'success',
+					dismissable: true,
+					message    : `${dt}`,
+					scope      : 'front', // front, system
+					timeout    : 5000
+				})
+			}
+		}
+	}
+</script>
