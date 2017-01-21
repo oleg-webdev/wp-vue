@@ -42,6 +42,14 @@
 		border-top-left-radius    : 3px;
 		border-bottom-left-radius : 3px;
 
+		&.dissmisable {
+
+			.flash-wrapper {
+				padding-right : 38px;
+			}
+
+		}
+
 		&.info {
 			background-color : $infoColor;
 			color            : darken($infoColor, 25%);

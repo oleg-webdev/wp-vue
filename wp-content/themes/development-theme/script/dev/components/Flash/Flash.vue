@@ -23,12 +23,11 @@
 			</div>
 		</transition-group>
 
-
-		<md-button @click="addflash">Add a flash</md-button>
 	</div>
 </template>
 
 <script>
+
 	import user from '../../vuex/User'
 	export default {
 
@@ -44,45 +43,56 @@
 
 		// Constructor
 		created(){
-			let systemFlashes = JSON.parse(this.incomingflashes)
+			let systemFlashes = JSON.parse(this.incomingflashes),
+					vm            = this;
 			// add ${systemFlashes} to flashes
 			eventHub.$on('flashadded', (flash)=> {
 				this.flashes.unshift(flash)
+
+				if ('timeout' in flash) {
+					let t = Number.isInteger(flash.timeout) ?
+						flash.timeout > 0 ? flash.timeout: 1000
+						: 1000;
+					setTimeout(() => vm.removeNotice(flash), t)
+				}
+
 			})
 
 			eventHub.$on('flashremoved', (flash)=> {
 				console.log(flash);
 			})
+
+//			setTimeout(() => {
+//				let dt = new Date()
+//				eventHub.$emit('flashadded', {
+//					flashclass : 'success',
+//					dismissable: true,
+//					message    : `${dt}`,
+//					scope      : 'front', // front, system
+//					timeout    : 5000
+//				})
+//			}, 500)
+
 		},
 
 		// Rendered
 		mounted() {
 			var vm        = this,
 					container = vm.$refs.Flashscope;
-			console.log('Ref: Flashscope ready.')
 		},
 
 		methods: {
 
 			removeNotice(flash){
+
 				if (flash.scope == 'system') {
 					// ajax call then
 				}
 
 				return this.flashes.splice(this.flashes.indexOf(flash), 1)
-
 			},
 
-			addflash() {
-				let dt = new Date()
-				eventHub.$emit('flashadded', {
-					flashclass : 'success',
-					dismissable: true,
-					message    : `${dt}`,
-					scope      : 'front', // front, system
-					timeout    : 5000
-				})
-			}
+
 		}
 	}
 </script>

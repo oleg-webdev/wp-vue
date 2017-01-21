@@ -92,7 +92,6 @@ new Vue({
 
 	mounted() {
 
-
 	},
 
 	methods: {
