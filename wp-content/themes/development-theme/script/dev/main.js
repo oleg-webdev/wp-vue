@@ -18,9 +18,8 @@ Vue.material.registerTheme({
 	}
 })
 
-
-// require('./dirrectives/ajaxForms')
-
+// Dirrectives
+require('./dirrectives/ajaxForms')
 
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 Vue.component('userprofile', require('./components/Profile/index.vue'))
@@ -122,7 +121,7 @@ new Vue({
 
 	}
 
-});
+})
 
 
 /**

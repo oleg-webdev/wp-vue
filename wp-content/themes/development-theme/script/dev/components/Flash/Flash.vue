@@ -27,6 +27,14 @@
 </template>
 
 <script>
+	//				let dt = new Date()
+	//				eventHub.$emit('flashadded', {
+	//					flashclass : 'success',
+	//					dismissable: true,
+	//					message    : `${dt}`,
+	//					scope      : 'front', // front, system
+	//					timeout    : 5000     // optional
+	//				})
 
 	import user from '../../vuex/User'
 	export default {
@@ -45,6 +53,9 @@
 		created(){
 			let systemFlashes = JSON.parse(this.incomingflashes),
 					vm            = this;
+
+
+
 			// add ${systemFlashes} to flashes
 			eventHub.$on('flashadded', (flash)=> {
 				this.flashes.unshift(flash)
@@ -62,16 +73,11 @@
 				console.log(flash);
 			})
 
-//			setTimeout(() => {
-//				let dt = new Date()
-//				eventHub.$emit('flashadded', {
-//					flashclass : 'success',
-//					dismissable: true,
-//					message    : `${dt}`,
-//					scope      : 'front', // front, system
-//					timeout    : 5000
-//				})
-//			}, 500)
+			if (systemFlashes) {
+				for (var flsh in systemFlashes) {
+					eventHub.$emit('flashadded', systemFlashes[flsh])
+				}
+			}
 
 		},
 

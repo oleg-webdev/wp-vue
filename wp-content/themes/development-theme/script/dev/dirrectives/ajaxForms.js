@@ -17,7 +17,7 @@ module.exports = Vue.directive('amajax', {
 	},
 
 	update(value) {
-		console.log("updated");
+
 	},
 
 
@@ -28,7 +28,7 @@ module.exports = Vue.directive('amajax', {
 				method = this.def.getRequestType(),
 				action = this.def.getAction(),
 				// @TODO: pass common data from form atts
-				sendingData = dataToPost(action, {inc:'jnx', second:'sec'});
+				sendingData = dataToPost(action, this.def.retriveData());
 
 		vm.$http[method](AMdefaults.ajaxurl, sendingData)
 			.then(this.def.onSuccess.bind(this.def),
@@ -38,7 +38,8 @@ module.exports = Vue.directive('amajax', {
 
 	// @TODO: make other checking
 	onSuccess(response) {
-		// console.log(JSON.parse(response.data));
+		console.log(JSON.parse(response.data))
+
 		this.vm.openDialog('alertOkDialog',{
 			alert : 'alertok',
 			data : {
@@ -64,6 +65,11 @@ module.exports = Vue.directive('amajax', {
 	getRequestType(){
 		let method = this.el.querySelector('input[name="__method"]');
 		return (method ? method.value: this.el.method).toLowerCase();
+	},
+
+	retriveData() {
+		let d = this.el.querySelector('input[name="__data"]');
+		return JSON.parse(d.value);
 	},
 
 	getAction() {

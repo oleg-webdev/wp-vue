@@ -2,6 +2,8 @@
 /**
  * ==================== EMAIL CONFIRMATION REQUEST ======================
  */
+use AlicelfMaterial\Helpers\AmFlash;
+
 add_action( 'wp_loaded', 'aa_func_20164930014910' );
 function aa_func_20164930014910()
 {
@@ -30,4 +32,29 @@ function aa_func_20164930014910()
 			die;
 		}
 	}
+}
+
+//add_action( 'wp_loaded', 'aa_func_20175825085840' );
+function aa_func_20175825085840()
+{
+	$name        = 'sysflash';
+	$dismissable = false;
+	$flashclass  = 'success';
+	$message     = 'System Flash Message';
+	$flash       = new AmFlash( $name, $dismissable, $flashclass, $message );
+	$flash->appendFlash();
+
+	$name        = 'sysflash2';
+	$dismissable = true;
+	$flashclass  = 'danger';
+	$message     = 'System Flash Message';
+	$flash       = new AmFlash( $name, $dismissable, $flashclass, $message );
+	$flash->appendFlash();
+
+	$name        = 'sysflash3';
+	$dismissable = true;
+	$flashclass  = 'warning';
+	$message     = 'System Flash Message';
+	$flash       = new AmFlash( $name, $dismissable, $flashclass, $message );
+	$flash->appendFlash();
 }

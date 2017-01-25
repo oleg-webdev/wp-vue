@@ -1,4 +1,10 @@
 <?php
+/**
+ * ==================== Alerts and flashes ======================
+ * 25.01.2017
+ */
+use AlicelfMaterial\Helpers\AmFlash;
+
 add_action('AM_content', 'aa_func_20172003032058');
 function aa_func_20172003032058()
 {
@@ -16,22 +22,9 @@ function aa_func_20172003032058()
 		ref="alertFailDialog">
 	</md-dialog-alert>
 
-<!--	<div class="am-wrap">-->
-<!--		<form method="post" role="form" v-amajax>-->
-<!--			<input type="hidden" name="__method" value="post"/>-->
-<!--			<input type="hidden" name="__action" value="ajx20174803014813"/>-->
-<!---->
-<!--			<div class="form-group">-->
-<!--				<input type="text" class="form-control" name="" placeholder="Input...">-->
-<!--			</div>-->
-<!---->
-<!--			<button type="submit" class="btn btn-primary">Submit</button>-->
-<!--		</form>-->
-<!--	</div>-->
-<!--@TODO: pass system notices-->
-	<flashmessages incomingflashes="[1, 2]"></flashmessages>
-
+	<flashmessages incomingflashes='<?php echo AmFlash::all(true) ?>'></flashmessages>
 	<?php
+	AmFlash::dismissFlashes();
 }
 add_action( 'admin_head', 'aa_func_20163316093324' );
 function aa_func_20163316093324()
