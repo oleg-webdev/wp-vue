@@ -82,11 +82,41 @@
 
 		// Rendered
 		mounted() {
-			let vm = this;
+			let vm = this,
+				parentEl = vm.$el.parentElement;
 
 			eventHub.$on('popupRequest', (evt) => {
-				if (evt.invoker.parentElement === vm.$el.parentElement) {
+				let invoker = evt.invoker;
+				if (invoker.parentElement === parentEl) {
 					this.opened = !this.opened
+
+
+
+					setTimeout(()=>{
+						let invokerHeight = invoker.offsetHeight,
+								invokerWidth  = invoker.offsetWidth,
+								popoverHeight = (vm.$el).offsetHeight,
+								popoverWidth  = (vm.$el).offsetWidth;
+
+						switch (this.position) {
+							case 'top':
+								(vm.$el).style.marginLeft = `-${popoverWidth / 2}px`;
+								break;
+							case 'bottom':
+								(vm.$el).style.marginLeft = `-${popoverWidth / 2}px`;
+								break;
+							case 'left':
+								(vm.$el).style.marginTop = `-${popoverHeight / 2}px`;
+								break;
+							case 'right':
+								(vm.$el).style.marginTop = `-${popoverHeight / 2}px`;
+								break;
+							default:
+								return false;
+						}
+
+					}, 50)
+
 				}
 			})
 

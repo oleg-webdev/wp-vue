@@ -38,11 +38,3 @@ function aa_func_20163316093324()
 	</script>
 	<?php
 }
-
-add_action('AM_content', 'aa_func_20172426042436');
-function aa_func_20172426042436()
-{
-	?>
-
-	<?php
-}
