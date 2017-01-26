@@ -1,0 +1,37 @@
+@import "../../../../style-parts/vars";
+
+.dropdown-scope {
+
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	&.collapsed {
+
+		.dropdown-content {
+
+		}
+
+	}
+
+	.dropdown-heading {
+		padding       : 5px 10px;
+		border-bottom : 1px solid #ccc;
+		cursor        : pointer;
+	}
+
+	.dropdown-content {
+		display  : block;
+		overflow : hidden;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		-webkit-transition : all .5s;
+		-moz-transition    : all .5s;
+		transition         : all .5s;
+
+		> div {
+			padding : 15px;
+		}
+
+	}
+
+}

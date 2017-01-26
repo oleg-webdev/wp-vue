@@ -18,9 +18,12 @@ Vue.material.registerTheme({
 	}
 })
 
+
 // Dirrectives
 require('./dirrectives/ajaxForms')
 
+// Components
+Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'))
 Vue.component('minicart', require('./components/WooCart/index.vue'))
 Vue.component('userprofile', require('./components/Profile/index.vue'))
 Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
