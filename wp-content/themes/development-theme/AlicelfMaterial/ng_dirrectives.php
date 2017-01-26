@@ -1,8 +1,5 @@
 <?php
-/**
- * ==================== Alerts and flashes ======================
- * 25.01.2017
- */
+
 use AlicelfMaterial\Helpers\AmFlash;
 
 add_action( 'AM_content', 'aa_func_20172003032058' );
@@ -39,5 +36,13 @@ function aa_func_20163316093324()
 			allSidebars: <?php echo $allSidebars ?>
 		};
 	</script>
+	<?php
+}
+
+add_action('AM_content', 'aa_func_20172426042436');
+function aa_func_20172426042436()
+{
+	?>
+
 	<?php
 }

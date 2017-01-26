@@ -18,15 +18,31 @@ Vue.material.registerTheme({
 	}
 })
 
-
 // Dirrectives
 require('./dirrectives/ajaxForms')
 
-// Components
+/**
+ * ==================== Components ======================
+ */
+// Popover
+Vue.component('am-popover', require('./components/Popover/Popover.vue'))
+Vue.component('am-popover-trigger', require('./components/Popover/PopoverTrigger.vue'))
+Vue.component('am-popover-content', require('./components/Popover/PopoverContent.vue'))
+
+// Dropdown/Accordion
 Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'))
+
+// Mini Cart
 Vue.component('minicart', require('./components/WooCart/index.vue'))
+
+// User Profile view
 Vue.component('userprofile', require('./components/Profile/index.vue'))
+
+// Flashes
 Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
+
+/* =========================== Components End ================================ */
+
 
 let CurrentUser = require('./vuex/User')
 CurrentUser.commit('setUserdata', AMdefaults.currentUser);

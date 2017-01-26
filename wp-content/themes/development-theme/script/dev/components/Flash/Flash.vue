@@ -1,6 +1,6 @@
 <style lang="scss" rel="stylesheet/scss" src="./flash.scss"></style>
 
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
 	<div ref="Flashscope" class="Flash--scope">
 
 		<transition-group

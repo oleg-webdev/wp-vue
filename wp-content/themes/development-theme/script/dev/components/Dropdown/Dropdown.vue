@@ -1,5 +1,5 @@
 <style lang="scss" rel="stylesheet/scss" src="./dropdown.scss"></style>
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
 	<div ref="dropdownscope"
 			 class="dropdown-scope"
 			 @click.prevent="invokeDropdown"

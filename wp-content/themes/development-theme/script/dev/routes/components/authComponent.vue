@@ -6,7 +6,7 @@
 		}
 	}
 </style>
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
 	<div ref="authscope" id="Auth-scope">
 		<div class="container">
 			<div id="login-register-form"

@@ -1,0 +1,40 @@
+@import "../../../../style-parts/vars";
+@import "../../../../style-parts/mixin";
+
+.Popover-scope {
+
+	display  : inline-block;
+	position : relative;
+
+	.Popovercontent-scope {
+		position  : absolute;
+		display   : inline-block;
+		min-width : 200px;
+
+		> div {
+			padding          : 5px;
+			border           : 1px solid #eee;
+			background-color : #fff;
+			border-radius    : 1px;
+			box-shadow       : 2px 2px 5px #eee;
+		}
+
+		&.position-top {
+			bottom : 100%;
+		}
+
+		&.position-bottom {
+			top : 100%;
+		}
+
+		&.position-right {
+			left : 100%;
+		}
+
+		&.position-left {
+			right : 100%;
+		}
+
+	}
+
+}

@@ -1,4 +1,4 @@
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
 	<div id="Profile-scope" class="flex-container">
 
 		<md-list id="dashboardnav" class="md-dense flex-col-20" v-if="currentUserModel">

@@ -17247,12 +17247,151 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-7", __vue__options__)
+  }
+})()}
+},{"../../vuex/User":49,"babel-runtime/core-js/number/is-integer":1,"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],32:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 1, style-parts/_mixin.scss */\n.site-main-page-content {\n  max-width: 100%; }\n\n/* line 16, style-parts/_mixin.scss */\n.am-wrap {\n  display: block;\n  max-width: 1170px;\n  float: none;\n  margin-left: auto;\n  margin-right: auto;\n  clear: both; }\n  /* line 6, style-parts/_mixin.scss */\n  .am-wrap:before, .am-wrap:after {\n    content: \" \";\n    display: table; }\n  /* line 11, style-parts/_mixin.scss */\n  .am-wrap:after {\n    clear: both; }\n\n/**\r\n * ==================== Flex Grid ======================\r\n * 28.12.2016\r\n */\n/* line 30, style-parts/_mixin.scss */\n.flex-container {\n  display: -ms-flexbox;\n  display: flex;\n  flex-flow: row wrap; }\n\n/* line 38, style-parts/_mixin.scss */\n.flex-col-33 {\n  flex-basis: 33.3333333333%;\n  max-width: 33.3333333333%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-5 {\n  flex-basis: 5%;\n  max-width: 5%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-10 {\n  flex-basis: 10%;\n  max-width: 10%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-15 {\n  flex-basis: 15%;\n  max-width: 15%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-20 {\n  flex-basis: 20%;\n  max-width: 20%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-25 {\n  flex-basis: 25%;\n  max-width: 25%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-30 {\n  flex-basis: 30%;\n  max-width: 30%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-35 {\n  flex-basis: 35%;\n  max-width: 35%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-40 {\n  flex-basis: 40%;\n  max-width: 40%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-45 {\n  flex-basis: 45%;\n  max-width: 45%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-50 {\n  flex-basis: 50%;\n  max-width: 50%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-55 {\n  flex-basis: 55%;\n  max-width: 55%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-60 {\n  flex-basis: 60%;\n  max-width: 60%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-65 {\n  flex-basis: 65%;\n  max-width: 65%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-70 {\n  flex-basis: 70%;\n  max-width: 70%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-75 {\n  flex-basis: 75%;\n  max-width: 75%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-80 {\n  flex-basis: 80%;\n  max-width: 80%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-85 {\n  flex-basis: 85%;\n  max-width: 85%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-90 {\n  flex-basis: 90%;\n  max-width: 90%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-95 {\n  flex-basis: 95%;\n  max-width: 95%; }\n\n/* line 44, style-parts/_mixin.scss */\n.flex-col-100 {\n  flex-basis: 100%;\n  max-width: 100%; }\n\n/*Desktop*/\n@media (min-width: 952px) {\n  /* line 54, style-parts/_mixin.scss */\n  .flex-col-desktop-33 {\n    flex-basis: 33.3333333333%;\n    max-width: 33.3333333333%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-5 {\n    flex-basis: 5%;\n    max-width: 5%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-10 {\n    flex-basis: 10%;\n    max-width: 10%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-15 {\n    flex-basis: 15%;\n    max-width: 15%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-20 {\n    flex-basis: 20%;\n    max-width: 20%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-25 {\n    flex-basis: 25%;\n    max-width: 25%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-30 {\n    flex-basis: 30%;\n    max-width: 30%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-35 {\n    flex-basis: 35%;\n    max-width: 35%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-40 {\n    flex-basis: 40%;\n    max-width: 40%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-45 {\n    flex-basis: 45%;\n    max-width: 45%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-50 {\n    flex-basis: 50%;\n    max-width: 50%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-55 {\n    flex-basis: 55%;\n    max-width: 55%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-60 {\n    flex-basis: 60%;\n    max-width: 60%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-65 {\n    flex-basis: 65%;\n    max-width: 65%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-70 {\n    flex-basis: 70%;\n    max-width: 70%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-75 {\n    flex-basis: 75%;\n    max-width: 75%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-80 {\n    flex-basis: 80%;\n    max-width: 80%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-85 {\n    flex-basis: 85%;\n    max-width: 85%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-90 {\n    flex-basis: 90%;\n    max-width: 90%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-95 {\n    flex-basis: 95%;\n    max-width: 95%; }\n  /* line 59, style-parts/_mixin.scss */\n  .flex-col-desktop-100 {\n    flex-basis: 100%;\n    max-width: 100%; } }\n\n/*Tablet*/\n@media (max-width: 951px) {\n  /* line 70, style-parts/_mixin.scss */\n  .flex-col-tablet-33 {\n    flex-basis: 33.3333333333%;\n    max-width: 33.3333333333%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-5 {\n    flex-basis: 5%;\n    max-width: 5%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-10 {\n    flex-basis: 10%;\n    max-width: 10%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-15 {\n    flex-basis: 15%;\n    max-width: 15%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-20 {\n    flex-basis: 20%;\n    max-width: 20%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-25 {\n    flex-basis: 25%;\n    max-width: 25%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-30 {\n    flex-basis: 30%;\n    max-width: 30%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-35 {\n    flex-basis: 35%;\n    max-width: 35%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-40 {\n    flex-basis: 40%;\n    max-width: 40%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-45 {\n    flex-basis: 45%;\n    max-width: 45%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-50 {\n    flex-basis: 50%;\n    max-width: 50%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-55 {\n    flex-basis: 55%;\n    max-width: 55%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-60 {\n    flex-basis: 60%;\n    max-width: 60%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-65 {\n    flex-basis: 65%;\n    max-width: 65%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-70 {\n    flex-basis: 70%;\n    max-width: 70%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-75 {\n    flex-basis: 75%;\n    max-width: 75%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-80 {\n    flex-basis: 80%;\n    max-width: 80%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-85 {\n    flex-basis: 85%;\n    max-width: 85%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-90 {\n    flex-basis: 90%;\n    max-width: 90%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-95 {\n    flex-basis: 95%;\n    max-width: 95%; }\n  /* line 75, style-parts/_mixin.scss */\n  .flex-col-tablet-100 {\n    flex-basis: 100%;\n    max-width: 100%; } }\n\n/*Mobile*/\n@media (max-width: 767px) {\n  /* line 87, style-parts/_mixin.scss */\n  .flex-col-phone-33 {\n    flex-basis: 33.3333333333%;\n    max-width: 33.3333333333%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-5 {\n    flex-basis: 5%;\n    max-width: 5%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-10 {\n    flex-basis: 10%;\n    max-width: 10%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-15 {\n    flex-basis: 15%;\n    max-width: 15%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-20 {\n    flex-basis: 20%;\n    max-width: 20%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-25 {\n    flex-basis: 25%;\n    max-width: 25%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-30 {\n    flex-basis: 30%;\n    max-width: 30%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-35 {\n    flex-basis: 35%;\n    max-width: 35%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-40 {\n    flex-basis: 40%;\n    max-width: 40%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-45 {\n    flex-basis: 45%;\n    max-width: 45%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-50 {\n    flex-basis: 50%;\n    max-width: 50%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-55 {\n    flex-basis: 55%;\n    max-width: 55%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-60 {\n    flex-basis: 60%;\n    max-width: 60%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-65 {\n    flex-basis: 65%;\n    max-width: 65%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-70 {\n    flex-basis: 70%;\n    max-width: 70%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-75 {\n    flex-basis: 75%;\n    max-width: 75%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-80 {\n    flex-basis: 80%;\n    max-width: 80%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-85 {\n    flex-basis: 85%;\n    max-width: 85%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-90 {\n    flex-basis: 90%;\n    max-width: 90%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-95 {\n    flex-basis: 95%;\n    max-width: 95%; }\n  /* line 92, style-parts/_mixin.scss */\n  .flex-col-phone-100 {\n    flex-basis: 100%;\n    max-width: 100%; } }\n\n/**\r\n * ==================== Horizontal Gradient ======================\r\n * 08.04.2016\r\n */\n/**\r\n * ==================== Content Markup ======================\r\n * 10.07.2016\r\n */\n/* line 153, style-parts/_mixin.scss */\n.space-x-10, .space-x-20, .space-x-30, .space-x-40, .space-x-50, .space-x-60, .space-x-70, .space-x-80, .space-x-90, .space-x-100 {\n  float: none;\n  clear: both;\n  display: block;\n  width: 100%; }\n  /* line 6, style-parts/_mixin.scss */\n  .space-x-10:before, .space-x-20:before, .space-x-30:before, .space-x-40:before, .space-x-50:before, .space-x-60:before, .space-x-70:before, .space-x-80:before, .space-x-90:before, .space-x-100:before, .space-x-10:after, .space-x-20:after, .space-x-30:after, .space-x-40:after, .space-x-50:after, .space-x-60:after, .space-x-70:after, .space-x-80:after, .space-x-90:after, .space-x-100:after {\n    content: \" \";\n    display: table; }\n  /* line 11, style-parts/_mixin.scss */\n  .space-x-10:after, .space-x-20:after, .space-x-30:after, .space-x-40:after, .space-x-50:after, .space-x-60:after, .space-x-70:after, .space-x-80:after, .space-x-90:after, .space-x-100:after {\n    clear: both; }\n\n/* line 215, style-parts/_mixin.scss */\n.img-centerimg {\n  margin-left: auto;\n  margin-right: auto; }\n\n/* line 219, style-parts/_mixin.scss */\n.img-center img {\n  margin-left: auto;\n  margin-right: auto; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-10 {\n  height: 10px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-20 {\n  height: 20px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-30 {\n  height: 30px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-40 {\n  height: 40px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-50 {\n  height: 50px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-60 {\n  height: 60px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-70 {\n  height: 70px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-80 {\n  height: 80px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-90 {\n  height: 90px; }\n\n/* line 163, style-parts/_mixin.scss */\n.space-x-100 {\n  height: 100px; }\n\n/* line 4, stdin */\n.Popover-scope {\n  display: inline-block;\n  position: relative; }\n  /* line 9, stdin */\n  .Popover-scope .Popovercontent-scope {\n    position: absolute;\n    display: inline-block;\n    min-width: 200px; }\n    /* line 14, stdin */\n    .Popover-scope .Popovercontent-scope > div {\n      padding: 5px;\n      border: 1px solid #eee;\n      background-color: #fff;\n      border-radius: 1px;\n      box-shadow: 2px 2px 5px #eee; }\n    /* line 22, stdin */\n    .Popover-scope .Popovercontent-scope.position-top {\n      bottom: 100%; }\n    /* line 26, stdin */\n    .Popover-scope .Popovercontent-scope.position-bottom {\n      top: 100%; }\n    /* line 30, stdin */\n    .Popover-scope .Popovercontent-scope.position-right {\n      left: 100%; }\n    /* line 34, stdin */\n    .Popover-scope .Popovercontent-scope.position-left {\n      right: 100%; }")
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"popoverscope",staticClass:"Popover-scope"},[_vm._t("default")])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1", __vue__options__)
+  } else {
+    hotAPI.rerender("data-v-1", __vue__options__)
+  }
+})()}
+},{"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],33:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+
+	props: {
+		position: [String] },
+
+	data: function data() {
+		return {
+			opened: false
+		};
+	},
+
+
+	computed: {
+		resolveEnterPosition: function resolveEnterPosition() {
+			var animated = 'animated';
+			switch (this.position) {
+				case 'top':
+					return animated + ' fadeInDown';break;
+				case 'bottom':
+					return animated + ' fadeInUp';break;
+				case 'left':
+					return animated + ' fadeInLeft';break;
+				case 'right':
+					return animated + ' fadeInRight';break;
+				default:
+					return animated + ' fadeIn';
+			}
+		},
+		resolveOutPosition: function resolveOutPosition() {
+			var animated = 'animated';
+			switch (this.position) {
+				case 'top':
+					return animated + ' fadeOutUp';break;
+				case 'bottom':
+					return animated + ' fadeOutDown';break;
+				case 'left':
+					return animated + ' fadeOutLeft';break;
+				case 'right':
+					return animated + ' fadeOutRight';break;
+				default:
+					return animated + ' fadeOut';
+			}
+		}
+	},
+
+	created: function created() {},
+	mounted: function mounted() {
+		var _this = this;
+
+		var vm = this;
+
+		eventHub.$on('popupRequest', function (evt) {
+			if (evt.invoker.parentElement === vm.$el.parentElement) {
+				_this.opened = !_this.opened;
+			}
+		});
+	},
+
+
+	methods: {}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"popovercontentscope",staticClass:"Popovercontent-scope",class:['position-'+_vm.position, {show:_vm.opened}]},[_h('transition',{attrs:{"enter-active-class":_vm.resolveEnterPosition,"leave-active-class":_vm.resolveOutPosition}},[_h('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.opened),expression:"opened"}]},[_h('span',{staticClass:"popover-pointer"})," ",_vm._t("default")])])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
     hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
     hotAPI.rerender("data-v-3", __vue__options__)
   }
 })()}
-},{"../../vuex/User":46,"babel-runtime/core-js/number/is-integer":1,"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],32:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":22}],34:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	methods: {
+		invokePopup: function invokePopup($event) {
+			eventHub.$emit('popupRequest', {
+
+				invoker: this.$el,
+				pageX: $event.pageX,
+				pageY: $event.pageY,
+				offsetX: $event.offsetX,
+				offsetY: $event.offsetY
+
+			});
+		}
+	}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;return _h('div',{ref:"popovertriggerscope",staticClass:"Popovertrigger-scope",on:{"click":function($event){$event.preventDefault();_vm.invokePopup($event)}}},[_vm._t("default")])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-2", __vue__options__)
+  }
+})()}
+},{"vue":27,"vue-hot-reload-api":22}],35:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -17308,12 +17447,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
-},{"../../vuex/User":46,"vue":27,"vue-hot-reload-api":22}],33:[function(require,module,exports){
+},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":22}],36:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -17405,12 +17544,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1", __vue__options__)
+    hotAPI.reload("data-v-5", __vue__options__)
   }
 })()}
-},{"../../vuex/Cart":45,"vue":27,"vue-hot-reload-api":22}],34:[function(require,module,exports){
+},{"../../vuex/Cart":48,"vue":27,"vue-hot-reload-api":22}],37:[function(require,module,exports){
 module.exports = Vue.directive('amajax', {
 
 	el     : null,
@@ -17492,7 +17631,7 @@ module.exports = Vue.directive('amajax', {
 
 
 });
-},{}],35:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 window.eventHub = new Vue()
 window.Vuex = require('vuex')
 window.VueResource = require('vue-resource')
@@ -17513,15 +17652,31 @@ Vue.material.registerTheme({
 	}
 })
 
-
 // Dirrectives
 require('./dirrectives/ajaxForms')
 
-// Components
+/**
+ * ==================== Components ======================
+ */
+// Popover
+Vue.component('am-popover', require('./components/Popover/Popover.vue'))
+Vue.component('am-popover-trigger', require('./components/Popover/PopoverTrigger.vue'))
+Vue.component('am-popover-content', require('./components/Popover/PopoverContent.vue'))
+
+// Dropdown/Accordion
 Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'))
+
+// Mini Cart
 Vue.component('minicart', require('./components/WooCart/index.vue'))
+
+// User Profile view
 Vue.component('userprofile', require('./components/Profile/index.vue'))
+
+// Flashes
 Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
+
+/* =========================== Components End ================================ */
+
 
 let CurrentUser = require('./vuex/User')
 CurrentUser.commit('setUserdata', AMdefaults.currentUser);
@@ -17630,7 +17785,7 @@ new Vue({
 // amThemeSlider.run()
 // let amThemeModal = require('./modules/modal')
 // amThemeModal.run()
-},{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Profile/index.vue":32,"./components/WooCart/index.vue":33,"./dirrectives/ajaxForms":34,"./routes":43,"./script":44,"./vuex/User":46,"vue-material":23,"vue-resource":25,"vuex":29}],36:[function(require,module,exports){
+},{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Popover/Popover.vue":32,"./components/Popover/PopoverContent.vue":33,"./components/Popover/PopoverTrigger.vue":34,"./components/Profile/index.vue":35,"./components/WooCart/index.vue":36,"./dirrectives/ajaxForms":37,"./routes":46,"./script":47,"./vuex/User":49,"vue-material":23,"vue-resource":25,"vuex":29}],39:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -17666,12 +17821,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.reload("data-v-9", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":22}],37:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":22}],40:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -17719,12 +17874,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-8", __vue__options__)
   }
 })()}
-},{"../../vuex/User":46,"vue":27,"vue-hot-reload-api":22}],38:[function(require,module,exports){
+},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":22}],41:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, stdin */\n#Restore-pass-scope .am-wrap {\n  max-width: 900px; }\n\n/* line 6, stdin */\n#Restore-pass-scope .md-card {\n  padding: 20px; }")
 ;(function(){
 'use strict';
@@ -17839,12 +17994,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8", __vue__options__)
+    hotAPI.createRecord("data-v-11", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8", __vue__options__)
+    hotAPI.reload("data-v-11", __vue__options__)
   }
 })()}
-},{"../../vuex/User":46,"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],39:[function(require,module,exports){
+},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],42:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -17879,12 +18034,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9", __vue__options__)
+    hotAPI.createRecord("data-v-10", __vue__options__)
   } else {
-    hotAPI.reload("data-v-9", __vue__options__)
+    hotAPI.reload("data-v-10", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":22}],40:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":22}],43:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 2, stdin */\n.spinner-container {\n  height: 55px; }\n  /* line 4, stdin */\n  .spinner-container .md-spinner {\n    float: right; }")
 ;(function(){
 'use strict';
@@ -18033,12 +18188,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7", __vue__options__)
+    hotAPI.createRecord("data-v-12", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7", __vue__options__)
+    hotAPI.reload("data-v-12", __vue__options__)
   }
 })()}
-},{"../../vuex/User":46,"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],41:[function(require,module,exports){
+},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],44:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -18073,12 +18228,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-10", __vue__options__)
+    hotAPI.createRecord("data-v-14", __vue__options__)
   } else {
-    hotAPI.reload("data-v-10", __vue__options__)
+    hotAPI.reload("data-v-14", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":22}],42:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":22}],45:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -18114,12 +18269,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-11", __vue__options__)
+    hotAPI.createRecord("data-v-13", __vue__options__)
   } else {
-    hotAPI.reload("data-v-11", __vue__options__)
+    hotAPI.reload("data-v-13", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":22}],43:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":22}],46:[function(require,module,exports){
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
@@ -18171,7 +18326,7 @@ module.exports = new VueRouter({
 		},
 	]
 })
-},{"./components/Media.vue":36,"./components/Network.vue":37,"./components/RestorePass.vue":38,"./components/Settings.vue":39,"./components/authComponent.vue":40,"./components/common/BadRequest.vue":41,"./components/common/Notfound.vue":42,"vue-router":26}],44:[function(require,module,exports){
+},{"./components/Media.vue":39,"./components/Network.vue":40,"./components/RestorePass.vue":41,"./components/Settings.vue":42,"./components/authComponent.vue":43,"./components/common/BadRequest.vue":44,"./components/common/Notfound.vue":45,"vue-router":26}],47:[function(require,module,exports){
 var domready = require('domready')
 var defaultAMscript = {
 	run: function(){
@@ -18255,7 +18410,7 @@ var defaultAMscript = {
 }
 defaultAMscript.run()
 module.exports = defaultAMscript
-},{"domready":20}],45:[function(require,module,exports){
+},{"domready":20}],48:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -18277,7 +18432,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-},{}],46:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -18302,4 +18457,4 @@ module.exports = new Vuex.Store({
 
 
 });
-},{}]},{},[35]);
+},{}]},{},[38]);

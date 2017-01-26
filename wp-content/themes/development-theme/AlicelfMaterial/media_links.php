@@ -76,7 +76,7 @@ function aa_func_20163119123146()
 	// Application JS
 	wp_enqueue_script( 'AMscript', $template_path . "/script/prod/build{$production}.js", [
 		'jquery',
-		'vue-script'
+//		'vue-script'
 	], false, true );
 
 	/**
