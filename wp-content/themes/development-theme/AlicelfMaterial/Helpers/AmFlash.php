@@ -37,7 +37,10 @@ class AmFlash {
 
 	public static function all( $json = false )
 	{
-		return $json ? json_encode( $_SESSION[ self::$__flash ] ) : $_SESSION[ self::$__flash ];
+		if ( isset( $_SESSION[ self::$__flash ] ) )
+			return $json ? json_encode( $_SESSION[ self::$__flash ] ) : $_SESSION[ self::$__flash ];
+
+		return $json ? "{}" : null;
 	}
 
 	public function appendFlash()
