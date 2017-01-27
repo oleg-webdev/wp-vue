@@ -17156,9 +17156,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6", __vue__options__)
+    hotAPI.createRecord("data-v-1", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6", __vue__options__)
+    hotAPI.rerender("data-v-1", __vue__options__)
   }
 })()}
 },{"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],31:[function(require,module,exports){
@@ -17247,9 +17247,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3", __vue__options__)
+    hotAPI.createRecord("data-v-2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3", __vue__options__)
+    hotAPI.rerender("data-v-2", __vue__options__)
   }
 })()}
 },{"../../vuex/User":49,"babel-runtime/core-js/number/is-integer":1,"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],32:[function(require,module,exports){
@@ -17264,9 +17264,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   module.hot.accept()
   module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1", __vue__options__)
+    hotAPI.createRecord("data-v-5", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-1", __vue__options__)
+    hotAPI.rerender("data-v-5", __vue__options__)
   }
 })()}
 },{"vue":27,"vue-hot-reload-api":22,"vueify/lib/insert-css":28}],33:[function(require,module,exports){
@@ -17412,9 +17412,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5", __vue__options__)
+    hotAPI.createRecord("data-v-4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5", __vue__options__)
+    hotAPI.reload("data-v-4", __vue__options__)
   }
 })()}
 },{"vue":27,"vue-hot-reload-api":22}],35:[function(require,module,exports){
@@ -17473,9 +17473,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2", __vue__options__)
+    hotAPI.createRecord("data-v-3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-2", __vue__options__)
+    hotAPI.reload("data-v-3", __vue__options__)
   }
 })()}
 },{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":22}],36:[function(require,module,exports){
@@ -17570,9 +17570,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4", __vue__options__)
+    hotAPI.createRecord("data-v-6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4", __vue__options__)
+    hotAPI.reload("data-v-6", __vue__options__)
   }
 })()}
 },{"../../vuex/Cart":48,"vue":27,"vue-hot-reload-api":22}],37:[function(require,module,exports){
@@ -17667,13 +17667,21 @@ window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
 Vue.material.registerTheme({
 	default: {
-		primary: {
+		primary   : {
 			color: 'blue-grey',
 			hue  : 600
 		},
-		accent : {
+		accent    : {
 			color: 'blue',
 			hue  : 900
+		},
+		warn      : {
+			color: 'red',
+			hue  : 700
+		},
+		background: {
+			color: 'grey',
+			hue  : 50
 		}
 	}
 })
@@ -17847,9 +17855,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-10", __vue__options__)
+    hotAPI.createRecord("data-v-9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-10", __vue__options__)
+    hotAPI.reload("data-v-9", __vue__options__)
   }
 })()}
 },{"vue":27,"vue-hot-reload-api":22}],40:[function(require,module,exports){
@@ -17900,9 +17908,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9", __vue__options__)
+    hotAPI.createRecord("data-v-10", __vue__options__)
   } else {
-    hotAPI.reload("data-v-9", __vue__options__)
+    hotAPI.reload("data-v-10", __vue__options__)
   }
 })()}
 },{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":22}],41:[function(require,module,exports){
