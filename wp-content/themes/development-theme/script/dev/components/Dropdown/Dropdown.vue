@@ -3,7 +3,7 @@
 	<div ref="dropdownscope"
 			 class="dropdown-scope"
 			 @click.prevent="invokeDropdown"
-			 v-bind:class="{collapsed:mutableCollapsed}"
+			 :class="{collapsed:mutableCollapsed}"
 	>
 		<slot></slot>
 	</div>

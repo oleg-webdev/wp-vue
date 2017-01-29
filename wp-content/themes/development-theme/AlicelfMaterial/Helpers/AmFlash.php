@@ -56,7 +56,8 @@ class AmFlash {
 
 	public static function dismissFlashes()
 	{
-		$_SESSION[ self::$__flash ] = null;
+		if ( isset( $_SESSION[ self::$__flash ] ) )
+			$_SESSION[ self::$__flash ] = null;
 	}
 
 }

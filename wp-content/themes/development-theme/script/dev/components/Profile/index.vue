@@ -36,7 +36,7 @@
 		</md-list>
 
 
-		<div class="flex-col-80" v-bind:class="{'flex-col-100': !currentUserModel}"
+		<div class="flex-col-80" :class="{'flex-col-100': !currentUserModel}"
 				 id="network-content" ref="networkcontent"
 		>
 			<transition name="panelslide">

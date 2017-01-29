@@ -1,11 +1,11 @@
 <template>
 	<div ref="popovercontentscope"
 			 class="Popovercontent-scope"
-			 v-bind:class="['position-'+position, {show:opened}]"
+			 :class="['position-'+position, {show:opened}]"
 	>
 		<transition
-				v-bind:enter-active-class="resolveEnterPosition"
-				v-bind:leave-active-class="resolveOutPosition"
+				:enter-active-class="resolveEnterPosition"
+				:leave-active-class="resolveOutPosition"
 		>
 			<div v-show="opened">
 				<span class="popover-pointer"></span>
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-
 
 	export default {
 

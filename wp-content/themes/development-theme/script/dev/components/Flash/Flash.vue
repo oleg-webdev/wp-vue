@@ -8,8 +8,8 @@
 			leave-active-class="animated flipOutX"
 			tag="div">
 			<div v-for="flash in flashes"
-					 v-bind:key="flash"
-					 v-bind:class="[flash.flashclass, {dissmisable:flash.dismissable}]"
+					 :key="flash"
+					 :class="[flash.flashclass, {dissmisable:flash.dismissable}]"
 					 class="am-flash-notice"
 			>
 				<div class="flash-wrapper">
@@ -53,8 +53,6 @@
 		created(){
 			let systemFlashes = JSON.parse(this.incomingflashes),
 					vm            = this;
-
-
 
 			// add ${systemFlashes} to flashes
 			eventHub.$on('flashadded', (flash)=> {
