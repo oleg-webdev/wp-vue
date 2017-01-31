@@ -25,7 +25,6 @@
 
 /**
  * ==================== Flex Grid ======================
- * 28.12.2016
  */
 .flex-container {
 	display   : -ms-flexbox;
@@ -33,11 +32,17 @@
 	flex-flow : row wrap;
 }
 
+.flex-container-nowrap {
+	display   : -ms-flexbox;
+	display   : flex;
+	flex-flow : row nowrap;
+}
+
 // flex-col flex-col-desktop flex-col-tablet flex-col-phone
 @mixin flex-col {
 	.flex-col-33 {
-		flex-basis : 33.3333333333%;
-		max-width  : 33.3333333333%;
+		flex-basis : 33.33333333%;
+		max-width  : 33.33333333%;
 	}
 	$baseFlexWidth : 5;
 	@for $i from 5 through 24 {
@@ -52,8 +57,8 @@
 	$baseFlexWidth : 5;
 	@media (min-width : 952px) {
 		.flex-col-desktop-33 {
-			flex-basis : 33.3333333333%;
-			max-width  : 33.3333333333%;
+			flex-basis : 33.33333333%;
+			max-width  : 33.33333333%;
 		}
 		@for $i from 5 through 24 {
 			.flex-col-desktop-#{$baseFlexWidth} {
@@ -68,8 +73,8 @@
 	$baseFlexWidth : 5;
 	@media (max-width : 951px) {
 		.flex-col-tablet-33 {
-			flex-basis : 33.3333333333%;
-			max-width  : 33.3333333333%;
+			flex-basis : 33.33333333%;
+			max-width  : 33.33333333%;
 		}
 		@for $i from 5 through 24 {
 			.flex-col-tablet-#{$baseFlexWidth} {
@@ -85,8 +90,8 @@
 	$baseFlexWidth : 5;
 	@media (max-width : 767px) {
 		.flex-col-phone-33 {
-			flex-basis : 33.3333333333%;
-			max-width  : 33.3333333333%;
+			flex-basis : 33.33333333%;
+			max-width  : 33.33333333%;
 		}
 		@for $i from 5 through 24 {
 			.flex-col-phone-#{$baseFlexWidth} {

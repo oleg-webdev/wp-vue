@@ -5,4 +5,6 @@
 		<div class="excerpt"><?php the_excerpt() ?></div>
 	</article>
 
-<?php endwhile; endif; wp_reset_query() ?>
+<?php endwhile; ?>
+	<div class="am-wrap"><?php paged_navigation() ?></div>
+	<?php endif; wp_reset_query();

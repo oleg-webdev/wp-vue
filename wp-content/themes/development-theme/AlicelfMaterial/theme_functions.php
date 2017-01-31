@@ -32,6 +32,9 @@ if ( ! function_exists( 'material_logo' ) ) {
 	}
 }
 
+/**
+ * ==================== Browser Info ======================
+ */
 if ( ! function_exists( 'am_browser' ) ) {
 	function am_browser()
 	{
@@ -92,5 +95,17 @@ if ( ! function_exists( 'get_am_network_endpoint' ) ) {
 	function get_am_network_endpoint()
 	{
 		return get_site_url().'/'.am_profile_slug();
+	}
+}
+
+/**
+ * Get Navigation
+ */
+function paged_navigation()
+{
+	if ( function_exists( 'wp_pagenavi' ) ) {
+		wp_pagenavi();
+	} else {
+		echo "<div class='nav-previous'>" . previous_post_link( '&laquo; %link' ) . "</div><div class='nav-next'>" . next_post_link( '%link &raquo;' ) . "</div>";
 	}
 }
