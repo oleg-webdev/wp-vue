@@ -41,6 +41,18 @@ function alicelf_theme_register_dependences()
 		],
 
 		[
+			'name'               => 'All-in-One WP Migration',
+			'slug'               => 'all-in-one-wp-migration',
+			'source'             => $plugins_uri . 'all-in-one-wp-migration.zip',
+			'required'           => false,
+			'version'            => '6.40',
+			'force_activation'   => false,
+			'force_deactivation' => false,
+			'external_url'       => '',
+		],
+
+
+		[
 			'name'         => 'Generate Custom Posts',
 			'slug'         => 'generate-custom-posts',
 			'source'       => 'https://github.com/Nayami/theme_plugins/raw/master/generate-custom-posts.zip',

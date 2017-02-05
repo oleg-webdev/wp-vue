@@ -57,13 +57,13 @@ Redux::setArgs( $opt_name, $args );
 /**
  * Home Section
  */
-$section = array(
+$section = [
 	'title'  => 'General Setup',
 	'id'     => 'basic',
 	'desc'   => '',
 	'icon'   => 'dashicons dashicons-admin-home',
-	'fields' => array(
-		array(
+	'fields' => [
+		[
 			'id'       => 'opt-logo',
 			'type'     => 'media',
 			'url'      => true,
@@ -77,22 +77,22 @@ $section = array(
 			//    'title'     => 'Hint Title',
 			//    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
 			//)
-		),
-		array(
+		],
+		[
 			'id'       => 'opt-favicon',
 			'type'     => 'media',
 			'title'    => __( 'Favicon', 'alicelf-material' ),
 			'desc'     => __( 'This represents the minimalistic view. It does not have the preview box or the display URL in an input box. ', 'alicelf-material' ),
 			'subtitle' => __( 'Upload any media using the WordPress native uploader', 'alicelf-material' ),
-		),
-		array(
+		],
+		[
 			'id'       => 'opt-gallery',
 			'type'     => 'gallery',
 			'title'    => __( 'Add/Edit Gallery', 'alicelf-material' ),
 			'subtitle' => __( 'Create a new Gallery by selecting existing or uploading new images using the WordPress native uploader', 'alicelf-material' ),
 			'desc'     => __( 'This is the description field, again good for additional info.', 'alicelf-material' ),
-		),
-		array(
+		],
+		[
 			'id'            => 'opt-site-width',
 			'type'          => 'slider',
 			'title'         => __( 'Set initial site width', 'alicelf-material' ),
@@ -103,9 +103,9 @@ $section = array(
 			'step'          => 1,
 			'max'           => 3000,
 			'display_value' => 'text'
-		)
-	)
-);
+		]
+	]
+];
 Redux::setSection( $opt_name, $section );
 
 $section = array(

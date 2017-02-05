@@ -36,6 +36,12 @@
 	display   : -ms-flexbox;
 	display   : flex;
 	flex-flow : row nowrap;
+
+	/*Mobile*/
+	@media (max-width : 767px) {
+		flex-wrap : wrap;
+	}
+
 }
 
 // flex-col flex-col-desktop flex-col-tablet flex-col-phone
