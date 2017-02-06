@@ -36,16 +36,16 @@
 				let animated = 'animated';
 				switch (this.position) {
 					case 'top':
-						return `${animated} fadeInDown`
+						return `${animated} fadeInDownSmall`
 						;break;
 					case 'bottom':
-						return `${animated} fadeInUp`
+						return `${animated} fadeInUpSmall`
 						;break;
 					case 'left':
-						return `${animated} fadeInLeft`
+						return `${animated} fadeInLeftSmall`
 						;break;
 					case 'right':
-						return `${animated} fadeInRight`
+						return `${animated} fadeInRightSmall`
 						;break;
 					default:
 						return `${animated} fadeIn`;
@@ -56,16 +56,16 @@
 				let animated = 'animated';
 				switch (this.position) {
 					case 'top':
-						return `${animated} fadeOutUp`
+						return `${animated} fadeOutUpSmall`
 							;break;
 					case 'bottom':
-						return `${animated} fadeOutDown`
+						return `${animated} fadeOutDownSmall`
 							;break;
 					case 'left':
-						return `${animated} fadeOutLeft`
+						return `${animated} fadeOutLeftSmall`
 							;break;
 					case 'right':
-						return `${animated} fadeOutRight`
+						return `${animated} fadeOutRightSmall`
 							;break;
 					default:
 						return `${animated} fadeOut`
