@@ -33,7 +33,7 @@
 		computed: {
 
 			resolveEnterPosition() {
-				let animated = 'animated';
+				let animated = 'am-animated';
 				switch (this.position) {
 					case 'top':
 						return `${animated} fadeInDownSmall`
@@ -53,7 +53,7 @@
 			},
 
 			resolveOutPosition() {
-				let animated = 'animated';
+				let animated = 'am-animated';
 				switch (this.position) {
 					case 'top':
 						return `${animated} fadeOutUpSmall`
