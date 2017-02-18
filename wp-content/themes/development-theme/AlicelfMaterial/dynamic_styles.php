@@ -4,7 +4,6 @@ function aa_func_20165020025046()
 {
 	global $_am;
 	$width = $_am[ 'opt-site-width' ];
-	$_typo = $_am[ 'opt-typography-p' ];
 	?>
 	<style type="text/css">
 		/**
@@ -30,18 +29,6 @@ function aa_func_20165020025046()
 				padding-right : 15px;
 			}
 		}
-
-		body {
-			font-family      : <?php echo $_typo['font-family'] ?>;
-			font-size        : <?php echo $_typo['font-size'] ?>;
-			line-height      : <?php echo $_typo['line-height'] ?>;
-			color            : <?php echo $_typo['color'] ?>;
-			background-color : <?php echo $_am['bg-color'] ?>;
-		}
-
-		/**
-		 * ==================== Typography ======================
-		 */
 	</style>
 	<?php
 

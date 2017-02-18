@@ -1,6 +1,15 @@
 var domready = require('domready')
 var defaultAMscript = {
 	run: function(){
+
+		window.requestAnimFrame = (function() {
+			return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				function(callback) {
+					window.setTimeout(callback, 1000 / 60);
+				};
+		})();
 		/**
 		 * ==================== Common Functions ======================
 		 * 19.12.2016
@@ -62,10 +71,21 @@ var defaultAMscript = {
 		 * ==================== Regular Domready script ======================
 		 * 26.12.2016
 		 */
+		let appHandler = document.getElementById('am-appwrap'),
+				opacityMeasure = 0;
+
+		let invokeStepAppearing = () => {
+			let appHandler = document.getElementById('am-appwrap')
+			opacityMeasure += 0.04
+			appHandler.style.opacity = opacityMeasure
+			if(opacityMeasure <= 1) {
+				requestAnimationFrame(invokeStepAppearing);
+			}
+		};
+
+		appHandler.style.opacity = 0;
 		domready(function(){
-
-
-
+			invokeStepAppearing()
 		});
 
 

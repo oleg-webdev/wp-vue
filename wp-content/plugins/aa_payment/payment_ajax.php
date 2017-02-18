@@ -24,25 +24,3 @@ function ajx20164726124703()
 	}
 	die;
 }
-
-
-/**
- * Submit PayPal Credentials
- */
-add_action('wp_ajax_nopriv_ajx20164726124749', 'ajx20164726124749');
-add_action('wp_ajax_ajx20164726124749', 'ajx20164726124749');
-function ajx20164726124749()
-{
-	global $aa_payment;
-	$p = $_POST[ 'aa_pp_payment' ];
-	if ( isset( $p ) ) {
-		$end_data = [];
-		foreach ( $p as $item ) {
-			$end_data[$item['name']] = $item['value'];
-		}
-		$aa_payment->setOption( 'paypal_credentials', $end_data, true );
-		echo "success";
-		die;
-	}
-	die;
-}

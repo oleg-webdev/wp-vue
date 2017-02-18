@@ -153,31 +153,7 @@ $section = [
 			'default'  => '#FFFFFF',
 			'validate' => 'color',
 		],
-
-		/**
-		 * ==================== Typography ======================
-		 */
-		[
-			'id'          => 'opt-typography-p',
-			'type'        => 'typography',
-			'title'       => __( 'Regular Text', 'alicelf-material' ),
-			'google'      => true,
-			'font-backup' => true,
-			'output'      => [ 'body' ],
-			'units'       => 'px',
-			'subtitle'    => __( 'Typography option', 'alicelf-material' ),
-			'preview'     => [
-				'text' => 'Lorem Ipsum 123456789'
-			],
-			'default'     => [
-				'color'       => '#333',
-				'font-style'  => '700',
-				'font-family' => 'Open Sans',
-				'google'      => true,
-				'font-size'   => '33px',
-				'line-height' => '40'
-			],
-		]
+		
 	]
 ];
 Redux::setSection( $opt_name, $section );

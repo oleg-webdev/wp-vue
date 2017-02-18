@@ -2,6 +2,7 @@
 
 // ============= Paypal_donations_form =============
 if ( ! function_exists( 'paypal_donations_form' ) ) {
+	add_shortcode( 'paypal_donations_form', 'paypal_donations_form' );
 	function paypal_donations_form()
 	{
 		ob_start();
@@ -33,6 +34,7 @@ if ( ! function_exists( 'paypal_donations_form' ) ) {
 
 // ============= Paypal_pro_donation_form =============
 if ( ! function_exists( 'paypal_pro_donation_form' ) ) {
+	add_shortcode( 'paypal_pro_donation_form', 'paypal_pro_donation_form' );
 	function paypal_pro_donation_form()
 	{
 		ob_start();
@@ -91,13 +93,121 @@ if ( ! function_exists( 'paypal_pro_donation_form' ) ) {
 	}
 }
 
-/**
- * ==================== Shortcodes definition ======================
- * 21.07.2016
- */
-add_action( 'wp_loaded', 'aa_func_20163321033351' );
-function aa_func_20163321033351()
-{
-	add_shortcode( 'paypal_donations_form', 'paypal_donations_form' );
-	add_shortcode( 'paypal_pro_donation_form', 'paypal_pro_donation_form' );
+if ( ! function_exists( 'subscription_form_shortcode' ) ) {
+	add_shortcode( 'subscription_form_shortcode', 'subscription_form_shortcode' );
+	function subscription_form_shortcode( $atts )
+	{
+		ob_start();
+		$startDate   = gmdate( "Y-m-d\TH:i:s\Z", time() );
+		$description = json_encode( [
+			'plan' => 5,
+			'user' => get_current_user_id()
+		] );
+		?>
+		<hr>
+
+		<form action="" method="POST" autocomplete="off">
+			<input type="hidden" name="paypal_checkout_20170007120041" value="checkout"/>
+			<input type="hidden" name="_payment_purpose" value="CreateRecurringPaymentsProfile"/>
+			<input type="hidden" name="startdate" value="<?php echo $startDate ?>"/>
+			<input type="hidden" name="currency_code" value="USD"/>
+			<input type="hidden" name="period" value="Month"/>
+			<input type="hidden" name="frequency" value="1"/>
+			<input type="hidden" name="description" value='<?php echo $description ?>'/>
+
+			<div class="clearfix">
+				<div class="row">
+					<div class="col-md-6">
+						<p>
+							<span>Card type</span>
+							<input type="text" class="form-control" name="card_type" value="Visa"/>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p>
+							<span>Card number</span>
+							<input type="text" class="form-control" name="card_number" value="4032039953243609"/>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p>
+							<span>Exp date</span>
+							<input type="text" class="form-control" name="exp_date" value="102020"/>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p>
+							<span>CVV2</span>
+							<input type="text" class="form-control" name="cvv2" value="123"/>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p>
+							<span>First Name</span>
+							<input type="text" class="form-control" name="first_name" value="alice"/>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p>
+							<span>Last Name</span>
+							<input type="text" class="form-control" name="last_name" value="alice"/>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p>
+							<span>Street</span>
+							<input type="text" class="form-control" name="street" value="707 W. Bay Drive"/>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p>
+							<span>City</span>
+							<input type="text" class="form-control" name="city" value="Largo"/>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p>
+							<span>State</span>
+							<input type="text" class="form-control" name="state_code" value="FL"/>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p>
+							<span>Country</span>
+							<input type="text" class="form-control" name="coutry_code" value="US"/>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<p>
+							<span>Zip</span>
+							<input type="text" class="form-control" name="zip_code" value="33770"/>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<p>
+							<span>Price</span>
+							<input type="text" class="form-control" name="total_amount" value="2.54"/>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+				Button
+			</button>
+		</form>
+		<hr>
+		<?php
+		return ob_get_clean();
+	}
 }

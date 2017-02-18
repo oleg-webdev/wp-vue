@@ -5,26 +5,6 @@ window.VueResource = require('vue-resource')
 // Vue MATERIAL
 window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
-Vue.material.registerTheme({
-	default: {
-		primary   : {
-			color: 'blue-grey',
-			hue  : 600
-		},
-		accent    : {
-			color: 'blue',
-			hue  : 900
-		},
-		warn      : {
-			color: 'red',
-			hue  : 700
-		},
-		background: {
-			color: 'grey',
-			hue  : 50
-		}
-	}
-})
 
 // Dirrectives
 require('./dirrectives/ajaxForms')

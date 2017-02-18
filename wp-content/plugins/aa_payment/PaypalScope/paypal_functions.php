@@ -2,13 +2,12 @@
 
 /**
  * ==================== Basic PayPal Credentials ======================
- * 22.08.2016
  */
 if ( ! function_exists( 'paypal_credentials' ) ) {
 	function paypal_credentials()
 	{
 		if ( function_exists( 'get_field' ) ) {
-			$sandbox = get_field( 'sandbox', 'option' ) === 'true' ? true : false;
+			$_sandbox = get_field( 'sandbox', 'option' ) === 'true' ? true : false;
 
 			return [
 				'paypal_email'  => get_field( 'paypal_email', 'option' ),
@@ -23,21 +22,24 @@ if ( ! function_exists( 'paypal_credentials' ) ) {
 
 /**
  * ==================== Paypal Pro Credentials ======================
- * 22.08.2016
  */
 if ( ! function_exists( 'paypal_pro_credentials' ) ) {
 	function paypal_pro_credentials()
 	{
 		if ( function_exists( 'get_field' ) ) {
-			$sandbox = get_field( 'sandbox', 'option' ) === 'true' ? true : false;
+			$_sandbox      = get_field( 'sandbox', 'option' ) === 'true' ? true : false;
+			$api_endpoint  = $_sandbox ? 'https://api-3t.sandbox.paypal.com/nvp' : 'https://api-3t.paypal.com/nvp';
+			$api_username  = $_sandbox ? get_field( 'api_username_sandbox', 'option' ) : get_field( 'api_username', 'option' );
+			$api_password  = $_sandbox ? get_field( 'api_password_sandbox', 'option' ) : get_field( 'api_password', 'option' );
+			$api_signature = $_sandbox ? get_field( 'api_signature_sandbox', 'option' ) : get_field( 'api_signature', 'option' );
 
 			return [
-				'sandbox'       => $sandbox,
+				'sandbox'       => $_sandbox,
 				'api_version'   => '85.0',
-				'api_endpoint'  => $sandbox ? 'https://api-3t.sandbox.paypal.com/nvp' : 'https://api-3t.paypal.com/nvp',
-				'api_username'  => $sandbox ? get_field( 'api_username_sandbox', 'option' ) : get_field( 'api_username', 'option' ),
-				'api_password'  => $sandbox ? get_field( 'api_password_sandbox', 'option' ) : get_field( 'api_password', 'option' ),
-				'api_signature' => $sandbox ? get_field( 'api_signature_sandbox', 'option' ) : get_field( 'api_signature', 'option' ),
+				'api_endpoint'  => $api_endpoint,
+				'api_username'  => $api_username,
+				'api_password'  => $api_password,
+				'api_signature' => $api_signature,
 			];
 		}
 
@@ -86,33 +88,44 @@ if ( ! function_exists( 'pro_request_params' ) ) {
 			return false;
 		}
 
-		$r      = [
-			'METHOD'         => 'DoDirectPayment',
-			'USER'           => $credentials[ 'api_username' ],
-			'PWD'            => $credentials[ 'api_password' ],
-			'SIGNATURE'      => $credentials[ 'api_signature' ],
-			'VERSION'        => $credentials[ 'api_version' ],
-			'PAYMENTACTION'  => 'Sale',
-			'IPADDRESS'      => $_SERVER[ 'REMOTE_ADDR' ],
-
-			// Should be dynamic data
-			'CREDITCARDTYPE' => $data[ 'card_type' ],     // Visa MasterCard Discover Amex JCB Maestro
-			'ACCT'           => $data[ 'card_number' ],   // actual credit card number
-			'EXPDATE'        => $data[ 'exp_date' ],      // 022013
-			'CVV2'           => $data[ 'cvv2' ],          // 456
-			'FIRSTNAME'      => $data[ 'first_name' ],    // Buyer Fname
-			'LASTNAME'       => $data[ 'last_name' ],     // Buyer Lname
-			'STREET'         => $data[ 'street' ],        // 707 W. Bay Drive
-			'CITY'           => $data[ 'city' ],          // Largo
-			'STATE'          => $data[ 'state_code' ],    // FL
-			'COUNTRYCODE'    => $data[ 'coutry_code' ],   // US
-			'ZIP'            => $data[ 'zip_code' ],      // 33770
-			'AMT'            => $data[ 'total_amount' ],  // float 300.00
-			'CURRENCYCODE'   => $data[ 'currency_code' ], // USD
-			'DESC'           => $data[ 'description' ]    // Some descripiton
+		$_params = [
+			'USER'      => $credentials[ 'api_username' ],
+			'PWD'       => $credentials[ 'api_password' ],
+			'SIGNATURE' => $credentials[ 'api_signature' ],
+			'VERSION'   => $credentials[ 'api_version' ],
+			'IPADDRESS' => $_SERVER[ 'REMOTE_ADDR' ],
+			'METHOD'    => $data[ '_payment_purpose' ], // DoDirectPayment CreateRecurringPaymentsProfile
 		];
+
+		// Standart payment
+		if ( $data[ '_payment_purpose' ] === 'DoDirectPayment' ) {
+			$_params[ 'PAYMENTACTION' ] = 'Sale';
+		}
+
+		// Subscription
+		if ( $data[ '_payment_purpose' ] === 'CreateRecurringPaymentsProfile' ) {
+			$_params[ 'PROFILESTARTDATE' ] = $data[ 'startdate' ];
+			$_params[ 'BILLINGPERIOD' ]    = $data[ 'period' ]; // Week, Month, Year
+			$_params[ 'BILLINGFREQUENCY' ] = $data[ 'frequency' ]; // Frequency of charges
+		}
+
+		$_params[ 'CREDITCARDTYPE' ] = $data[ 'card_type' ];     // Visa MasterCard Discover Amex JCB Maestro
+		$_params[ 'ACCT' ]           = $data[ 'card_number' ];   // actual credit card number
+		$_params[ 'EXPDATE' ]        = $data[ 'exp_date' ];      // 022013
+		$_params[ 'CVV2' ]           = $data[ 'cvv2' ];          // 456
+		$_params[ 'FIRSTNAME' ]      = $data[ 'first_name' ];    // Buyer Fname
+		$_params[ 'LASTNAME' ]       = $data[ 'last_name' ];     // Buyer Lname
+		$_params[ 'STREET' ]         = $data[ 'street' ];        // 707 W. Bay Drive
+		$_params[ 'CITY' ]           = $data[ 'city' ];          // Largo
+		$_params[ 'STATE' ]          = $data[ 'state_code' ];    // FL
+		$_params[ 'COUNTRYCODE' ]    = $data[ 'coutry_code' ];   // US
+		$_params[ 'ZIP' ]            = $data[ 'zip_code' ];      // 33770
+		$_params[ 'AMT' ]            = $data[ 'total_amount' ];  // float 300.00
+		$_params[ 'CURRENCYCODE' ]   = $data[ 'currency_code' ]; // USD
+		$_params[ 'DESC' ]           = $data[ 'description' ];    // Some descripiton
+
 		$result = "";
-		foreach ( $r as $var => $val ) {
+		foreach ( $_params as $var => $val ) {
 			$result .= '&' . $var . '=' . urlencode( $val );
 		}
 
@@ -120,11 +133,13 @@ if ( ! function_exists( 'pro_request_params' ) ) {
 	}
 }
 
-/**
- * ==================== Make a Request to Paypal ======================
- * 22.08.2016
- */
 if ( ! function_exists( 'curl_to_paypal' ) ) {
+	/**
+	 * @param $request_string | pro_request_params()
+	 * @param bool $ajax
+	 *
+	 * @return bool|mixed|string|void
+	 */
 	function curl_to_paypal( $request_string, $ajax = false )
 	{
 		$credentials = paypal_pro_credentials();
@@ -146,5 +161,17 @@ if ( ! function_exists( 'curl_to_paypal' ) ) {
 		parse_str( $result, $output );
 
 		return $ajax ? json_encode( $output ) : $output;
+	}
+}
+
+add_action('wp_loaded', 'aa_func_20174107124111');
+function aa_func_20174107124111()
+{
+	if(isset($_POST['paypal_checkout_20170007120041'])) {
+		$request_string = pro_request_params($_POST);
+		$data = curl_to_paypal($request_string);
+		echo "<pre>";
+		var_dump($data);
+		echo "</pre>";
 	}
 }
