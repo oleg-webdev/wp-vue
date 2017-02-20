@@ -6,6 +6,15 @@ window.VueResource = require('vue-resource')
 window.VueMaterial = require('vue-material')
 Vue.use(VueMaterial)
 
+Vue.material.registerTheme('defaultAppTheme', {
+	accent: {
+		color: 'blue',
+		hue  : 900
+	}
+})
+
+Vue.material.setCurrentTheme('defaultAppTheme')
+
 // Dirrectives
 require('./dirrectives/ajaxForms')
 
@@ -128,7 +137,7 @@ new Vue({
 
 	}
 
-})
+});
 
 
 /**

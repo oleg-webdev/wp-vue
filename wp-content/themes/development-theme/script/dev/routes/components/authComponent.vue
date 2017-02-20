@@ -243,7 +243,7 @@
 
 				const loginData = dataToPost('ajx20174507084516', this.loginUserModel);
 				this.$http.post(AMdefaults.ajaxurl, loginData).then(function(response) {
-					let data = JSON.parse(response.data);
+					let data = response.data
 					if (data.status.type === 'success') {
 						CurrentUser.commit('setUserdata', data.user)
 						this.$router.push({name: 'userentrypoint'})
@@ -264,7 +264,7 @@
 
 				const loginData = dataToPost('ajx20173909123946', this.resetUserModel);
 				this.$http.post(AMdefaults.ajaxurl, loginData).then(function(response) {
-					let data = JSON.parse(response.data);
+					let data = response.data
 
 					if(data.status === 'notfound') {
 						console.log(this);

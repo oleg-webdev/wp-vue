@@ -25,6 +25,11 @@ var defaultAMscript = {
 			return false;
 		};
 
+		window.findAncestor = (el, cls) => {
+			while ((el = el.parentElement) && !el.classList.contains(cls));
+			return el;
+		};
+
 		window.itemIsPureObject = function(item) {
 			if ( item !== null && typeof item === 'object' ) {
 				if(!(item instanceof Array))

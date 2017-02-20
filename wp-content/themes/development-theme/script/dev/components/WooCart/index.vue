@@ -81,7 +81,7 @@
 			fetchCart: function() {
 				this.$http.get(AMdefaults.ajaxurl + "?action=ajx20161412071430")
 					.then(function(response) {
-						Cart.commit('setProducts', JSON.parse(response.body));
+						Cart.commit('setProducts', response.body)
 					});
 			},
 
@@ -89,7 +89,7 @@
 				const removeData = dataToPost('ajx20163730073701', item);
 				Cart.commit('removeFromCart', item);
 				this.$http.post(AMdefaults.ajaxurl, removeData).then(function(response) {
-//					console.log(JSON.parse(response.data));
+//					console.log(response.data);
 				});
 			},
 

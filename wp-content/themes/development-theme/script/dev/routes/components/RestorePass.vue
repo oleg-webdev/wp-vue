@@ -116,7 +116,7 @@
 							});
 
 							this.$http.post(AMdefaults.ajaxurl, loginData).then(function(response) {
-								let data = JSON.parse(response.data);
+								let data = response.data
 
 								if (data.status === 'invalid_token') {
 									this.$root.openDialog('alertFailDialog', {
