@@ -8,23 +8,7 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 		<span class="mdl-layout-title"><?php echo material_logo() ?></span>
 		<div class="mdl-layout-spacer"></div>
 		<?php
-		if ( ! has_nav_menu( 'primary' ) ) {
-			$menu_id = wp_create_nav_menu( "Default Theme Menu" );
-
-			wp_update_nav_menu_item( $menu_id, 0, [
-					'menu-item-title'   => __( 'Home' ),
-					'menu-item-classes' => 'mdl-navigation__link',
-					'menu-item-url'     => home_url( '/' ),
-					'menu-item-status'  => 'publish'
-				]
-			);
-			wp_nav_menu( [
-				'show_home'  => true,
-				'menu_class' => 'mdl-navigation',
-				'container'  => 'nav',
-				'walker'     => new AMenu()
-			] );
-		} else {
+		if ( has_nav_menu( 'primary' ) ) {
 			wp_nav_menu( [
 				'show_home'      => true,
 				'menu_class'     => 'mdl-navigation',
@@ -32,9 +16,16 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 				'container'      => 'nav',
 				'walker'         => new AMenu()
 			] );
+		} else {
+			$menu_id = wp_create_nav_menu( "Default Theme Menu" );
+			wp_nav_menu( [
+				'show_home'  => true,
+				'menu_class' => 'mdl-navigation',
+				'container'  => 'nav',
+				'walker'     => new AMenu()
+			] );
 		}
 		?>
-
 	</div>
 </header>
 
