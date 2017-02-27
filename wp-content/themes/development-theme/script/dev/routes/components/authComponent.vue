@@ -8,6 +8,7 @@
 </style>
 <template>
 	<div ref="authscope" id="Auth-scope">
+
 		<div class="container">
 			<div id="login-register-form"
 					 v-bind:class="[formClass]"
@@ -18,7 +19,7 @@
 
 				<md-card id="login-register-wrapper">
 
-					<md-button @click="toggleRegistration" title="Registration" class="md-fab"
+					<md-button @click.native="toggleRegistration" title="Registration" class="md-fab"
 										 v-if="registrationInfo.registration_info == 'yes'"
 										 v-bind:class="{'icon-centered':currentForm != 'login'}"
 										 id="register-trigger">
@@ -26,7 +27,7 @@
 						<md-tooltip md-direction="top">Registration</md-tooltip>
 					</md-button>
 
-					<md-button @click="toggleResetPassword" title="Reset Password" class="md-fab md-primary"
+					<md-button @click.native="toggleResetPassword" title="Reset Password" class="md-fab md-primary"
 										 v-bind:class="{'icon-centered':currentForm != 'login'}"
 										 id="reset-trigger">
 						<md-icon>send</md-icon>
@@ -84,7 +85,7 @@
 								<md-card-header>
 									<md-button class="md-fab animated close-frm-btn md-primary"
 														 v-bind:class="{'fadeInRightBig':currentForm == 'resetpassword'}"
-														 @click="toggleResetPassword" title="Close">
+														 @click.native="toggleResetPassword" title="Close">
 										<md-icon>close</md-icon>
 									</md-button>
 
@@ -124,7 +125,7 @@
 
 									<md-button class="md-fab animated close-frm-btn"
 														 v-bind:class="{'fadeInRightBig':currentForm == 'registration'}"
-														 @click="toggleRegistration" title="Close">
+														 @click.native="toggleRegistration" title="Close">
 										<md-icon>close</md-icon>
 									</md-button>
 
@@ -223,6 +224,7 @@
 		methods: {
 
 			toggleRegistration(){
+				console.log(`sdfs`)
 				this.currentForm = this.currentForm === 'registration' ? 'login': 'registration';
 			},
 
