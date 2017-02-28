@@ -52,7 +52,7 @@ function aa_func_20163119123146()
 
 	// MDL
 	wp_enqueue_style( 'google-material-icons', '//fonts.googleapis.com/icon?family=Material+Icons' );
-	wp_enqueue_style( 'google-vue-style', $template_path . '/mdl/mdl.css' );
+	wp_enqueue_style( 'google-mdl-style', $template_path . '/mdl/mdl.css' );
 	wp_enqueue_script( 'google-material-script', $template_path . '/mdl/material.min.js', [], false, true );
 
 	// Styles
@@ -66,6 +66,9 @@ function aa_func_20163119123146()
 	wp_register_script( 'jquery', $bowersrc . 'jquery/dist/jquery.min.js', [], false, true );
 	wp_enqueue_script( 'jquery' );
 
+	// Vue-material
+	wp_enqueue_style( 'vue-material-style', $template_path . '/vue-material/dist/vue-material.css' );
+	// Vue lib
 	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$production}.js", [], false, true );
 
 	if ( is_amuserpage() ) {
