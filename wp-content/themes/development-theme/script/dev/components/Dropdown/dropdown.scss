@@ -1,21 +1,13 @@
 @import "../../../../style-parts/vars";
 
 .dropdown-scope {
-
+	border :1px solid #e2e2e2;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 
-	&.collapsed {
-
-		.dropdown-content {
-
-		}
-
-	}
-
 	.dropdown-heading {
 		padding       : 5px 10px;
-		border-bottom : 1px solid #ccc;
+		border-bottom : 1px solid #e2e2e2;
 		cursor        : pointer;
 	}
 
@@ -24,9 +16,6 @@
 		overflow : hidden;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
-		-webkit-transition : all .5s;
-		-moz-transition    : all .5s;
-		transition         : all .5s;
 
 		> div {
 			padding : 15px;

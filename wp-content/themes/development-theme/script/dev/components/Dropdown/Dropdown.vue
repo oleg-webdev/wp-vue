@@ -21,13 +21,14 @@
 
 		data() {
 			return {
-				speed           : 60,
+				speed           : 250,
 				elem            : null,
 				elemContent     : null,
 				mutableCollapsed: this.collapsed,
 				originHeight    : null,
 			}
 		},
+
 
 		computed: {},
 
@@ -37,8 +38,9 @@
 			eventHub.$on('accordionProcess', (dropinfo) => {
 				if (dropinfo.scope === this.scope && dropinfo.slot != this.slotname) {
 					this.mutableCollapsed = true
-					$(this.elemContent).animate({height: `0px`}, this.speed, 'linear')
+					$(this.elemContent).animate({height: 0 }, this.speed)
 				}
+
 			})
 
 		},
@@ -72,9 +74,9 @@
 					this.mutableCollapsed = !this.mutableCollapsed
 
 					if (this.mutableCollapsed) {
-						$(this.elemContent).animate({height: `0px`}, this.speed, 'linear')
+						$(this.elemContent).animate({height: 0}, this.speed)
 					} else {
-						$(this.elemContent).animate({height: `${this.originHeight}px`}, this.speed, 'linear')
+						$(this.elemContent).animate({height: this.originHeight }, this.speed)
 					}
 				}
 
