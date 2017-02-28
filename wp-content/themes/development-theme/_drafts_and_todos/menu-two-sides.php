@@ -41,8 +41,32 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 			<md-button class="md-icon-button" @click.native="$refs.sidebar.toggle()">
 				<md-icon>menu</md-icon>
 			</md-button>
+
+			<md-button class="md-raised md-accent" @click.native="toggleRightSidenav">
+				Toggle right
+			</md-button>
 		</md-whiteframe>
 
 	</div>
 
 </aside>
+
+<div class="phone-viewport">
+
+	<md-sidenav class="md-right" ref="rightSidenav"
+	            @open="handleRightSidenavOpen('Right')"
+	            @close="handleRightSidenavClose('Right')">
+		<md-toolbar>
+			<div class="md-toolbar-container">
+				<h3 class="md-title">Sidenav content</h3>
+			</div>
+		</md-toolbar>
+		<md-button class="md-raised md-accent" @click.native="closeRightSidenav">Close</md-button>
+
+		<div class="padding-x-15">
+			<p>Lorem ipsum dolor sit </p>
+		</div>
+
+
+	</md-sidenav>
+</div>

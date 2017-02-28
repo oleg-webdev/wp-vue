@@ -10,9 +10,6 @@ if ( ! function_exists( 'render_mobile_menu' ) ) {
 			'echo'           => false,
 			'container'      => false
 		] );
-		$regular_tags = [ '<div', '</div>', '<li', '</li>' ];
-		$vue_tags     = [ '<md-list', '</md-list>', '<md-list-item @click="$refs.sidebar.toggle()"', '</md-list-item>' ];
-		$mob_menu     = $newphrase = str_replace( $regular_tags, $vue_tags, $mob_menu );
 
 		return $mob_menu;
 	}

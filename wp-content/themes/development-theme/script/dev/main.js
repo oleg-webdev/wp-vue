@@ -109,6 +109,9 @@ new Vue({
 
 	},
 
+	/**
+	 * ==================== App Methods ======================
+	 */
 	methods: {
 
 		openDialog(ref, params) {
@@ -133,9 +136,24 @@ new Vue({
 					text       : 'Ok'
 				}
 			}, 800)
-		}
+		},
+
+		// Right Sidebar
+		// toggleRightSidenav() {
+		// 	this.$refs.rightSidenav.toggle();
+		// },
+		// closeRightSidenav() {
+		// 	this.$refs.rightSidenav.close();
+		// },
+		// handleRightSidenavOpen(ref) {
+		// 	console.log('Opened: ' + ref);
+		// },
+		// handleRightSidenavClose(ref) {
+		// 	console.log('Closed: ' + ref);
+		// }
 
 	}
+
 
 });
 
