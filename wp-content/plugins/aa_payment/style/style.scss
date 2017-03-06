@@ -9,29 +9,6 @@
 	}
 }
 
-
-.aa-pluginsloader-holder {
-	position : relative;
-}
-
-#toplevel_page_aa_payment {
-	.wp-menu-image {
-		&:before {
-			@include fAwesome();
-			content : "\f07a"; //"\f217"
-		}
-	}
-}
-
-.table {
-	width : 100%;
-}
-
-.form-control {
-	display : block;
-	width   : 100%;
-}
-
 /**
  * ==================== System Messages ======================
  * 20.08.2016
@@ -51,13 +28,5 @@
 		&.cancel {
 			background-color : $dangerColor;
 		}
-	}
-}
-
-.form-divider {
-	text-align  : center;
-	font-weight : bold;
-	td {
-		padding-top    : 20px;
 	}
 }

@@ -43,10 +43,6 @@ add_action( 'aa_payment_content', 'aa_func_20150506060514' );
 function aa_func_20150506060514()
 {
 	?>
-	<h1>Paypal donation form</h1>
-
-	<pre>[paypal_donations_form]</pre>
-
-	<pre>[paypal_pro_donation_form]</pre>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A exercitationem ipsam laudantium omnis perferendis quae qui quod, rem vel. Ab dolorum obcaecati pariatur sapiente! Architecto expedita pariatur porro praesentium tempore!</p>
 	<?php
 }

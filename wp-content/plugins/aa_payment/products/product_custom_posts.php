@@ -12,7 +12,7 @@ $product_post_type = 'product-items';
 add_action( 'wp_loaded', 'aa_func_20164024114019' );
 function aa_func_20164024114019()
 {
-	$labels   = array(
+	$labels = [
 		'name'               => __( 'Product Items' ),
 		'singular_name'      => __( 'Product Item' ),
 		'add_new'            => __( 'New Product' ),
@@ -25,8 +25,9 @@ function aa_func_20164024114019()
 		'not_found_in_trash' => 'Empty basket product items',
 		'parent_item_colon'  => '',
 		'menu_name'          => 'Products'
-	);
-	$args     = array(
+	];
+	$args   = [
+		'menu_icon'          => 'dashicons-cart',
 		'labels'             => $labels,
 		'public'             => true,
 		'publicly_queryable' => true,
@@ -39,7 +40,7 @@ function aa_func_20164024114019()
 		'hierarchical'       => true,
 		'menu_position'      => null,
 		'taxonomies'         => array( 'category', 'post_tag' ),
-		'supports'           => array(
+		'supports'           => [
 			'title',
 			'editor',
 			'author',
@@ -48,12 +49,12 @@ function aa_func_20164024114019()
 			'comments',
 			'custom-fields',
 			'page-attributes'
-		)
-	);
+		]
+	];
 
 	$product_items = new CustomPosts( 'product-items', $labels, $args );
 	// can set menu position for example ->run(65)
-	$product_items->run(100);
+	$product_items->run( 100 );
 //	$product_items->taxonomy('category_recent', 'Cat Taxonomy', 'slug_tax_recent');
 //	$product_items->createField('text','customarray', 'customtext');
 //	$product_items->addContextualHelp('Some Contextual text');

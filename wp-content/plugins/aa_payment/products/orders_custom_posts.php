@@ -10,7 +10,7 @@ use Apayment\CustomPosts;
 add_action( 'wp_loaded', 'aa_func_20160224120244' );
 function aa_func_20160224120244()
 {
-	$labels   = array(
+	$labels = [
 		'name'               => __( 'Order Items' ),
 		'singular_name'      => __( 'Order Item' ),
 		'add_new'            => __( 'New Order' ),
@@ -23,21 +23,22 @@ function aa_func_20160224120244()
 		'not_found_in_trash' => 'Empty basket order items',
 		'parent_item_colon'  => '',
 		'menu_name'          => 'Orders'
-	);
-	$args     = array(
+	];
+	$args   = [
+		'menu_icon'          => 'dashicons-list-view',
 		'labels'             => $labels,
 		'public'             => true,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'order-items' ),
+		'rewrite'            => [ 'slug' => 'order-items' ],
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => true,
 		'menu_position'      => null,
-		'taxonomies'         => array( 'category', 'post_tag' ),
-		'supports'           => array(
+		'taxonomies'         => [ 'category', 'post_tag' ],
+		'supports'           => [
 			'title',
 			'editor',
 			'author',
@@ -46,12 +47,12 @@ function aa_func_20160224120244()
 			'comments',
 			'custom-fields',
 			'page-attributes'
-		)
-	);
+		]
+	];
 
 	$order_items = new CustomPosts( 'order-items', $labels, $args );
 	// can set menu position for example ->run(65)
-	$order_items->run(100);
+	$order_items->run( 100 );
 //	$order_items->taxonomy('category_recent', 'Cat Taxonomy', 'slug_tax_recent');
 //	$order_items->createField('text','customarray', 'customtext');
 //	$order_items->addContextualHelp('Some Contextual text');

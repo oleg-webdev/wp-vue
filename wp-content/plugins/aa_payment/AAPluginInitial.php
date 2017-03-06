@@ -190,7 +190,7 @@ class AAPluginInitial {
 			$this->_menu_title,
 			$this->_capability,
 			$this->_menu_slug, // file in views should be same
-			[ $this, 'renderListing' ], '', $this->_positon
+			[ $this, 'renderListing' ], 'dashicons-randomize', $this->_positon
 		);
 		do_action( 'do_the_creation_page' );
 	}

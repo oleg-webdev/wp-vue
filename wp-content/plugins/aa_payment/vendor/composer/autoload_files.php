@@ -6,15 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '8128451d85444c6fb3364304e548ae39' => $baseDir . '/payment_ajax.php',
-    '0183b21fc9f1be9c6b3ce2d86c1ed53d' => $baseDir . '/PaypalScope/run.php',
-    '0bf5755a77d92325fc60bd9a55eb44d2' => $baseDir . '/PaypalScope/shortcodes.php',
-    'ef6335b2b4ffe1a6aa651b55390361c8' => $baseDir . '/PaypalScope/redirect_handlers.php',
-    'd5ba0d2a7018d75ab929edb9caf0d9cf' => $baseDir . '/PaypalScope/paypal_functions.php',
-    'f944291d48461ee63cf47ca5d58d3e7d' => $baseDir . '/products/product_custom_posts.php',
-    '7d0679809302a40c822748489d1fde29' => $baseDir . '/products/orders_custom_posts.php',
     '12f0376a1502d77e947713d5404a4060' => $baseDir . '/content_templates/attributes.php',
     'f6d31036a1ccc8695c6fa2cdeaf1668c' => $baseDir . '/content_templates/single-product-content.php',
     '678829c9bead5c61e091a219cc1aa469' => $baseDir . '/content_templates/init.php',
+    '8128451d85444c6fb3364304e548ae39' => $baseDir . '/payment_ajax.php',
     '02b328e0c5606ce167ab0297e1146fea' => $baseDir . '/options_pages.php',
+    '0bf5755a77d92325fc60bd9a55eb44d2' => $baseDir . '/PaypalScope/shortcodes.php',
+    'd5ba0d2a7018d75ab929edb9caf0d9cf' => $baseDir . '/PaypalScope/paypal_functions.php',
+    'f944291d48461ee63cf47ca5d58d3e7d' => $baseDir . '/products/product_custom_posts.php',
+    '7d0679809302a40c822748489d1fde29' => $baseDir . '/products/orders_custom_posts.php',
 );
