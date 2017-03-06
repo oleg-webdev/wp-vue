@@ -1,18 +1,28 @@
 <?php
 
 /**
- * ==================== Basic PayPal Credentials ======================
+ * ==================== PayPal API Credentials ======================
  */
 if ( ! function_exists( 'paypal_credentials' ) ) {
 	function paypal_credentials()
 	{
 		if ( function_exists( 'get_field' ) ) {
-			$_sandbox = get_field( 'paypalpro_sandbox', 'option' ) === 'true' ? true : false;
+			$sandbox = get_field( 'sandbox_mode', 'option' );
+
+			$email = $sandbox ?
+				get_field( 'sandbox_paypal_email', 'option' ) : get_field( 'paypal_email', 'option' );
+
+			$client_id = $sandbox ?
+				get_field( 'sandbox_client_id', 'option' ) : get_field( 'client_id', 'option' );
+
+			$client_secret = $sandbox ?
+				get_field( 'sandbox_client_secret', 'option' ) : get_field( 'client_secret', 'option' );
 
 			return [
-				'paypal_email'  => get_field( 'paypal_email', 'option' ),
-				'client_id'     => get_field( 'client_id', 'option' ),
-				'client_secret' => get_field( 'client_secret', 'option' ),
+				'sandbox'       => $sandbox,
+				'paypal_email'  => $email,
+				'client_id'     => $client_id,
+				'client_secret' => $client_secret
 			];
 
 		}
@@ -28,22 +38,22 @@ if ( ! function_exists( 'paypal_pro_credentials' ) ) {
 	function paypal_pro_credentials()
 	{
 		if ( function_exists( 'get_field' ) ) {
-			$_sandbox      = get_field( 'paypalpro_sandbox', 'option' ) === 'true' ? true : false;
+			$sandbox = get_field( 'paypalpro_sandbox', 'option' );
 
-			$api_endpoint  = $_sandbox ?
+			$api_endpoint = $sandbox ?
 				'https://api-3t.sandbox.paypal.com/nvp' : 'https://api-3t.paypal.com/nvp';
 
-			$api_username  = $_sandbox ?
+			$api_username = $sandbox ?
 				get_field( 'api_username_sandbox', 'option' ) : get_field( 'api_username', 'option' );
 
-			$api_password  = $_sandbox ?
+			$api_password = $sandbox ?
 				get_field( 'api_password_sandbox', 'option' ) : get_field( 'api_password', 'option' );
 
-			$api_signature = $_sandbox ?
+			$api_signature = $sandbox ?
 				get_field( 'api_signature_sandbox', 'option' ) : get_field( 'api_signature', 'option' );
 
 			return [
-				'sandbox'       => $_sandbox,
+				'sandbox'       => $sandbox,
 				'api_version'   => '85.0',
 				'api_endpoint'  => $api_endpoint,
 				'api_username'  => $api_username,
@@ -56,12 +66,39 @@ if ( ! function_exists( 'paypal_pro_credentials' ) ) {
 	}
 }
 
-
 /**
  * ==================== Payflow Credentials ======================
  * 06.03.2017
  */
+if ( ! function_exists( 'paypal_payflow_credentials' ) ) {
+	function paypal_payflow_credentials()
+	{
+		if ( function_exists( 'get_field' ) ) {
+			$sandbox = get_field( 'payflow_sandbox', 'option' );
 
+			$partner = $sandbox ?
+				get_field( 'sandbox_payflow_partner', 'option' ) : get_field( 'payflow_partner', 'option' );
+
+			$pwd = $sandbox ?
+				get_field( 'sandbox_payflow_pwd', 'option' ) : get_field( 'payflow_pwd', 'option' );
+
+			$vendor = $sandbox ?
+				get_field( 'sanbox_payflow_vendor', 'option' ) : get_field( 'payflow_vendor', 'option' );
+
+			$user = $sandbox ?
+				get_field( 'sandbox_payflow_user', 'option' ) : get_field( 'payflow_user', 'option' );
+
+			return [
+				'partner' => $partner,
+				'pwd'     => $pwd,
+				'vendor'  => $vendor,
+				'user'    => $user,
+			];
+		}
+
+		return false;
+	}
+}
 
 /**
  * ==================== Credit Card Detection ======================

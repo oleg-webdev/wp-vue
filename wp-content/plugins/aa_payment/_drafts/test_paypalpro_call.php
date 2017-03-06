@@ -6,7 +6,7 @@ if ( ! function_exists( 'paypal_pro_credentials' ) ) {
 	function paypal_pro_credentials()
 	{
 		if ( function_exists( 'get_field' ) ) {
-			$_sandbox      = get_field( 'sandbox', 'option' ) === 'true' ? true : false;
+			$_sandbox = get_field( 'paypalpro_sandbox', 'option' );
 
 			$api_endpoint  = $_sandbox ?
 				'https://api-3t.sandbox.paypal.com/nvp' : 'https://api-3t.paypal.com/nvp';
