@@ -4,11 +4,11 @@
  */
 get_header(); ?>
 
-	<!--SINGLE ARTICLE-->
+	<!--SINGLE ITEM PRODUCT-->
 
 	<article id="article-<?php the_ID(); ?>" class="ghostly-wrap">
 
-		<div class="row">
+		<div class="am-wrap">
 			<?php $class_co_sm = is_active_sidebar( "default-widgetize-sidebar" ) ? 8 : 12; ?>
 			<div <?php post_class("col-sm-$class_co_sm single-loop"); ?>>
 				<?php if ( have_posts() ): while ( have_posts() ) : the_post(); ?>
@@ -24,12 +24,11 @@ get_header(); ?>
 									do_action('single_itemproduct_after', get_the_ID());
 								?>
 							</div>
-							<?php comments_template('/templates/tpl-comment.php'); ?>
+							<?php comments_template(); ?>
 						</div>
 					</div>
 				<?php endwhile; else: echo "No post matched your criteria"; endif; ?>
 			</div>
-			<?php aa_default_wiget_sidebar(4) ?>
 		</div>
 
 	</article>

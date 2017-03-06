@@ -1,11 +1,9 @@
 <?php
-
 /**
  * Delete notice for current user
  */
-
-add_action('wp_ajax_nopriv_ajx20164726124703', 'ajx20164726124703');
-add_action('wp_ajax_ajx20164726124703', 'ajx20164726124703');
+add_action( 'wp_ajax_nopriv_ajx20164726124703', 'ajx20164726124703' );
+add_action( 'wp_ajax_ajx20164726124703', 'ajx20164726124703' );
 function ajx20164726124703()
 {
 	if ( isset( $_POST[ 'aa_notice_descriptor' ] ) ) {

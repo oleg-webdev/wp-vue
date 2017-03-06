@@ -6,13 +6,12 @@
 	    "content_templates/single-product-content.php",
 	    "content_templates/init.php",
 
-      "payment_ajax.php",
-	    "options_pages.php",
+      "ajax.php",
 	    "PaypalScope/shortcodes.php",
       "PaypalScope/paypal_functions.php",
 
-      "products/product_custom_posts.php",
-      "products/orders_custom_posts.php"
+      "custom_posts/product_custom_posts.php",
+      "custom_posts/orders_custom_posts.php"
 
     ],
     "psr-4": {
