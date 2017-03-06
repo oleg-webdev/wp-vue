@@ -47,14 +47,16 @@ if ( ! function_exists( 'paypal_pro_donation_form' ) ) {
 			<div class="row">
 				<div class="col-md-6">
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" name="firstname" type="text" id="firstname" pattern="[A-Z,a-z]*">
+						<input value="Fname"
+						       class="mdl-textfield__input" name="firstname" type="text" id="firstname" pattern="[A-Z,a-z]*">
 						<label class="mdl-textfield__label" for="firstname">First Name</label>
 						<span class="mdl-textfield__error">Please type letters without spaces</span>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" name="lastname" type="text" id="lastname" pattern="[A-Z,a-z]*">
+						<input value="Lname"
+							class="mdl-textfield__input" name="lastname" type="text" id="lastname" pattern="[A-Z,a-z]*">
 						<label class="mdl-textfield__label" for="lastname">Last Name</label>
 						<span class="mdl-textfield__error">Please type letters without spaces</span>
 					</div>
@@ -64,7 +66,8 @@ if ( ! function_exists( 'paypal_pro_donation_form' ) ) {
 			<div class="row">
 				<div class="col-md-4">
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" name="description" type="text" id="description">
+						<input value="Donation Name"
+							class="mdl-textfield__input" name="description" type="text" id="description">
 						<label class="mdl-textfield__label" for="description">Donation Name</label>
 					</div>
 				</div>

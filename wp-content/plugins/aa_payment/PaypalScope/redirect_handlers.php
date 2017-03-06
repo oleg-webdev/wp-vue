@@ -1,7 +1,6 @@
 <?php
 /**
  * ==================== Rendery System Messages ======================
- * 20.08.2016
  */
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
