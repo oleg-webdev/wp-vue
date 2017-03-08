@@ -11915,7 +11915,6 @@ return index;
 })));
 
 },{}],30:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, stdin */\n.dropdown-scope {\n  border: 1px solid #e2e2e2;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box; }\n  /* line 8, stdin */\n  .dropdown-scope .dropdown-heading {\n    padding: 5px 10px;\n    border-bottom: 1px solid #e2e2e2;\n    cursor: pointer; }\n  /* line 14, stdin */\n  .dropdown-scope .dropdown-content {\n    display: block;\n    overflow: hidden;\n    -moz-box-sizing: border-box;\n    box-sizing: border-box; }\n    /* line 20, stdin */\n    .dropdown-scope .dropdown-content > div {\n      padding: 15px; }")
 ;(function(){
 'use strict';
 
@@ -11999,15 +11998,13 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-8b53db88", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-8b53db88", __vue__options__)
+    hotAPI.reload("data-v-8b53db88", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":23,"vueify/lib/insert-css":28}],31:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, stdin */\n.Flash--scope {\n  position: absolute;\n  right: 0; }\n  /* line 7, stdin */\n  .Flash--scope .flash-wrapper {\n    position: relative;\n    padding: 10px 15px; }\n    /* line 11, stdin */\n    .Flash--scope .flash-wrapper .md-button {\n      width: 25px;\n      height: 25px;\n      min-width: 25px;\n      min-height: 25px;\n      display: block;\n      padding: 0;\n      text-align: center;\n      font-size: 19px;\n      line-height: 25px;\n      margin: 0; }\n      /* line 23, stdin */\n      .Flash--scope .flash-wrapper .md-button i {\n        font-size: 19px;\n        line-height: 25px;\n        margin: 0;\n        color: #fff; }\n  /* line 33, stdin */\n  .Flash--scope .flash-icon-container {\n    position: absolute;\n    top: 7px;\n    right: 8px;\n    z-index: 1; }\n  /* line 40, stdin */\n  .Flash--scope .am-flash-notice {\n    margin-bottom: 10px;\n    border-top-left-radius: 3px;\n    border-bottom-left-radius: 3px; }\n    /* line 47, stdin */\n    .Flash--scope .am-flash-notice.dissmisable .flash-wrapper {\n      padding-right: 38px; }\n    /* line 53, stdin */\n    .Flash--scope .am-flash-notice.info {\n      background-color: #67a6df;\n      color: #2366a4; }\n    /* line 58, stdin */\n    .Flash--scope .am-flash-notice.success {\n      background-color: #9ccd4b;\n      color: #577721; }\n    /* line 63, stdin */\n    .Flash--scope .am-flash-notice.warning {\n      background-color: #edcf87;\n      color: #d59f20; }\n    /* line 68, stdin */\n    .Flash--scope .am-flash-notice.danger {\n      background-color: #e76c6b;\n      color: #731313; }")
+},{"vue":27,"vue-hot-reload-api":23}],31:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -12090,15 +12087,13 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6ec01d84", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6ec01d84", __vue__options__)
+    hotAPI.reload("data-v-6ec01d84", __vue__options__)
   }
 })()}
-},{"../../vuex/User":49,"babel-runtime/core-js/number/is-integer":1,"vue":27,"vue-hot-reload-api":23,"vueify/lib/insert-css":28}],32:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 1, style-parts/_mixin.scss */\n.site-main-page-content {\n  max-width: 100%; }\n\n/* line 16, style-parts/_mixin.scss */\n.am-wrap {\n  display: block;\n  float: none;\n  margin-left: auto;\n  margin-right: auto;\n  clear: both; }\n  /* line 6, style-parts/_mixin.scss */\n  .am-wrap:before, .am-wrap:after {\n    content: \" \";\n    display: table; }\n  /* line 11, style-parts/_mixin.scss */\n  .am-wrap:after {\n    clear: both; }\n\n/**\r\n * ==================== Flex Grid ======================\r\n */\n/* line 28, style-parts/_mixin.scss */\n.flex-container {\n  display: -ms-flexbox;\n  display: flex;\n  flex-flow: row wrap; }\n\n/* line 34, style-parts/_mixin.scss */\n.flex-container-nowrap {\n  display: -ms-flexbox;\n  display: flex;\n  flex-flow: row nowrap;\n  /*Mobile*/ }\n  @media (max-width: 767px) {\n    /* line 34, style-parts/_mixin.scss */\n    .flex-container-nowrap {\n      flex-wrap: wrap; } }\n\n/* line 48, style-parts/_mixin.scss */\n.flex-col-33 {\n  flex-basis: 33.33333333%;\n  max-width: 33.33333333%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-5 {\n  flex-basis: 5%;\n  max-width: 5%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-10 {\n  flex-basis: 10%;\n  max-width: 10%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-15 {\n  flex-basis: 15%;\n  max-width: 15%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-20 {\n  flex-basis: 20%;\n  max-width: 20%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-25 {\n  flex-basis: 25%;\n  max-width: 25%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-30 {\n  flex-basis: 30%;\n  max-width: 30%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-35 {\n  flex-basis: 35%;\n  max-width: 35%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-40 {\n  flex-basis: 40%;\n  max-width: 40%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-45 {\n  flex-basis: 45%;\n  max-width: 45%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-50 {\n  flex-basis: 50%;\n  max-width: 50%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-55 {\n  flex-basis: 55%;\n  max-width: 55%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-60 {\n  flex-basis: 60%;\n  max-width: 60%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-65 {\n  flex-basis: 65%;\n  max-width: 65%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-70 {\n  flex-basis: 70%;\n  max-width: 70%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-75 {\n  flex-basis: 75%;\n  max-width: 75%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-80 {\n  flex-basis: 80%;\n  max-width: 80%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-85 {\n  flex-basis: 85%;\n  max-width: 85%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-90 {\n  flex-basis: 90%;\n  max-width: 90%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-95 {\n  flex-basis: 95%;\n  max-width: 95%; }\n\n/* line 54, style-parts/_mixin.scss */\n.flex-col-100 {\n  flex-basis: 100%;\n  max-width: 100%; }\n\n/*Desktop*/\n@media (min-width: 952px) {\n  /* line 64, style-parts/_mixin.scss */\n  .flex-col-desktop-33 {\n    flex-basis: 33.33333333%;\n    max-width: 33.33333333%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-5 {\n    flex-basis: 5%;\n    max-width: 5%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-10 {\n    flex-basis: 10%;\n    max-width: 10%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-15 {\n    flex-basis: 15%;\n    max-width: 15%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-20 {\n    flex-basis: 20%;\n    max-width: 20%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-25 {\n    flex-basis: 25%;\n    max-width: 25%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-30 {\n    flex-basis: 30%;\n    max-width: 30%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-35 {\n    flex-basis: 35%;\n    max-width: 35%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-40 {\n    flex-basis: 40%;\n    max-width: 40%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-45 {\n    flex-basis: 45%;\n    max-width: 45%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-50 {\n    flex-basis: 50%;\n    max-width: 50%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-55 {\n    flex-basis: 55%;\n    max-width: 55%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-60 {\n    flex-basis: 60%;\n    max-width: 60%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-65 {\n    flex-basis: 65%;\n    max-width: 65%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-70 {\n    flex-basis: 70%;\n    max-width: 70%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-75 {\n    flex-basis: 75%;\n    max-width: 75%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-80 {\n    flex-basis: 80%;\n    max-width: 80%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-85 {\n    flex-basis: 85%;\n    max-width: 85%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-90 {\n    flex-basis: 90%;\n    max-width: 90%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-95 {\n    flex-basis: 95%;\n    max-width: 95%; }\n  /* line 69, style-parts/_mixin.scss */\n  .flex-col-desktop-100 {\n    flex-basis: 100%;\n    max-width: 100%; } }\n\n/*Tablet*/\n@media (max-width: 951px) {\n  /* line 80, style-parts/_mixin.scss */\n  .flex-col-tablet-33 {\n    flex-basis: 33.33333333%;\n    max-width: 33.33333333%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-5 {\n    flex-basis: 5%;\n    max-width: 5%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-10 {\n    flex-basis: 10%;\n    max-width: 10%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-15 {\n    flex-basis: 15%;\n    max-width: 15%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-20 {\n    flex-basis: 20%;\n    max-width: 20%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-25 {\n    flex-basis: 25%;\n    max-width: 25%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-30 {\n    flex-basis: 30%;\n    max-width: 30%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-35 {\n    flex-basis: 35%;\n    max-width: 35%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-40 {\n    flex-basis: 40%;\n    max-width: 40%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-45 {\n    flex-basis: 45%;\n    max-width: 45%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-50 {\n    flex-basis: 50%;\n    max-width: 50%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-55 {\n    flex-basis: 55%;\n    max-width: 55%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-60 {\n    flex-basis: 60%;\n    max-width: 60%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-65 {\n    flex-basis: 65%;\n    max-width: 65%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-70 {\n    flex-basis: 70%;\n    max-width: 70%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-75 {\n    flex-basis: 75%;\n    max-width: 75%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-80 {\n    flex-basis: 80%;\n    max-width: 80%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-85 {\n    flex-basis: 85%;\n    max-width: 85%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-90 {\n    flex-basis: 90%;\n    max-width: 90%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-95 {\n    flex-basis: 95%;\n    max-width: 95%; }\n  /* line 85, style-parts/_mixin.scss */\n  .flex-col-tablet-100 {\n    flex-basis: 100%;\n    max-width: 100%; } }\n\n/*Mobile*/\n@media (max-width: 767px) {\n  /* line 97, style-parts/_mixin.scss */\n  .flex-col-phone-33 {\n    flex-basis: 33.33333333%;\n    max-width: 33.33333333%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-5 {\n    flex-basis: 5%;\n    max-width: 5%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-10 {\n    flex-basis: 10%;\n    max-width: 10%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-15 {\n    flex-basis: 15%;\n    max-width: 15%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-20 {\n    flex-basis: 20%;\n    max-width: 20%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-25 {\n    flex-basis: 25%;\n    max-width: 25%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-30 {\n    flex-basis: 30%;\n    max-width: 30%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-35 {\n    flex-basis: 35%;\n    max-width: 35%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-40 {\n    flex-basis: 40%;\n    max-width: 40%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-45 {\n    flex-basis: 45%;\n    max-width: 45%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-50 {\n    flex-basis: 50%;\n    max-width: 50%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-55 {\n    flex-basis: 55%;\n    max-width: 55%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-60 {\n    flex-basis: 60%;\n    max-width: 60%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-65 {\n    flex-basis: 65%;\n    max-width: 65%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-70 {\n    flex-basis: 70%;\n    max-width: 70%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-75 {\n    flex-basis: 75%;\n    max-width: 75%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-80 {\n    flex-basis: 80%;\n    max-width: 80%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-85 {\n    flex-basis: 85%;\n    max-width: 85%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-90 {\n    flex-basis: 90%;\n    max-width: 90%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-95 {\n    flex-basis: 95%;\n    max-width: 95%; }\n  /* line 102, style-parts/_mixin.scss */\n  .flex-col-phone-100 {\n    flex-basis: 100%;\n    max-width: 100%; } }\n\n/* line 113, style-parts/_mixin.scss */\n.space-x-10, .space-x-20, .space-x-30, .space-x-40, .space-x-50, .space-x-60, .space-x-70, .space-x-80, .space-x-90, .space-x-100 {\n  float: none;\n  clear: both;\n  display: block;\n  width: 100%; }\n  /* line 6, style-parts/_mixin.scss */\n  .space-x-10:before, .space-x-20:before, .space-x-30:before, .space-x-40:before, .space-x-50:before, .space-x-60:before, .space-x-70:before, .space-x-80:before, .space-x-90:before, .space-x-100:before, .space-x-10:after, .space-x-20:after, .space-x-30:after, .space-x-40:after, .space-x-50:after, .space-x-60:after, .space-x-70:after, .space-x-80:after, .space-x-90:after, .space-x-100:after {\n    content: \" \";\n    display: table; }\n  /* line 11, style-parts/_mixin.scss */\n  .space-x-10:after, .space-x-20:after, .space-x-30:after, .space-x-40:after, .space-x-50:after, .space-x-60:after, .space-x-70:after, .space-x-80:after, .space-x-90:after, .space-x-100:after {\n    clear: both; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-10 {\n  height: 10px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-20 {\n  height: 20px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-30 {\n  height: 30px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-40 {\n  height: 40px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-50 {\n  height: 50px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-60 {\n  height: 60px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-70 {\n  height: 70px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-80 {\n  height: 80px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-90 {\n  height: 90px; }\n\n/* line 123, style-parts/_mixin.scss */\n.space-x-100 {\n  height: 100px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-5 {\n  padding: 5px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-10 {\n  padding: 10px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-15 {\n  padding: 15px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-20 {\n  padding: 20px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-25 {\n  padding: 25px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-30 {\n  padding: 30px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-35 {\n  padding: 35px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-40 {\n  padding: 40px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-45 {\n  padding: 45px; }\n\n/* line 134, style-parts/_mixin.scss */\n.padding-x-50 {\n  padding: 50px; }\n\n/**\r\n * ==================== Other Mixes ======================\r\n */\n/* line 4, stdin */\n.Popover-scope {\n  display: inline-block;\n  position: relative; }\n  /* line 12, stdin */\n  .Popover-scope .Popovercontent-scope {\n    position: absolute;\n    display: inline-block;\n    z-index: 3; }\n    /* line 17, stdin */\n    .Popover-scope .Popovercontent-scope .popover-pointer {\n      width: 10px;\n      height: 10px;\n      position: absolute;\n      z-index: 1;\n      background-color: #fff; }\n    /* line 25, stdin */\n    .Popover-scope .Popovercontent-scope > div {\n      padding: 5px;\n      border: 1px solid #ccc;\n      background-color: #fff;\n      border-radius: 1px;\n      box-shadow: 2px 2px 5px #eee;\n      min-width: 150px; }\n    /* line 34, stdin */\n    .Popover-scope .Popovercontent-scope.position-top {\n      bottom: 100%;\n      left: 50%; }\n      /* line 38, stdin */\n      .Popover-scope .Popovercontent-scope.position-top .popover-pointer {\n        left: 50%;\n        margin-left: -5px;\n        bottom: -5px;\n        transform: rotate(45deg);\n        border-right: 1px solid #ccc;\n        border-bottom: 1px solid #ccc; }\n    /* line 49, stdin */\n    .Popover-scope .Popovercontent-scope.position-bottom {\n      top: 100%;\n      left: 50%; }\n      /* line 53, stdin */\n      .Popover-scope .Popovercontent-scope.position-bottom .popover-pointer {\n        left: 50%;\n        margin-left: -5px;\n        top: -5px;\n        transform: rotate(45deg);\n        border-left: 1px solid #ccc;\n        border-top: 1px solid #ccc; }\n    /* line 64, stdin */\n    .Popover-scope .Popovercontent-scope.position-right {\n      left: 100%;\n      top: 50%; }\n      /* line 68, stdin */\n      .Popover-scope .Popovercontent-scope.position-right .popover-pointer {\n        top: 50%;\n        margin-top: -5px;\n        left: -5px;\n        transform: rotate(45deg);\n        border-left: 1px solid #ccc;\n        border-bottom: 1px solid #ccc; }\n    /* line 79, stdin */\n    .Popover-scope .Popovercontent-scope.position-left {\n      right: 100%;\n      top: 50%; }\n      /* line 83, stdin */\n      .Popover-scope .Popovercontent-scope.position-left .popover-pointer {\n        top: 50%;\n        margin-top: -5px;\n        right: -5px;\n        transform: rotate(45deg);\n        border-right: 1px solid #ccc;\n        border-top: 1px solid #ccc; }")
+},{"../../vuex/User":49,"babel-runtime/core-js/number/is-integer":1,"vue":27,"vue-hot-reload-api":23}],32:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"popoverscope",staticClass:"Popover-scope"},[_vm._t("default")],2)}
@@ -12107,14 +12102,13 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6b2e0024", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6b2e0024", __vue__options__)
+    hotAPI.reload("data-v-6b2e0024", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":23,"vueify/lib/insert-css":28}],33:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":23}],33:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -12421,155 +12415,147 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../../vuex/Cart":48,"vue":27,"vue-hot-reload-api":23}],37:[function(require,module,exports){
+'use strict';
+
 module.exports = Vue.directive('amajax', {
 
-	el     : null,
+	el: null,
 	binding: null,
-	vnode  : null,
-	vm     : null,
+	vnode: null,
+	vm: null,
 
-	bind(el, binding, vnode) {
-		let thisProps = binding.def;
+	bind: function bind(el, binding, vnode) {
+		var thisProps = binding.def;
 		thisProps.el = el;
 		thisProps.binding = binding;
 		thisProps.vnode = vnode;
 		thisProps.vm = vnode.context;
 
 		el.addEventListener('submit', thisProps.onSubmit.bind(binding));
-
 	},
-
-	update(value) {
-
-	},
+	update: function update(value) {},
 
 
 	// Custom Methods
-	onSubmit(e) {
+	onSubmit: function onSubmit(e) {
 		e.preventDefault();
-		let vm = this.def.vm,
-				method = this.def.getRequestType(),
-				action = this.def.getAction(),
-				// @TODO: pass common data from form atts
-				sendingData = dataToPost(action, this.def.retriveData());
+		var vm = this.def.vm,
+		    method = this.def.getRequestType(),
+		    action = this.def.getAction(),
 
-		vm.$http[method](AMdefaults.ajaxurl, sendingData)
-			.then(this.def.onSuccess.bind(this.def),
-				this.def.onError.bind(this.def))
+		// @TODO: pass common data from form atts
+		sendingData = dataToPost(action, this.def.retriveData());
 
+		vm.$http[method](AMdefaults.ajaxurl, sendingData).then(this.def.onSuccess.bind(this.def), this.def.onError.bind(this.def));
 	},
 
-	// @TODO: make other checking
-	onSuccess(response) {
-		console.log(response.data)
 
-		this.vm.openDialog('alertOkDialog',{
-			alert : 'alertok',
-			data : {
+	// @TODO: make other checking
+	onSuccess: function onSuccess(response) {
+		console.log(response.data);
+
+		this.vm.openDialog('alertOkDialog', {
+			alert: 'alertok',
+			data: {
 				type: 'success',
 				contentHtml: 'Success',
 				text: 'Ok'
 			}
-		})
+		});
 	},
-
-	onError(response) {
+	onError: function onError(response) {
 		// console.log(response.data);
-		this.vm.openDialog('alertFailDialog',{
-			alert : 'alertfail',
-			data : {
+		this.vm.openDialog('alertFailDialog', {
+			alert: 'alertfail',
+			data: {
 				type: 'fail',
 				contentHtml: 'Fail. Wrong request!',
 				text: 'Ok'
 			}
-		})
+		});
 	},
-
-	getRequestType(){
-		let method = this.el.querySelector('input[name="__method"]');
-		return (method ? method.value: this.el.method).toLowerCase();
+	getRequestType: function getRequestType() {
+		var method = this.el.querySelector('input[name="__method"]');
+		return (method ? method.value : this.el.method).toLowerCase();
 	},
-
-	retriveData() {
-		let d = this.el.querySelector('input[name="__data"]');
+	retriveData: function retriveData() {
+		var d = this.el.querySelector('input[name="__data"]');
 		return JSON.parse(d.value);
 	},
-
-	getAction() {
-		let action = this.el.querySelector('input[name="__action"]');
+	getAction: function getAction() {
+		var action = this.el.querySelector('input[name="__action"]');
 		return action.value.toLowerCase();
 	}
-
-
 });
+
 },{}],38:[function(require,module,exports){
-window.eventHub = new Vue()
-window.Vuex = require('vuex')
-window.VueResource = require('vue-resource')
+'use strict';
+
+window.eventHub = new Vue();
+window.Vuex = require('vuex');
+window.VueResource = require('vue-resource');
 
 // Vue MATERIAL
-window.VueMaterial = require('vue-material')
-Vue.use(VueMaterial)
+window.VueMaterial = require('vue-material');
+Vue.use(VueMaterial);
 
 Vue.material.registerTheme('defaultAppTheme', {
 	accent: {
 		color: 'blue',
-		hue  : 900
+		hue: 900
 	}
-})
+});
 
-Vue.material.setCurrentTheme('defaultAppTheme')
+Vue.material.setCurrentTheme('defaultAppTheme');
 
 // Dirrectives
-require('./dirrectives/ajaxForms')
+require('./dirrectives/ajaxForms');
 
 /**
  * ==================== Components ======================
  */
 // Popover
-Vue.component('am-popover', require('./components/Popover/Popover.vue'))
-Vue.component('am-popover-trigger', require('./components/Popover/PopoverTrigger.vue'))
-Vue.component('am-popover-content', require('./components/Popover/PopoverContent.vue'))
+Vue.component('am-popover', require('./components/Popover/Popover.vue'));
+Vue.component('am-popover-trigger', require('./components/Popover/PopoverTrigger.vue'));
+Vue.component('am-popover-content', require('./components/Popover/PopoverContent.vue'));
 
 // Dropdown/Accordion
-Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'))
+Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'));
 
 // Mini Cart
-Vue.component('minicart', require('./components/WooCart/index.vue'))
+Vue.component('minicart', require('./components/WooCart/index.vue'));
 
 // User Profile view
-Vue.component('userprofile', require('./components/Profile/index.vue'))
+Vue.component('userprofile', require('./components/Profile/index.vue'));
 
 // Flashes
-Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
+Vue.component('flashmessages', require('./components/Flash/Flash.vue'));
 
 /* =========================== Components End ================================ */
 
-
-let CurrentUser = require('./vuex/User')
+var CurrentUser = require('./vuex/User');
 CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 
-let router = require('./routes')
+var router = require('./routes');
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(function (to, from, next) {
 
-	let isLoggedIn = CurrentUser.state.userdata
+	var isLoggedIn = CurrentUser.state.userdata;
 
 	if ('requiresAuth' in to.meta) {
 		if (to.meta.requiresAuth && !isLoggedIn) {
-			next({name: 'authscreen'})
+			next({ name: 'authscreen' });
 		}
 		if (to.meta.requiresAuth === false && isLoggedIn) {
-			next({name: 'badrequest'})
+			next({ name: 'badrequest' });
 		}
 	}
-	next()
-})
+	next();
+});
 
+require('./script');
 
-require('./script')
-
-let amWoo = AMdefaults.wooOptions;
+var amWoo = AMdefaults.wooOptions;
 
 new Vue({
 	'router': router,
@@ -12577,92 +12563,70 @@ new Vue({
 	el: "#am-appwrap",
 
 	data: {
-		currency   : amWoo.woo_currency,
+		currency: amWoo.woo_currency,
 		appSettings: AMdefaults,
-		authInfo   : AMdefaults.themeSettings.auth_info,
+		authInfo: AMdefaults.themeSettings.auth_info,
 
 		alertok: {
-			type       : 'success',
+			type: 'success',
 			contentHtml: 'Success',
-			text       : 'Ok'
+			text: 'Ok'
 		},
 
 		alertfail: {
-			type       : 'fail',
+			type: 'fail',
 			contentHtml: 'Fail',
-			text       : 'Ok'
-		},
+			text: 'Ok'
+		}
 
 	},
 
-
 	computed: {
 		// use dynamic in frontend
-		currentUserModel: function() {
+		currentUserModel: function currentUserModel() {
 			return CurrentUser.state.userdata;
 		}
 
 	},
 
-	created: function() {
-		document.addEventListener("DOMContentLoaded", function(e) {
+	created: function created() {
+		document.addEventListener("DOMContentLoaded", function (e) {
 			eventHub.$emit('domloaded', e);
 		});
 	},
 
-	mounted() {
+	mounted: function mounted() {},
 
-	},
 
 	/**
-	 * ==================== App Methods ======================
-	 */
+  * ==================== App Methods ======================
+  */
 	methods: {
-
-		openDialog(ref, params) {
-			this[params.alert] = params.data
+		openDialog: function openDialog(ref, params) {
+			this[params.alert] = params.data;
 			this.$refs[ref].open();
 		},
-
-		closeDialog(ref) {
+		closeDialog: function closeDialog(ref) {
 			this.$refs[ref].close();
 		},
-		onClose() {
-			let vm = this;
-			setTimeout(()=> {
+		onClose: function onClose() {
+			var vm = this;
+			setTimeout(function () {
 				vm.alertok = {
-					type       : 'success',
+					type: 'success',
 					contentHtml: 'Success',
-					text       : 'Ok'
+					text: 'Ok'
 				};
 				vm.alertfail = {
-					type       : 'fail',
+					type: 'fail',
 					contentHtml: 'Fail',
-					text       : 'Ok'
-				}
-			}, 800)
-		},
-
-		// Right Sidebar
-		// toggleRightSidenav() {
-		// 	this.$refs.rightSidenav.toggle();
-		// },
-		// closeRightSidenav() {
-		// 	this.$refs.rightSidenav.close();
-		// },
-		// handleRightSidenavOpen(ref) {
-		// 	console.log('Opened: ' + ref);
-		// },
-		// handleRightSidenavClose(ref) {
-		// 	console.log('Closed: ' + ref);
-		// }
-
+					text: 'Ok'
+				};
+			}, 800);
+		}
 	}
-	
-
 
 });
-
 
 /**
  * ==================== Modules ======================
@@ -12672,6 +12636,7 @@ new Vue({
 // amThemeSlider.run()
 // let amThemeModal = require('./modules/modal')
 // amThemeModal.run()
+
 },{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Popover/Popover.vue":32,"./components/Popover/PopoverContent.vue":33,"./components/Popover/PopoverTrigger.vue":34,"./components/Profile/index.vue":35,"./components/WooCart/index.vue":36,"./dirrectives/ajaxForms":37,"./routes":46,"./script":47,"./vuex/User":49,"vue-material":24,"vue-resource":25,"vuex":29}],39:[function(require,module,exports){
 ;(function(){
 'use strict';
@@ -13163,74 +13128,64 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":27,"vue-hot-reload-api":23}],46:[function(require,module,exports){
-var VueRouter = require('vue-router')
-Vue.use(VueRouter)
+'use strict';
 
+var VueRouter = require('vue-router');
+Vue.use(VueRouter);
 
-const netwoRkUrlendpoint = AMdefaults.routerPrefix + AMdefaults.networkSlug
+var netwoRkUrlendpoint = AMdefaults.routerPrefix + AMdefaults.networkSlug;
 
 module.exports = new VueRouter({
-	mode  : 'history',
-	routes: [
-		{
-			name     : 'userentrypoint',
-			path     : `/${netwoRkUrlendpoint}/`,
-			component: require('./components/Network.vue'),
-			meta     : {requiresAuth: true}
-		},
-		{
-			path     : `/${netwoRkUrlendpoint}/settings`,
-			component: require('./components/Settings.vue'),
-			meta     : {requiresAuth: true}
-		},
-		{
-			path     : `/${netwoRkUrlendpoint}/media`,
-			component: require('./components/Media.vue'),
-			meta     : {requiresAuth: true}
-		},
+	mode: 'history',
+	routes: [{
+		name: 'userentrypoint',
+		path: '/' + netwoRkUrlendpoint + '/',
+		component: require('./components/Network.vue'),
+		meta: { requiresAuth: true }
+	}, {
+		path: '/' + netwoRkUrlendpoint + '/settings',
+		component: require('./components/Settings.vue'),
+		meta: { requiresAuth: true }
+	}, {
+		path: '/' + netwoRkUrlendpoint + '/media',
+		component: require('./components/Media.vue'),
+		meta: { requiresAuth: true }
+	}, { // Restore pass screen
+		path: '/' + netwoRkUrlendpoint + '/screen/restorepass',
+		component: require('./components/RestorePass.vue')
+	}, {
+		name: 'authscreen',
+		path: '/' + netwoRkUrlendpoint + '/auth',
+		component: require('./components/authComponent.vue'),
+		meta: { requiresAuth: false }
+	}, {
+		name: 'badrequest',
+		path: '/' + netwoRkUrlendpoint + '/badrequest',
+		component: require('./components/common/BadRequest.vue')
+	}, {
+		path: '*',
+		component: require('./components/common/Notfound.vue')
+	}]
+});
 
-
-		{ // Restore pass screen
-			path     : `/${netwoRkUrlendpoint}/screen/restorepass`,
-			component: require('./components/RestorePass.vue'),
-		},
-
-
-		{
-			name     : 'authscreen',
-			path     : `/${netwoRkUrlendpoint}/auth`,
-			component: require('./components/authComponent.vue'),
-			meta     : {requiresAuth: false}
-		},
-		{
-			name     : 'badrequest',
-			path     : `/${netwoRkUrlendpoint}/badrequest`,
-			component: require('./components/common/BadRequest.vue')
-		},
-
-		{
-			path     : '*',
-			component: require('./components/common/Notfound.vue')
-		},
-	]
-})
 },{"./components/Media.vue":39,"./components/Network.vue":40,"./components/RestorePass.vue":41,"./components/Settings.vue":42,"./components/authComponent.vue":43,"./components/common/BadRequest.vue":44,"./components/common/Notfound.vue":45,"vue-router":26}],47:[function(require,module,exports){
-var domready = require('domready')
-var defaultAMscript = {
-	run: function(){
+'use strict';
 
-		window.requestAnimFrame = (function() {
-			return window.requestAnimationFrame ||
-				window.webkitRequestAnimationFrame ||
-				window.mozRequestAnimationFrame ||
-				function(callback) {
-					window.setTimeout(callback, 1000 / 60);
-				};
-		})();
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var domready = require('domready');
+var defaultAMscript = {
+	run: function run() {
+
+		window.requestAnimFrame = function () {
+			return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+				window.setTimeout(callback, 1000 / 60);
+			};
+		}();
 		/**
-		 * ==================== Common Functions ======================
-		 * 19.12.2016
-		 */
+   * ==================== Common Functions ======================
+   * 19.12.2016
+   */
 		window.isDescendant = function (parent, child) {
 			var node = child.parentNode;
 			while (node != null) {
@@ -13242,88 +13197,82 @@ var defaultAMscript = {
 			return false;
 		};
 
-		window.findAncestor = (el, cls) => {
-			while ((el = el.parentElement) && !el.classList.contains(cls));
+		window.findAncestor = function (el, cls) {
+			while ((el = el.parentElement) && !el.classList.contains(cls)) {}
 			return el;
 		};
 
-		window.itemIsPureObject = function(item) {
-			if ( item !== null && typeof item === 'object' ) {
-				if(!(item instanceof Array))
-					return item instanceof Object;
+		window.itemIsPureObject = function (item) {
+			if (item !== null && (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object') {
+				if (!(item instanceof Array)) return item instanceof Object;
 
 				return false;
 			}
 			return false;
 		};
 
-		window.dataToPost = function(action, data) {
+		window.dataToPost = function (action, data) {
 			var formData = new FormData();
 			formData.append('action', action);
 
 			for (var part in data) {
 				var dataItem = data[part];
 
-				if(itemIsPureObject(dataItem)) {
+				if (itemIsPureObject(dataItem)) {
 					var details = JSON.stringify(dataItem);
 					formData.append(part, details);
 				} else {
 					formData.append(part, dataItem);
 				}
-
 			}
 
 			return formData;
 		};
 
 		/**
-		 * ==================== MDL Upgrade DOM when changes ======================
-		 * 10.12.2016
-		 */
-		var MutationObserver = window.MutationObserver
-			|| window.WebKitMutationObserver
-			|| window.MozMutationObserver;
-		var observer = new MutationObserver(function() {
+   * ==================== MDL Upgrade DOM when changes ======================
+   * 10.12.2016
+   */
+		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+		var observer = new MutationObserver(function () {
 			componentHandler.upgradeDom();
 		});
-		observer.observe(document.body, {childList: true,subtree : true});
-
+		observer.observe(document.body, { childList: true, subtree: true });
 
 		/**
-		 * ==================== Regular Domready script ======================
-		 * 26.12.2016
-		 */
-		let appHandler = document.getElementById('am-appwrap'),
-				opacityMeasure = 0;
+   * ==================== Regular Domready script ======================
+   * 26.12.2016
+   */
+		var appHandler = document.getElementById('am-appwrap'),
+		    opacityMeasure = 0;
 
-		let invokeStepAppearing = () => {
-			let appHandler = document.getElementById('am-appwrap')
-			opacityMeasure += 0.04
-			appHandler.style.opacity = opacityMeasure
-			if(opacityMeasure <= 1) {
+		var invokeStepAppearing = function invokeStepAppearing() {
+			var appHandler = document.getElementById('am-appwrap');
+			opacityMeasure += 0.04;
+			appHandler.style.opacity = opacityMeasure;
+			if (opacityMeasure <= 1) {
 				requestAnimationFrame(invokeStepAppearing);
 			}
 		};
 
 		appHandler.style.opacity = 0;
-		domready(function(){
-			invokeStepAppearing()
+		domready(function () {
+			invokeStepAppearing();
 		});
-
 
 		/**
-		 * ==================== jQuery ======================
-		 * 26.12.2016
-		 */
-		jQuery(document).ready(function ($){
-
-		});
-
+   * ==================== jQuery ======================
+   * 26.12.2016
+   */
+		jQuery(document).ready(function ($) {});
 	}
-}
-defaultAMscript.run()
-module.exports = defaultAMscript
+};
+defaultAMscript.run();
+module.exports = defaultAMscript;
+
 },{"domready":21}],48:[function(require,module,exports){
+"use strict";
+
 module.exports = new Vuex.Store({
 
 	state: {
@@ -13332,11 +13281,11 @@ module.exports = new Vuex.Store({
 
 	mutations: {
 
-		setProducts: function(state, data) {
+		setProducts: function setProducts(state, data) {
 			state.products = data;
 		},
 
-		removeFromCart: function(state, data) {
+		removeFromCart: function removeFromCart(state, data) {
 			state.products.splice(state.products.indexOf(data), 1);
 		}
 
@@ -13345,7 +13294,10 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
+
 },{}],49:[function(require,module,exports){
+"use strict";
+
 module.exports = new Vuex.Store({
 
 	state: {
@@ -13353,21 +13305,17 @@ module.exports = new Vuex.Store({
 	},
 
 	mutations: {
-
-		setUserdata(state, data) {
-			state.userdata = data
+		setUserdata: function setUserdata(state, data) {
+			state.userdata = data;
 		}
-
 	},
 
-	actions: {
+	actions: {},
 
-	},
-
-	created: function() {
+	created: function created() {
 		console.log(this.state.userdata);
 	}
 
-
 });
+
 },{}]},{},[38]);

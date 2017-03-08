@@ -1,4 +1,4 @@
-var gulp        = require('gulp'),
+let gulp        = require('gulp'),
 		gulpConcat  = require('gulp-concat'),
 		gulpRename  = require('gulp-rename'),
 		gulpUglify  = require('gulp-uglify'),
@@ -6,12 +6,12 @@ var gulp        = require('gulp'),
 		gulpSass    = require('gulp-sass'),
 		gulpReplace = require('gulp-replace');
 
-var devRoot   = "script/dev/",
+let devRoot   = "script/dev/",
 		bowerRoot = "bower_components/",
 		bootjs    = bowerRoot + "/bootstrap/js/",
 		prodRoot  = "script/prod/";
 
-var processFiles = [
+let processFiles = [
 	// bootjs + 'affix.js',
 	// bootjs + 'alert.js',
 	// bootjs + 'button.js',

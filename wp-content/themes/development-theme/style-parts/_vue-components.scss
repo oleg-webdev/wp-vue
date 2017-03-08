@@ -1,0 +1,201 @@
+/**
+ * ==================== AM theme custom components ======================
+ * Table of contents:
+ * Dropdown/Accordion
+ * Flashes
+ * Popover
+ */
+
+// Dropdown
+.dropdown-scope {
+	border :1px solid #e2e2e2;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	.dropdown-heading {
+		padding       : 5px 10px;
+		border-bottom : 1px solid #e2e2e2;
+		cursor        : pointer;
+	}
+
+	.dropdown-content {
+		display  : block;
+		overflow : hidden;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+
+		> div {
+			padding : 15px;
+		}
+	}
+}
+
+// Flashes
+.Flash--scope {
+	position : absolute;
+	right    : 0;
+
+	.flash-wrapper {
+		position : relative;
+		padding  : 10px 15px;
+
+		.md-button {
+			width       : 25px;
+			height      : 25px;
+			min-width   : 25px;
+			min-height  : 25px;
+			display     : block;
+			padding     : 0;
+			text-align  : center;
+			font-size   : 19px;
+			line-height : 25px;
+			margin      : 0;
+
+			i {
+				font-size   : 19px;
+				line-height : 25px;
+				margin      : 0;
+				color       : #fff;
+			}
+		}
+
+	}
+
+	.flash-icon-container {
+		position : absolute;
+		top      : 7px;
+		right    : 8px;
+		z-index  : 1;
+	}
+
+	.am-flash-notice {
+		margin-bottom             : 10px;
+		border-top-left-radius    : 3px;
+		border-bottom-left-radius : 3px;
+
+		&.dissmisable {
+
+			.flash-wrapper {
+				padding-right : 38px;
+			}
+
+		}
+
+		&.info {
+			background-color : $infoColor;
+			color            : darken($infoColor, 25%);
+		}
+
+		&.success {
+			background-color : $successColor;
+			color            : darken($successColor, 25%);
+		}
+
+		&.warning {
+			background-color : $warningColor;
+			color            : darken($warningColor, 25%);
+		}
+
+		&.danger {
+			background-color : lighten($dangerColor, 20%);
+			color            : darken($dangerColor, 20%);
+		}
+	}
+
+}
+
+
+// Popover
+.Popover-scope {
+
+	$popoverBg : #fff;
+	$popoverBorder : #ccc;
+
+	display  : inline-block;
+	position : relative;
+
+	.Popovercontent-scope {
+		position : absolute;
+		display  : inline-block;
+		z-index  : 3;
+
+		.popover-pointer {
+			width            : 10px;
+			height           : 10px;
+			position         : absolute;
+			z-index          : 1;
+			background-color : $popoverBg;
+		}
+
+		> div {
+			padding          : 5px;
+			border           : 1px solid $popoverBorder;
+			background-color : $popoverBg;
+			border-radius    : 1px;
+			box-shadow       : 2px 2px 5px #eee;
+			min-width        : 150px;
+		}
+
+		&.position-top {
+			bottom : 100%;
+			left   : 50%;
+
+			.popover-pointer {
+				left          : 50%;
+				margin-left   : -5px;
+				bottom        : -5px;
+				transform     : rotate(45deg);
+				border-right  : 1px solid $popoverBorder;
+				border-bottom : 1px solid $popoverBorder;
+			}
+
+		}
+
+		&.position-bottom {
+			top  : 100%;
+			left : 50%;
+
+			.popover-pointer {
+				left        : 50%;
+				margin-left : -5px;
+				top         : -5px;
+				transform   : rotate(45deg);
+				border-left : 1px solid $popoverBorder;
+				border-top  : 1px solid $popoverBorder;
+			}
+
+		}
+
+		&.position-right {
+			left : 100%;
+			top  : 50%;
+
+			.popover-pointer {
+				top           : 50%;
+				margin-top    : -5px;
+				left          : -5px;
+				transform     : rotate(45deg);
+				border-left   : 1px solid $popoverBorder;
+				border-bottom : 1px solid $popoverBorder;
+			}
+
+		}
+
+		&.position-left {
+			right : 100%;
+			top   : 50%;
+
+			.popover-pointer {
+				top          : 50%;
+				margin-top   : -5px;
+				right        : -5px;
+				transform    : rotate(45deg);
+				border-right : 1px solid $popoverBorder;
+				border-top   : 1px solid $popoverBorder;
+			}
+
+		}
+
+	}
+
+}

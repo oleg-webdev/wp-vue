@@ -1,4 +1,3 @@
-<style lang="scss" rel="stylesheet/scss" src="./dropdown.scss"></style>
 <template>
 	<div ref="dropdownscope"
 			 class="dropdown-scope"

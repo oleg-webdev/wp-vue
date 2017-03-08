@@ -1,5 +1,3 @@
-<style lang="scss" rel="stylesheet/scss" src="./flash.scss"></style>
-
 <template>
 	<div ref="Flashscope" class="Flash--scope">
 
