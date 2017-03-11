@@ -1,11 +1,3 @@
-<style lang="scss" rel="stylesheet/scss">
-	.spinner-container {
-		height : 55px;
-		.md-spinner {
-			float : right;
-		}
-	}
-</style>
 <template>
 	<div ref="authscope" id="Auth-scope">
 
@@ -67,7 +59,7 @@
 									</div>
 
 									<md-card-actions>
-										<md-button class="md-raised md-accent" type="submit">Login</md-button>
+										<md-button class="md-raised md-accent normal-case" type="submit">Login</md-button>
 									</md-card-actions>
 								</form>
 							</md-card-content>
@@ -83,7 +75,8 @@
 						>
 							<div class="register-inner-wrap">
 								<md-card-header>
-									<md-button class="md-fab animated close-frm-btn md-primary"
+									<md-button class="md-fab animated close-frm-btn"
+														 md-theme="teal"
 														 v-bind:class="{'fadeInRightBig':currentForm == 'resetpassword'}"
 														 @click.native="toggleResetPassword" title="Close">
 										<md-icon>close</md-icon>
@@ -102,7 +95,8 @@
 									</div>
 
 									<md-card-actions>
-										<md-button class="md-raised md-primary animated"
+										<md-button class="md-raised animated normal-case white-font"
+															 md-theme="teal"
 															 v-bind:class="{'fadeInUpBig':currentForm == 'resetpassword'}"
 															 type="submit">Send Reset pass
 										</md-button>
@@ -162,7 +156,7 @@
 									</div>
 
 									<md-card-actions>
-										<md-button class="md-raised md-accent animated"
+										<md-button class="md-raised md-accent animated normal-case"
 															 v-bind:class="{'fadeInUpBig':currentForm == 'registration'}"
 															 type="submit">Register
 										</md-button>
@@ -224,7 +218,6 @@
 		methods: {
 
 			toggleRegistration(){
-				console.log(`sdfs`)
 				this.currentForm = this.currentForm === 'registration' ? 'login': 'registration';
 			},
 

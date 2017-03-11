@@ -1,5 +1,5 @@
 #am-appwrap {
-	opacity : 0;
+	//opacity : 0;
 }
 
 .fullcssheight {
@@ -66,16 +66,6 @@ main {
 
 }
 
-#network-content {
-	position : relative;
-	> div {
-		position      : absolute;
-		width         : 100%;
-		padding-left  : 20px;
-		padding-right : 20px;
-	}
-}
-
 /**
  * ==================== Transitions ======================
  */
@@ -117,10 +107,28 @@ main {
  * ==================== Auth ======================
  */
 #network-content {
+	position : relative;
+	> div {
+		position      : absolute;
+		width         : 100%;
+		padding-left  : 20px;
+		padding-right : 20px;
+	}
 	> #Auth-scope {
 		/*Mobile*/
 		@media (max-width : 767px) {
 			padding : 0;
+		}
+	}
+	.close-frm-btn {
+		width      : 30px;
+		height     : 30px;
+		text-align : center;
+		min-height : 0;
+		i {
+			font-size   : 18px;
+			line-height : 30px;
+			top         : -4px;
 		}
 	}
 }
@@ -251,6 +259,13 @@ main {
 	}
 }
 
+.spinner-container {
+	height : 55px;
+	.md-spinner {
+		float : right;
+	}
+}
+
 .register-inner-wrap {
 	position        : relative;
 	width           : 100%;
@@ -264,8 +279,8 @@ main {
 	}
 
 	.md-card-header {
-		padding-left  : 0;
-		padding-right : 0;
+		padding-left  : 0 !important;
+		padding-right : 0 !important;
 	}
 
 	.md-card-actions {
@@ -302,10 +317,6 @@ main {
 	position : absolute;
 	right    : 0;
 	top      : 0;
-	/*Desktop*/
-	@media (min-width : 952px) {
-		right : -20px;
-	}
 }
 
 #login-register-form {

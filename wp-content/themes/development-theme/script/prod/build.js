@@ -12415,147 +12415,155 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"../../vuex/Cart":48,"vue":27,"vue-hot-reload-api":23}],37:[function(require,module,exports){
-'use strict';
-
 module.exports = Vue.directive('amajax', {
 
-	el: null,
+	el     : null,
 	binding: null,
-	vnode: null,
-	vm: null,
+	vnode  : null,
+	vm     : null,
 
-	bind: function bind(el, binding, vnode) {
-		var thisProps = binding.def;
+	bind(el, binding, vnode) {
+		let thisProps = binding.def;
 		thisProps.el = el;
 		thisProps.binding = binding;
 		thisProps.vnode = vnode;
 		thisProps.vm = vnode.context;
 
 		el.addEventListener('submit', thisProps.onSubmit.bind(binding));
+
 	},
-	update: function update(value) {},
+
+	update(value) {
+
+	},
 
 
 	// Custom Methods
-	onSubmit: function onSubmit(e) {
+	onSubmit(e) {
 		e.preventDefault();
-		var vm = this.def.vm,
-		    method = this.def.getRequestType(),
-		    action = this.def.getAction(),
+		let vm = this.def.vm,
+				method = this.def.getRequestType(),
+				action = this.def.getAction(),
+				// @TODO: pass common data from form atts
+				sendingData = dataToPost(action, this.def.retriveData());
 
-		// @TODO: pass common data from form atts
-		sendingData = dataToPost(action, this.def.retriveData());
+		vm.$http[method](AMdefaults.ajaxurl, sendingData)
+			.then(this.def.onSuccess.bind(this.def),
+				this.def.onError.bind(this.def))
 
-		vm.$http[method](AMdefaults.ajaxurl, sendingData).then(this.def.onSuccess.bind(this.def), this.def.onError.bind(this.def));
 	},
 
-
 	// @TODO: make other checking
-	onSuccess: function onSuccess(response) {
-		console.log(response.data);
+	onSuccess(response) {
+		console.log(response.data)
 
-		this.vm.openDialog('alertOkDialog', {
-			alert: 'alertok',
-			data: {
+		this.vm.openDialog('alertOkDialog',{
+			alert : 'alertok',
+			data : {
 				type: 'success',
 				contentHtml: 'Success',
 				text: 'Ok'
 			}
-		});
+		})
 	},
-	onError: function onError(response) {
+
+	onError(response) {
 		// console.log(response.data);
-		this.vm.openDialog('alertFailDialog', {
-			alert: 'alertfail',
-			data: {
+		this.vm.openDialog('alertFailDialog',{
+			alert : 'alertfail',
+			data : {
 				type: 'fail',
 				contentHtml: 'Fail. Wrong request!',
 				text: 'Ok'
 			}
-		});
+		})
 	},
-	getRequestType: function getRequestType() {
-		var method = this.el.querySelector('input[name="__method"]');
-		return (method ? method.value : this.el.method).toLowerCase();
+
+	getRequestType(){
+		let method = this.el.querySelector('input[name="__method"]');
+		return (method ? method.value: this.el.method).toLowerCase();
 	},
-	retriveData: function retriveData() {
-		var d = this.el.querySelector('input[name="__data"]');
+
+	retriveData() {
+		let d = this.el.querySelector('input[name="__data"]');
 		return JSON.parse(d.value);
 	},
-	getAction: function getAction() {
-		var action = this.el.querySelector('input[name="__action"]');
+
+	getAction() {
+		let action = this.el.querySelector('input[name="__action"]');
 		return action.value.toLowerCase();
 	}
+
+
 });
-
 },{}],38:[function(require,module,exports){
-'use strict';
-
-window.eventHub = new Vue();
-window.Vuex = require('vuex');
-window.VueResource = require('vue-resource');
+window.eventHub = new Vue()
+window.Vuex = require('vuex')
+window.VueResource = require('vue-resource')
 
 // Vue MATERIAL
-window.VueMaterial = require('vue-material');
-Vue.use(VueMaterial);
+window.VueMaterial = require('vue-material')
+Vue.use(VueMaterial)
 
 Vue.material.registerTheme('defaultAppTheme', {
 	accent: {
 		color: 'blue',
-		hue: 900
+		hue  : 900
 	}
-});
+})
 
-Vue.material.setCurrentTheme('defaultAppTheme');
+Vue.material.setCurrentTheme('defaultAppTheme')
 
 // Dirrectives
-require('./dirrectives/ajaxForms');
+require('./dirrectives/ajaxForms')
 
 /**
  * ==================== Components ======================
  */
 // Popover
-Vue.component('am-popover', require('./components/Popover/Popover.vue'));
-Vue.component('am-popover-trigger', require('./components/Popover/PopoverTrigger.vue'));
-Vue.component('am-popover-content', require('./components/Popover/PopoverContent.vue'));
+Vue.component('am-popover', require('./components/Popover/Popover.vue'))
+Vue.component('am-popover-trigger', require('./components/Popover/PopoverTrigger.vue'))
+Vue.component('am-popover-content', require('./components/Popover/PopoverContent.vue'))
 
 // Dropdown/Accordion
-Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'));
+Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'))
 
 // Mini Cart
-Vue.component('minicart', require('./components/WooCart/index.vue'));
+Vue.component('minicart', require('./components/WooCart/index.vue'))
 
 // User Profile view
-Vue.component('userprofile', require('./components/Profile/index.vue'));
+Vue.component('userprofile', require('./components/Profile/index.vue'))
 
 // Flashes
-Vue.component('flashmessages', require('./components/Flash/Flash.vue'));
+Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
 
 /* =========================== Components End ================================ */
 
-var CurrentUser = require('./vuex/User');
+
+let CurrentUser = require('./vuex/User')
 CurrentUser.commit('setUserdata', AMdefaults.currentUser);
 
-var router = require('./routes');
+let router = require('./routes')
 
-router.beforeEach(function (to, from, next) {
+router.beforeEach((to, from, next) => {
 
-	var isLoggedIn = CurrentUser.state.userdata;
+	let isLoggedIn = CurrentUser.state.userdata
 
 	if ('requiresAuth' in to.meta) {
 		if (to.meta.requiresAuth && !isLoggedIn) {
-			next({ name: 'authscreen' });
+			next({name: 'authscreen'})
 		}
 		if (to.meta.requiresAuth === false && isLoggedIn) {
-			next({ name: 'badrequest' });
+			next({name: 'badrequest'})
 		}
 	}
-	next();
-});
+	next()
+})
 
-require('./script');
 
-var amWoo = AMdefaults.wooOptions;
+require('./script')
+
+let amWoo = AMdefaults.wooOptions;
 
 new Vue({
 	'router': router,
@@ -12563,70 +12571,92 @@ new Vue({
 	el: "#am-appwrap",
 
 	data: {
-		currency: amWoo.woo_currency,
+		currency   : amWoo.woo_currency,
 		appSettings: AMdefaults,
-		authInfo: AMdefaults.themeSettings.auth_info,
+		authInfo   : AMdefaults.themeSettings.auth_info,
 
 		alertok: {
-			type: 'success',
+			type       : 'success',
 			contentHtml: 'Success',
-			text: 'Ok'
+			text       : 'Ok'
 		},
 
 		alertfail: {
-			type: 'fail',
+			type       : 'fail',
 			contentHtml: 'Fail',
-			text: 'Ok'
-		}
+			text       : 'Ok'
+		},
 
 	},
 
+
 	computed: {
 		// use dynamic in frontend
-		currentUserModel: function currentUserModel() {
+		currentUserModel: function() {
 			return CurrentUser.state.userdata;
 		}
 
 	},
 
-	created: function created() {
-		document.addEventListener("DOMContentLoaded", function (e) {
+	created: function() {
+		document.addEventListener("DOMContentLoaded", function(e) {
 			eventHub.$emit('domloaded', e);
 		});
 	},
 
-	mounted: function mounted() {},
+	mounted() {
 
+	},
 
 	/**
-  * ==================== App Methods ======================
-  */
+	 * ==================== App Methods ======================
+	 */
 	methods: {
-		openDialog: function openDialog(ref, params) {
-			this[params.alert] = params.data;
+
+		openDialog(ref, params) {
+			this[params.alert] = params.data
 			this.$refs[ref].open();
 		},
-		closeDialog: function closeDialog(ref) {
+
+		closeDialog(ref) {
 			this.$refs[ref].close();
 		},
-		onClose: function onClose() {
-			var vm = this;
-			setTimeout(function () {
+		onClose() {
+			let vm = this;
+			setTimeout(()=> {
 				vm.alertok = {
-					type: 'success',
+					type       : 'success',
 					contentHtml: 'Success',
-					text: 'Ok'
+					text       : 'Ok'
 				};
 				vm.alertfail = {
-					type: 'fail',
+					type       : 'fail',
 					contentHtml: 'Fail',
-					text: 'Ok'
-				};
-			}, 800);
-		}
+					text       : 'Ok'
+				}
+			}, 800)
+		},
+
+		// Right Sidebar
+		// toggleRightSidenav() {
+		// 	this.$refs.rightSidenav.toggle();
+		// },
+		// closeRightSidenav() {
+		// 	this.$refs.rightSidenav.close();
+		// },
+		// handleRightSidenavOpen(ref) {
+		// 	console.log('Opened: ' + ref);
+		// },
+		// handleRightSidenavClose(ref) {
+		// 	console.log('Closed: ' + ref);
+		// }
+
 	}
 
 });
+
+
+
 
 /**
  * ==================== Modules ======================
@@ -12636,7 +12666,6 @@ new Vue({
 // amThemeSlider.run()
 // let amThemeModal = require('./modules/modal')
 // amThemeModal.run()
-
 },{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Popover/Popover.vue":32,"./components/Popover/PopoverContent.vue":33,"./components/Popover/PopoverTrigger.vue":34,"./components/Profile/index.vue":35,"./components/WooCart/index.vue":36,"./dirrectives/ajaxForms":37,"./routes":46,"./script":47,"./vuex/User":49,"vue-material":24,"vue-resource":25,"vuex":29}],39:[function(require,module,exports){
 ;(function(){
 'use strict';
@@ -12719,7 +12748,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"networkscope",attrs:{"id":"Network-scope"}},[_c('h1',[_vm._v("Network")]),_vm._v(" "),_c('pre',[_vm._v(_vm._s(_vm.currentUserModel))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"networkscope",attrs:{"id":"Network-scope"}},[_c('h1',[_vm._v("Network")]),_vm._v(" "),_c('md-button',{directives:[{name:"show",rawName:"v-show",value:(_vm.currentUserModel.administrator),expression:"currentUserModel.administrator"}],staticClass:"normal-case",attrs:{"href":"/wp-admin"}},[_c('md-icon',[_vm._v("dashboard")]),_vm._v(" Admin Dashboard")],1),_vm._v(" "),_c('pre',[_vm._v(_vm._s(_vm.currentUserModel))])],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -12838,7 +12867,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"restorepassscope",attrs:{"id":"Restore-pass-scope"}},[_c('div',{staticClass:"am-wrap"},[_c('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_c('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()],1)]),_vm._v(" "),_c('md-card',{staticClass:"am-wrap am-wrap-sm"},[_c('md-card-header',[_c('div',{staticClass:"md-title"},[_vm._v("Enter new password")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Make sure your password is strengh enough")])]),_vm._v(" "),_c('md-card-content',[_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.changePassword($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.pass),expression:"pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-pass"},domProps:{"value":(_vm.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.pass=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-pass"}},[_vm._v("Password")])]),_vm._v(" "),_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.confirm),expression:"confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-confirm"},domProps:{"value":(_vm.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.confirm=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-confirm"}},[_vm._v("Password")])]),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},[_vm._v("Reset")])],1)],1)])],1)],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"restorepassscope",attrs:{"id":"Restore-pass-scope"}},[_c('div',{staticClass:"am-wrap"},[_c('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_c('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()],1)]),_vm._v(" "),_c('md-card',{staticClass:"am-wrap am-wrap-sm"},[_c('md-card-header',[_c('div',{staticClass:"md-title"},[_vm._v("Enter new password")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Make sure your password is strong enough")])]),_vm._v(" "),_c('md-card-content',[_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.changePassword($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.pass),expression:"pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-pass"},domProps:{"value":(_vm.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.pass=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-pass"}},[_vm._v("Password")])]),_vm._v(" "),_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.confirm),expression:"confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-confirm"},domProps:{"value":(_vm.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.confirm=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-confirm"}},[_vm._v("Password")])]),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised md-accent normal-case",attrs:{"type":"submit"}},[_vm._v("Reset")])],1)],1)])],1)],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -12892,7 +12921,6 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":27,"vue-hot-reload-api":23}],43:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 2, stdin */\n.spinner-container {\n  height: 55px; }\n  /* line 4, stdin */\n  .spinner-container .md-spinner {\n    float: right; }")
 ;(function(){
 'use strict';
 
@@ -12946,7 +12974,6 @@ exports.default = {
 
 	methods: {
 		toggleRegistration: function toggleRegistration() {
-			console.log('sdfs');
 			this.currentForm = this.currentForm === 'registration' ? 'login' : 'registration';
 		},
 		toggleResetPassword: function toggleResetPassword() {
@@ -13033,20 +13060,19 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_c('div',{staticClass:"container"},[_c('div',{staticClass:"animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_c('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_c('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()],1),_vm._v(" "),_c('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo.registration_info == 'yes')?_c('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Registration","id":"register-trigger"},nativeOn:{"click":function($event){_vm.toggleRegistration($event)}}},[_c('md-icon',[_vm._v("border_color")]),_vm._v(" "),_c('md-tooltip',{attrs:{"md-direction":"top"}},[_vm._v("Registration")])],1):_vm._e(),_vm._v(" "),_c('md-button',{staticClass:"md-fab md-primary",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Reset Password","id":"reset-trigger"},nativeOn:{"click":function($event){_vm.toggleResetPassword($event)}}},[_c('md-icon',[_vm._v("send")]),_vm._v(" "),_c('md-tooltip',{attrs:{"md-direction":"top"}},[_vm._v("Reset Password")])],1),_vm._v(" "),_c('md-card-content',{class:{'increase-z':_vm.currentForm != 'login'},attrs:{"id":"forms-handler"}},[_c('div',{attrs:{"id":"am-loginform-wrapper"}},[_c('md-card-header',[_c('div',{staticClass:"md-title"},[_vm._v("Login")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Enter Your login and password")])]),_vm._v(" "),_c('md-card-content',{attrs:{"id":"am-loginform"}},[_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},[_vm._v("Username")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.login.message))])]),_vm._v(" "),_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},[_vm._v("Password")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.pass.message))])]),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised md-accent",attrs:{"type":"submit"}},[_vm._v("Login")])],1)],1)])],1),_vm._v(" "),_c('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'resetpassword'},attrs:{"id":"am-resetpass-form"}},[_c('div',{staticClass:"register-inner-wrap"},[_c('md-card-header',[_c('md-button',{staticClass:"md-fab animated close-frm-btn md-primary",class:{'fadeInRightBig':_vm.currentForm == 'resetpassword'},attrs:{"title":"Close"},nativeOn:{"click":function($event){_vm.toggleResetPassword($event)}}},[_c('md-icon',[_vm._v("close")])],1),_vm._v(" "),_c('div',{staticClass:"md-title"},[_vm._v("Reset Password")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Subheading title")])],1),_vm._v(" "),_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.resetPasswordForm($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.resetUserModel.email),expression:"resetUserModel.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reset-email"},domProps:{"value":(_vm.resetUserModel.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.resetUserModel.email=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reset-email"}},[_vm._v("Email")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.resetEmail.message))])]),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised md-primary animated",class:{'fadeInUpBig':_vm.currentForm == 'resetpassword'},attrs:{"type":"submit"}},[_vm._v("Send Reset pass\n\t\t\t\t\t\t\t\t\t")])],1)],1)],1)]),_vm._v(" "),(_vm.registrationInfo.registration_info == 'yes')?_c('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_c('div',{staticClass:"register-inner-wrap"},[_c('md-card-header',[_c('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"title":"Close"},nativeOn:{"click":function($event){_vm.toggleRegistration($event)}}},[_c('md-icon',[_vm._v("close")])],1),_vm._v(" "),_c('div',{staticClass:"md-title"},[_vm._v("Registration")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Subheading title")])],1),_vm._v(" "),_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},[_vm._v("Email")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.regLogin.message))])]),_vm._v(" "),(_vm.registrationInfo.registration_strategy != 'confirm_before')?_c('div',{staticClass:"flex-container"},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},[_vm._v("Password")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.regPass.message))])]),_vm._v(" "),_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},[_vm._v("Password Confirm")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.confirm.message))])])]):_vm._e(),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised md-accent animated",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},[_vm._v("Register\n\t\t\t\t\t\t\t\t\t")])],1)],1)],1)]):_vm._e()],1)],1)],1)])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"authscope",attrs:{"id":"Auth-scope"}},[_c('div',{staticClass:"container"},[_c('div',{staticClass:"animated",class:[_vm.formClass],attrs:{"id":"login-register-form"}},[_c('div',{staticClass:"spinner-container"},[(_vm.spinnerActive)?_c('md-spinner',{staticClass:"md-accent",attrs:{"md-size":30,"md-indeterminate":""}}):_vm._e()],1),_vm._v(" "),_c('md-card',{attrs:{"id":"login-register-wrapper"}},[(_vm.registrationInfo.registration_info == 'yes')?_c('md-button',{staticClass:"md-fab",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Registration","id":"register-trigger"},nativeOn:{"click":function($event){_vm.toggleRegistration($event)}}},[_c('md-icon',[_vm._v("border_color")]),_vm._v(" "),_c('md-tooltip',{attrs:{"md-direction":"top"}},[_vm._v("Registration")])],1):_vm._e(),_vm._v(" "),_c('md-button',{staticClass:"md-fab md-primary",class:{'icon-centered':_vm.currentForm != 'login'},attrs:{"title":"Reset Password","id":"reset-trigger"},nativeOn:{"click":function($event){_vm.toggleResetPassword($event)}}},[_c('md-icon',[_vm._v("send")]),_vm._v(" "),_c('md-tooltip',{attrs:{"md-direction":"top"}},[_vm._v("Reset Password")])],1),_vm._v(" "),_c('md-card-content',{class:{'increase-z':_vm.currentForm != 'login'},attrs:{"id":"forms-handler"}},[_c('div',{attrs:{"id":"am-loginform-wrapper"}},[_c('md-card-header',[_c('div',{staticClass:"md-title"},[_vm._v("Login")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Enter Your login and password")])]),_vm._v(" "),_c('md-card-content',{attrs:{"id":"am-loginform"}},[_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.loginUser($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.login}, {'is-focused':_vm.errors.login}]},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.login),expression:"loginUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"text","id":"am-username"},domProps:{"value":(_vm.loginUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.login=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-username"}},[_vm._v("Username")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.login.message))])]),_vm._v(" "),_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label",class:[{'is-invalid':_vm.errors.pass}, {'is-focused':_vm.errors.pass}]},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.loginUserModel.pass),expression:"loginUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"am-password"},domProps:{"value":(_vm.loginUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.loginUserModel.pass=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"am-password"}},[_vm._v("Password")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.pass.message))])]),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised md-accent normal-case",attrs:{"type":"submit"}},[_vm._v("Login")])],1)],1)])],1),_vm._v(" "),_c('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'resetpassword'},attrs:{"id":"am-resetpass-form"}},[_c('div',{staticClass:"register-inner-wrap"},[_c('md-card-header',[_c('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'resetpassword'},attrs:{"md-theme":"teal","title":"Close"},nativeOn:{"click":function($event){_vm.toggleResetPassword($event)}}},[_c('md-icon',[_vm._v("close")])],1),_vm._v(" "),_c('div',{staticClass:"md-title"},[_vm._v("Reset Password")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Subheading title")])],1),_vm._v(" "),_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.resetPasswordForm($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.resetUserModel.email),expression:"resetUserModel.email"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reset-email"},domProps:{"value":(_vm.resetUserModel.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.resetUserModel.email=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reset-email"}},[_vm._v("Email")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.resetEmail.message))])]),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised animated normal-case white-font",class:{'fadeInUpBig':_vm.currentForm == 'resetpassword'},attrs:{"md-theme":"teal","type":"submit"}},[_vm._v("Send Reset pass\n\t\t\t\t\t\t\t\t\t")])],1)],1)],1)]),_vm._v(" "),(_vm.registrationInfo.registration_info == 'yes')?_c('md-card-content',{class:{'open-form-opened':_vm.currentForm == 'registration'},attrs:{"id":"am-register-form"}},[_c('div',{staticClass:"register-inner-wrap"},[_c('md-card-header',[_c('md-button',{staticClass:"md-fab animated close-frm-btn",class:{'fadeInRightBig':_vm.currentForm == 'registration'},attrs:{"title":"Close"},nativeOn:{"click":function($event){_vm.toggleRegistration($event)}}},[_c('md-icon',[_vm._v("close")])],1),_vm._v(" "),_c('div',{staticClass:"md-title"},[_vm._v("Registration")]),_vm._v(" "),_c('div',{staticClass:"md-subhead"},[_vm._v("Subheading title")])],1),_vm._v(" "),_c('form',{attrs:{"action":"","method":"post","role":"form"},on:{"submit":function($event){$event.preventDefault();_vm.registerUser($event)}}},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.login),expression:"registerUserModel.login"}],staticClass:"mdl-textfield__input",attrs:{"type":"email","id":"reg-email"},domProps:{"value":(_vm.registerUserModel.login)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.login=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-email"}},[_vm._v("Email")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.regLogin.message))])]),_vm._v(" "),(_vm.registrationInfo.registration_strategy != 'confirm_before')?_c('div',{staticClass:"flex-container"},[_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.pass),expression:"registerUserModel.pass"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password"},domProps:{"value":(_vm.registerUserModel.pass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.pass=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password"}},[_vm._v("Password")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.regPass.message))])]),_vm._v(" "),_c('div',{staticClass:"mdl-textfield mdl-js-textfield mdl-textfield--floating-label flex-col-50"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.registerUserModel.confirm),expression:"registerUserModel.confirm"}],staticClass:"mdl-textfield__input",attrs:{"type":"password","id":"reg-password-confirm"},domProps:{"value":(_vm.registerUserModel.confirm)},on:{"input":function($event){if($event.target.composing){ return; }_vm.registerUserModel.confirm=$event.target.value}}}),_vm._v(" "),_c('label',{staticClass:"mdl-textfield__label",attrs:{"for":"reg-password-confirm"}},[_vm._v("Password Confirm")]),_vm._v(" "),_c('span',{staticClass:"mdl-textfield__error"},[_vm._v(_vm._s(_vm.errors.confirm.message))])])]):_vm._e(),_vm._v(" "),_c('md-card-actions',[_c('md-button',{staticClass:"md-raised md-accent animated normal-case",class:{'fadeInUpBig':_vm.currentForm == 'registration'},attrs:{"type":"submit"}},[_vm._v("Register\n\t\t\t\t\t\t\t\t\t")])],1)],1)],1)]):_vm._e()],1)],1)],1)])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
-  module.hot.dispose(__vueify_style_dispose__)
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-5f2e0b2b", __vue__options__)
   } else {
-    hotAPI.reload("data-v-5f2e0b2b", __vue__options__)
+    hotAPI.rerender("data-v-5f2e0b2b", __vue__options__)
   }
 })()}
-},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":23,"vueify/lib/insert-css":28}],44:[function(require,module,exports){
+},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":23}],44:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -13128,151 +13154,158 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":27,"vue-hot-reload-api":23}],46:[function(require,module,exports){
-'use strict';
+var VueRouter = require('vue-router')
+Vue.use(VueRouter)
 
-var VueRouter = require('vue-router');
-Vue.use(VueRouter);
 
-var netwoRkUrlendpoint = AMdefaults.routerPrefix + AMdefaults.networkSlug;
+const netwoRkUrlendpoint = AMdefaults.routerPrefix + AMdefaults.networkSlug
 
 module.exports = new VueRouter({
-	mode: 'history',
-	routes: [{
-		name: 'userentrypoint',
-		path: '/' + netwoRkUrlendpoint + '/',
-		component: require('./components/Network.vue'),
-		meta: { requiresAuth: true }
-	}, {
-		path: '/' + netwoRkUrlendpoint + '/settings',
-		component: require('./components/Settings.vue'),
-		meta: { requiresAuth: true }
-	}, {
-		path: '/' + netwoRkUrlendpoint + '/media',
-		component: require('./components/Media.vue'),
-		meta: { requiresAuth: true }
-	}, { // Restore pass screen
-		path: '/' + netwoRkUrlendpoint + '/screen/restorepass',
-		component: require('./components/RestorePass.vue')
-	}, {
-		name: 'authscreen',
-		path: '/' + netwoRkUrlendpoint + '/auth',
-		component: require('./components/authComponent.vue'),
-		meta: { requiresAuth: false }
-	}, {
-		name: 'badrequest',
-		path: '/' + netwoRkUrlendpoint + '/badrequest',
-		component: require('./components/common/BadRequest.vue')
-	}, {
-		path: '*',
-		component: require('./components/common/Notfound.vue')
-	}]
-});
+	mode  : 'history',
+	routes: [
+		{
+			name     : 'userentrypoint',
+			path     : `/${netwoRkUrlendpoint}/`,
+			component: require('./components/Network.vue'),
+			meta     : {requiresAuth: true}
+		},
+		{
+			path     : `/${netwoRkUrlendpoint}/settings`,
+			component: require('./components/Settings.vue'),
+			meta     : {requiresAuth: true}
+		},
+		{
+			path     : `/${netwoRkUrlendpoint}/media`,
+			component: require('./components/Media.vue'),
+			meta     : {requiresAuth: true}
+		},
 
+
+		{ // Restore pass screen
+			path     : `/${netwoRkUrlendpoint}/screen/restorepass`,
+			component: require('./components/RestorePass.vue'),
+		},
+
+
+		{
+			name     : 'authscreen',
+			path     : `/${netwoRkUrlendpoint}/auth`,
+			component: require('./components/authComponent.vue'),
+			meta     : {requiresAuth: false}
+		},
+		{
+			name     : 'badrequest',
+			path     : `/${netwoRkUrlendpoint}/badrequest`,
+			component: require('./components/common/BadRequest.vue')
+		},
+
+		{
+			path     : '*',
+			component: require('./components/common/Notfound.vue')
+		},
+	]
+})
 },{"./components/Media.vue":39,"./components/Network.vue":40,"./components/RestorePass.vue":41,"./components/Settings.vue":42,"./components/authComponent.vue":43,"./components/common/BadRequest.vue":44,"./components/common/Notfound.vue":45,"vue-router":26}],47:[function(require,module,exports){
-'use strict';
+let domready = require('domready')
+let defaultAMscript = {
+	run: function(){
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+		window.requestAnimFrame = (function() {
+			return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				function(callback) {
+					window.setTimeout(callback, 1000 / 60);
+				};
+		})();
 
-var domready = require('domready');
-var defaultAMscript = {
-	run: function run() {
-
-		window.requestAnimFrame = function () {
-			return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
-				window.setTimeout(callback, 1000 / 60);
-			};
-		}();
 		/**
-   * ==================== Common Functions ======================
-   * 19.12.2016
-   */
-		window.isDescendant = function (parent, child) {
-			var node = child.parentNode;
-			while (node != null) {
-				if (node == parent) {
-					return true;
-				}
-				node = node.parentNode;
-			}
-			return false;
-		};
-
-		window.findAncestor = function (el, cls) {
-			while ((el = el.parentElement) && !el.classList.contains(cls)) {}
+		 * ==================== Common Functions ======================
+		 */
+		// or document.querySelector("p").closest(".near.ancestor")
+		window.findAncestor = (el, cls) => {
+			while ((el = el.parentElement) && !el.classList.contains(cls));
 			return el;
 		};
 
-		window.itemIsPureObject = function (item) {
-			if (item !== null && (typeof item === 'undefined' ? 'undefined' : _typeof(item)) === 'object') {
-				if (!(item instanceof Array)) return item instanceof Object;
+
+		window.itemIsPureObject = function(item) {
+			if ( item !== null && typeof item === 'object' ) {
+				if(!(item instanceof Array))
+					return item instanceof Object;
 
 				return false;
 			}
 			return false;
 		};
 
-		window.dataToPost = function (action, data) {
-			var formData = new FormData();
+		window.dataToPost = function(action, data) {
+			let formData = new FormData();
 			formData.append('action', action);
 
-			for (var part in data) {
-				var dataItem = data[part];
+			for (let part in data) {
+				let dataItem = data[part];
 
-				if (itemIsPureObject(dataItem)) {
-					var details = JSON.stringify(dataItem);
+				if(itemIsPureObject(dataItem)) {
+					let details = JSON.stringify(dataItem);
 					formData.append(part, details);
 				} else {
 					formData.append(part, dataItem);
 				}
+
 			}
 
 			return formData;
 		};
 
 		/**
-   * ==================== MDL Upgrade DOM when changes ======================
-   * 10.12.2016
-   */
-		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-		var observer = new MutationObserver(function () {
+		 * ==================== MDL Upgrade DOM when changes ======================
+		 * 10.12.2016
+		 */
+		let MutationObserver = window.MutationObserver
+			|| window.WebKitMutationObserver
+			|| window.MozMutationObserver;
+		let observer = new MutationObserver(function() {
 			componentHandler.upgradeDom();
 		});
-		observer.observe(document.body, { childList: true, subtree: true });
+		observer.observe(document.body, {childList: true,subtree : true});
+
 
 		/**
-   * ==================== Regular Domready script ======================
-   * 26.12.2016
-   */
-		var appHandler = document.getElementById('am-appwrap'),
-		    opacityMeasure = 0;
+		 * ==================== Regular Domready script ======================
+		 * 26.12.2016
+		 */
+		let appHandler = document.getElementById('am-appwrap'),
+				opacityMeasure = 0;
 
-		var invokeStepAppearing = function invokeStepAppearing() {
-			var appHandler = document.getElementById('am-appwrap');
-			opacityMeasure += 0.04;
-			appHandler.style.opacity = opacityMeasure;
-			if (opacityMeasure <= 1) {
+		let invokeStepAppearing = () => {
+			let appHandler = document.getElementById('am-appwrap')
+			opacityMeasure += 0.04
+			appHandler.style.opacity = opacityMeasure
+			if(opacityMeasure <= 1) {
 				requestAnimationFrame(invokeStepAppearing);
 			}
 		};
 
-		appHandler.style.opacity = 0;
-		domready(function () {
-			invokeStepAppearing();
+		// appHandler.style.opacity = 0;
+		domready(function(){
+			// invokeStepAppearing()
 		});
 
+
 		/**
-   * ==================== jQuery ======================
-   * 26.12.2016
-   */
-		jQuery(document).ready(function ($) {});
+		 * ==================== jQuery ======================
+		 * 26.12.2016
+		 */
+		jQuery(document).ready(function ($){
+
+		});
+
 	}
-};
-defaultAMscript.run();
-module.exports = defaultAMscript;
-
+}
+defaultAMscript.run()
+module.exports = defaultAMscript
 },{"domready":21}],48:[function(require,module,exports){
-"use strict";
-
 module.exports = new Vuex.Store({
 
 	state: {
@@ -13281,11 +13314,11 @@ module.exports = new Vuex.Store({
 
 	mutations: {
 
-		setProducts: function setProducts(state, data) {
+		setProducts: function(state, data) {
 			state.products = data;
 		},
 
-		removeFromCart: function removeFromCart(state, data) {
+		removeFromCart: function(state, data) {
 			state.products.splice(state.products.indexOf(data), 1);
 		}
 
@@ -13294,10 +13327,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-
 },{}],49:[function(require,module,exports){
-"use strict";
-
 module.exports = new Vuex.Store({
 
 	state: {
@@ -13305,17 +13335,21 @@ module.exports = new Vuex.Store({
 	},
 
 	mutations: {
-		setUserdata: function setUserdata(state, data) {
-			state.userdata = data;
+
+		setUserdata(state, data) {
+			state.userdata = data
 		}
+
 	},
 
-	actions: {},
+	actions: {
 
-	created: function created() {
+	},
+
+	created: function() {
 		console.log(this.state.userdata);
 	}
 
-});
 
+});
 },{}]},{},[38]);

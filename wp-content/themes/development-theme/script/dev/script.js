@@ -1,5 +1,5 @@
-var domready = require('domready')
-var defaultAMscript = {
+let domready = require('domready')
+let defaultAMscript = {
 	run: function(){
 
 		window.requestAnimFrame = (function() {
@@ -10,25 +10,16 @@ var defaultAMscript = {
 					window.setTimeout(callback, 1000 / 60);
 				};
 		})();
+
 		/**
 		 * ==================== Common Functions ======================
-		 * 19.12.2016
 		 */
-		window.isDescendant = function (parent, child) {
-			var node = child.parentNode;
-			while (node != null) {
-				if (node == parent) {
-					return true;
-				}
-				node = node.parentNode;
-			}
-			return false;
-		};
-
+		// or document.querySelector("p").closest(".near.ancestor")
 		window.findAncestor = (el, cls) => {
 			while ((el = el.parentElement) && !el.classList.contains(cls));
 			return el;
 		};
+
 
 		window.itemIsPureObject = function(item) {
 			if ( item !== null && typeof item === 'object' ) {
@@ -41,14 +32,14 @@ var defaultAMscript = {
 		};
 
 		window.dataToPost = function(action, data) {
-			var formData = new FormData();
+			let formData = new FormData();
 			formData.append('action', action);
 
-			for (var part in data) {
-				var dataItem = data[part];
+			for (let part in data) {
+				let dataItem = data[part];
 
 				if(itemIsPureObject(dataItem)) {
-					var details = JSON.stringify(dataItem);
+					let details = JSON.stringify(dataItem);
 					formData.append(part, details);
 				} else {
 					formData.append(part, dataItem);
@@ -63,10 +54,10 @@ var defaultAMscript = {
 		 * ==================== MDL Upgrade DOM when changes ======================
 		 * 10.12.2016
 		 */
-		var MutationObserver = window.MutationObserver
+		let MutationObserver = window.MutationObserver
 			|| window.WebKitMutationObserver
 			|| window.MozMutationObserver;
-		var observer = new MutationObserver(function() {
+		let observer = new MutationObserver(function() {
 			componentHandler.upgradeDom();
 		});
 		observer.observe(document.body, {childList: true,subtree : true});
@@ -88,9 +79,9 @@ var defaultAMscript = {
 			}
 		};
 
-		appHandler.style.opacity = 0;
+		// appHandler.style.opacity = 0;
 		domready(function(){
-			invokeStepAppearing()
+			// invokeStepAppearing()
 		});
 
 

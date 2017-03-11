@@ -18,7 +18,7 @@
 		<md-card class="am-wrap am-wrap-sm">
 			<md-card-header>
 				<div class="md-title">Enter new password</div>
-				<div class="md-subhead">Make sure your password is strengh enough</div>
+				<div class="md-subhead">Make sure your password is strong enough</div>
 			</md-card-header>
 
 			<md-card-content>
@@ -36,7 +36,7 @@
 					</div>
 
 					<md-card-actions>
-						<md-button class="md-raised md-accent" type="submit">Reset</md-button>
+						<md-button class="md-raised md-accent normal-case" type="submit">Reset</md-button>
 					</md-card-actions>
 
 				</form>
