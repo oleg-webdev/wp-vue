@@ -23,8 +23,8 @@
 				speed           : 250,
 				elem            : null,
 				elemContent     : null,
-				mutableCollapsed: this.collapsed,
 				originHeight    : null,
+				mutableCollapsed: this.collapsed
 			}
 		},
 
@@ -37,7 +37,7 @@
 			eventHub.$on('accordionProcess', (dropinfo) => {
 				if (dropinfo.scope === this.scope && dropinfo.slot != this.slotname) {
 					this.mutableCollapsed = true
-					$(this.elemContent).animate({height: 0 }, this.speed)
+					$(this.elemContent).animate({height: 0}, this.speed)
 				}
 
 			})
@@ -48,7 +48,6 @@
 		mounted() {
 			this.elem = this.$el
 			this.elemContent = (this.$el).querySelector('.dropdown-content')
-
 			this.originHeight = this.elemContent.offsetHeight
 
 			if (this.collapsed) {
@@ -60,7 +59,6 @@
 		methods: {
 
 			invokeDropdown(event) {
-
 				if ($(event.target).hasClass('dropdown-heading')) {
 
 					if (this.accordion) {
@@ -75,11 +73,12 @@
 					if (this.mutableCollapsed) {
 						$(this.elemContent).animate({height: 0}, this.speed)
 					} else {
-						$(this.elemContent).animate({height: this.originHeight }, this.speed, 'linear', () =>{
+						$(this.elemContent).animate({height: this.originHeight}, this.speed, 'linear', () => {
 							$(this.elemContent).height('auto')
+							this.originHeight = this.elemContent.offsetHeight
 						})
-
 					}
+
 				}
 
 			}
