@@ -103,7 +103,7 @@
 							type       : 'success',
 							contentHtml:
 								`<p class="text-center">
-									<strong>Your cart is empty.</strong>
+									Your <strong>cart</strong> is empty.
 								</p>`,
 							text       : 'Ok'
 						}

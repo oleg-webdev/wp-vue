@@ -75,7 +75,10 @@
 					if (this.mutableCollapsed) {
 						$(this.elemContent).animate({height: 0}, this.speed)
 					} else {
-						$(this.elemContent).animate({height: this.originHeight }, this.speed)
+						$(this.elemContent).animate({height: this.originHeight }, this.speed, 'linear', () =>{
+							$(this.elemContent).height('auto')
+						})
+
 					}
 				}
 

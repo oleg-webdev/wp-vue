@@ -64,6 +64,15 @@ main {
 		}
 	}
 
+	/*Mobile*/
+	@media (max-width : 767px) {
+		> li {
+			> a {
+				min-width : 50px;
+			}
+		}
+	}
+
 }
 
 /**

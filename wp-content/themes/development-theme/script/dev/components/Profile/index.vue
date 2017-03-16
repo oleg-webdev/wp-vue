@@ -6,30 +6,28 @@
 			<md-list-item class="md-primary">
 				<router-link class="button" :to="{path: '/'+netwoRkUrlendpoint }" exact>
 					<md-icon>home</md-icon>
-					<span>Home Link</span>
+					<span class="hidden-on-phones">Home Link</span>
 				</router-link>
 			</md-list-item>
-
 
 			<md-list-item>
 				<router-link class="button" :to="{path:'/'+netwoRkUrlendpoint+'/settings'}">
 					<md-icon>settings</md-icon>
-					<span>Settings</span>
+					<span class="hidden-on-phones">Settings</span>
 				</router-link>
 			</md-list-item>
-
 
 			<md-list-item>
 				<router-link class="button" :to="{path:'/'+netwoRkUrlendpoint+'/media'}">
 					<md-icon>photo_library</md-icon>
-					<span>Media</span>
+					<span class="hidden-on-phones">Media</span>
 				</router-link>
 			</md-list-item>
 
 			<md-list-item>
 				<router-link class="button" :to="{path:'/'+netwoRkUrlendpoint+'/auth'}">
 					<md-icon>warning</md-icon>
-					<span>Auth</span>
+					<span class="hidden-on-phones">Auth</span>
 				</router-link>
 			</md-list-item>
 
