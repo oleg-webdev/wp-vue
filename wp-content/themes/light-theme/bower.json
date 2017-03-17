@@ -1,0 +1,22 @@
+{
+  "name": "alicelf-material",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "nayami <cibulnicoleg@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Nayami/wp-vue",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	  "vue": "^2.2.4",
+	  "animate.css": "^3.5.2",
+	  "jquery": "^2.1.1"
+  }
+}

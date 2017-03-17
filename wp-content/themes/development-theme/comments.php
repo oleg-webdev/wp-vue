@@ -1,4 +1,3 @@
-
 <?php
 echo "<ol>";
 wp_list_comments();

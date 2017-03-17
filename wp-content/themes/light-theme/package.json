@@ -1,0 +1,52 @@
+{
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "domready": "^1.0.8",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.0.0",
+    "node-sass": "^4.1.0",
+    "uglify-js": "^2.7.5",
+    "vueify": "^9.3.0",
+    "vueify-insert-css": "^1.0.0",
+    "watchify": "^3.7.0"
+  },
+  "name": "alicelf-material",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.0.1",
+    "node-sass": "^4.5.0",
+    "vue": "^2.1.10",
+    "vue-material": "^0.7.1",
+    "vue-resource": "^1.2.0",
+    "vue-router": "^2.2.1",
+    "vuex": "^2.1.2",
+    "watchify": "^3.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -t vueify -t [ babelify --presets [ es2015 react ] ] -e script/dev/main.js -o script/prod/build.js",
+    "watch": "watchify -t vueify -e script/dev/main.js -o script/prod/build.js",
+    "production": "uglifyjs script/prod/build.js --compress drop_console > script/prod/build.min.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
