@@ -31,16 +31,24 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 
 <aside class="app-viewport" id="mobile-navigation-aside">
 	<div class="hidden-on-desktop">
-		<md-sidenav class="md-left md-fixed" ref="sidebar">
 
-			<?php echo render_mobile_menu() ?>
-		</md-sidenav>
-
+		<div class="hide-until-dom-loaded">
+			<md-sidenav class="md-left md-fixed " ref="sidebar">
+				<?php echo render_mobile_menu() ?>
+			</md-sidenav>
+		</div>
 
 		<md-whiteframe md-elevation="3">
-			<md-button class="md-icon-button" @click.native="$refs.sidebar.toggle()">
-				<md-icon>menu</md-icon>
-			</md-button>
+			<div class="flex-container-nowrap padding-x-10">
+				<div class="flex-col-50">
+					<?php echo material_logo() ?>
+				</div>
+				<div class="flex-col-50 text-right hide-until-dom-loaded">
+					<md-button class="md-raised" @click.native="$refs.sidebar.toggle()">
+						<md-icon>menu</md-icon>
+					</md-button>
+				</div>
+			</div>
 		</md-whiteframe>
 
 	</div>

@@ -13211,7 +13211,7 @@ module.exports = new VueRouter({
 },{"./components/Media.vue":39,"./components/Network.vue":40,"./components/RestorePass.vue":41,"./components/Settings.vue":42,"./components/authComponent.vue":43,"./components/common/BadRequest.vue":44,"./components/common/Notfound.vue":45,"vue-router":26}],47:[function(require,module,exports){
 let domready = require('domready')
 let defaultAMscript = {
-	run: function(){
+	run: function() {
 
 		window.requestAnimFrame = (function() {
 			return window.requestAnimationFrame ||
@@ -13233,8 +13233,8 @@ let defaultAMscript = {
 
 
 		window.itemIsPureObject = function(item) {
-			if ( item !== null && typeof item === 'object' ) {
-				if(!(item instanceof Array))
+			if (item !== null && typeof item === 'object') {
+				if (!(item instanceof Array))
 					return item instanceof Object;
 
 				return false;
@@ -13249,7 +13249,7 @@ let defaultAMscript = {
 			for (let part in data) {
 				let dataItem = data[part];
 
-				if(itemIsPureObject(dataItem)) {
+				if (itemIsPureObject(dataItem)) {
 					let details = JSON.stringify(dataItem);
 					formData.append(part, details);
 				} else {
@@ -13271,28 +13271,41 @@ let defaultAMscript = {
 		let observer = new MutationObserver(function() {
 			componentHandler.upgradeDom();
 		});
-		observer.observe(document.body, {childList: true,subtree : true});
+		observer.observe(document.body, {
+			childList: true,
+			subtree  : true
+		});
 
 
 		/**
 		 * ==================== Regular Domready script ======================
 		 * 26.12.2016
 		 */
-		let appHandler = document.getElementById('am-appwrap'),
+		let appHandler     = document.getElementById('am-appwrap'),
 				opacityMeasure = 0;
 
 		let invokeStepAppearing = () => {
 			let appHandler = document.getElementById('am-appwrap')
 			opacityMeasure += 0.04
 			appHandler.style.opacity = opacityMeasure
-			if(opacityMeasure <= 1) {
+			if (opacityMeasure <= 1) {
 				requestAnimationFrame(invokeStepAppearing);
 			}
 		};
 
+
+
 		// appHandler.style.opacity = 0;
-		domready(function(){
+		domready(function() {
 			// invokeStepAppearing()
+			let hideElemsUntilDomLoaded = document.querySelectorAll('.hide-until-dom-loaded');
+			hideElemsUntilDomLoaded.forEach(function (el, index, array) {
+				setTimeout(function() {
+					el.classList.add('ready-to-interract')
+				}, 100)
+			})
+
+
 		});
 
 
@@ -13300,7 +13313,7 @@ let defaultAMscript = {
 		 * ==================== jQuery ======================
 		 * 26.12.2016
 		 */
-		jQuery(document).ready(function ($){
+		jQuery(document).ready(function($) {
 
 		});
 

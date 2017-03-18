@@ -11,6 +11,20 @@ body {
 	flex-direction : column;
 }
 
+.text-right {
+	text-align : right;
+}
+
+.hide-until-dom-loaded {
+	opacity : 0;
+
+	&.ready-to-interract {
+		@include transition();
+		opacity : 1;
+	}
+
+}
+
 .img-center {
 	&img {
 		margin-left  : auto;
