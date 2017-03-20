@@ -28,16 +28,14 @@ Vue.component('am-popover-content', require('./components/Popover/PopoverContent
 
 // Dropdown/Accordion
 Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'))
-
 // Mini Cart
 Vue.component('minicart', require('./components/WooCart/index.vue'))
-
 // User Profile view
 Vue.component('userprofile', require('./components/Profile/index.vue'))
-
 // Flashes
 Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
-
+// Slider
+Vue.component('am-slider', require('./components/Slider/index.vue'))
 /* =========================== Components End ================================ */
 
 

@@ -9,15 +9,16 @@
 .normal-case {
 	text-transform : none !important;
 }
+
 .white-font {
 	color : #fff !important;
 }
 
 // Dropdown
 .dropdown-scope {
-	border :1px solid #e2e2e2;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	border          : 1px solid #e2e2e2;
+	-moz-box-sizing : border-box;
+	box-sizing      : border-box;
 
 	.dropdown-heading {
 		padding       : 5px 10px;
@@ -26,10 +27,10 @@
 	}
 
 	.dropdown-content {
-		display  : block;
-		overflow : hidden;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
+		display         : block;
+		overflow        : hidden;
+		-moz-box-sizing : border-box;
+		box-sizing      : border-box;
 
 		> div {
 			padding : 15px;
@@ -110,7 +111,6 @@
 	}
 
 }
-
 
 // Popover
 .Popover-scope {
@@ -203,6 +203,39 @@
 
 		}
 
+	}
+
+}
+
+/**
+ * ==================== Slider ======================
+ */
+.Slider-scope {
+	position         : relative;
+	background-color : #ccc;
+	.range-handler {
+
+	}
+
+	.range-handler {
+		height           : 4px;
+		background-color : $mainColor;
+		width            : 0;
+	}
+
+	.dragger {
+		position         : absolute;
+		display          : inline-block;
+		width            : 15px;
+		height           : 15px;
+		border-radius    : 100%;
+		background-color : $mainColor;
+		top              : -6px;
+		cursor           : pointer;
+
+		&.touched {
+			transform : scale(1.5, 1.5);
+		}
 	}
 
 }

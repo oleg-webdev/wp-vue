@@ -85,11 +85,13 @@ let defaultAMscript = {
 
 
 		// appHandler.style.opacity = 0;
-		domready(function() {
+		domready(() => {
+
 			// invokeStepAppearing()
+
 			let hideElemsUntilDomLoaded = document.querySelectorAll('.hide-until-dom-loaded');
-			hideElemsUntilDomLoaded.forEach(function (el, index, array) {
-				setTimeout(function() {
+			hideElemsUntilDomLoaded.forEach((el, index, array) => {
+				setTimeout(() => {
 					el.classList.add('ready-to-interract')
 				}, 100)
 			})

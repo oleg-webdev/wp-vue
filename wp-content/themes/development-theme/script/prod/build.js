@@ -12096,7 +12096,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-6ec01d84", __vue__options__)
   }
 })()}
-},{"../../vuex/User":49,"babel-runtime/core-js/number/is-integer":1,"vue":27,"vue-hot-reload-api":23}],32:[function(require,module,exports){
+},{"../../vuex/User":50,"babel-runtime/core-js/number/is-integer":1,"vue":27,"vue-hot-reload-api":23}],32:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"popoverscope",staticClass:"Popover-scope"},[_vm._t("default")],2)}
@@ -12320,7 +12320,104 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-1aa6cc02", __vue__options__)
   }
 })()}
-},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":23}],36:[function(require,module,exports){
+},{"../../vuex/User":50,"vue":27,"vue-hot-reload-api":23}],36:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+
+	props: {
+		type: [String],
+		disabled: [Boolean],
+		position: [Number],
+		vertical: [Boolean]
+	},
+
+	data: function data() {
+		return {
+			mooving: false,
+			pos: 0
+		};
+	},
+
+
+	computed: {},
+
+	methods: {
+		invokeMove: function invokeMove(e) {
+			this.mooving = true;
+			var dragger = e.target,
+			    parent = dragger.parentElement,
+			    parentPosition = parent.getBoundingClientRect();
+
+			var vm = this;
+			window.addEventListener('mousemove', function (e) {
+				if (vm.mooving) {
+					var measure = e.pageX - parentPosition.left,
+					    fullWidth = parentPosition.width;
+					if (measure >= 0 && measure <= fullWidth) {
+						vm.pos = Math.round(measure / fullWidth * 100);
+					}
+				}
+			});
+		},
+		movePinThere: function movePinThere(e) {
+			var target = e.target,
+			    originElem = null;
+
+			if (target.classList.contains('Slider-scope')) {
+				originElem = target;
+			}
+
+			if (target.classList.contains('range-handler')) {
+				originElem = target.parentElement;
+			}
+
+			if (!target.classList.contains('dragger')) {
+				var pos = originElem.getBoundingClientRect(),
+				    measure = e.pageX - pos.left,
+				    fullWidth = pos.width;
+
+				if (measure >= 0 && measure <= fullWidth) {
+					this.pos = Math.round(measure / fullWidth * 100);
+				}
+			}
+		}
+	},
+
+	created: function created() {
+		this.pos = this.position;
+
+		var vm = this;
+		window.addEventListener('mouseup', function (e) {
+			vm.mooving = false;
+		});
+	},
+	mounted: function mounted() {
+		var vm = this,
+		    container = vm.$refs.popovercontentscope;
+	}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"sliderscope",staticClass:"Slider-scope",on:{"mousedown":_vm.movePinThere}},[_c('div',{staticClass:"range-handler",style:({width:_vm.pos+'%'})}),_vm._v(" "),_c('span',{staticClass:"dragger",class:{touched:_vm.mooving},style:({left:_vm.pos+'%'}),on:{"mousedown":_vm.invokeMove}})])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14c6f627", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-14c6f627", __vue__options__)
+  }
+})()}
+},{"vue":27,"vue-hot-reload-api":23}],37:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -12417,7 +12514,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-14c1a72d", __vue__options__)
   }
 })()}
-},{"../../vuex/Cart":48,"vue":27,"vue-hot-reload-api":23}],37:[function(require,module,exports){
+},{"../../vuex/Cart":49,"vue":27,"vue-hot-reload-api":23}],38:[function(require,module,exports){
 module.exports = Vue.directive('amajax', {
 
 	el     : null,
@@ -12499,7 +12596,7 @@ module.exports = Vue.directive('amajax', {
 
 
 });
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 window.eventHub = new Vue()
 window.Vuex = require('vuex')
 window.VueResource = require('vue-resource')
@@ -12530,16 +12627,14 @@ Vue.component('am-popover-content', require('./components/Popover/PopoverContent
 
 // Dropdown/Accordion
 Vue.component('am-dropdown', require('./components/Dropdown/Dropdown.vue'))
-
 // Mini Cart
 Vue.component('minicart', require('./components/WooCart/index.vue'))
-
 // User Profile view
 Vue.component('userprofile', require('./components/Profile/index.vue'))
-
 // Flashes
 Vue.component('flashmessages', require('./components/Flash/Flash.vue'))
-
+// Slider
+Vue.component('am-slider', require('./components/Slider/index.vue'))
 /* =========================== Components End ================================ */
 
 
@@ -12669,7 +12764,7 @@ new Vue({
 // amThemeSlider.run()
 // let amThemeModal = require('./modules/modal')
 // amThemeModal.run()
-},{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Popover/Popover.vue":32,"./components/Popover/PopoverContent.vue":33,"./components/Popover/PopoverTrigger.vue":34,"./components/Profile/index.vue":35,"./components/WooCart/index.vue":36,"./dirrectives/ajaxForms":37,"./routes":46,"./script":47,"./vuex/User":49,"vue-material":24,"vue-resource":25,"vuex":29}],39:[function(require,module,exports){
+},{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Popover/Popover.vue":32,"./components/Popover/PopoverContent.vue":33,"./components/Popover/PopoverTrigger.vue":34,"./components/Profile/index.vue":35,"./components/Slider/index.vue":36,"./components/WooCart/index.vue":37,"./dirrectives/ajaxForms":38,"./routes":47,"./script":48,"./vuex/User":50,"vue-material":24,"vue-resource":25,"vuex":29}],40:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -12710,7 +12805,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-4494a58c", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":23}],40:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":23}],41:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -12763,7 +12858,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-26612b04", __vue__options__)
   }
 })()}
-},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":23}],41:[function(require,module,exports){
+},{"../../vuex/User":50,"vue":27,"vue-hot-reload-api":23}],42:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, stdin */\n#Restore-pass-scope .am-wrap {\n  max-width: 900px; }\n\n/* line 6, stdin */\n#Restore-pass-scope .md-card {\n  padding: 20px; }")
 ;(function(){
 'use strict';
@@ -12883,7 +12978,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-7282f5d6", __vue__options__)
   }
 })()}
-},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":23,"vueify/lib/insert-css":28}],42:[function(require,module,exports){
+},{"../../vuex/User":50,"vue":27,"vue-hot-reload-api":23,"vueify/lib/insert-css":28}],43:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -12923,7 +13018,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-6d313086", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":23}],43:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":23}],44:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -13075,7 +13170,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-5f2e0b2b", __vue__options__)
   }
 })()}
-},{"../../vuex/User":49,"vue":27,"vue-hot-reload-api":23}],44:[function(require,module,exports){
+},{"../../vuex/User":50,"vue":27,"vue-hot-reload-api":23}],45:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -13115,7 +13210,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-d0e4ab1e", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":23}],45:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":23}],46:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -13156,7 +13251,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-ed407d14", __vue__options__)
   }
 })()}
-},{"vue":27,"vue-hot-reload-api":23}],46:[function(require,module,exports){
+},{"vue":27,"vue-hot-reload-api":23}],47:[function(require,module,exports){
 var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 
@@ -13208,7 +13303,7 @@ module.exports = new VueRouter({
 		},
 	]
 })
-},{"./components/Media.vue":39,"./components/Network.vue":40,"./components/RestorePass.vue":41,"./components/Settings.vue":42,"./components/authComponent.vue":43,"./components/common/BadRequest.vue":44,"./components/common/Notfound.vue":45,"vue-router":26}],47:[function(require,module,exports){
+},{"./components/Media.vue":40,"./components/Network.vue":41,"./components/RestorePass.vue":42,"./components/Settings.vue":43,"./components/authComponent.vue":44,"./components/common/BadRequest.vue":45,"./components/common/Notfound.vue":46,"vue-router":26}],48:[function(require,module,exports){
 let domready = require('domready')
 let defaultAMscript = {
 	run: function() {
@@ -13296,11 +13391,13 @@ let defaultAMscript = {
 
 
 		// appHandler.style.opacity = 0;
-		domready(function() {
+		domready(() => {
+
 			// invokeStepAppearing()
+
 			let hideElemsUntilDomLoaded = document.querySelectorAll('.hide-until-dom-loaded');
-			hideElemsUntilDomLoaded.forEach(function (el, index, array) {
-				setTimeout(function() {
+			hideElemsUntilDomLoaded.forEach((el, index, array) => {
+				setTimeout(() => {
 					el.classList.add('ready-to-interract')
 				}, 100)
 			})
@@ -13321,7 +13418,7 @@ let defaultAMscript = {
 }
 defaultAMscript.run()
 module.exports = defaultAMscript
-},{"domready":21}],48:[function(require,module,exports){
+},{"domready":21}],49:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -13343,7 +13440,7 @@ module.exports = new Vuex.Store({
 	actions: {}
 
 });
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 module.exports = new Vuex.Store({
 
 	state: {
@@ -13368,4 +13465,4 @@ module.exports = new Vuex.Store({
 
 
 });
-},{}]},{},[38]);
+},{}]},{},[39]);
