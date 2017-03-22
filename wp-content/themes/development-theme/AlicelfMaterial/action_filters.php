@@ -261,7 +261,7 @@ function aa_func_20174614064631( $id )
 {
 	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
 	$_height = $image[2];
-	$style = "height: {$_height}px;";
+	$style = "min-height: {$_height}px;";
 	$subtitle = get_field('page_subtitle', $id);
 
 	?>

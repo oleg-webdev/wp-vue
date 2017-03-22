@@ -4,7 +4,12 @@
 		<span class="dragger" :style="{left:pos+'%'}"
 					:class="{touched:mooving}"
 					@mousedown="invokeMove"
-		></span>
+		>
+			<span v-if="showbulb && mooving" class="bulb-handler">
+				<i class="bulb-percentage">{{Math.ceil(pos)}}%</i>
+			</span>
+		</span>
+
 	</div>
 </template>
 
@@ -15,7 +20,8 @@
 			type    : [String],
 			disabled: [Boolean],
 			position: [Number],
-			vertical: [Boolean]
+			vertical: [Boolean],
+			showbulb: [Boolean]
 		},
 
 		data() {
@@ -31,42 +37,46 @@
 
 			invokeMove(e) {
 				this.mooving = true
-				let dragger        = e.target,
-						parent         = dragger.parentElement,
-						parentPosition = parent.getBoundingClientRect();
 
-				let vm = this
-				window.addEventListener('mousemove', function(e) {
-					if (vm.mooving) {
-						let measure   = e.pageX - parentPosition.left,
-								fullWidth = parentPosition.width
-						if (measure >= 0 && measure <= fullWidth) {
-							vm.pos = Math.round((measure / fullWidth) * 100)
+				let parent = findAncestor(e.target, "Slider-scope")
 
+				if ( parent ) {
+					let vm = this,
+							parentPosition = parent.getBoundingClientRect()
+
+					window.addEventListener('mousemove', function(e) {
+						if (vm.mooving) {
+							let measure   = e.pageX - parentPosition.left,
+									fullWidth = parentPosition.width
+							if (measure >= 0 && measure <= fullWidth) {
+								vm.pos = ((measure - 5) / fullWidth) * 100
+							}
 						}
-					}
-				});
+					});
+				}
+
 			},
 
 			movePinThere(e) {
 				let target     = e.target,
-						originElem = null
+						originElem = null,
+						vm         = this
 
 				if (target.classList.contains('Slider-scope')) {
 					originElem = target
 				}
 
 				if (target.classList.contains('range-handler')) {
-					originElem = target.parentElement
+					originElem = findAncestor(target, "Slider-scope")
 				}
 
-				if(!target.classList.contains('dragger')) {
-					let pos = originElem.getBoundingClientRect(),
+				if (!target.classList.contains('dragger') && !findAncestor(target, "dragger")) {
+					let pos       = originElem.getBoundingClientRect(),
 							measure   = e.pageX - pos.left,
 							fullWidth = pos.width
 
 					if (measure >= 0 && measure <= fullWidth) {
-						this.pos = Math.round((measure / fullWidth) * 100)
+						vm.pos = ((measure - 5) / fullWidth) * 100
 					}
 				}
 

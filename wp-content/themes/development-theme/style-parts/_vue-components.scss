@@ -213,7 +213,40 @@
 .Slider-scope {
 	position         : relative;
 	background-color : #ccc;
-	.range-handler {
+
+	.bulb-handler {
+		position : relative;
+		width    : 100%;
+		display  : block;
+		height   : 100%;
+		@include transition;
+
+		&:after {
+			content      : "";
+			position     : absolute;
+			width        : 0;
+			height       : 0;
+			border-top   : 6px solid $mainColor;
+			border-left  : 6px solid transparent;
+			border-right : 6px solid transparent;
+			top          : -6px;
+			left         : 50%;
+			margin-left  : -6px;
+		}
+
+		.bulb-percentage {
+			@include transition;
+			width            : 26px;
+			height           : 26px;
+			border-radius    : 100%;
+			background-color : $mainColor;
+			text-align       : center;
+			font             : normal 9px/26px $baseFont;
+			color            : #fff;
+			position         : absolute;
+			top              : -30px;
+			left             : -5px;
+		}
 
 	}
 
