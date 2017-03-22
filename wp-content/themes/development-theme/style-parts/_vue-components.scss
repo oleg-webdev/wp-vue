@@ -219,7 +219,6 @@
 		width    : 100%;
 		display  : block;
 		height   : 100%;
-		@include transition;
 
 		&:after {
 			content      : "";
@@ -235,7 +234,6 @@
 		}
 
 		.bulb-percentage {
-			@include transition;
 			width            : 26px;
 			height           : 26px;
 			border-radius    : 100%;
@@ -259,8 +257,8 @@
 	.dragger {
 		position         : absolute;
 		display          : inline-block;
-		width            : 15px;
-		height           : 15px;
+		width            : 16px;
+		height           : 16px;
 		border-radius    : 100%;
 		background-color : $mainColor;
 		top              : -6px;
