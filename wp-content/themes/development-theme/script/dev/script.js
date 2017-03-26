@@ -106,6 +106,28 @@ let defaultAMscript = {
 		 */
 		jQuery(document).ready(function($) {
 
+			// Parallax
+			// let $window = $(window),
+			// 		scrollTime = .7,
+			// 		scrollDistance = 200;
+			//
+			// $window.on("mousewheel DOMMouseScroll", function(event){
+			//
+			// 	event.preventDefault();
+			//
+			// 	let delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+			// 	let scrollTop = $window.scrollTop();
+			// 	let finalScroll = scrollTop - parseInt(delta*scrollDistance);
+			//
+			// 	TweenMax.to($window, scrollTime, {
+			// 		scrollTo : { y: finalScroll, autoKill:true },
+			// 		ease: Power1.easeOut,
+			// 		overwrite: 5
+			// 	});
+			//
+			// });
+
+
 		});
 
 	}

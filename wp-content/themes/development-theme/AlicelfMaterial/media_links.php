@@ -34,7 +34,10 @@ function aa_func_20163119123146()
 	 * bower install scrollmagic --save
 	 */
 //	wp_enqueue_script( 'tween-max',
-//		"//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js", ['jquery'], false, true );
+//		"//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js", ['jquery'], false, true );
+//	wp_enqueue_script( 'scrollto-plugin',
+//		"//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js", ['jquery'], false, true );
+//
 //	if( $production ) {
 //		wp_enqueue_script( 'scrollmagic-script',
 //			$bowersrc . 'scrollmagic/scrollmagic/minified/Scrollmagic.min.js', ['jquery'], false, true );

@@ -70,10 +70,11 @@ add_filter( 'AMenu_start_elem', 'aa_func_20161009061036', 10, 1 );
 function aa_func_20161009061036( $item )
 {
 	// Skip Vue cart item
-	if ( ! in_array( 'vuecart-class', $item->classes ) && ! is_admin() ) {
+	if(is_array($item->classes)) {
+		if ( ! in_array( 'vuecart-class', $item->classes ) && ! is_admin() ) {
 
+		}
 	}
-
 	return $item;
 }
 

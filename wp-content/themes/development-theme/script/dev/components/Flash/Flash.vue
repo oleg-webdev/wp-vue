@@ -11,7 +11,7 @@
 					 class="am-flash-notice"
 			>
 				<div class="flash-wrapper">
-					{{flash.message}}
+					<div v-html="flash.message"></div>
 					<div v-if="flash.dismissable" class="flash-icon-container" @click="removeNotice(flash)">
 						<md-button class="md-icon-button md-raised">
 							<md-icon>clear</md-icon>

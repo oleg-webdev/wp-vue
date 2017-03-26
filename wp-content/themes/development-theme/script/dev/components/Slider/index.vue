@@ -5,9 +5,15 @@
 					:class="{touched:mooving}"
 					@mousedown="invokeMove"
 		>
-			<span v-if="showbulb && mooving" class="bulb-handler">
+			<transition
+				enter-active-class="animated rubberBand"
+				leave-active-class="animated flipOutY"
+			>
+				<span v-if="showbulb && mooving" class="bulb-handler">
 				<i class="bulb-percentage">{{Math.ceil(pos)}}%</i>
 			</span>
+			</transition>
+
 		</span>
 
 	</div>
