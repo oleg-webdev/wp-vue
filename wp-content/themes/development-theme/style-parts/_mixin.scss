@@ -45,10 +45,17 @@
 
 // flex-col flex-col-desktop flex-col-tablet flex-col-phone
 @mixin flex-col {
+
 	.flex-col-33 {
 		flex-basis : 33.33333333%;
 		max-width  : 33.33333333%;
 	}
+
+	.flex-col-66 {
+		flex-basis : 66.66666666%;
+		max-width  : 66.66666666%;
+	}
+
 	$baseFlexWidth : 5;
 	@for $i from 5 through 24 {
 		.flex-col-#{$baseFlexWidth} {
@@ -61,10 +68,17 @@
 	/*Desktop*/
 	$baseFlexWidth : 5;
 	@media (min-width : 952px) {
+
 		.flex-col-desktop-33 {
 			flex-basis : 33.33333333%;
 			max-width  : 33.33333333%;
 		}
+
+		.flex-col-desktop-66 {
+			flex-basis : 66.66666666%;
+			max-width  : 66.66666666%;
+		}
+
 		@for $i from 5 through 24 {
 			.flex-col-desktop-#{$baseFlexWidth} {
 				flex-basis : percentage($baseFlexWidth)/100;
@@ -77,10 +91,17 @@
 	/*Tablet*/
 	$baseFlexWidth : 5;
 	@media (max-width : 951px) {
+
 		.flex-col-tablet-33 {
 			flex-basis : 33.33333333%;
 			max-width  : 33.33333333%;
 		}
+
+		.flex-col-tablet-33 {
+			flex-basis : 66.66666666%;
+			max-width  : 66.66666666%;
+		}
+
 		@for $i from 5 through 24 {
 			.flex-col-tablet-#{$baseFlexWidth} {
 				flex-basis : percentage($baseFlexWidth)/100;
@@ -94,10 +115,17 @@
 	/*Mobile*/
 	$baseFlexWidth : 5;
 	@media (max-width : 767px) {
+
 		.flex-col-phone-33 {
 			flex-basis : 33.33333333%;
 			max-width  : 33.33333333%;
 		}
+
+		.flex-col-phone-66 {
+			flex-basis : 66.66666666%;
+			max-width  : 66.66666666%;
+		}
+
 		@for $i from 5 through 24 {
 			.flex-col-phone-#{$baseFlexWidth} {
 				flex-basis : percentage($baseFlexWidth)/100;
@@ -109,6 +137,7 @@
 }
 
 @include flex-col;
+
 
 %space-x-section {
 	float   : none;
@@ -139,29 +168,26 @@
 }
 @include padding-x(); // 5 {+5} 50
 
-@mixin fontScope($class, $font) {
-	$h : 6;
-	$s : 10;
-	@while $h > 0 {
-		.#{$class}-h#{$h} {
-			font-family : $font;
-			font-size   : $s+px;
-			line-height : ($s + 3 ) + px;
-			> * {
-				font-family : $font;
-				font-size   : $s + px;
-				line-height : ($s + 3 ) + px;
-			}
-		}
-		$h : $h - 1;
-		$s : $s + 10;
-	}
-}
 
-//@include fontScope('proxima', $ProximaNova-Regular); // proxima-h1 etc
-//@include fontScope('proxima-semi', $ProximaNova-Semibold);
-//@include fontScope('proxima-bold', $ProximaNova-Bold);
-//@include fontScope('proxima-light', $ProximaNova-Light);
+@mixin fontScope($class) {
+	// Custom sizes goes there
+	//.#{$class}-13 {
+	//	font-size   : 13px;
+	//	line-height : 16px;
+	//}
+
+	// Font Fabric
+	$font : 10;
+	@while $font <= 55 {
+		.#{$class}-#{$font} {
+			font-size   : $font + px;
+			line-height : ( $font + 3 ) + px;
+		}
+		$font : $font + 5;
+	}
+
+}
+//@include fontScope('am_font');
 
 /**
  * ==================== Other Mixes ======================

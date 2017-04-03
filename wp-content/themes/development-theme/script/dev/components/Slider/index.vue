@@ -6,7 +6,7 @@
 					@mousedown="invokeMove"
 		>
 			<transition
-				enter-active-class="animated rubberBand"
+				enter-active-class="animated flipInY"
 				leave-active-class="animated flipOutY"
 			>
 				<span v-if="showbulb && mooving" class="bulb-handler">
@@ -15,6 +15,8 @@
 			</transition>
 
 		</span>
+
+
 
 	</div>
 </template>
