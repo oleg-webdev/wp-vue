@@ -1,0 +1,90 @@
+$fdir : 'style-parts/fonts/';
+
+/**
+ * ==================== Proxima Nova ======================
+ * 04.08.2016
+ */
+// Light
+$ProximaNova-Light: 'ProximaNova-Light';
+@font-face {
+	font-family   : $ProximaNova-Light;
+	src           : url('#{$fdir}proxima/ProximaNova-Light_gdi.eot');
+	src           : url('#{$fdir}proxima/ProximaNova-Light_gdi.eot?#iefix') format('embedded-opentype'),
+	url('#{$fdir}proxima/ProximaNova-Light_gdi.woff') format('woff'),
+	url('#{$fdir}proxima/ProximaNova-Light_gdi.ttf') format('truetype'),
+	url('#{$fdir}proxima/ProximaNova-Light_gdi.svg#ProximaNova-Light') format('svg');
+	font-weight   : 300;
+	font-style    : normal;
+	font-stretch  : normal;
+	unicode-range : U+0020-2666;
+}
+
+// Regular
+$ProximaNova-Regular: 'ProximaNova-Regular';
+@font-face {
+	font-family   : $ProximaNova-Regular;
+	src           : url('#{$fdir}proxima/ProximaNova-Regular_gdi.eot');
+	src           : url('#{$fdir}proxima/ProximaNova-Regular_gdi.eot?#iefix') format('embedded-opentype'),
+	url('#{$fdir}proxima/ProximaNova-Regular_gdi.woff') format('woff'),
+	url('#{$fdir}proxima/ProximaNova-Regular_gdi.ttf') format('truetype'),
+	url('#{$fdir}proxima/ProximaNova-Regular_gdi.svg#ProximaNova-Regular') format('svg');
+	font-weight   : 400;
+	font-style    : normal;
+	font-stretch  : normal;
+	unicode-range : U+0020-2666;
+}
+
+// Regular Italic
+$ProximaNova-RegularIt: 'ProximaNova-RegularIt';
+@font-face {
+	font-family   : $ProximaNova-RegularIt;
+	src           : url('#{$fdir}proxima/ProximaNova-RegularIt_gdi.eot');
+	src           : url('#{$fdir}proxima/ProximaNova-RegularIt_gdi.eot?#iefix') format('embedded-opentype'),
+	url('#{$fdir}proxima/ProximaNova-RegularIt_gdi.woff') format('woff'),
+	url('#{$fdir}proxima/ProximaNova-RegularIt_gdi.ttf') format('truetype'),
+	url('#{$fdir}proxima/ProximaNova-RegularIt_gdi.svg#ProximaNova-RegularIt') format('svg');
+	font-weight   : 400;
+	font-style    : italic;
+	font-stretch  : normal;
+	unicode-range : U+0020-2666;
+}
+
+// Semi Bold
+$ProximaNova-Semibold: 'ProximaNova-Semibold';
+@font-face {
+	font-family : $ProximaNova-Semibold;
+	src         : url('#{$fdir}proxima/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),
+	url('#{$fdir}proxima/ProximaNova-Semibold.otf') format('opentype'),
+	url('#{$fdir}proxima/ProximaNova-Semibold.woff') format('woff'),
+	url('#{$fdir}proxima/ProximaNova-Semibold.ttf') format('truetype'),
+	url('#{$fdir}proxima/ProximaNova-Semibold.svg#ProximaNova-Semibold') format('svg');
+	font-weight : normal;
+	font-style  : normal;
+}
+
+// Bold
+$ProximaNova-Bold: 'ProximaNova-Bold';
+@font-face {
+	font-family   : $ProximaNova-Bold;
+	src           : url('#{$fdir}proxima/ProximaNova-Bold_gdi.eot');
+	src           : url('#{$fdir}proxima/ProximaNova-Bold_gdi.eot?#iefix') format('embedded-opentype'),
+	url('#{$fdir}proxima/ProximaNova-Bold_gdi.woff') format('woff'),
+	url('#{$fdir}proxima/ProximaNova-Bold_gdi.ttf') format('truetype'),
+	url('#{$fdir}proxima/ProximaNova-Bold_gdi.svg#ProximaNova-Bold') format('svg');
+	font-weight   : 700;
+	font-style    : normal;
+	font-stretch  : normal;
+	unicode-range : U+0020-2666;
+}
+
+// Extra Bold
+$ProximaNova-Extrabld: 'ProximaNova-Extrabld';
+@font-face {
+	font-family : $ProximaNova-Extrabld;
+	src         : url('#{$fdir}proxima/ProximaNova-Extrabld.eot?#iefix') format('embedded-opentype'),
+	url('#{$fdir}proxima/ProximaNova-Extrabld.woff') format('woff'),
+	url('#{$fdir}proxima/ProximaNova-Extrabld.ttf') format('truetype'),
+	url('#{$fdir}proxima/ProximaNova-Extrabld.svg#ProximaNova-Extrabld') format('svg');
+	font-weight : normal;
+	font-style  : normal;
+}

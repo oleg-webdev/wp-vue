@@ -35,11 +35,11 @@ function aa_func_20161027071039()
  * ==================== WP Check Authentification ======================
  * 17.11.2016
  */
-add_action('admin_init', 'aa_func_20165217065225');
+add_action( 'admin_init', 'aa_func_20165217065225' );
 function aa_func_20165217065225()
 {
 	global $_am;
-	if($_am[ 'disable-regular-wplogin' ] === 'yes') {
+	if ( $_am[ 'disable-regular-wplogin' ] === 'yes' ) {
 		remove_action( 'admin_enqueue_scripts', 'wp_auth_check_load' );
 	}
 }
@@ -50,7 +50,12 @@ function aa_func_20165217065225()
  */
 add_theme_support( 'post-thumbnails' );
 add_filter( 'widget_text', 'do_shortcode' );
+
 add_theme_support( 'woocommerce' );
+//add_theme_support( 'wc-product-gallery-zoom' );
+//add_theme_support( 'wc-product-gallery-lightbox' );
+//add_theme_support( 'wc-product-gallery-slider' );
+
 //add_filter( 'automatic_updater_disabled', '__return_true' );
 
 if ( ! current_user_can( 'manage_options' ) ) {
@@ -70,8 +75,8 @@ function custom_revisions_number( $num, $post )
  *
  * @param $sizes
  */
-add_filter('intermediate_image_sizes_advanced', 'aa_func_20162612122629', 10, 1);
-function aa_func_20162612122629($sizes)
+add_filter( 'intermediate_image_sizes_advanced', 'aa_func_20162612122629', 10, 1 );
+function aa_func_20162612122629( $sizes )
 {
 	//	unset( $sizes[ 'thumbnail' ] );
 	unset( $sizes[ 'medium' ] );
@@ -137,11 +142,12 @@ function aa_func_20163901013945()
 		}
 	}
 }
+
 /**
  * ==================== Page Custom Script ======================
  * 16.10.2016
  */
-add_action('wp_footer', 'aa_func_20164416084407', 99);
+add_action( 'wp_footer', 'aa_func_20164416084407', 99 );
 function aa_func_20164416084407()
 {
 	$post_id = get_the_ID();
@@ -180,12 +186,11 @@ function aa_func_20164902064936()
 	);
 }
 
-
 if ( ! function_exists( 'func_20160802070842' ) ) {
 	function func_20160802070842()
 	{
 		$box_id       = "networks-endpoints-id";
-		$net_endpoint = get_am_network_endpoint()."#";
+		$net_endpoint = get_am_network_endpoint() . "#";
 		?>
 		<div id="<?php echo $box_id ?>" class="posttypediv">
 			<div id="tabs-panel-wishlist-login" class="tabs-panel tabs-panel-active">
@@ -216,41 +221,40 @@ if ( ! function_exists( 'func_20160802070842' ) ) {
 	}
 }
 
-
 /**
  * ==================== Page Options ======================
  * 12.11.2016
  */
-add_action('aa_page_loop_start', 'aa_func_20163812013800', 10);
+add_action( 'aa_page_loop_start', 'aa_func_20163812013800', 10 );
 function aa_func_20163812013800()
 {
 	// define( 'WPCF7_AUTOP', false ); add this to wp-config
 
-	if(get_field('remove_autoformat', get_the_ID())) {
+	if ( get_field( 'remove_autoformat', get_the_ID() ) ) {
 		remove_filter( 'the_content', 'wpautop' );
 		remove_filter( 'the_excerpt', 'wpautop' );
 	}
 }
 
-add_filter('comment_form_fields', 'aa_func_20165127075134', 10, 1);
-function aa_func_20165127075134($fields)
+add_filter( 'comment_form_fields', 'aa_func_20165127075134', 10, 1 );
+function aa_func_20165127075134( $fields )
 {
-	$comment_field = $fields['comment'];
-	unset( $fields['comment'] );
-	$fields['comment'] = $comment_field;
+	$comment_field = $fields[ 'comment' ];
+	unset( $fields[ 'comment' ] );
+	$fields[ 'comment' ] = $comment_field;
+
 	return $fields;
 }
 
-add_filter('comment_form_default_fields', 'aa_func_20165727075708', 10, 1);
-function aa_func_20165727075708($fields)
+add_filter( 'comment_form_default_fields', 'aa_func_20165727075708', 10, 1 );
+function aa_func_20165727075708( $fields )
 {
-	$fields['url'] = null;
+	$fields[ 'url' ] = null;
+
 	return $fields;
 }
 
-remove_action('comment_form', 'wp_comment_form_unfiltered_html_nonce');
-
-
+remove_action( 'comment_form', 'wp_comment_form_unfiltered_html_nonce' );
 
 /**
  * ==================== Featured Image for page ======================
@@ -259,15 +263,15 @@ remove_action('comment_form', 'wp_comment_form_unfiltered_html_nonce');
 //add_action( 'aa_page_loop_start', 'aa_func_20174614064631', 10, 1 );
 function aa_func_20174614064631( $id )
 {
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
-	$_height = $image[2];
-	$style = "min-height: {$_height}px;";
-	$subtitle = get_field('page_subtitle', $id);
+	$image    = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+	$_height  = $image[ 2 ];
+	$subtitle = get_field( 'page_subtitle', $id );
 
 	?>
 	<div class="row regular-page-banner">
-		<header class='image-overlap' style='<?php echo $style ?>'>
-			<?php if($image) echo "<img id='toppage-image' src='{$image[0]}'>";  ?>
+		<header class='image-overlap'>
+			<?php if ( $image )
+				echo "<img id='toppage-image' src='{$image[0]}'>"; ?>
 			<div class="inner-elems">
 				<div class="ghostly-wrap flex-container">
 					<div class="flex-col-100 title-column">
@@ -278,4 +282,37 @@ function aa_func_20174614064631( $id )
 		</header>
 	</div>
 	<?php
+}
+
+// ============= Show_bottom_arrow =============
+if ( ! function_exists( 'show_bottom_arrow' ) ) {
+	function show_bottom_arrow()
+	{
+		global $_am;
+
+		return (bool) $_am[ 'show-up-button-link' ];
+	}
+}
+
+add_action( 'AM_afterbody_start', 'aa_func_20173515073527' );
+function aa_func_20173515073527()
+{
+	if ( show_bottom_arrow() ) {
+		?>
+		<span id="document-start-point" style="position: absolute; top: 0; left: 0;"></span>
+		<?php
+	}
+}
+
+add_action( 'before_AM_wrap_ends', 'aa_func_20170715050728' );
+function aa_func_20170715050728()
+{
+	if ( show_bottom_arrow() ) {
+		?>
+		<a href="#document-start-point" id="trigger-top-button"
+			 class="onscroll-appearing" data-smoth-trigger>
+			<i class="material-icons">navigation</i>
+		</a>
+		<?php
+	}
 }

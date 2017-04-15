@@ -2,6 +2,19 @@ let domready = require('domready')
 let defaultAMscript = {
 	run: function() {
 
+		const IS_HOME     = document.body.classList.contains('home'),
+					_BODY       = document.body,
+					_TOP_OFFSET = document.documentElement.scrollTop || document.body.scrollTop;
+
+		_TOP_OFFSET > 150 ? _BODY.classList.add('scrolled-body'): _BODY.classList.remove('scrolled-body')
+
+		window.addEventListener('scroll', function(e) {
+			let _TOP_OFFSET = document.documentElement.scrollTop || document.body.scrollTop;
+
+			_TOP_OFFSET > 150 ? _BODY.classList.add('scrolled-body'): _BODY.classList.remove('scrolled-body')
+		});
+
+
 		window.requestAnimFrame = (function() {
 			return window.requestAnimationFrame ||
 				window.webkitRequestAnimationFrame ||
@@ -83,18 +96,17 @@ let defaultAMscript = {
 		};
 
 
-
 		// appHandler.style.opacity = 0;
 		domready(() => {
 
 			// invokeStepAppearing()
-
 			let hideElemsUntilDomLoaded = document.querySelectorAll('.hide-until-dom-loaded');
-			hideElemsUntilDomLoaded.forEach((el, index, array) => {
+			for (let i = hideElemsUntilDomLoaded.length; i--;) {
+				let _elem = hideElemsUntilDomLoaded[i]
 				setTimeout(() => {
-					el.classList.add('ready-to-interract')
+					_elem.classList.add('ready-to-interract')
 				}, 100)
-			})
+			}
 
 
 		});
@@ -126,6 +138,26 @@ let defaultAMscript = {
 			// 	});
 			//
 			// });
+
+
+			// Smoth scroll to position
+			// let triggers = document.querySelectorAll('[data-smoth-trigger]')
+			// if (triggers.length > 0 && typeof TweenMax !== 'undefined') {
+			// 	for (let i = triggers.length; i--;) {
+			// 		let _el = triggers[i]
+			// 		_el.addEventListener('click', function(e) {
+			// 			e.preventDefault()
+			// 			let _href = e.target.getAttribute('href')
+			// 			if (_href) {
+			// 				TweenMax.to(window, .5, {scrollTo: _href})
+			// 			} else {
+			// 				_href = e.target.parentElement.getAttribute('href')
+			// 				if (_href)
+			// 					TweenMax.to(window, .5, {scrollTo: _href})
+			// 			}
+			// 		});
+			// 	}
+			// }
 
 
 		});

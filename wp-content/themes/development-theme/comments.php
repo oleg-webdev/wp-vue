@@ -28,6 +28,11 @@ $arguments   = [
 	] )
 
 ];
-echo "<div class='mdl-grid'>";
-comment_form( $arguments );
-echo "</div>";
+
+
+$comments_open = comments_open( get_the_ID() );
+if ( $comments_open ) {
+	echo "<div class='mdl-grid'>";
+	comment_form( $arguments );
+	echo "</div>";
+}

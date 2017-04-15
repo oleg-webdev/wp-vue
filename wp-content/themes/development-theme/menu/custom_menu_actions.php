@@ -4,7 +4,7 @@
 if ( ! function_exists( 'render_mobile_menu' ) ) {
 	function render_mobile_menu()
 	{
-		$mob_menu     = wp_nav_menu( [
+		$mob_menu = wp_nav_menu( [
 			'menu_id'        => 'mobile-nav-menu',
 			'theme_location' => 'primary',
 			'echo'           => false,
@@ -31,8 +31,9 @@ add_action( 'admin_head', 'aa_func_20165429115424' );
 function aa_func_20165429115424()
 {
 	$screen = get_current_screen();
-	if ( $screen->id === 'nav-menus' )
+	if ( $screen && ( $screen->id === 'nav-menus' ) ) {
 		wp_enqueue_media();
+	}
 }
 
 // Change default admin menu screen
@@ -61,21 +62,6 @@ function aa_func_20165524105506( $classes, $item, $args )
 	}
 
 	return $classes;
-}
-
-/**
- * ==================== Frontend render ======================
- */
-add_filter( 'AMenu_start_elem', 'aa_func_20161009061036', 10, 1 );
-function aa_func_20161009061036( $item )
-{
-	// Skip Vue cart item
-	if(is_array($item->classes)) {
-		if ( ! in_array( 'vuecart-class', $item->classes ) && ! is_admin() ) {
-
-		}
-	}
-	return $item;
 }
 
 /**

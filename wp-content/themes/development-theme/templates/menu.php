@@ -39,7 +39,7 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 		</div>
 
 		<md-whiteframe md-elevation="3">
-			<div class="flex-container-nowrap padding-x-10">
+			<div class="flex-container-nowrap padding-x-10 mobile-nav-inner-handler">
 				<div class="flex-col-50">
 					<?php echo material_logo() ?>
 				</div>

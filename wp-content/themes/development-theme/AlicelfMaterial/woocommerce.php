@@ -69,14 +69,28 @@ add_filter( 'AMenu_end_elem', 'aa_func_20162112052129', 20, 1 );
 function aa_func_20162112052129( $item )
 {
 	$woo_options = __woo_options();
+	$returned_item = $item;
+
 	if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-		$cart_id     = $woo_options[ 'woocommerce_cart_page_id' ];
+		$cart_id = $woo_options[ 'woocommerce_cart_page_id' ];
+		$my_account  = $woo_options[ 'woocommerce_myaccount_page_id' ];
+
 		if ( $cart_id === $item->object_id && in_array( 'vuecart-class', $item->classes ) && ! is_admin() ) {
-			$item = null;
+			$returned_item = null;
 		}
+
+//		if ( $my_account === $item->object_id &&
+//		     in_array( 'vuemyaccount-class', $item->classes ) && ! is_admin() ) {
+//			$returned_item = null;
+//		}
+
 	}
 
-	return $item;
+//	if ( in_array( 'vuesearch-class', $item->classes ) && ! is_admin() ) {
+//		$returned_item = null;
+//	}
+
+	return $returned_item;
 }
 
 

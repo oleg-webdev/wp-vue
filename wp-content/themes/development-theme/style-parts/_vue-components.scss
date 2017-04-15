@@ -42,6 +42,7 @@
 .Flash--scope {
 	position : absolute;
 	right    : 0;
+	z-index: 5;
 
 	.flash-wrapper {
 		position : relative;

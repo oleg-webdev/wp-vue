@@ -2,8 +2,6 @@
 global $_am;
 ?>
 
-</div><!--.page-content END-->
-
 <footer id="am-footer">
 
 	<div class="am-wrap text-center">
@@ -12,6 +10,7 @@ global $_am;
 
 </footer>
 
+</div><!--.site-main-page-content END-->
 </main>
 <?php do_action('before_AM_wrap_ends') ?>
 </div><!--#am-appwrap END-->

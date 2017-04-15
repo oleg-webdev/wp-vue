@@ -1,3 +1,16 @@
+body:not(.scrolled-body) {
+	.onscroll-appearing {
+		display : none;
+		opacity : 0;
+	}
+}
+
+#trigger-top-button {
+	position : fixed;
+	right    : 20px;
+	bottom   : 20px;
+}
+
 #am-footer {
 
 }

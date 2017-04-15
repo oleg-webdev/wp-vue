@@ -1,35 +1,104 @@
 @include loadFont("style-parts/fonts/alicelf-font/");
 
+.am-wrap {
+	width : 100%;
+}
+
 body {
 	overflow-x : hidden;
-	&.am-sticky-header {
-		/*Desktop*/
-		@media (min-width : 952px) {
-			.mdl-layout__content {
-				padding-top : 64px;
-			}
 
-		}
-	}
 	&.lock-overflow {
 		overflow-y : hidden;
 	}
+
+	.mdl-layout__header,
+	#mobile-navigation-aside {
+		background-color : #fff;
+		li {
+			margin-top : 0;
+		}
+	}
+
+	.mdl-layout__header {
+
+		/*Desktop*/
+		@media (min-width : 952px) {
+			display   : flex;
+			flex-flow : row nowrap;
+		}
+	}
+
+	/**
+	 * ==================== Stick Navbar ======================
+	 */
+	&.am-sticky-header {
+
+		#mobile-navigation-aside {
+			width : 100%;
+		}
+
+		/*Desktop*/
+		#mobile-navigation-aside,
+		.mdl-layout__header {
+			position : fixed;
+			top      : 0;
+			z-index  : 3;
+		}
+	}
+
+	/**
+	 * ==================== Body with Admin Bar rules ======================
+	 */
+
 	&.admin-bar {
 		padding-top : 32px;
-		/*Tablet*/
-		@media (max-width : 951px) {
-			#mobile-navigation-aside .md-sidenav-content {
-				padding-top : 32px;
+
+		.md-sidenav-content {
+			padding-top : 32px;
+		}
+
+		/*WP-Mobile*/
+		@media (max-width : 782px) {
+			padding-top : 45px;
+			.md-sidenav-content {
+				padding-top : 40px;
 			}
 		}
-		@media (max-width : 782px) {
-			padding-top : 46px;
-			#mobile-navigation-aside .md-sidenav-content {
-				padding-top : 46px;
+
+		#mobile-navigation-aside {
+			width : 100%;
+		}
+
+		&.am-sticky-header {
+			.mdl-layout__header,
+			#mobile-navigation-aside {
+				padding-top : 32px;
+
+				/*WP-Admin Mobile*/
+				@media (max-width : 782px) {
+					padding-top : 45px;
+				}
+
+				@media (max-width : 600px) {
+					padding-top : 0;
+
+					.mobile-nav-inner-handler {
+						padding-top : 50px;
+					}
+				}
+
 			}
 		}
 	}
 }
+
+/**
+ * ==================== Main Offset ======================
+ */
+main {
+
+}
+
 
 a {
 	color : $cloudy;
@@ -147,18 +216,6 @@ a {
 	}
 }
 
-.mdl-layout__header {
-	background-color : #fff;
-	&:not(.mdl-layout__header--scroll) {
-		position : fixed;
-		top      : 0;
-	}
-	/*Desktop*/
-	@media (min-width : 952px) {
-		display : flex;
-	}
-}
-
 .mdl-layout__header-row {
 	height  : auto;
 	padding : 0;
@@ -169,8 +226,10 @@ a {
 		}
 	}
 	.mdl-navigation__link {
-		opacity : 1;
-		color   : $textColor;
+		opacity    : 1;
+		color      : $textColor;
+		margin-top : 0;
+
 		a {
 			text-decoration : none;
 		}

@@ -14,7 +14,7 @@ $theme    = wp_get_theme();
 $subtheme = get_bloginfo( 'name' );
 $imgdir   = get_template_directory_uri() . '/img/';
 
-$args = array(
+$args = [
 	// TYPICAL -> Change these values as you need/desire
 	'opt_name'        => $opt_name,
 	// This is where your data is stored in the database and also becomes your global variable name.
@@ -33,7 +33,7 @@ $args = array(
 	'page_priority'   => 61,
 	'global_variable' => '_am',
 	'dev_mode'        => false,
-);
+];
 
 add_action( "redux/loaded", "aa_disable_redux_developer_notice" );
 add_action( "redux/extensions/before", "aa_disable_redux_developer_notice" );
@@ -72,11 +72,11 @@ $section = [
 			//'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
 			'desc'     => __( 'Basic media uploader with disabled URL input field.', 'alicelf-material' ),
 			'subtitle' => __( 'Upload any media using the WordPress native uploader', 'alicelf-material' ),
-			'default'  => array( 'url' => $imgdir . 'site-logo.png' ),
-			//'hint'      => array(
-			//    'title'     => 'Hint Title',
-			//    'content'   => 'This is a <b>hint</b> for the media field with a Title.',
-			//)
+			'default'  => [ 'url' => $imgdir . 'site-logo.png' ],
+//			'hint'      => [
+//				'title'     => 'Hint Title',
+//				'content'   => 'This is a <b>hint</b> for the media field with a Title.',
+//			]
 		],
 		[
 			'id'       => 'opt-favicon',
@@ -153,7 +153,7 @@ $section = [
 			'default'  => '#FFFFFF',
 			'validate' => 'color',
 		],
-		
+
 	]
 ];
 Redux::setSection( $opt_name, $section );
@@ -662,13 +662,13 @@ $section = array(
 );
 Redux::setSection( $opt_name, $section );
 
-$section = array(
+$section = [
 	'title'  => 'Content Snippets',
 	'id'     => 'content-snippets',
 	'desc'   => '',
 	'icon'   => 'el el-folder-open',
-	'fields' => array(
-		array(
+	'fields' => [
+		[
 			'id'       => 'opt-snippet-html',
 			'type'     => 'ace_editor',
 			'mode'     => 'html',
@@ -676,11 +676,11 @@ $section = array(
 			'subtitle' => __( 'usage in content [opt_snippet_html]', 'alicelf-material' ),
 			'desc'     => __( 'Keep here most repeating custom html', 'alicelf-material' ),
 //			'msg'      => 'custom error message',
-			'options'  => array(
+			'options'  => [
 				'minLines' => 10
-			),
-		),
-		array(
+			],
+		],
+		[
 			'id'       => 'opt-snippet-css',
 			'type'     => 'ace_editor',
 			'mode'     => 'css',
@@ -688,11 +688,11 @@ $section = array(
 			'subtitle' => __( 'Quick Css', 'alicelf-material' ),
 			'desc'     => __( 'If you need quickly add some ajustments', 'alicelf-material' ),
 //			'msg'      => 'custom error message',
-			'options'  => array(
+			'options'  => [
 				'minLines' => 10
-			),
-		),
-		array(
+			],
+		],
+		[
 			'id'       => 'opt-snippet-js',
 			'type'     => 'ace_editor',
 			'mode'     => 'javascript',
@@ -700,12 +700,12 @@ $section = array(
 			'subtitle' => __( 'Your custom JavaScript code', 'alicelf-material' ),
 			'desc'     => __( 'Put here your Google Analytics, facebook roots etc.', 'alicelf-material' ),
 //			'msg'      => 'custom error message',
-			'options'  => array(
+			'options'  => [
 				'minLines' => 10
-			),
-		),
-	)
-);
+			],
+		],
+	]
+];
 
 Redux::setSection( $opt_name, $section );
 
@@ -715,12 +715,7 @@ $section = [
 	'desc'   => '',
 	'icon'   => 'el el-return-key',
 	'fields' => [
-		[
-			'id'      => 'footer-followus-component',
-			'type'    => 'switch',
-			'title'   => __( 'Display follow Us', 'alicelf-material' ),
-			'default' => false,
-		],
+
 		[
 			'id'       => 'opt-company-copyright',
 			'type'     => 'editor',
@@ -732,21 +727,29 @@ $section = [
 				'teeny'         => true,
 				'media_buttons' => false,
 			]
-		]
+		],
+
+		[
+			'id'      => 'show-up-button-link',
+			'type'    => 'switch',
+			'title'   => __( 'Display bottom arrow', 'alicelf-material' ),
+			'default' => false,
+		],
+
 	]
 ];
 Redux::setSection( $opt_name, $section );
 
-$tabs = array(
-	array(
+$tabs = [
+	[
 		'id'      => 'alice-theme-infotab',
 		'title'   => 'Theme Information',
 		'content' => "Description"
-	),
-	array(
+	],
+	[
 		'id'      => 'theme-acitons',
 		'title'   => 'Theme Actions',
 		'content' => file_get_contents( dirname( __FILE__ ) . '/theme-actions.php' )
-	)
-);
+	]
+];
 Redux::setHelpTab( $opt_name, $tabs );

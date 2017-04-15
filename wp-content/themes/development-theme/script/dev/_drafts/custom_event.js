@@ -1,4 +1,4 @@
-var evt = new CustomEvent('somecustomevent', { detail: 'message' });
+let evt = new CustomEvent('somecustomevent', { detail: 'message' });
 window.dispatchEvent(evt);
 
 window.addEventListener('somecustomevent', function (e) {
