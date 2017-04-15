@@ -74,7 +74,9 @@ function aa_func_20163119123146()
 	// Styles
 	wp_enqueue_style( 'animate-css', $bowersrc . 'animate.css/animate.min.css' );
 
-//	wp_enqueue_style( 'bootstrap3-style', $bowersrc . 'bootstrap/dist/css/bootstrap.min.css' );
+	// bower install bootstrap#v4.0.0-alpha.6
+	// wp_enqueue_style( 'bootstrap-style', $bowersrc . 'bootstrap/dist/css/bootstrap.min.css' );
+
 	wp_enqueue_style( 'template-base-styles', get_bloginfo( 'stylesheet_url' ) );
 
 	// Theme jQuery
