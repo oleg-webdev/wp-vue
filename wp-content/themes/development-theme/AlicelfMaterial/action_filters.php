@@ -51,10 +51,18 @@ function aa_func_20165217065225()
 add_theme_support( 'post-thumbnails' );
 add_filter( 'widget_text', 'do_shortcode' );
 
+/**
+ * ==================== WOOcommerce ======================
+ */
 add_theme_support( 'woocommerce' );
 //add_theme_support( 'wc-product-gallery-zoom' );
 //add_theme_support( 'wc-product-gallery-lightbox' );
 //add_theme_support( 'wc-product-gallery-slider' );
+//add_filter( 'woocommerce_ajax_variation_threshold', 'aa_func_20173416083401', 10, 2 );
+//function aa_func_20173416083401( $qty, $product )
+//{
+//	return 60;
+//}
 
 //add_filter( 'automatic_updater_disabled', '__return_true' );
 

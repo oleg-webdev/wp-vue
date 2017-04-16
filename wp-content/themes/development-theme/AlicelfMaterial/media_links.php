@@ -1,33 +1,51 @@
 <?php
 /**
  * ==================== Frontend Scripts ======================
- * 22.09.2016
+ * Table of contents (external libs):
+ * jQuery
+ * vue
+ * vue-material
+ * Slick slider
+ * Font Awesome
+ * Lightbox
+ * Custom scrollbar
+ * Cropper
+ * Scrollmagic
+ * Tweenmax (gsap)
+ * Google MDL
+ * MDL Icons
+ * Animate CSS
  */
+
 add_action( 'wp_enqueue_scripts', 'aa_func_20163119123146' );
 function aa_func_20163119123146()
 {
 
 	$template_path = get_stylesheet_directory_uri();
 	$bowersrc      = $template_path . '/bower_components/';
-	$node_modules  = $template_path . '/node_modules/';
 	$production    = WP_DEBUG === false ? '.min' : null;
 
 	// Slick slider | bower install slick-carousel --save
 	// wp_enqueue_style( 'slick-style', $bowersrc . 'slick-carousel/slick/slick.css' );
-	// wp_enqueue_script( 'slick-script', $bowersrc . 'slick-carousel/slick/slick.min.js', [ 'jquery-script' ], false, true );
+	// wp_enqueue_script( 'slick-script', $bowersrc . 'slick-carousel/slick/slick.min.js', [ 'jquery' ], false, true );
 
 	// Font Awesome | bower install components-font-awesome --save
 	// wp_enqueue_style( 'font-awesome-styles', $bowersrc . 'components-font-awesome/css/font-awesome.min.css' );
 
 	// Lightbox | bower install lightbox2 --save
 	// wp_enqueue_style( 'lightbox-css', $bowersrc . 'lightbox2/dist/css/lightbox.min.css' );
-	// wp_enqueue_script( 'lightbox-js', $bowersrc . 'lightbox2/dist/js/lightbox.min.js', [ 'jquery-script' ], false, true );
+	// wp_enqueue_script( 'lightbox-js', $bowersrc . 'lightbox2/dist/js/lightbox.min.js', [ 'jquery' ], false, true );
 
 	// Custom Scrollbar | bower install malihu-custom-scrollbar-plugin --save
 	// wp_enqueue_style( 'scroll-style',
 	//		$bowersrc . 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' );
 	// wp_enqueue_script( 'scroll-script',
-	//		$bowersrc . 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js', ['jquery-script'], false, true );
+	//		$bowersrc . 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js', ['jquery'], false, true );
+
+	// if ( is_amuserpage() ) {}
+	// bower install cropper --save
+	// wp_enqueue_style( 'cropperstyle', $bowersrc . 'cropper/dist/cropper.min.css' );
+	// wp_enqueue_script( 'cropperscript', $bowersrc . 'cropper/dist/cropper.min.js', [ 'jquery' ], false, true );
 
 	/**
 	 * ==================== Scrollmagic ======================
@@ -37,33 +55,33 @@ function aa_func_20163119123146()
 //	if( $production ) {
 //		// TweenMax animation
 //		wp_enqueue_script( 'tween-max',
-//			$bowersrc."gsap/src/minified/TweenMax.min.js", ['jquery-script'], false, true );
+//			$bowersrc."gsap/src/minified/TweenMax.min.js", ['jquery'], false, true );
 //		// ScrollToPlugin
 //		wp_enqueue_script( 'scrollto-plugin',
 //			$bowersrc."gsap/src/minified/plugins/ScrollToPlugin.min.js",
 //			['tween-max'], false, true );
 //
 //		wp_enqueue_script( 'scrollmagic-script',
-//			$bowersrc . 'scrollmagic/scrollmagic/minified/ScrollMagic.min.js', ['jquery-script'], false, true );
+//			$bowersrc . 'scrollmagic/scrollmagic/minified/ScrollMagic.min.js', ['jquery'], false, true );
 //		wp_enqueue_script( 'scrollmagic-animations',
-//			$bowersrc . 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js', ['jquery-script'], false, true );
+//			$bowersrc . 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js', ['jquery'], false, true );
 //
 //	} else {
 //		// TweenMax animation
 //		wp_enqueue_script( 'tween-max',
-//			$bowersrc."gsap/src/uncompressed/TweenMax.js", ['jquery-script'], false, true );
+//			$bowersrc."gsap/src/uncompressed/TweenMax.js", ['jquery'], false, true );
 //		// ScrollToPlugin
 //		wp_enqueue_script( 'scrollto-plugin',
 //			$bowersrc."gsap/src/uncompressed/plugins/ScrollToPlugin.js",
 //			['tween-max'], false, true );
 //
 //		wp_enqueue_script( 'scrollmagic-script',
-//			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js', ['jquery-script'], false, true );
+//			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js', ['jquery'], false, true );
 //		wp_enqueue_script( 'scrollmagic-animations',
-//			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js', ['jquery-script'], false, true );
+//			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js', ['jquery'], false, true );
 //		wp_enqueue_script( 'scrollmagic-indicators',
 //			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
-//			['jquery-script'], false, true );
+//			['jquery'], false, true );
 //	}
 
 	// MDL
@@ -80,21 +98,17 @@ function aa_func_20163119123146()
 	wp_enqueue_style( 'template-base-styles', get_bloginfo( 'stylesheet_url' ) );
 
 	// Theme jQuery
-	wp_enqueue_script( 'jquery-script', $bowersrc . 'jquery/dist/jquery.min.js', [], false, true );
+	wp_deregister_script( 'jquery' );
+	wp_enqueue_script( 'jquery', $bowersrc . 'jquery/dist/jquery.min.js', [], false, true );
 
 	// Vue-material
 	wp_enqueue_style( 'vue-material-style', $template_path . '/vue-material/dist/vue-material.css' );
 	// Vue lib
 	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$production}.js", [], false, true );
 
-	if ( is_amuserpage() ) {
-//		wp_enqueue_style( 'cropperstyle', $bowersrc . 'cropper/dist/cropper.min.css' );
-//		wp_enqueue_script( 'cropperscript', $bowersrc . 'cropper/dist/cropper.min.js', [ 'jquery-script' ], false, true );
-	}
-
 	// Application JS
 	wp_enqueue_script( 'AMscript', $template_path . "/script/prod/build{$production}.js", [
-		'jquery-script',
+		'jquery',
 		'vue-script'
 	], false, true );
 

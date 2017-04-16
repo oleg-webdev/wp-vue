@@ -40,13 +40,9 @@ if ( ! function_exists( 'aa_img' ) ) {
 	}
 }
 
-/**
- * ==================== Slider ======================
- * Slick slider shortcode
- */
 if ( ! function_exists( 'get_theme_slider' ) ) {
 	add_shortcode( 'get_theme_slider', 'get_theme_slider' );
-	function get_theme_slider( $atts )
+	function get_theme_slider()
 	{
 		ob_start();
 
@@ -61,39 +57,32 @@ if ( ! function_exists( 'get_theme_slider' ) ) {
 				$transition = 'slider-slide';
 		}
 
-		do_action( 'aa_theme_carousel_process', $transition );
+		?>
+		<div class="head-banner clearfix">
+			<div class="slick-banner" data-amqueried-transition="<?php echo $transition ?>">
+				<?php
+				foreach ( $_am[ 'opt-slides' ] as $slide ) {
+					?>
+					<div>
+						<div class="animated-inner-content">
+							<hgroup
+								data-animation="fadeInLeft" data-animation-out="fadeOutRight" data-delay="0.5s">
+								<h1><?php echo $slide[ 'title' ] ?></h1>
+								<h2><?php echo $slide[ 'description' ] ?></h2>
+								<?php if(!empty($slide[ 'url' ])) echo $slide[ 'url' ] ?>
+							</hgroup>
+						</div>
+						<img class="mainbg" src="<?php echo $slide[ 'image' ] ?>" alt="<?php echo $slide[ 'title' ] ?>">
+					</div>
+					<?php
+				}
+				?>
+			</div>
+			<i class="material-icons prevarrow slidernavs">keyboard_arrow_left</i>
+			<i class="material-icons nextarrow slidernavs">keyboard_arrow_right</i>
+		</div>
+		<?php
 
 		return ob_get_clean();
 	}
-}
-
-add_action( 'aa_theme_carousel_process', 'aa_func_20154807014848', 10, 1 );
-function aa_func_20154807014848( $transition )
-{
-	global $_am;
-	?>
-	<div class="head-banner clearfix">
-		<div class="slick-banner" data-amqueried-transition="<?php echo $transition ?>">
-			<?php
-			foreach ( $_am[ 'opt-slides' ] as $slide ) {
-				?>
-				<div>
-					<div class="animated-inner-content">
-						<hgroup
-							data-animation="fadeInLeft" data-animation-out="fadeOutRight" data-delay="0.5s">
-							<h1><?php echo $slide[ 'title' ] ?></h1>
-							<h2><?php echo $slide[ 'description' ] ?></h2>
-							<?php if(!empty($slide[ 'url' ])) echo $slide[ 'url' ] ?>
-						</hgroup>
-					</div>
-					<img class="mainbg" src="<?php echo $slide[ 'image' ] ?>" alt="<?php echo $slide[ 'title' ] ?>">
-				</div>
-				<?php
-			}
-			?>
-		</div>
-		<i class="material-icons prevarrow slidernavs">keyboard_arrow_left</i>
-		<i class="material-icons nextarrow slidernavs">keyboard_arrow_right</i>
-	</div>
-	<?php
 }
