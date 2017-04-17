@@ -271,19 +271,16 @@ remove_action( 'comment_form', 'wp_comment_form_unfiltered_html_nonce' );
 //add_action( 'aa_page_loop_start', 'aa_func_20174614064631', 10, 1 );
 function aa_func_20174614064631( $id )
 {
-	$image    = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
-	$_height  = $image[ 2 ];
-	$subtitle = get_field( 'page_subtitle', $id );
-
+	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $id ), 'full' );
+	$subtitle = get_field('page_subtitle', $id);
 	?>
-	<div class="row regular-page-banner">
-		<header class='image-overlap'>
-			<?php if ( $image )
-				echo "<img id='toppage-image' src='{$image[0]}'>"; ?>
+	<div class="regular-page-banner">
+		<header class='image-overlap relative-container'>
+			<?php if($image) echo "<img id='toppage-image' src='{$image[0]}'>";  ?>
 			<div class="inner-elems">
-				<div class="ghostly-wrap flex-container">
+				<div class="am-wrap flex-container">
 					<div class="flex-col-100 title-column">
-						<?php echo $subtitle ?>
+						<h1><?php echo $subtitle ?></h1>
 					</div>
 				</div>
 			</div>
