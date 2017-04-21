@@ -64,13 +64,21 @@ jQuery(document).ready(function ($){
 		input.css({
 			display: 'none'
 		});
+
 		for (var key in sidebars) {
 			var sidebar = sidebars[key],
-				selected = key === input.val() ? 'selected':"";
+					selected = key === input.val() ? 'selected':"";
 			selectHtml += "<option value='"+key+"' "+selected+">"+sidebar.name+"</option>";
+
+			if(input.val().length === 0) {
+				input.val(sidebar.name)
+			}
+
 		}
+
 		selectHtml += "</select>";
 		sidebarHandler.append(selectHtml);
+
 	};
 
 	if(sidebarHandler.length > 0) {
