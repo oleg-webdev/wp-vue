@@ -1,5 +1,26 @@
 <?php
 require "menu/AMenu.php";
+
+/**
+ * ==================== Convert tables to utf8_unicode_ci ======================
+ */
+//add_action('admin_notices', 'aa_func_20172223122244');
+function aa_func_20172223122244()
+{
+	global $wpdb;
+	$set_encoding = "utf8_unicode_ci";
+	$tables       = $wpdb->get_results( "SHOW TABLES" );
+	$method       = "Tables_in_" . $wpdb->dbname;
+	$messages     = "<div class='updated notice notice-success'><br>";
+	foreach ( $tables as $table ) {
+		$wpdb->query( "ALTER TABLE {$table->$method} DEFAULT CHARACTER SET utf8 COLLATE {$set_encoding};" );
+		$wpdb->query( "ALTER TABLE {$table->$method} CONVERT TO CHARACTER SET utf8 COLLATE {$set_encoding};" );
+		$messages .= "Table " . $table->$method . " has been converted to {$set_encoding}<br>";
+	}
+	$messages .= "<hr>Conversion complete. <br><br></div>";
+	echo $messages;
+}
+
 /**
  * ==================== Styles / Scripts ======================
  */

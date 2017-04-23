@@ -1,7 +1,7 @@
 <header>
 	<div class="row">
 		<div class="col-12 col-md-4">
-			<a href="<?php site_url() ?>">
+			<a href="<?php echo get_site_url() ?>">
 				<?php bloginfo( 'name' ) ?>
 			</a>
 		</div>

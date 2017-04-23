@@ -1,5 +1,60 @@
 <?php
 
+if ( ! function_exists( 'build_menu_tree' ) ) {
+	/**
+	 * @param array $elements
+	 * @param int $parentId
+	 *
+	 * @return array
+	 */
+	function build_menu_tree( array &$elements, $parentId = 0 )
+	{
+		$branch = [];
+		foreach ( $elements as &$element ) {
+			if ( $element->menu_item_parent == $parentId ) {
+				$children = build_menu_tree( $elements, $element->ID );
+				if ( $children )
+					$element->wpse_children = $children;
+
+				// $branch[ $element->ID ] = $element;
+				$branch[ $element->ID ] = [
+					'db_id'            => $element->db_id,
+					'menu_item_parent' => $element->menu_item_parent,
+					'object_id'        => $element->object_id,
+					'type'             => $element->type,
+					'type_label'       => $element->type_label,
+					'title'            => $element->title,
+					'url'              => $element->url,
+					'target'           => $element->target,
+					'attr_title'       => $element->attr_title,
+					'description'      => $element->description,
+					'classes'          => $element->classes,
+					'wpse_children'    => $element->wpse_children,
+				];
+				unset( $element );
+			}
+		}
+
+		return $branch;
+	}
+}
+
+if ( ! function_exists( 'menu_items_to_tree' ) ) {
+	/**
+	 * @param $menu_id
+	 * $mob_menu = menu_items_to_tree( 'Mobile Navigation' );
+	 * $mob_menu = json_encode( $mob_menu, JSON_UNESCAPED_SLASHES );
+	 *
+	 * @return array|null
+	 */
+	function menu_items_to_tree( $menu_id )
+	{
+		$items = wp_get_nav_menu_items( $menu_id );
+
+		return $items ? build_menu_tree( $items, 0 ) : null;
+	}
+}
+
 // ============= Render_mobile_menu =============
 if ( ! function_exists( 'render_mobile_menu' ) ) {
 	function render_mobile_menu()
