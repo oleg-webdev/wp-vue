@@ -18,6 +18,8 @@
     "vue": "^2.2.4",
     "animate.css": "^3.5.2",
     "jquery": "^3.1.1",
-    "scrollmagic": "^2.0.5"
+    "scrollmagic": "^2.0.5",
+    "bootstrap": "v4.0.0-alpha.6",
+    "gsap": "^1.19.1"
   }
 }

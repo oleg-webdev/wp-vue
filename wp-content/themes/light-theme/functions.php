@@ -1,4 +1,5 @@
 <?php
+require "menu/AMenu.php";
 /**
  * ==================== Styles / Scripts ======================
  */
@@ -7,7 +8,6 @@ function aa_func_20170617070618()
 {
 	$template_path = get_stylesheet_directory_uri();
 	$bowersrc      = $template_path . '/bower_components/';
-	$node_modules  = $template_path . '/node_modules/';
 	$production    = WP_DEBUG === false ? '.min' : null;
 
 	// Slick slider | bower install slick-carousel --save
@@ -16,6 +16,9 @@ function aa_func_20170617070618()
 
 	// Font Awesome | bower install components-font-awesome --save
 	// wp_enqueue_style( 'font-awesome-styles', $bowersrc . 'components-font-awesome/css/font-awesome.min.css' );
+
+	// bower install bootstrap#v4.0.0-alpha.6 --save
+	 wp_enqueue_style( 'bootstrap-style', $bowersrc . 'bootstrap/dist/css/bootstrap.min.css' );
 
 	// Lightbox | bower install lightbox2 --save
 	// wp_enqueue_style( 'lightbox-css', $bowersrc . 'lightbox2/dist/css/lightbox.min.css' );
@@ -30,23 +33,39 @@ function aa_func_20170617070618()
 	/**
 	 * ==================== Scrollmagic ======================
 	 * bower install scrollmagic --save
+	 * bower install gsap --save
 	 */
-	wp_enqueue_script( 'tween-max',
-		"//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js", ['jquery'], false, true );
-	if( $production ) {
-		wp_enqueue_script( 'scrollmagic-script',
-			$bowersrc . 'scrollmagic/scrollmagic/minified/Scrollmagic.min.js', ['jquery'], false, true );
-		wp_enqueue_script( 'scrollmagic-animations',
-			$bowersrc . 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js', ['jquery'], false, true );
-	} else {
-		wp_enqueue_script( 'scrollmagic-script',
-			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/Scrollmagic.js', ['jquery'], false, true );
-		wp_enqueue_script( 'scrollmagic-animations',
-			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js', ['jquery'], false, true );
-		wp_enqueue_script( 'scrollmagic-indicators',
-			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
-			['jquery'], false, true );
-	}
+//	if( $production ) {
+//		// TweenMax animation
+//		wp_enqueue_script( 'tween-max',
+//			$bowersrc."gsap/src/minified/TweenMax.min.js", ['jquery'], false, true );
+//		// ScrollToPlugin
+//		wp_enqueue_script( 'scrollto-plugin',
+//			$bowersrc."gsap/src/minified/plugins/ScrollToPlugin.min.js",
+//			['tween-max'], false, true );
+//
+//		wp_enqueue_script( 'scrollmagic-script',
+//			$bowersrc . 'scrollmagic/scrollmagic/minified/ScrollMagic.min.js', ['jquery'], false, true );
+//		wp_enqueue_script( 'scrollmagic-animations',
+//			$bowersrc . 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js', ['jquery'], false, true );
+//
+//	} else {
+//		// TweenMax animation
+//		wp_enqueue_script( 'tween-max',
+//			$bowersrc."gsap/src/uncompressed/TweenMax.js", ['jquery'], false, true );
+//		// ScrollToPlugin
+//		wp_enqueue_script( 'scrollto-plugin',
+//			$bowersrc."gsap/src/uncompressed/plugins/ScrollToPlugin.js",
+//			['tween-max'], false, true );
+//
+//		wp_enqueue_script( 'scrollmagic-script',
+//			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js', ['jquery'], false, true );
+//		wp_enqueue_script( 'scrollmagic-animations',
+//			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js', ['jquery'], false, true );
+//		wp_enqueue_script( 'scrollmagic-indicators',
+//			$bowersrc . 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
+//			['jquery'], false, true );
+//	}
 
 	wp_enqueue_style( 'google-material-icons', '//fonts.googleapis.com/icon?family=Material+Icons' );
 	wp_enqueue_style( 'animate-css', $bowersrc . 'animate.css/animate.min.css' );
@@ -76,6 +95,27 @@ function aa_func_20170617070618()
 	wp_localize_script( 'AMscript', 'AMdefaults', $data );
 
 }
+
+
+add_filter( 'comment_form_fields', 'aa_func_20165127075134', 10, 1 );
+function aa_func_20165127075134( $fields )
+{
+	$comment_field = $fields[ 'comment' ];
+	unset( $fields[ 'comment' ] );
+	$fields[ 'comment' ] = $comment_field;
+
+	return $fields;
+}
+
+add_filter( 'comment_form_default_fields', 'aa_func_20165727075708', 10, 1 );
+function aa_func_20165727075708( $fields )
+{
+	$fields[ 'url' ] = null;
+
+	return $fields;
+}
+
+remove_action( 'comment_form', 'wp_comment_form_unfiltered_html_nonce' );
 
 /**
  * Get Navigation
