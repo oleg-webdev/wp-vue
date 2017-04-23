@@ -6,7 +6,8 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 		'menu_title' => 'Theme Settings',
 		'menu_slug'  => 'theme-general-settings',
 		'capability' => 'edit_posts',
-		'redirect'   => false
+		'icon_url'   => 'dashicons-screenoptions',
+		'position'   => 61
 	] );
 
 	acf_add_options_sub_page( [
@@ -18,7 +19,7 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	acf_add_options_sub_page( [
 		'page_title'  => 'Theme Main Settings',
 		'menu_title'  => 'Main',
-		'parent_slug' => 'theme-main-settings',
+		'parent_slug' => 'theme-general-settings',
 	] );
 
 	acf_add_options_sub_page( [
