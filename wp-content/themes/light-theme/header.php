@@ -9,7 +9,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class( apply_filters( 'app-classes', 'container' ) ) ?>>
+<body <?php body_class() ?>>
 <?php do_action( 'AM_afterbody_start' ) ?>
-	<main id="am-main">
-	<?php include locate_template( 'menu/template-menu.php' ) ?>
+<main id="am-main" class="<?php echo apply_filters( 'app-wrapper-classes', null ) ?>">
+<?php include locate_template( 'menu/template-menu.php' ) ?>

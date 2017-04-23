@@ -1,10 +1,5 @@
 <?php
 
-register_nav_menus( [
-	'primary'     => 'Primary Navigation',
-	'footer_menu' => 'Footer menu',
-] );
-
 class AMenu extends Walker_Nav_Menu {
 
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
