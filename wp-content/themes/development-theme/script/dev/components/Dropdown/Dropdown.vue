@@ -76,6 +76,17 @@
 						$(this.elemContent).animate({height: this.originHeight}, this.speed, 'linear', () => {
 							$(this.elemContent).height('auto')
 							this.originHeight = this.elemContent.offsetHeight
+
+							// Ajust Position
+							// let bodyRect = document.body.getBoundingClientRect(),
+							// elem = this.$refs['dropdownscope'].getBoundingClientRect(),
+							// offset = (elem.top - bodyRect.top)
+
+							// Animated Scroll
+							// TweenMax.to(window, .5, { scrollTo: { y : offset, offsetY: 125 } })
+							// Native scroll
+							// window.scrollTo(0, ( offset - 150) )
+
 						})
 					}
 
