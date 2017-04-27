@@ -1,4 +1,20 @@
 <?php
+if ( ! function_exists( 'resort_mobile_menu' ) ) {
+	/**
+	 * @param $a
+	 * @param $b
+	 *
+	 * @return int
+	 */
+	function resort_mobile_menu( $a, $b )
+	{
+		if ( $a === $b )
+			return 0;
+
+		return ( $a[ 'menu_order' ] > $b[ 'menu_order' ] ) ? 1 : - 1;
+	}
+}
+
 
 if ( ! function_exists( 'build_menu_tree' ) ) {
 	/**
@@ -10,20 +26,28 @@ if ( ! function_exists( 'build_menu_tree' ) ) {
 	function build_menu_tree( array &$elements, $parentId = 0 )
 	{
 		$branch = [];
+
 		foreach ( $elements as &$element ) {
 			if ( $element->menu_item_parent == $parentId ) {
 				$children = build_menu_tree( $elements, $element->ID );
-				if ( $children )
+				usort( $children, 'resort_mobile_menu' );
+				if ( $children ) {
 					$element->wpse_children = $children;
+				}
 
 				// $branch[ $element->ID ] = $element;
+				$unescaped   = [ "'" ];
+				$safe_enti   = [ "&apos;" ];
+				$chunk_title = str_replace( $unescaped, $safe_enti, $element->title );
+
 				$branch[ $element->ID ] = [
+					'menu_order'       => $element->menu_order,
 					'db_id'            => $element->db_id,
 					'menu_item_parent' => $element->menu_item_parent,
 					'object_id'        => $element->object_id,
 					'type'             => $element->type,
 					'type_label'       => $element->type_label,
-					'title'            => $element->title,
+					'title'            => $chunk_title,
 					'url'              => $element->url,
 					'target'           => $element->target,
 					'attr_title'       => $element->attr_title,
@@ -39,11 +63,13 @@ if ( ! function_exists( 'build_menu_tree' ) ) {
 	}
 }
 
+
 if ( ! function_exists( 'menu_items_to_tree' ) ) {
 	/**
 	 * @param $menu_id
-	 * $mob_menu = menu_items_to_tree( 'Mobile Navigation' );
-	 * $mob_menu = json_encode( $mob_menu, JSON_UNESCAPED_SLASHES );
+	 *
+	 * Usage: $mob_menu = menu_items_to_tree( 'Mobile Navigation' );
+	 * For js $mob_menu = json_encode( $mob_menu, JSON_UNESCAPED_SLASHES );
 	 *
 	 * @return array|null
 	 */
@@ -51,12 +77,23 @@ if ( ! function_exists( 'menu_items_to_tree' ) ) {
 	{
 		$items = wp_get_nav_menu_items( $menu_id );
 
-		return $items ? build_menu_tree( $items, 0 ) : null;
+		if ( $items ) {
+			$prepare_menu = build_menu_tree( $items, 0 );
+			usort( $prepare_menu, 'resort_mobile_menu' );
+
+			return $prepare_menu;
+		}
+
+		return null;
+
 	}
 }
 
-// ============= Render_mobile_menu =============
+
 if ( ! function_exists( 'render_mobile_menu' ) ) {
+	/**
+	 * @return false|object|void
+	 */
 	function render_mobile_menu()
 	{
 		$mob_menu = wp_nav_menu( [
@@ -86,9 +123,8 @@ add_action( 'admin_head', 'aa_func_20165429115424' );
 function aa_func_20165429115424()
 {
 	$screen = get_current_screen();
-	if ( $screen && ( $screen->id === 'nav-menus' ) ) {
+	if ( $screen->id === 'nav-menus' )
 		wp_enqueue_media();
-	}
 }
 
 // Change default admin menu screen
@@ -120,9 +156,25 @@ function aa_func_20165524105506( $classes, $item, $args )
 }
 
 /**
+ * ==================== Frontend render ======================
+ */
+add_filter( 'AMenu_start_elem', 'aa_func_20161009061036', 10, 1 );
+function aa_func_20161009061036( $item )
+{
+	// Skip Vue cart item
+	if ( is_array( $item->classes ) ) {
+		if ( ! in_array( 'vuecart-class', $item->classes ) && ! is_admin() ) {
+
+		}
+	}
+
+	return $item;
+}
+
+/**
  * ==================== Backend ======================
  */
-add_action( 'admin__menu_item_before', 'aa_func_20160809080813', 10, 1 );
+//add_action( 'admin__menu_item_before', 'aa_func_20160809080813', 10, 1 );
 function aa_func_20160809080813( $item )
 {
 
