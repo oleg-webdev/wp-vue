@@ -1,4 +1,4 @@
-window.eventHub = new Vue()
+window.eventHub = require('./vuex/_events')
 window.Vuex = require('vuex')
 window.VueResource = require('vue-resource')
 
@@ -97,15 +97,9 @@ new Vue({
 
 	},
 
-	created: function() {
-		document.addEventListener("DOMContentLoaded", function(e) {
-			eventHub.$emit('domloaded', e);
-		});
-	},
+	created() {},
 
-	mounted() {
-
-	},
+	mounted() {},
 
 	/**
 	 * ==================== App Methods ======================

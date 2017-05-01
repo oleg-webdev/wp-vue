@@ -99,7 +99,6 @@ main {
 
 }
 
-
 a {
 	color : $cloudy;
 }
@@ -219,6 +218,11 @@ a {
 .mdl-layout__header-row {
 	height  : auto;
 	padding : 0;
+
+	.mdl-navigation {
+		justify-content : flex-end;
+	}
+
 	.menu-default-alicelf-menu-container {
 		a {
 			font           : normal 100 16px $baseFont;
@@ -226,9 +230,10 @@ a {
 		}
 	}
 	.mdl-navigation__link {
-		opacity    : 1;
-		color      : $textColor;
-		margin-top : 0;
+		opacity     : 1;
+		color       : $textColor;
+		margin-top  : 0;
+		line-height : 30px;
 
 		a {
 			text-decoration : none;
@@ -240,9 +245,11 @@ a {
 			position : relative;
 			&:after {
 				content      : "";
+				display      : block;
+				z-index      : 5;
 				position     : absolute;
 				right        : 10px;
-				bottom       : 20px;
+				bottom       : 15px;
 				border-top   : 4px solid #000;
 				border-left  : 4px solid transparent;
 				border-right : 4px solid transparent;
@@ -251,7 +258,7 @@ a {
 				padding          : 0;
 				position         : absolute;
 				left             : 0;
-				top              : 50px;
+				top              : 30px;
 				min-width        : 200px;
 				background-color : #fff;
 				box-shadow       : 0 1px 3px #ccc;
@@ -290,6 +297,7 @@ a {
 		transform : translateX(0px);
 	}
 	.mdl-navigation {
+
 		.mdl-navigation__link {
 			padding : 0;
 			&:hover {

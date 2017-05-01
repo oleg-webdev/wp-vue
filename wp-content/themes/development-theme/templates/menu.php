@@ -4,28 +4,35 @@ $header_class = $_am[ 'sticky-header' ] ? "mdl-layout__header"
 	: "mdl-layout__header mdl-layout__header--scroll";
 ?>
 <header class="<?php echo $header_class ?>">
-	<div class="mdl-layout__header-row am-wrap flex-container">
-		<span class="mdl-layout-title"><?php echo material_logo() ?></span>
-		<div class="mdl-layout-spacer"></div>
-		<?php
-		if ( has_nav_menu( 'primary' ) ) {
-			wp_nav_menu( [
-				'show_home'      => true,
-				'menu_class'     => 'mdl-navigation',
-				'theme_location' => 'primary',
-				'container'      => 'nav',
-				'walker'         => new AMenu()
-			] );
-		} else {
-			$menu_id = wp_create_nav_menu( "Default Theme Menu" );
-			wp_nav_menu( [
-				'show_home'  => true,
-				'menu_class' => 'mdl-navigation',
-				'container'  => 'nav',
-				'walker'     => new AMenu()
-			] );
-		}
-		?>
+
+	<!--Add/remove am-wrap for swicth full/boxed layout-->
+	<div class="mdl-layout__header-row am-wrap flex-container-nowrap">
+
+		<div class="flex-col-20 flex-col-phone-100">
+			<span class="mdl-layout-title"><?php echo material_logo() ?></span>
+		</div>
+		<div class="flex-col-80 flex-col-phone-100">
+			<?php
+			if ( has_nav_menu( 'primary' ) ) {
+				wp_nav_menu( [
+					'show_home'      => true,
+					'menu_class'     => 'mdl-navigation',
+					'theme_location' => 'primary',
+					'container'      => 'nav',
+					'walker'         => new AMenu()
+				] );
+			} else {
+				$menu_id = wp_create_nav_menu( "Default Theme Menu" );
+				wp_nav_menu( [
+					'show_home'  => true,
+					'menu_class' => 'mdl-navigation',
+					'container'  => 'nav',
+					'walker'     => new AMenu()
+				] );
+			}
+			?>
+		</div>
+
 	</div>
 </header>
 

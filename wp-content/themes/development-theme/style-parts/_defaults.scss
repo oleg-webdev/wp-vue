@@ -2,6 +2,14 @@ html,
 body {
 	height     : 100%;
 	min-height : 100%;
+
+	font-family : $baseFont;
+
+	h1, h2, h3, h4, h5, h6,
+	p, a, ul, ol, li, strong, b, span {
+		font-family : $baseFont;
+	}
+
 }
 
 #am-appwrap {

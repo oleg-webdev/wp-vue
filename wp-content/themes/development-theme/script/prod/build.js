@@ -12596,7 +12596,7 @@ module.exports = Vue.directive('amajax', {
 },{}],39:[function(require,module,exports){
 'use strict';
 
-window.eventHub = new Vue();
+window.eventHub = require('./vuex/_events');
 window.Vuex = require('vuex');
 window.VueResource = require('vue-resource');
 
@@ -12692,12 +12692,7 @@ new Vue({
 
 	},
 
-	created: function created() {
-		document.addEventListener("DOMContentLoaded", function (e) {
-			eventHub.$emit('domloaded', e);
-		});
-	},
-
+	created: function created() {},
 	mounted: function mounted() {},
 
 
@@ -12740,7 +12735,7 @@ new Vue({
 // let amThemeModal = require('./modules/modal')
 // amThemeModal.run()
 
-},{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Popover/Popover.vue":32,"./components/Popover/PopoverContent.vue":33,"./components/Popover/PopoverTrigger.vue":34,"./components/Profile/index.vue":35,"./components/Slider/index.vue":36,"./components/WooCart/index.vue":37,"./dirrectives/ajaxForms":38,"./routes":47,"./script":48,"./vuex/User":50,"vue-material":24,"vue-resource":25,"vuex":29}],40:[function(require,module,exports){
+},{"./components/Dropdown/Dropdown.vue":30,"./components/Flash/Flash.vue":31,"./components/Popover/Popover.vue":32,"./components/Popover/PopoverContent.vue":33,"./components/Popover/PopoverTrigger.vue":34,"./components/Profile/index.vue":35,"./components/Slider/index.vue":36,"./components/WooCart/index.vue":37,"./dirrectives/ajaxForms":38,"./routes":47,"./script":48,"./vuex/User":50,"./vuex/_events":51,"vue-material":24,"vue-resource":25,"vuex":29}],40:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -13376,6 +13371,17 @@ var defaultAMscript = {
 			for (var i = hideElemsUntilDomLoaded.length; i--;) {
 				_loop(i);
 			}
+
+			// Iframe height
+			var pageIframes = document.querySelectorAll('iframe');
+			if (pageIframes.length > 0) {
+				for (var i = pageIframes.length; i--;) {
+					var elem = pageIframes[i],
+					    elemHeight = elem.getAttribute('height');
+
+					if (elemHeight) elem.style.height = elemHeight + 'px';
+				}
+			}
 		});
 
 		/**
@@ -13477,6 +13483,24 @@ module.exports = new Vuex.Store({
 	created: function created() {
 		console.log(this.state.userdata);
 	}
+
+});
+
+},{}],51:[function(require,module,exports){
+"use strict";
+
+module.exports = new Vue({
+	created: function created() {
+		var vm = this;
+		// Dom ready to interract
+		document.addEventListener("DOMContentLoaded", function (e) {
+			vm.$emit('domloaded', e);
+		});
+	},
+
+
+	// Central simple events storage
+	methods: {}
 
 });
 

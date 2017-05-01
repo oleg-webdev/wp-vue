@@ -108,6 +108,18 @@ let defaultAMscript = {
 				}, 100)
 			}
 
+			// Iframe height
+			let pageIframes = document.querySelectorAll('iframe');
+			if (pageIframes.length > 0) {
+				for (let i = pageIframes.length; i--;) {
+					let elem       = pageIframes[i],
+							elemHeight = elem.getAttribute('height')
+
+					if (elemHeight) elem.style.height = `${elemHeight}px`
+
+				}
+			}
+
 
 		});
 
