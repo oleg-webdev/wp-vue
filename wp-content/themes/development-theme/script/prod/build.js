@@ -13384,32 +13384,41 @@ var defaultAMscript = {
 			}
 		});
 
+		var parallaxCanBeUsed = function parallaxCanBeUsed() {
+			return typeof TweenMax !== 'undefined';
+		};
+
 		/**
    * ==================== jQuery ======================
    * 26.12.2016
    */
 		jQuery(document).ready(function ($) {
 
-			// Parallax
-			// let $window = $(window),
-			// 		scrollTime = .7,
-			// 		scrollDistance = 200;
+			// Smooth scrolling
+			// if ( IS_HOME && parallaxCanBeUsed() ) {
+			// 	let $window        = $(window),
+			// 			scrollTime     = .37,
+			// 			scrollDistance = 250;
 			//
-			// $window.on("mousewheel DOMMouseScroll", function(event){
+			// 	$window.on("mousewheel DOMMouseScroll", function(event) {
 			//
-			// 	event.preventDefault();
+			// 		event.preventDefault();
 			//
-			// 	let delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
-			// 	let scrollTop = $window.scrollTop();
-			// 	let finalScroll = scrollTop - parseInt(delta*scrollDistance);
+			// 		let delta = event.originalEvent.wheelDelta / 120 || -event.originalEvent.detail / 3;
+			// 		let scrollTop = $window.scrollTop();
+			// 		let finalScroll = scrollTop - parseInt(delta * scrollDistance);
 			//
-			// 	TweenMax.to($window, scrollTime, {
-			// 		scrollTo : { y: finalScroll, autoKill:true },
-			// 		ease: Power1.easeOut,
-			// 		overwrite: 5
+			// 		TweenMax.to($window, scrollTime, {
+			// 			scrollTo : {
+			// 				y       : finalScroll,
+			// 				autoKill: true
+			// 			},
+			// 			ease     : Power1.easeOut,
+			// 			overwrite: 5
+			// 		});
+			//
 			// 	});
-			//
-			// });
+			// }
 
 
 			// Smoth scroll to position
@@ -13435,6 +13444,7 @@ var defaultAMscript = {
 		});
 	}
 };
+
 defaultAMscript.run();
 module.exports = defaultAMscript;
 

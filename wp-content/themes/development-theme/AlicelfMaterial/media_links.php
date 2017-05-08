@@ -86,8 +86,10 @@ function aa_func_20163119123146()
 
 	// MDL
 	wp_enqueue_style( 'google-material-icons', '//fonts.googleapis.com/icon?family=Material+Icons' );
-	wp_enqueue_style( 'google-mdl-style', $template_path . '/mdl/mdl.css' );
-	wp_enqueue_script( 'google-material-script', $template_path . '/mdl/material.min.js', [], false, true );
+	wp_enqueue_style( 'google-mdl-style',
+		$bowersrc . '/material-design-lite/src/template.css' );
+	wp_enqueue_script( 'google-material-script',
+		$bowersrc . '/material-design-lite/material.min.js', [], false, true );
 
 	// Styles
 	wp_enqueue_style( 'animate-css', $bowersrc . 'animate.css/animate.min.css' );
