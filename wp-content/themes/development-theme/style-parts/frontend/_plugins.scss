@@ -59,19 +59,26 @@
  * ==================== WooCommerce ======================
  */
 li.vuecart-class {
-	position : relative;
-	z-index: 1;
+	position   : relative;
+	z-index    : 1;
+	list-style : none;
 }
 
 .mdl-layout__drawer {
 	.minicart-template-holder .mdl-list {
-		min-width : 200px;
+		min-width   : 200px;
 		margin-left : -125px;
 	}
 }
 
 .minicart-template-holder {
 	position : relative;
+
+	.items-count {
+		position : absolute;
+		top      : -8px;
+		right    : 0;
+	}
 
 	button {
 		overflow : visible;

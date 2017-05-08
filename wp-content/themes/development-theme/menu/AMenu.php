@@ -13,7 +13,8 @@ class AMenu extends Walker_Nav_Menu {
 		$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'menu-item-' . $item->ID;
 
-		$item->hasChildren && $classes[] = 'dropdown';
+//		$item->hasChildren && $classes[] = 'dropdown';
+
 		in_array( 'current-menu-item', $classes ) && $classes[] = 'active ';
 
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );

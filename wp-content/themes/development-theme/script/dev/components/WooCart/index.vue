@@ -1,13 +1,16 @@
-<template id="minicart-template">
+<template>
 	<div class="minicart-template-holder">
 
-		<button class="mdl-button mdl-js-button mdl-button--icon" @click="toggleCart">
-			<i class="material-icons mdl-badge mdl-badge--overlap" :data-badge="totalCart">shopping_cart</i>
-		</button>
+		<md-button class="md-icon-button"
+							 @click.native="toggleCart">
+			<md-icon>shopping_cart</md-icon>
+			<span class="items-count">{{totalCart}}</span>
+		</md-button>
 
 		<!--enter-active-class="animated bounceIn"-->
 		<!--leave-active-class="animated bounceOut"-->
-		<transition name="fademinicart">
+		<transition
+			name="fademinicart">
 
 			<div class="mdl-list transition-default" v-show="cartOpened">
 
