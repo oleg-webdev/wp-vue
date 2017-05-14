@@ -12692,30 +12692,7 @@ new Vue({
 
 	},
 
-	created: function created() {
-
-		/**
-   * ==================== Preloader ======================
-   */
-		var opacityMeasure = 1,
-		    body = document.body,
-		    preloader = document.getElementById('app-preloader-container');
-
-		var invokeStepDissappearing = function invokeStepDissappearing() {
-			opacityMeasure -= 0.04;
-			preloader.style.opacity = opacityMeasure;
-			if (opacityMeasure > 0) {
-				requestAnimationFrame(invokeStepDissappearing);
-			} else {
-				body.classList.remove('lock-overflow');
-				preloader.style.display = 'none';
-			}
-		};
-
-		eventHub.$on('domloaded', function (e) {
-			if (preloader !== null) invokeStepDissappearing();
-		});
-	},
+	created: function created() {},
 	mounted: function mounted() {},
 
 
@@ -13362,26 +13339,33 @@ var defaultAMscript = {
 			subtree: true
 		});
 
-		/**
-   * ==================== Regular Domready script ======================
-   * 26.12.2016
-   */
-		var appHandler = document.getElementById('am-appwrap'),
-		    opacityMeasure = 0;
-
-		var invokeStepAppearing = function invokeStepAppearing() {
-			var appHandler = document.getElementById('am-appwrap');
-			opacityMeasure += 0.04;
-			appHandler.style.opacity = opacityMeasure;
-			if (opacityMeasure <= 1) {
-				requestAnimationFrame(invokeStepAppearing);
-			}
-		};
-
-		// appHandler.style.opacity = 0;
 		domready(function () {
 
-			// invokeStepAppearing()
+			{
+				/**
+     * ==================== Preloader ======================
+     */
+				var opacityMeasure = 1,
+				    body = document.body,
+				    preloader = document.getElementById('app-preloader-container');
+
+				var invokeStepDissappearing = function invokeStepDissappearing() {
+					opacityMeasure -= 0.04;
+					preloader.style.opacity = opacityMeasure;
+					if (opacityMeasure > 0) {
+						requestAnimationFrame(invokeStepDissappearing);
+					} else {
+						body.classList.remove('lock-overflow');
+						preloader.style.display = 'none';
+					}
+				};
+
+				if (preloader !== null) {
+					invokeStepDissappearing();
+				}
+			}
+			// Preleader END
+
 			var hideElemsUntilDomLoaded = document.querySelectorAll('.hide-until-dom-loaded');
 
 			var _loop = function _loop(i) {

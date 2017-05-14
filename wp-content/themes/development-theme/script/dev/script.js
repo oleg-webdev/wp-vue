@@ -79,27 +79,34 @@ let defaultAMscript = {
 		});
 
 
-		/**
-		 * ==================== Regular Domready script ======================
-		 * 26.12.2016
-		 */
-		let appHandler     = document.getElementById('am-appwrap'),
-				opacityMeasure = 0;
-
-		let invokeStepAppearing = () => {
-			let appHandler = document.getElementById('am-appwrap')
-			opacityMeasure += 0.04
-			appHandler.style.opacity = opacityMeasure
-			if (opacityMeasure <= 1) {
-				requestAnimationFrame(invokeStepAppearing);
-			}
-		};
-
-
-		// appHandler.style.opacity = 0;
 		domready(() => {
 
-			// invokeStepAppearing()
+			{
+				/**
+				 * ==================== Preloader ======================
+				 */
+				let opacityMeasure = 1,
+						body = document.body,
+						preloader = document.getElementById('app-preloader-container')
+
+				let invokeStepDissappearing = () => {
+					opacityMeasure -= 0.04
+					preloader.style.opacity = opacityMeasure
+					if (opacityMeasure > 0) {
+						requestAnimationFrame(invokeStepDissappearing);
+					} else {
+						body.classList.remove('lock-overflow')
+						preloader.style.display = 'none'
+					}
+				};
+
+				if(preloader !== null) {
+					invokeStepDissappearing();
+				}
+
+			}
+			// Preleader END
+
 			let hideElemsUntilDomLoaded = document.querySelectorAll('.hide-until-dom-loaded');
 			for (let i = hideElemsUntilDomLoaded.length; i--;) {
 				let _elem = hideElemsUntilDomLoaded[i]

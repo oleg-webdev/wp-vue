@@ -479,47 +479,51 @@ Redux::setSection( $opt_name, $section );
 
 /**
  * Mailchimp Api
- * 4e3a7a4113b7f8f39684e4ecf3305086-us10
  */
-$section = array(
+$section = [
 	'title'      => 'Mailchimp API',
 	'id'         => 'mailchimp-api-subsection',
 	'subsection' => true,
 	'desc'       => 'mailchimp api fields',
 	'icon'       => 'el el-envelope',
-	'fields'     => array(
+	'fields'     => [
 		[
-			'id'      => 'mailchimp-api-key',
-			'type'    => 'text',
-			'title'   => __( 'Mailchimp Api Key', 'alicelf-material' ),
-			'default' => '4e3a7a4113b7f8f39684e4ecf3305086-us10'
+			'id'          => 'mailchimp-api-key',
+			'type'        => 'text',
+			'title'       => __( 'Mailchimp Api Key', 'alicelf-material' ),
+			'description' => 'Profile > Extras > Api Keys',
+			'default'     => 'c5057a302a7e7fed5aeabc36e316c4f1-us10'
 		],
 		[
-			'id'      => 'mailchimp-redirect_uri',
-			'type'    => 'text',
-			'title'   => __( 'Mailchimp Redirect Uri', 'alicelf-material' ),
-			'default' => '127.0.0.1/redux'
+			'id'          => 'mailchimp-redirect_uri',
+			'type'        => 'text',
+			'title'       => __( 'Mailchimp Redirect Uri', 'alicelf-material' ),
+			'description' => 'Profile > Extras > Registered apps > Edit',
+			'default'     => get_site_url()
 		],
 		[
 			'id'      => 'mailchimp-client_id',
 			'type'    => 'text',
 			'title'   => __( 'Mailchimp Client ID', 'alicelf-material' ),
+			'description' => 'Profile > Extras > Registered apps > Edit',
 			'default' => '352509122062'
 		],
 		[
 			'id'      => 'mailchimp-client_secret',
 			'type'    => 'text',
 			'title'   => __( 'Mailchimp Client Secret', 'alicelf-material' ),
+			'description' => 'Profile > Extras > Registered apps > Edit',
 			'default' => '56bf0d5500b6280432b35cf9f4655655'
 		],
 		[
-			'id'      => 'mailchimp-list-id',
-			'type'    => 'text',
-			'title'   => __( 'Mailchimp List ID', 'alicelf-material' ),
-			'default' => '79bbdbe61d'
+			'id'          => 'mailchimp-list-id',
+			'type'        => 'text',
+			'title'       => __( 'Mailchimp List ID', 'alicelf-material' ),
+			'description' => 'List Name > Settings > List name and defaults',
+			'default'     => '79bbdbe61d'
 		],
-	)
-);
+	]
+];
 Redux::setSection( $opt_name, $section );
 
 /**

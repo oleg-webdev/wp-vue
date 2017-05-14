@@ -351,22 +351,8 @@ function aa_func_20172214112200()
 {
 	if ( is_front_page() ) {
 		?>
-		<style type="text/css">
-			#app-preloader-container {
-				position        : absolute;
-				z-index         : 99999999999;
-				height          : 100%;
-				width           : 100%;
-				background      : #fff;
-				top             : 0;
-				left            : 0;
-				display         : flex;
-				justify-content : center;
-				align-items     : center;
-			}
-		</style>
 		<div id="app-preloader-container">
-			<div class="spinner-jx">
+			<div class="spinner-bubbles">
 				<div class="bounce1"></div>
 				<div class="bounce2"></div>
 				<div class="bounce3"></div>
