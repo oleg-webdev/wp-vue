@@ -23,6 +23,7 @@ function aa_func_20163119123146()
 
 	$template_path = get_stylesheet_directory_uri();
 	$bowersrc      = $template_path . '/bower_components/';
+	$nodemodules   = $template_path . '/node_modules/';
 	$production    = WP_DEBUG === false ? '.min' : null;
 
 	// Slick slider | bower install slick-carousel --save
@@ -86,10 +87,8 @@ function aa_func_20163119123146()
 
 	// MDL
 	wp_enqueue_style( 'google-material-icons', '//fonts.googleapis.com/icon?family=Material+Icons' );
-	wp_enqueue_style( 'google-mdl-style',
-		$bowersrc . '/material-design-lite/src/template.css' );
-	wp_enqueue_script( 'google-material-script',
-		$bowersrc . '/material-design-lite/material.min.js', [], false, true );
+	wp_enqueue_style( 'google-mdl-style', $bowersrc . '/material-design-lite/src/template.css' );
+	wp_enqueue_script( 'google-material-script', $bowersrc . '/material-design-lite/material.min.js', [], false, true );
 
 	// Styles
 	wp_enqueue_style( 'animate-css', $bowersrc . 'animate.css/animate.min.css' );
@@ -104,7 +103,7 @@ function aa_func_20163119123146()
 	wp_enqueue_script( 'jquery', $bowersrc . 'jquery/dist/jquery.min.js', [], false, true );
 
 	// Vue-material
-	wp_enqueue_style( 'vue-material-style', $template_path . '/vue-material/dist/vue-material.css' );
+	wp_enqueue_style( 'vue-material-style', $nodemodules . '/vue-material/dist/vue-material.css' );
 	// Vue lib
 	wp_enqueue_script( 'vue-script', $bowersrc . "vue/dist/vue{$production}.js", [], false, true );
 
