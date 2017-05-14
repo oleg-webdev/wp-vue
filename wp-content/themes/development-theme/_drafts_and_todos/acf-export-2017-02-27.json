@@ -1,0 +1,170 @@
+[
+    {
+        "key": "group_57fd24034f7ed",
+        "title": "Page Options",
+        "fields": [
+            {
+                "key": "field_57fd2472975c5",
+                "label": "Page Sidebar",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_57fd24d3975c6",
+                "label": "Show Sidebar",
+                "name": "show_sidebar",
+                "type": "true_false",
+                "instructions": "",
+                "required": "",
+                "conditional_logic": "",
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "default_value": 0
+            },
+            {
+                "key": "field_57fd24e5975c7",
+                "label": "Sidebar Postion",
+                "name": "sidebar_postion",
+                "type": "radio",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_57fd24d3975c6",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": "am-sidebar-position"
+                },
+                "choices": {
+                    "left": "Left Sidebar",
+                    "right": "Right Sidebar"
+                },
+                "allow_null": 0,
+                "other_choice": 0,
+                "save_other_choice": 0,
+                "default_value": "",
+                "layout": "vertical"
+            },
+            {
+                "key": "field_57fd254a975c8",
+                "label": "Select Your Sidebar",
+                "name": "select_your_sidebar",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_57fd24d3975c6",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": "am-available-sidebars"
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": "",
+                "readonly": 0,
+                "disabled": 0
+            },
+            {
+                "key": "field_57fd26e3ea673",
+                "label": "Page Custom Style\/Script",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_57fd2708ea674",
+                "label": "Page Custom Style",
+                "name": "page_custom_style",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "text",
+                "toolbar": "full",
+                "media_upload": 0
+            },
+            {
+                "key": "field_57fd2732ea675",
+                "label": "Page Custom Script",
+                "name": "page_custom_script",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "text",
+                "toolbar": "full",
+                "media_upload": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 1,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": "",
+        "local": "php"
+    }
+]

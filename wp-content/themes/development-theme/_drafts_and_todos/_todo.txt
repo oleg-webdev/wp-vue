@@ -1,0 +1,14 @@
+reset password screen -> login + uncomment \AlicelfMaterial\user\init.php:168
+
+1 add custom fields to menu
+2 datepicker
+  view                    | type
+  ------------------------|---------
+  a) dropdown - positions | regular
+  b) popup                | multiple dates
+                          | range
+                          |
+
+5 captcha to comments and login
+6 users area
+8 drag slider ui component
