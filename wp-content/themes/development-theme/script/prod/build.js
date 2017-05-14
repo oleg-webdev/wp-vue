@@ -12692,7 +12692,30 @@ new Vue({
 
 	},
 
-	created: function created() {},
+	created: function created() {
+
+		/**
+   * ==================== Preloader ======================
+   */
+		var opacityMeasure = 1,
+		    body = document.body,
+		    preloader = document.getElementById('app-preloader-container');
+
+		var invokeStepDissappearing = function invokeStepDissappearing() {
+			opacityMeasure -= 0.04;
+			preloader.style.opacity = opacityMeasure;
+			if (opacityMeasure > 0) {
+				requestAnimationFrame(invokeStepDissappearing);
+			} else {
+				body.classList.remove('lock-overflow');
+				preloader.style.display = 'none';
+			}
+		};
+
+		eventHub.$on('domloaded', function (e) {
+			if (preloader !== null) invokeStepDissappearing();
+		});
+	},
 	mounted: function mounted() {},
 
 

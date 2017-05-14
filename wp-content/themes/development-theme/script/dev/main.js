@@ -97,7 +97,32 @@ new Vue({
 
 	},
 
-	created() {},
+	created() {
+
+		/**
+		 * ==================== Preloader ======================
+		 */
+		let opacityMeasure = 1,
+				body = document.body,
+				preloader = document.getElementById('app-preloader-container')
+
+		let invokeStepDissappearing = () => {
+			opacityMeasure -= 0.04
+			preloader.style.opacity = opacityMeasure
+			if (opacityMeasure > 0) {
+				requestAnimationFrame(invokeStepDissappearing);
+			} else {
+				body.classList.remove('lock-overflow')
+				preloader.style.display = 'none'
+			}
+		};
+
+		eventHub.$on('domloaded', (e) => {
+			if(preloader !== null)
+				invokeStepDissappearing()
+		})
+
+	},
 
 	mounted() {},
 
