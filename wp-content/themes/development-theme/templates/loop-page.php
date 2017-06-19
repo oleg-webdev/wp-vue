@@ -6,6 +6,7 @@
 		$sidebar_name     = get_post_meta( $post_id, 'select_your_sidebar', true );
 		$page_template    = str_replace( [ ".php", "_" ], "", get_page_template_slug( $post_id ) );
 		do_action('aa_page_loop_start', $post_id);
+
 		?>
 
 		<div <?php post_class( empty( $page_template ) ? 'am-wrap' : $page_template ) ?>>

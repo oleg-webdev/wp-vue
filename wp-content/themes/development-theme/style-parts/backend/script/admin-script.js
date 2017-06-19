@@ -57,6 +57,7 @@ jQuery(document).ready(function ($){
 
 
 	var sidebarHandler = $('#am-available-sidebars');
+
 	var selectSidebarProcess = function(){
 		var sidebars = AdminDefaults.allSidebars,
 				input = sidebarHandler.find('.acf-input input'),
@@ -67,11 +68,11 @@ jQuery(document).ready(function ($){
 
 		for (var key in sidebars) {
 			var sidebar = sidebars[key],
-					selected = key === input.val() ? 'selected':"";
+					selected = sidebar.id === input.val() ? 'selected':"";
 			selectHtml += "<option value='"+key+"' "+selected+">"+sidebar.name+"</option>";
 
 			if(input.val().length === 0) {
-				input.val(sidebar.name)
+				input.attr('value', sidebar.id)
 			}
 
 		}
